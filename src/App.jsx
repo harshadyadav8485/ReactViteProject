@@ -13,7 +13,7 @@ function App() {
       element: <AppLayout />,
       children: [
         {
-          path: "home",
+          path: "home", // Still keeping "/home" accessible
           element: <Home />,
         },
       ],

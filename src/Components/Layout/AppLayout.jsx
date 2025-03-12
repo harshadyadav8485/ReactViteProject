@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
+import { Outlet } from "react-router-dom";
 
 function AppLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -11,17 +12,11 @@ function AppLayout() {
 
   return (
     <div className="h-screen flex flex-col overflow-hidden">
-      <Header className="sticky t-0 z-10" toggleSidebar={toggleSidebar} />
-      <div className="flex flex-1">
-        <Sidebar
-          className="sticky"
-          open={sidebarOpen}
-          toggleSidebar={toggleSidebar}
-        />
+      <Header toggleSidebar={toggleSidebar} />
+      <div className="flex flex-1 sticky t-0 z-10">
+        <Sidebar open={sidebarOpen} toggleSidebar={toggleSidebar} />
         <main className="flex-1 p-4 bg-gray-100">
-          <h1 className="text-xl font-bold flex justify-center">
-            Welcome to the Dashboard
-          </h1>
+          <Outlet /> {/* This renders child routes */}
         </main>
       </div>
     </div>
