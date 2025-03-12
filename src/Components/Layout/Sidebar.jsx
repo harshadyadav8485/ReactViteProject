@@ -1,20 +1,19 @@
 import React from "react";
-import {
-  Drawer,
-  List,
-  ListItem,
-  ListItemText,
-  Box,
-  Typography,
-} from "@mui/material";
+import { List, ListItem, ListItemText, ListItemIcon, Box } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
 
+import HomeIcon from "@mui/icons-material/Home";
+import LocationCityIcon from "@mui/icons-material/LocationCity";
+import DomainIcon from "@mui/icons-material/Domain";
+import PublicIcon from "@mui/icons-material/Public";
+import WorkIcon from "@mui/icons-material/Work";
+
 const menuItems = [
-  { name: "Home", path: "/home" },
-  { name: "Districts", path: "/districts" },
-  { name: "SubDistricts", path: "/subDistricts" },
-  { name: "Villages", path: "/villages" },
-  { name: "Projects", path: "/projects" },
+  { name: "Home", path: "/home", icon: <HomeIcon /> },
+  { name: "Districts", path: "/districts", icon: <LocationCityIcon /> },
+  { name: "SubDistricts", path: "/subDistricts", icon: <DomainIcon /> },
+  { name: "Villages", path: "/villages", icon: <PublicIcon /> },
+  { name: "Projects", path: "/projects", icon: <WorkIcon /> },
 ];
 
 const Sidebar = ({ open, toggleSidebar }) => {
@@ -22,7 +21,6 @@ const Sidebar = ({ open, toggleSidebar }) => {
   const location = useLocation();
 
   return (
-    // <Drawer anchor="left" open={open} onClose={toggleSidebar}>
     <Box
       sx={{
         width: 240,
@@ -33,20 +31,14 @@ const Sidebar = ({ open, toggleSidebar }) => {
         boxShadow: 3,
       }}
     >
-      {/* <Typography
-        variant="h6"
-        sx={{ fontWeight: "bold", textAlign: "center", mb: 2 }}
-      >
-        Sidebar
-      </Typography> */}
-
       <List>
-        {menuItems.map(({ name, path }) => (
+        {menuItems.map(({ name, path, icon }) => (
           <ListItem
             key={path}
             button
             sx={{
-              backgroundColor: "inherit",
+              backgroundColor:
+                location.pathname === path ? "#E0E0E0" : "inherit",
               "&:hover": { backgroundColor: "#E0E0E0" },
               cursor: "pointer",
               borderRadius: "5px",
@@ -57,12 +49,12 @@ const Sidebar = ({ open, toggleSidebar }) => {
               toggleSidebar();
             }}
           >
-            <ListItemText primary={name} sx={{ textAlign: "center" }} />
+            <ListItemIcon sx={{ color: "black" }}>{icon}</ListItemIcon>
+            <ListItemText primary={name} />
           </ListItem>
         ))}
       </List>
     </Box>
-    // </Drawer>
   );
 };
 
