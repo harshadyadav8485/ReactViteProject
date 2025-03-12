@@ -16,7 +16,7 @@ function AppLayout() {
       <div className="flex flex-1 sticky t-0 z-10">
         <Sidebar open={sidebarOpen} toggleSidebar={toggleSidebar} />
         <main className="flex-1 p-4 bg-gray-100">
-          <Outlet /> {/* This renders child routes */}
+          <Outlet />
         </main>
       </div>
     </div>

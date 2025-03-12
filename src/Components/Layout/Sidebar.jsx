@@ -10,7 +10,7 @@ import {
 import { useNavigate, useLocation } from "react-router-dom";
 
 const menuItems = [
-  { name: "Home", path: "/home" }, // Change "/home" to "/"
+  { name: "Home", path: "/home" },
   { name: "Districts", path: "/districts" },
   { name: "SubDistricts", path: "/subDistricts" },
   { name: "Villages", path: "/villages" },
@@ -46,8 +46,8 @@ const Sidebar = ({ open, toggleSidebar }) => {
             key={path}
             button
             sx={{
-              backgroundColor: "inherit", // No default selection color
-              "&:hover": { backgroundColor: "#E0E0E0" }, // Light gray on hover
+              backgroundColor: "inherit",
+              "&:hover": { backgroundColor: "#E0E0E0" },
               cursor: "pointer",
               borderRadius: "5px",
               marginBottom: "5px",
