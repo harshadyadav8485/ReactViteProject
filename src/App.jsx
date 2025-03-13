@@ -5,6 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import AppLayout from "./Components/Layout/AppLayout";
 import { Home } from "./Pages/Home";
+import Fan from "./Pages/Fan";
+import Chiller from "./Pages/Chiller";
 
 function App() {
   const router = createBrowserRouter([
@@ -15,6 +17,14 @@ function App() {
         {
           path: "home", // Still keeping "/home" accessible
           element: <Home />,
+        },
+        {
+          path: "fan", // Still keeping "/home" accessible
+          element: <Fan />,
+        },
+        {
+          path: "chiller", // Still keeping "/home" accessible
+          element: <Chiller />,
         },
       ],
     },

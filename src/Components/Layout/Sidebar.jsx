@@ -7,13 +7,13 @@ import LocationCityIcon from "@mui/icons-material/LocationCity";
 import DomainIcon from "@mui/icons-material/Domain";
 import PublicIcon from "@mui/icons-material/Public";
 import WorkIcon from "@mui/icons-material/Work";
-
+import GridViewIcon from "@mui/icons-material/GridView";
 const menuItems = [
-  { name: "Home", path: "/home", icon: <HomeIcon /> },
-  { name: "Districts", path: "/districts", icon: <LocationCityIcon /> },
-  { name: "SubDistricts", path: "/subDistricts", icon: <DomainIcon /> },
-  { name: "Villages", path: "/villages", icon: <PublicIcon /> },
-  { name: "Projects", path: "/projects", icon: <WorkIcon /> },
+  { name: "Pump", path: "/home", icon: <GridViewIcon /> },
+  { name: "Fan", path: "/fan", icon: <GridViewIcon /> },
+  { name: "Chiller", path: "/chiller", icon: <GridViewIcon /> },
+  // { name: "Villages", path: "/villages", icon: <PublicIcon /> },
+  // { name: "Projects", path: "/projects", icon: <WorkIcon /> },
 ];
 
 const Sidebar = ({ open, toggleSidebar }) => {
@@ -31,6 +31,7 @@ const Sidebar = ({ open, toggleSidebar }) => {
         boxShadow: 3,
       }}
     >
+      <h1> Equipments</h1>
       <List>
         {menuItems.map(({ name, path, icon }) => (
           <ListItem

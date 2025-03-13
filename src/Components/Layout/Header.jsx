@@ -15,7 +15,7 @@ const Header = ({ toggleSidebar }) => {
           color="inherit"
           onClick={toggleSidebar}
         ></IconButton>
-        <Typography variant="h6">My Dashboard</Typography>
+        <Typography variant="h6">Tab Reporting</Typography>
       </Toolbar>
     </AppBar>
   );
