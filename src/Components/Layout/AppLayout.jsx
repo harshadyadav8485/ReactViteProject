@@ -11,11 +11,21 @@ function AppLayout() {
   };
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden">
+    <div className="h-screen flex flex-col">
       <Header toggleSidebar={toggleSidebar} />
-      <div className="flex flex-1 sticky t-0 z-10">
+      <div className="flex" style={{ marginTop: "64px" }}>
+        {" "}
+        {/* ✅ FIX: Prevent content from hiding under the fixed header */}
         <Sidebar open={sidebarOpen} toggleSidebar={toggleSidebar} />
-        <main className="flex-1 p-4 bg-gray-100">
+        <main
+          className="flex-1 p-4 bg-gray-100"
+          style={{
+            marginLeft: "220px", // ✅ FIX: Prevent content from overlapping sidebar
+            paddingTop: "10px",
+            overflowY: "auto",
+            height: "calc(100vh - 64px)", // ✅ FIX: Ensure content fits within the screen
+          }}
+        >
           <Outlet />
         </main>
       </div>
