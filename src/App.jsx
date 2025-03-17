@@ -4,9 +4,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./App.css";
 import AppLayout from "./Components/Layout/AppLayout";
-import { Home } from "./Pages/Home";
+import Pump from "./Pages/Pump";
 import Fan from "./Pages/Fan";
 import Chiller from "./Pages/Chiller";
+import CreatePump from "./Pages/CreatePump";
 
 function App() {
   const router = createBrowserRouter([
@@ -15,16 +16,20 @@ function App() {
       element: <AppLayout />,
       children: [
         {
-          path: "home", // Still keeping "/home" accessible
-          element: <Home />,
+          path: "pump", // Still keeping "/home" accessible
+          element: <Pump />,
         },
         {
-          path: "fan", // Still keeping "/home" accessible
+          path: "fan",
           element: <Fan />,
         },
         {
-          path: "chiller", // Still keeping "/home" accessible
+          path: "chiller",
           element: <Chiller />,
+        },
+        {
+          path: "createPump",
+          element: <CreatePump />,
         },
       ],
     },
