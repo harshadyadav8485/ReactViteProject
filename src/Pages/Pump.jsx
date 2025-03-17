@@ -18,17 +18,15 @@ const Pump = () => {
 
   return (
     <>
-      <div>
-        <Box sx={{ mt: 2, pl: 7, pr: 7, pb: 1 }}>
+      <Box sx={{ pl: 9, pr: 9, mt: 2 }}>
+        <Box sx={{ pb: 1 }}>
           <Typography variant="h5">Pump</Typography>
-          <Typography variant="h6">Pump Name: Little Giant 0.5</Typography>
+          <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+            Pump Name: Little Giant 0.5
+          </Typography>
         </Box>
 
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          sx={{ pl: 7, pr: 7, mb: 2 }}
-        >
+        <Box display="flex" justifyContent="space-between" sx={{ mb: 2 }}>
           <TextField
             variant="outlined"
             placeholder="Search Pump..."
@@ -58,8 +56,8 @@ const Pump = () => {
           <Box
             sx={{
               display: "grid",
-              gridTemplateColumns: "repeat(2, 1fr)", // 2 columns
-              gap: 2, // Spacing between items
+              gridTemplateColumns: "repeat(2, 1fr)",
+              gap: 2,
             }}
           >
             <Box display="flex" alignItems="center">
@@ -140,7 +138,7 @@ const Pump = () => {
           </Box>
           <Divider />
 
-          <Typography variant="h6">Motor:</Typography>
+          <Typography variant="h6">Motor</Typography>
           <Box
             sx={{
               display: "grid",
@@ -211,7 +209,7 @@ const Pump = () => {
             <Button variant="contained">Save</Button>
           </Box>
         </Box>
-      </div>
+      </Box>
     </>
   );
 };

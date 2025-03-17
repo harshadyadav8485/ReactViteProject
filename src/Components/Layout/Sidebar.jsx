@@ -25,6 +25,10 @@ const Sidebar = ({ open, toggleSidebar }) => {
       sx={{
         width: 220,
         bgcolor: "white",
+        position: "fixed",
+        left: 0,
+        top: "64px",
+        height: "calc(100vh - 64px)",
         color: "black",
         height: "100vh",
         p: 2,
