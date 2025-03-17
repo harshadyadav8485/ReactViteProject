@@ -17,18 +17,13 @@ const CreatePump = () => {
 
   return (
     <>
-      <Box sx={{ pl: 9, pr: 9, mt: 2 }}>
+      <Box sx={{ pl: 9, pr: 9, mt: 1 }}>
         <Box>
-          <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+          {/* <Typography variant="h6" sx={{ fontWeight: "bold" }}>
             Create Pump
-          </Typography>
+          </Typography> */}
+          <h2> Create Pump</h2>
         </Box>
-
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          sx={{ pl: 7, pr: 7, mb: 2 }}
-        ></Box>
 
         <Box
           component="form"
@@ -135,7 +130,7 @@ const CreatePump = () => {
               <Typography sx={{ minWidth: "110px" }}>Size :</Typography>
               <Input
                 fullWidth
-                name="make"
+                name="size"
                 sx={{
                   border: "1px solid #ccc",
                   padding: "5px",
@@ -148,7 +143,7 @@ const CreatePump = () => {
               <Typography sx={{ minWidth: "110px" }}>Volts/Phase :</Typography>
               <Input
                 fullWidth
-                name="model"
+                name="volts"
                 sx={{
                   border: "1px solid #ccc",
                   padding: "5px",
@@ -161,7 +156,7 @@ const CreatePump = () => {
               <Typography sx={{ minWidth: "110px" }}>Amperage :</Typography>
               <Input
                 fullWidth
-                name="impellerSize"
+                name="amperage"
                 sx={{
                   border: "1px solid #ccc",
                   padding: "5px",
@@ -174,7 +169,7 @@ const CreatePump = () => {
               <Typography sx={{ minWidth: "110px" }}>R.P.M :</Typography>
               <Input
                 fullWidth
-                name="pumpCapacity"
+                name="rpm"
                 sx={{
                   border: "1px solid #ccc",
                   padding: "5px",

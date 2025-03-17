@@ -18,12 +18,13 @@ const Pump = () => {
 
   return (
     <>
-      <Box sx={{ pl: 9, pr: 9, mt: 2 }}>
-        <Box sx={{ pb: 1 }}>
-          <Typography variant="h5">Pump</Typography>
-          <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-            Pump Name: Little Giant 0.5
-          </Typography>
+      <Box sx={{ pl: 9, pr: 9, mt: 1 }}>
+        <Box sx={{ mb: 1 }}>
+          {/* <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+            Pump
+          </Typography> */}
+          <h2> Pump</h2>
+          <Typography variant="h6">Pump Name: Little Giant 0.5</Typography>
         </Box>
 
         <Box display="flex" justifyContent="space-between" sx={{ mb: 2 }}>
@@ -66,6 +67,7 @@ const Pump = () => {
                 defaultValue="Little Giant"
                 fullWidth
                 name="make"
+                readOnly
                 sx={{
                   border: "1px solid #ccc",
                   padding: "5px",
@@ -80,6 +82,7 @@ const Pump = () => {
                 defaultValue="VCMA-20 Series"
                 fullWidth
                 name="model"
+                readOnly
                 sx={{
                   border: "1px solid #ccc",
                   padding: "5px",
@@ -96,6 +99,7 @@ const Pump = () => {
                 defaultValue="200 mm"
                 fullWidth
                 name="impellerSize"
+                readOnly
                 sx={{
                   border: "1px solid #ccc",
                   padding: "5px",
@@ -112,6 +116,7 @@ const Pump = () => {
                 defaultValue="0.5 L/s"
                 fullWidth
                 name="pumpCapacity"
+                readOnly
                 sx={{
                   border: "1px solid #ccc",
                   padding: "5px",
@@ -128,6 +133,7 @@ const Pump = () => {
                 defaultValue="0.5 L/s"
                 fullWidth
                 name="systemCapacity"
+                readOnly
                 sx={{
                   border: "1px solid #ccc",
                   padding: "5px",
@@ -151,7 +157,8 @@ const Pump = () => {
               <Input
                 defaultValue="1 HP "
                 fullWidth
-                name="make"
+                name="size"
+                readOnly
                 sx={{
                   border: "1px solid #ccc",
                   padding: "5px",
@@ -165,7 +172,8 @@ const Pump = () => {
               <Input
                 defaultValue="230V"
                 fullWidth
-                name="model"
+                name="volts"
+                readOnly
                 sx={{
                   border: "1px solid #ccc",
                   padding: "5px",
@@ -179,7 +187,8 @@ const Pump = () => {
               <Input
                 defaultValue="7.5 Amps"
                 fullWidth
-                name="impellerSize"
+                name="amperage"
+                readOnly
                 sx={{
                   border: "1px solid #ccc",
                   padding: "5px",
@@ -193,7 +202,8 @@ const Pump = () => {
               <Input
                 defaultValue="1725 RPM"
                 fullWidth
-                name="pumpCapacity"
+                name="rpm"
+                readOnly
                 sx={{
                   border: "1px solid #ccc",
                   padding: "5px",
