@@ -4,9 +4,10 @@ import { AppBar, Toolbar, IconButton, Typography } from "@mui/material";
 const Header = ({ toggleSidebar }) => {
   return (
     <AppBar
-      position="static"
+      position="fixed"
       sx={{
         bgcolor: "#3B82F6",
+        zIndex: 1100,
       }}
     >
       <Toolbar>

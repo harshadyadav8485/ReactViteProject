@@ -9,7 +9,7 @@ import PublicIcon from "@mui/icons-material/Public";
 import WorkIcon from "@mui/icons-material/Work";
 import GridViewIcon from "@mui/icons-material/GridView";
 const menuItems = [
-  { name: "Pump", path: "/home", icon: <GridViewIcon /> },
+  { name: "Pump", path: "/pump", icon: <GridViewIcon /> },
   { name: "Fan", path: "/fan", icon: <GridViewIcon /> },
   { name: "Chiller", path: "/chiller", icon: <GridViewIcon /> },
   // { name: "Villages", path: "/villages", icon: <PublicIcon /> },
@@ -23,15 +23,19 @@ const Sidebar = ({ open, toggleSidebar }) => {
   return (
     <Box
       sx={{
-        width: 240,
+        width: 220,
         bgcolor: "white",
+        position: "fixed",
+        left: 0,
+        top: "64px",
+        height: "calc(100vh - 64px)",
         color: "black",
         height: "100vh",
         p: 2,
         boxShadow: 3,
       }}
     >
-      <h1> Equipments</h1>
+      <h2> Equipment Library</h2>
       <List>
         {menuItems.map(({ name, path, icon }) => (
           <ListItem
