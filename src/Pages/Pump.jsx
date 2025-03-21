@@ -216,7 +216,7 @@ const Pump = () => {
             <Button variant="outlined" startIcon={<AddIcon />}>
               Add Parameters
             </Button>
-            <Button variant="contained">Save</Button>
+            <Button variant="contained" onClick={() => navigate("/actualPump")}>Submit</Button>
           </Box>
         </Box>
       </Box>

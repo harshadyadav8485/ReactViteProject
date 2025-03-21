@@ -8,6 +8,10 @@ import Pump from "./Pages/Pump";
 import Fan from "./Pages/Fan";
 import Chiller from "./Pages/Chiller";
 import CreatePump from "./Pages/CreatePump";
+import CreateFan from "./Pages/CreateFan";
+import EditFan from "./Pages/EditFan";
+import ActualFan from "./Pages/ActualFan";
+import ActualPump from "./Pages/ActualPump";
 
 function App() {
   const router = createBrowserRouter([
@@ -30,6 +34,22 @@ function App() {
         {
           path: "createPump",
           element: <CreatePump />,
+        },
+        {
+          path: "createFan",
+          element: <CreateFan />,
+        },
+        {
+          path: "editFan",
+          element: <EditFan />,
+        },
+        {
+          path: "actualFan",
+          element: <ActualFan />,
+        },
+        {
+          path: "actualPump",
+          element: <ActualPump />,
         },
       ],
     },
