@@ -12,6 +12,7 @@ import CreateFan from "./Pages/CreateFan";
 import EditFan from "./Pages/EditFan";
 import ActualFan from "./Pages/ActualFan";
 import ActualPump from "./Pages/ActualPump";
+import { Home } from "./Pages/Home";
 
 function App() {
   const router = createBrowserRouter([
@@ -51,6 +52,10 @@ function App() {
           path: "actualPump",
           element: <ActualPump />,
         },
+        {
+          path: "home",
+          element: <Home/>,
+        }
       ],
     },
   ]);
