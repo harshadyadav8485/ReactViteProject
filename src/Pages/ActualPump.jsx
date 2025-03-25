@@ -26,6 +26,26 @@ const ActualPump = () => {
     pumpSpeed1: "",
     motorAmps1: "",
     specifiedHead1: "",
+
+    pumpOperatingHeadSP2: "",
+    pumpOperatingHeadDP2: "",
+    pumpOperatingHeadTP2: "",
+    pumpShutOffHeadSP2: "",
+    pumpShutOffHeadDP2: "",
+    pumpShutOffHeadTP2: "",
+    pumpSpeed2: "",
+    motorAmps2: "",
+    specifiedHead2: "",
+
+    pumpOperatingHeadSP3: "",
+    pumpOperatingHeadDP3: "",
+    pumpOperatingHeadTP3: "",
+    pumpShutOffHeadSP3: "",
+    pumpShutOffHeadDP3: "",
+    pumpShutOffHeadTP3: "",
+    pumpSpeed3: "",
+    motorAmps3: "",
+    specifiedHead3: "",
   });
   
   const [comments, setComments] = useState("");
@@ -88,19 +108,20 @@ const ActualPump = () => {
 //   };
 
   const pumpData = [
-    { field: "Make", specified: "Little Giant", key: "make", showConverter: false },
-    { field: "Model", specified: "VCMA-20 Series", key: "model", showConverter: false },
-    { field: "Impeller Size", specified: "200 mm", key: "impellerSize", showConverter: true },
-    { field: "Pump Capacity", specified: "0.5 L/s", key: "pumpCapacity", showConverter: true },
-    { field: "System Capacity", specified: "0.5 L/s", key: "systemCapacity", showConverter: true },
-    { field: "Motor Size", specified: "1 HP", key: "size", showConverter: true },
-    { field: "Volts/Phase", specified: "230V", key: "volts", showConverter: true },
-    { field: "Amperage", specified: "7.5 Amps", key: "amperage", showConverter: true },
-    { field: "R.P.M", specified: "1725 RPM", key: "rpm", showConverter: true }
+    { field: "Make", specified: "BELL & GOSSETT", key: "make", showConverter: false },
+    { field: "Model", specified: "e-80SC 5x5x11", key: "model", showConverter: false },
+    { field: "Impeller Size", specified: "", key: "impellerSize", showConverter: true },
+    { field: "Manufacturer ", specified: "", key: "manufacturer ", showConverter: true },
+    // { field: "Pump Capacity", specified: "0.5 L/s", key: "pumpCapacity", showConverter: true },
+    // { field: "System Capacity", specified: "0.5 L/s", key: "systemCapacity", showConverter: true },
+    { field: "Motor Size", specified: "20 HP ", key: "size", showConverter: true },
+    { field: "Volts/Phase", specified: "575/3", key: "volts", showConverter: true },
+    { field: "Amperage", specified: "23.60", key: "amperage", showConverter: true },
+    { field: "R.P.M", specified: "", key: "rpm", showConverter: true }
   ];
 
   const testData = [
-    { field: "PUMP OPERATING HEAD (PSI)", specified: "Little Giant", key: "make", showConverter: false },
+    { field: "PUMP OPERATING HEAD (KPA)", specified: "Little Giant", key: "make", showConverter: false },
     { field: "Model", specified: "VCMA-20 Series", key: "model", showConverter: false },
     { field: "Impeller Size", specified: "200 mm", key: "impellerSize", showConverter: true },
     { field: "Pump Capacity", specified: "0.5 L/s", key: "pumpCapacity", showConverter: true },
@@ -123,7 +144,7 @@ const ActualPump = () => {
 
   return (
     <Box sx={{ pl: 9, pr: 9, mt: 2 }}>
-     <h2>Pump Name: Little Giant 0.5</h2>
+     <h2>Pump Number : P-06-07A</h2>
       <Tabs value={tabIndex} onChange={(e, newIndex) => setTabIndex(newIndex)} sx={{mb:1}}>
         <Tab label="Actual Pump Data" />
         <Tab label="Test Data" />
@@ -213,141 +234,314 @@ const ActualPump = () => {
             </Table>
           </TableContainer> */}
 
-<Container maxWidth="md">
-  <Typography variant="h6" gutterBottom align="center" style={{ fontWeight: "bold", marginBottom: "20px" }}>
-    SINGLE OPERATION FULL FLOW
-  </Typography>
-  <form onSubmit={handleSubmit}>
-    <Grid container spacing={2}>
-      <Grid item xs={12}>
-        <Typography variant="h7" style={{ fontWeight: 500, marginTop: "10px" }}>
-          PUMP OPERATING HEAD (PSI)
+<Container maxWidth="xl">
+  <Grid container spacing={2}>
+    <Grid item xs={6}>
+      <Container>
+        <Typography
+          variant="h6"
+          gutterBottom
+          align="center"
+          style={{ fontWeight: "bold", marginBottom: "20px" }}
+        >
+          SINGLE OPERATION FULL FLOW
         </Typography>
-      </Grid>
-      {[
-        { label: "Suction Pressure (SP)", name: "pumpOperatingHeadSP" },
-        { label: "Discharge Pressure (DP)", name: "pumpOperatingHeadDP" },
-        { label: "Total Pressure (TP)", name: "pumpOperatingHeadTP" },
-      ].map((field, index) => (
-        <Grid item xs={4} key={index}>
-          <TextField
-            fullWidth
-            label={field.label}
-            name={field.name}
-            value={formData[field.name]}
-            onChange={handleChange1}
-            variant="outlined"
-          />
-        </Grid>
-      ))}
-      <Grid item xs={12}>
-        <Typography variant="h7" style={{ fontWeight: 500, marginTop: "10px" }}>
-          PUMP SHUT OFF HEAD (PSI)
-        </Typography>
-      </Grid>
-      {[
-        { label: "Suction Pressure (SP)", name: "pumpShutOffHeadSP" },
-        { label: "Discharge Pressure (DP)", name: "pumpShutOffHeadDP" },
-        { label: "Total Pressure (TP)", name: "pumpShutOffHeadTP" },
-      ].map((field, index) => (
-        <Grid item xs={4} key={index}>
-          <TextField
-            fullWidth
-            label={field.label}
-            name={field.name}
-            value={formData[field.name]}
-            onChange={handleChange1}
-            variant="outlined"
-          />
-        </Grid>
-      ))}
-      {[
-        { label: "Pump Speed", name: "pumpSpeed" },
-        { label: "Motor Amps", name: "motorAmps" },
-        { label: "Specified Head (PSI)", name: "specifiedHead" },
-      ].map((field, index) => (
-        <Grid item xs={4} key={index}>
-          <TextField
-            fullWidth
-            label={field.label}
-            name={field.name}
-            value={formData[field.name]}
-            onChange={handleChange1}
-            variant="outlined"
-          />
-        </Grid>
-      ))}
+        <form onSubmit={handleSubmit}>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Typography variant="subtitle1" style={{ fontWeight: 500, marginTop: "10px" }}>
+                PUMP OPERATING HEAD (KPA)
+              </Typography>
+            </Grid>
+            {[
+              { label: "Suction Pressure (SP)", name: "pumpOperatingHeadSP" },
+              { label: "Discharge Pressure (DP)", name: "pumpOperatingHeadDP" },
+              { label: "Total Pressure (TP)", name: "pumpOperatingHeadTP" },
+            ].map((field, index) => (
+              <Grid item xs={4} key={index}>
+                <TextField
+                  fullWidth
+                  label={field.label}
+                  name={field.name}
+                  value={formData[field.name]}
+                  onChange={handleChange1}
+                  variant="outlined"
+                />
+              </Grid>
+            ))}
+            <Grid item xs={12}>
+              <Typography variant="subtitle1" style={{ fontWeight: 500, marginTop: "10px" }}>
+                PUMP SHUT OFF HEAD (KPA)
+              </Typography>
+            </Grid>
+            {[
+              { label: "Suction Pressure (SP)", name: "pumpShutOffHeadSP" },
+              { label: "Discharge Pressure (DP)", name: "pumpShutOffHeadDP" },
+              { label: "Total Pressure (TP)", name: "pumpShutOffHeadTP" },
+            ].map((field, index) => (
+              <Grid item xs={4} key={index}>
+                <TextField
+                  fullWidth
+                  label={field.label}
+                  name={field.name}
+                  value={formData[field.name]}
+                  onChange={handleChange1}
+                  variant="outlined"
+                />
+              </Grid>
+            ))}
+            {[
+              { label: "Pump Speed", name: "pumpSpeed" },
+              { label: "Motor Amps", name: "motorAmps" },
+              { label: "Specified Head (KPA)", name: "specifiedHead" },
+            ].map((field, index) => (
+              <Grid item xs={4} key={index}>
+                <TextField
+                  fullWidth
+                  label={field.label}
+                  name={field.name}
+                  value={formData[field.name]}
+                  onChange={handleChange1}
+                  variant="outlined"
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </form>
+      </Container>
     </Grid>
-  </form>
+
+    <Grid item xs={6}>
+      <Container>
+        <Typography
+          variant="h6"
+          gutterBottom
+          align="center"
+          style={{ fontWeight: "bold", marginBottom: "20px" }}
+        >
+          SINGLE OPERATION BALANCED FLOW
+        </Typography>
+        <form onSubmit={handleSubmit}>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Typography variant="subtitle1" style={{ fontWeight: 500, marginTop: "10px" }}>
+                PUMP OPERATING HEAD (KPA)
+              </Typography>
+            </Grid>
+            {[
+              { label: "Suction Pressure (SP)", name: "pumpOperatingHeadSP1" },
+              { label: "Discharge Pressure (DP)", name: "pumpOperatingHeadDP1" },
+              { label: "Total Pressure (TP)", name: "pumpOperatingHeadTP1" },
+            ].map((field, index) => (
+              <Grid item xs={4} key={index}>
+                <TextField
+                  fullWidth
+                  label={field.label}
+                  name={field.name}
+                  value={formData[field.name]}
+                  onChange={handleChange1}
+                  variant="outlined"
+                />
+              </Grid>
+            ))}
+            <Grid item xs={12}>
+              <Typography variant="subtitle1" style={{ fontWeight: 500, marginTop: "10px" }}>
+                PUMP SHUT OFF HEAD (KPA)
+              </Typography>
+            </Grid>
+            {[
+              { label: "Suction Pressure (SP)", name: "pumpShutOffHeadSP1" },
+              { label: "Discharge Pressure (DP)", name: "pumpShutOffHeadDP1" },
+              { label: "Total Pressure (TP)", name: "pumpShutOffHeadTP1" },
+            ].map((field, index) => (
+              <Grid item xs={4} key={index}>
+                <TextField
+                  fullWidth
+                  label={field.label}
+                  name={field.name}
+                  value={formData[field.name]}
+                  onChange={handleChange1}
+                  variant="outlined"
+                />
+              </Grid>
+            ))}
+            {[
+              { label: "Pump Speed", name: "pumpSpeed1" },
+              { label: "Motor Amps", name: "motorAmps1" },
+              { label: "Specified Head (KPA)", name: "specifiedHead1" },
+            ].map((field, index) => (
+              <Grid item xs={4} key={index}>
+                <TextField
+                  fullWidth
+                  label={field.label}
+                  name={field.name}
+                  value={formData[field.name]}
+                  onChange={handleChange1}
+                  variant="outlined"
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </form>
+      </Container>
+    </Grid>
+  </Grid>
 </Container>
 
-<Container maxWidth="md" style={{marginTop: "20px" }}>
-  <Typography variant="h6" gutterBottom align="center" style={{ fontWeight: "bold", marginBottom: "20px" }}>
-  SINGLE OPERATION BALANCED FLOW
-  </Typography>
-  <form onSubmit={handleSubmit}>
-    <Grid container spacing={2}>
-      <Grid item xs={12}>
-        <Typography variant="h7" style={{ fontWeight: 500, marginTop: "10px" }}>
-          PUMP OPERATING HEAD (PSI)
+<Container maxWidth="xl" sx={{ marginTop: "40px" }}>
+  <Grid container spacing={2}>
+    <Grid item xs={6}>
+      <Container>
+        <Typography
+          variant="h6"
+          gutterBottom
+          align="center"
+          style={{ fontWeight: "bold", marginBottom: "20px" }}
+        >
+         PARALLEL OPERATION FULL FLOW
         </Typography>
-      </Grid>
-      {[
-        { label: "Suction Pressure (SP)", name: "pumpOperatingHeadSP1" },
-        { label: "Discharge Pressure (DP)", name: "pumpOperatingHeadDP1" },
-        { label: "Total Pressure (TP)", name: "pumpOperatingHeadTP1" },
-      ].map((field, index) => (
-        <Grid item xs={4} key={index}>
-          <TextField
-            fullWidth
-            label={field.label}
-            name={field.name}
-            value={formData[field.name]}
-            onChange={handleChange1}
-            variant="outlined"
-          />
-        </Grid>
-      ))}
-      <Grid item xs={12}>
-        <Typography variant="h7" style={{ fontWeight: 500, marginTop: "10px" }}>
-          PUMP SHUT OFF HEAD (PSI)
-        </Typography>
-      </Grid>
-      {[
-        { label: "Suction Pressure (SP)", name: "pumpShutOffHeadSP" },
-        { label: "Discharge Pressure (DP)", name: "pumpShutOffHeadDP" },
-        { label: "Total Pressure (TP)", name: "pumpShutOffHeadTP" },
-      ].map((field, index) => ( 
-        <Grid item xs={4} key={index}>
-          <TextField
-            fullWidth
-            label={field.label}
-            name={field.name}
-            value={formData[field.name]}
-            onChange={handleChange1}
-            variant="outlined"
-          />
-        </Grid>
-      ))}
-      {[
-        { label: "Pump Speed", name: "pumpSpeed1" },
-        { label: "Motor Amps", name: "motorAmps1" },
-        { label: "Specified Head (PSI)", name: "specifiedHead1" },
-      ].map((field, index) => (
-        <Grid item xs={4} key={index}>
-          <TextField
-            fullWidth
-            label={field.label}
-            name={field.name}
-            value={formData[field.name]}
-            onChange={handleChange1}
-            variant="outlined"
-          />
-        </Grid>
-      ))}
+        <form onSubmit={handleSubmit}>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Typography variant="subtitle1" style={{ fontWeight: 500, marginTop: "10px" }}>
+                PUMP OPERATING HEAD (KPA)
+              </Typography>
+            </Grid>
+            {[
+              { label: "Suction Pressure (SP)", name: "pumpOperatingHeadSP2" },
+              { label: "Discharge Pressure (DP)", name: "pumpOperatingHeadDP2" },
+              { label: "Total Pressure (TP)", name: "pumpOperatingHeadTP2" },
+            ].map((field, index) => (
+              <Grid item xs={4} key={index}>
+                <TextField
+                  fullWidth
+                  label={field.label}
+                  name={field.name}
+                  value={formData[field.name]}
+                  onChange={handleChange1}
+                  variant="outlined"
+                />
+              </Grid>
+            ))}
+            <Grid item xs={12}>
+              <Typography variant="subtitle1" style={{ fontWeight: 500, marginTop: "10px" }}>
+                PUMP SHUT OFF HEAD (KPA)
+              </Typography>
+            </Grid>
+            {[
+              { label: "Suction Pressure (SP)", name: "pumpShutOffHeadSP2" },
+              { label: "Discharge Pressure (DP)", name: "pumpShutOffHeadDP2" },
+              { label: "Total Pressure (TP)", name: "pumpShutOffHeadTP2" },
+            ].map((field, index) => (
+              <Grid item xs={4} key={index}>
+                <TextField
+                  fullWidth
+                  label={field.label}
+                  name={field.name}
+                  value={formData[field.name]}
+                  onChange={handleChange1}
+                  variant="outlined"
+                />
+              </Grid>
+            ))}
+            {[
+              { label: "Pump Speed", name: "pumpSpeed2" },
+              { label: "Motor Amps", name: "motorAmps2" },
+              { label: "Specified Head (KPA)", name: "specifiedHead2" },
+            ].map((field, index) => (
+              <Grid item xs={4} key={index}>
+                <TextField
+                  fullWidth
+                  label={field.label}
+                  name={field.name}
+                  value={formData[field.name]}
+                  onChange={handleChange1}
+                  variant="outlined"
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </form>
+      </Container>
     </Grid>
-  </form>
+
+    <Grid item xs={6}>
+      <Container>
+        <Typography
+          variant="h6"
+          gutterBottom
+          align="center"
+          style={{ fontWeight: "bold", marginBottom: "20px" }}
+        >
+          PARALLEL OPERATION BALANCED FLOW
+        </Typography>
+        <form onSubmit={handleSubmit}>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Typography variant="subtitle1" style={{ fontWeight: 500, marginTop: "10px" }}>
+                PUMP OPERATING HEAD (KPA)
+              </Typography>
+            </Grid>
+            {[
+              { label: "Suction Pressure (SP)", name: "pumpOperatingHeadSP3" },
+              { label: "Discharge Pressure (DP)", name: "pumpOperatingHeadDP3" },
+              { label: "Total Pressure (TP)", name: "pumpOperatingHeadTP3" },
+            ].map((field, index) => (
+              <Grid item xs={4} key={index}>
+                <TextField
+                  fullWidth
+                  label={field.label}
+                  name={field.name}
+                  value={formData[field.name]}
+                  onChange={handleChange1}
+                  variant="outlined"
+                />
+              </Grid>
+            ))}
+            <Grid item xs={12}>
+              <Typography variant="subtitle1" style={{ fontWeight: 500, marginTop: "10px" }}>
+                PUMP SHUT OFF HEAD (KPA)
+              </Typography>
+            </Grid>
+            {[
+              { label: "Suction Pressure (SP)", name: "pumpShutOffHeadSP3" },
+              { label: "Discharge Pressure (DP)", name: "pumpShutOffHeadDP3" },
+              { label: "Total Pressure (TP)", name: "pumpShutOffHeadTP3" },
+            ].map((field, index) => (
+              <Grid item xs={4} key={index}>
+                <TextField
+                  fullWidth
+                  label={field.label}
+                  name={field.name}
+                  value={formData[field.name]}
+                  onChange={handleChange1}
+                  variant="outlined"
+                />
+              </Grid>
+            ))}
+            {[
+              { label: "Pump Speed", name: "pumpSpeed3" },
+              { label: "Motor Amps", name: "motorAmps3" },
+              { label: "Specified Head (KPA)", name: "specifiedHead3" },
+            ].map((field, index) => (
+              <Grid item xs={4} key={index}>
+                <TextField
+                  fullWidth
+                  label={field.label}
+                  name={field.name}
+                  value={formData[field.name]}
+                  onChange={handleChange1}
+                  variant="outlined"
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </form>
+      </Container>
+    </Grid>
+  </Grid>
 </Container>
+
 
 <Container maxWidth="md" style={{ marginTop: "20px" }}>
   <Grid container spacing={2}>
