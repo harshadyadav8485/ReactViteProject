@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Input, Button, Typography } from "@mui/material";
+import { Box, Input, Button, Typography, Select, MenuItem } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
@@ -7,8 +7,16 @@ import RemoveIcon from "@mui/icons-material/Remove";
 function PumpCreation() {
   const navigate = useNavigate();
   
-  // Initialize state with two default values
+  // State for pump running mates
   const [pumpRunningMates, setPumpRunningMates] = useState(["P-06-07B", "P-06-07C"]);
+  
+  // State for dropdown selection
+  const [pumpType, setPumpType] = useState("Parallel");
+
+  // Handle dropdown change
+  const handlePumpTypeChange = (event) => {
+    setPumpType(event.target.value);
+  };
 
   // Handle adding a new pump running mate field
   const handleAddPumpMate = () => {
@@ -34,6 +42,29 @@ function PumpCreation() {
       <Box sx={{ pl: 9, pr: 9, mt: 1 }}>
         <Box sx={{ mb: 1 }}>
           <h2>Pump Creation</h2>
+        </Box>
+
+        {/* Dropdown for Pump Type */}
+        <Box sx={{ mb: 2 }}>
+          <Typography sx={{ fontWeight: "bold" }}>Pump Type:</Typography>
+                <Select
+                    value={pumpType}
+                    onChange={handlePumpTypeChange}
+                    fullWidth
+                    sx={{
+                        border: "1px solid #ccc",
+                        padding: "2px", 
+                        borderRadius: "4px",
+                        mt: 1,
+                        height: "40px", 
+                        fontSize: "14px", 
+                    }}
+                    >
+                    <MenuItem value="Parallel">Parallel</MenuItem>
+                    <MenuItem value="Stand By">Stand By</MenuItem>
+                    <MenuItem value="Stand Alone">Stand Alone</MenuItem>
+                    </Select>
+
         </Box>
 
         <Box
@@ -152,6 +183,13 @@ function PumpCreation() {
         </Box>
 
         <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
+             <Button
+                          variant="outlined"
+                          onClick={() => navigate("/allPump")}
+                          sx={{ mr: 2 }}
+                        >
+                          Back
+                        </Button>
           <Button variant="contained" onClick={() => navigate("/pump")}>
             Submit
           </Button>
