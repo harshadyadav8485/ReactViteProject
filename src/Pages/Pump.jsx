@@ -23,11 +23,11 @@ const Pump = () => {
           {/* <Typography variant="h5" sx={{ fontWeight: "bold" }}>
             Pump
           </Typography> */}
-          <h2> Pump</h2>
-          <Typography variant="h6">Pump Name: Little Giant 0.5</Typography>
+          <h2> Pump Number : P-06-07A</h2>
+          {/* <Typography variant="h6">Pump Name: Little Giant 0.5</Typography> */}
         </Box>
 
-        <Box display="flex" justifyContent="space-between" sx={{ mb: 2 }}>
+        {/* <Box display="flex" justifyContent="space-between" sx={{ mb: 2 }}>
           <TextField
             variant="outlined"
             placeholder="Search Pump..."
@@ -39,7 +39,7 @@ const Pump = () => {
           <Button variant="contained" onClick={() => navigate("/createPump")}>
             Create New
           </Button>
-        </Box>
+        </Box> */}
 
         <Box
           component="form"
@@ -54,6 +54,7 @@ const Pump = () => {
             borderRadius: 2,
           }}
         >
+           <Typography variant="h6"sx={{ fontWeight: 600 }}>Pump</Typography>
           <Box
             sx={{
               display: "grid",
@@ -61,10 +62,11 @@ const Pump = () => {
               gap: 2,
             }}
           >
+           
             <Box display="flex" alignItems="center">
               <Typography sx={{ minWidth: "110px" }}>Make :</Typography>
               <Input
-                defaultValue="Little Giant"
+                defaultValue="BELL & GOSSETT"
                 fullWidth
                 name="make"
                 readOnly
@@ -79,7 +81,7 @@ const Pump = () => {
             <Box display="flex" alignItems="center">
               <Typography sx={{ minWidth: "110px" }}>Model :</Typography>
               <Input
-                defaultValue="VCMA-20 Series"
+                defaultValue="e-80SC 5x5x11"
                 fullWidth
                 name="model"
                 readOnly
@@ -96,7 +98,7 @@ const Pump = () => {
                 Impeller Size :
               </Typography>
               <Input
-                defaultValue="200 mm"
+                defaultValue=""
                 fullWidth
                 name="impellerSize"
                 readOnly
@@ -108,7 +110,7 @@ const Pump = () => {
               />
             </Box>
 
-            <Box display="flex" alignItems="center">
+            {/* <Box display="flex" alignItems="center">
               <Typography sx={{ minWidth: "110px" }}>
                 Pump Capacity :
               </Typography>
@@ -123,9 +125,9 @@ const Pump = () => {
                   borderRadius: "4px",
                 }}
               />
-            </Box>
+            </Box> */}
 
-            <Box display="flex" alignItems="center">
+            {/* <Box display="flex" alignItems="center">
               <Typography sx={{ minWidth: "110px" }}>
                 System Capacity :
               </Typography>
@@ -140,11 +142,11 @@ const Pump = () => {
                   borderRadius: "4px",
                 }}
               />
-            </Box>
+            </Box> */}
           </Box>
           <Divider />
 
-          <Typography variant="h6">Motor</Typography>
+          <Typography variant="h6" sx={{ fontWeight: 600 }}>Motor</Typography>
           <Box
             sx={{
               display: "grid",
@@ -152,10 +154,24 @@ const Pump = () => {
               gap: 2,
             }}
           >
+             <Box display="flex" alignItems="center">
+              <Typography sx={{ minWidth: "110px" }}>Manufacturer :</Typography>
+              <Input
+                defaultValue=""
+                fullWidth
+                name="size"
+                readOnly
+                sx={{
+                  border: "1px solid #ccc",
+                  padding: "5px",
+                  borderRadius: "4px",
+                }}
+              />
+            </Box>
             <Box display="flex" alignItems="center">
               <Typography sx={{ minWidth: "110px" }}>Size :</Typography>
               <Input
-                defaultValue="1 HP "
+                defaultValue="20 HP "
                 fullWidth
                 name="size"
                 readOnly
@@ -170,7 +186,7 @@ const Pump = () => {
             <Box display="flex" alignItems="center">
               <Typography sx={{ minWidth: "110px" }}>Volts/Phase :</Typography>
               <Input
-                defaultValue="230V"
+                defaultValue="575/3"
                 fullWidth
                 name="volts"
                 readOnly
@@ -185,7 +201,7 @@ const Pump = () => {
             <Box display="flex" alignItems="center">
               <Typography sx={{ minWidth: "110px" }}>Amperage :</Typography>
               <Input
-                defaultValue="7.5 Amps"
+                defaultValue="23.60"
                 fullWidth
                 name="amperage"
                 readOnly
@@ -200,7 +216,7 @@ const Pump = () => {
             <Box display="flex" alignItems="center">
               <Typography sx={{ minWidth: "110px" }}>R.P.M :</Typography>
               <Input
-                defaultValue="1725 RPM"
+                defaultValue=""
                 fullWidth
                 name="rpm"
                 readOnly
@@ -212,13 +228,20 @@ const Pump = () => {
               />
             </Box>
           </Box>
-          <Box display="flex" justifyContent="space-between">
-            <Button variant="outlined" startIcon={<AddIcon />}>
+        </Box>
+        <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
+            {/* <Button variant="outlined" startIcon={<AddIcon />}>
               Add Parameters
+            </Button> */}
+             <Button
+              variant="outlined"
+              onClick={() => navigate("/pumpCreation")}
+              sx={{ mr: 2 }}
+            >
+              Back
             </Button>
             <Button variant="contained" onClick={() => navigate("/actualPump")}>Submit</Button>
           </Box>
-        </Box>
       </Box>
     </>
   );
