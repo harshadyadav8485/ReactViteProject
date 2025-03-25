@@ -14,7 +14,12 @@ const AllPump = () => {
 
   // Handle edit (navigate to pumpCreation with project ID)
   const handleEdit = (id) => {
-    navigate(`/pumpCreation?id=${id}`); // Navigate with query parameter
+    navigate(`/pumpCreation?id=${id}`);
+  };
+
+  // Handle inspect (navigate to ActualPump with project ID)
+  const handleInspect = (id) => {
+    navigate(`/actualPump?id=${id}`);
   };
 
   // Handle delete
@@ -35,7 +40,7 @@ const AllPump = () => {
             sx: { height: "40px" },
           }}
         />
-        <Button variant="contained" onClick={() => navigate("/pumpCreation")}>
+        <Button variant="contained" onClick={() => navigate("/createPump")}>
           Create New
         </Button>
       </Box>
@@ -66,6 +71,15 @@ const AllPump = () => {
                     onClick={() => handleEdit(project.id)}
                   >
                     Edit
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="success"
+                    size="small"
+                    sx={{ mr: 1 }}
+                    onClick={() => handleInspect(project.id)}
+                  >
+                    Inspect
                   </Button>
                   <Button
                     variant="contained"
