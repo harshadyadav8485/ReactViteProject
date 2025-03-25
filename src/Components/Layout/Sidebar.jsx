@@ -9,7 +9,7 @@ import PublicIcon from "@mui/icons-material/Public";
 import WorkIcon from "@mui/icons-material/Work";
 import GridViewIcon from "@mui/icons-material/GridView";
 const menuItems = [
-  { name: "Pump", path: "/pump", icon: <GridViewIcon /> },
+  { name: "Pump", path: "/pumpCreation", icon: <GridViewIcon /> },
   { name: "Fan", path: "/fan", icon: <GridViewIcon /> },
   { name: "Chiller", path: "/chiller", icon: <GridViewIcon /> },
   // { name: "Villages", path: "/villages", icon: <PublicIcon /> },
