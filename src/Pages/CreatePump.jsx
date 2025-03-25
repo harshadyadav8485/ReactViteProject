@@ -38,6 +38,7 @@ const CreatePump = () => {
             borderRadius: 2,
           }}
         >
+           <Typography variant="h6"sx={{ fontWeight: 600 }}>Pump</Typography>
           <Box
             sx={{
               display: "grid",
@@ -86,7 +87,7 @@ const CreatePump = () => {
               />
             </Box>
 
-            <Box display="flex" alignItems="center">
+            {/* <Box display="flex" alignItems="center">
               <Typography sx={{ minWidth: "110px" }}>
                 Pump Capacity :
               </Typography>
@@ -99,9 +100,9 @@ const CreatePump = () => {
                   borderRadius: "4px",
                 }}
               />
-            </Box>
+            </Box> */}
 
-            <Box display="flex" alignItems="center">
+            {/* <Box display="flex" alignItems="center">
               <Typography sx={{ minWidth: "110px" }}>
                 System Capacity :
               </Typography>
@@ -114,11 +115,11 @@ const CreatePump = () => {
                   borderRadius: "4px",
                 }}
               />
-            </Box>
+            </Box> */}
           </Box>
           <Divider />
 
-          <Typography variant="h6">Motor:</Typography>
+          <Typography variant="h6" sx={{ fontWeight: 600 }}>Motor</Typography>
           <Box
             sx={{
               display: "grid",
@@ -182,18 +183,20 @@ const CreatePump = () => {
             <Button variant="outlined" startIcon={<AddIcon />}>
               Add Parameters
             </Button>
-            <Box>
+           
+          </Box>
+          
+        </Box>
+        <Box display="flex" justifyContent="flex-end" sx={{mt:2}}>
               <Button
                 variant="outlined"
-                onClick={() => navigate("/pump")}
+                onClick={() => navigate("/allPump")}
                 sx={{ mr: 2 }}
               >
                 Back
               </Button>
-              <Button variant="contained">Save</Button>
+              <Button variant="contained"  onClick={() => navigate("/allPump")}>Submit</Button>
             </Box>
-          </Box>
-        </Box>
       </Box>
     </>
   );
