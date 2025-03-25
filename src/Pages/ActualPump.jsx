@@ -183,9 +183,9 @@ const ActualPump = () => {
         </Typography>
       </Grid>
       {[
-        { label: "Pump Operating Head (SP)", name: "pumpOperatingHeadSP" },
-        { label: "Pump Operating Head (DP)", name: "pumpOperatingHeadDP" },
-        { label: "Pump Operating Head (TP)", name: "pumpOperatingHeadTP" },
+        { label: "Suction Pressure (SP)", name: "pumpOperatingHeadSP" },
+        { label: "Discharge Pressure (DP)", name: "pumpOperatingHeadDP" },
+        { label: "Total Pressure (TP)", name: "pumpOperatingHeadTP" },
       ].map((field, index) => (
         <Grid item xs={4} key={index}>
           <TextField
@@ -272,10 +272,10 @@ const ActualPump = () => {
         </Typography>
       </Grid>
       {[
-        { label: "Pump Shut Off Head (SP)", name: "pumpShutOffHeadSP" },
-        { label: "Pump Shut Off Head (DP)", name: "pumpShutOffHeadDP" },
-        { label: "Pump Shut Off Head (TP)", name: "pumpShutOffHeadTP" },
-      ].map((field, index) => (
+        { label: "Suction Pressure (SP)", name: "pumpShutOffHeadSP" },
+        { label: "Discharge Pressure (DP)", name: "pumpShutOffHeadDP" },
+        { label: "Total Pressure (TP)", name: "pumpShutOffHeadTP" },
+      ].map((field, index) => ( 
         <Grid item xs={4} key={index}>
           <TextField
             fullWidth
