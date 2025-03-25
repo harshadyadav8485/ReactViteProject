@@ -28,15 +28,43 @@ const ActualPump = () => {
     specifiedHead1: "",
   });
   
- 
+  const [comments, setComments] = useState("");
+
+  const handleConvert = (fieldKey) => {
+    setActualValues((prev) => {
+      const value = parseFloat(prev[fieldKey]); // Get actual value input
+      if (isNaN(value)) {
+        alert("Please enter a valid number for conversion.");
+        return prev;
+      }
+  
+      let convertedValue;
+      switch (fieldKey) {
+        case "pumpCapacity":
+        case "systemCapacity":
+          // Check the format and convert accordingly
+          if (prev[fieldKey].includes("L/s")) {
+            convertedValue = (value * 15.85).toFixed(2) + " GPM"; // Convert L/s to GPM
+          } else {
+            convertedValue = (value * 0.0631).toFixed(2) + " L/s"; // Convert GPM to L/s
+          }
+          break;
+        default:
+          convertedValue = value; // If no conversion is needed
+      }
+  
+      return { ...prev, [fieldKey]: convertedValue };
+    });
+  };
+  
   const handleChange1 = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
  
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form Data Submitted:", formData);
-  };
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     console.log("Form Data Submitted:", formData);
+//   };
 
 
   const [actualValues, setActualValues] = useState({
@@ -55,9 +83,9 @@ const ActualPump = () => {
     setActualValues((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleConvert = (field) => {
-    console.log(`Convert ${field} unit`);
-  };
+//   const handleConvert = (field) => {
+//     console.log(`Convert ${field} unit`);
+//   };
 
   const pumpData = [
     { field: "Make", specified: "Little Giant", key: "make", showConverter: false },
@@ -83,10 +111,20 @@ const ActualPump = () => {
     { field: "R.P.M", specified: "1725 RPM", key: "rpm", showConverter: true }
   ];
 
+  const handleCommentChange = (e) => {
+    setComments(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form Data Submitted:", formData);
+    console.log("Comments:", comments);
+  };
+
   return (
     <Box sx={{ pl: 9, pr: 9, mt: 2 }}>
      <h2>Pump Name: Little Giant 0.5</h2>
-      <Tabs value={tabIndex} onChange={(e, newIndex) => setTabIndex(newIndex)}>
+      <Tabs value={tabIndex} onChange={(e, newIndex) => setTabIndex(newIndex)} sx={{mb:1}}>
         <Tab label="Actual Pump Data" />
         <Tab label="Test Data" />
       </Tabs>
@@ -99,7 +137,7 @@ const ActualPump = () => {
                   <TableCell sx={{ color: "white", fontWeight: "bold" }}>Field</TableCell>
                   <TableCell sx={{ color: "white", fontWeight: "bold" }}>Specified Value</TableCell>
                   <TableCell sx={{ color: "white", fontWeight: "bold" }}>Actual Value</TableCell>
-                  <TableCell sx={{ color: "white", fontWeight: "bold" }}>Convert</TableCell>
+                  <TableCell sx={{ color: "white", fontWeight: "bold" }}>Action</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -116,11 +154,15 @@ const ActualPump = () => {
                       />
                     </TableCell>
                     <TableCell>
-                      {row.showConverter && (
-                        <Button variant="contained" size="small" onClick={() => handleConvert(row.field)}>
-                          Convert
+                    {row.showConverter && (
+                        <Button
+                        variant="contained"
+                        size="small"
+                        onClick={() => handleConvert(row.key)}
+                        >
+                        Convert
                         </Button>
-                      )}
+                    )}
                     </TableCell>
                   </TableRow>
                 ))}
@@ -326,11 +368,33 @@ const ActualPump = () => {
   </Grid>
 </Container>
 
+<Container maxWidth="md" style={{ marginTop: "20px" }}>
+  {/* <Typography variant="h6" gutterBottom style={{ fontWeight: "bold" }}>
+    Comments Section
+  </Typography> */}
+  <h3>Comments Section</h3>
+  <TextField
+    fullWidth
+    label="Enter your comments"
+    multiline
+    rows={4}
+    variant="outlined"
+    value={comments}
+    onChange={handleCommentChange}
+    placeholder="Use '*' for some meaning and '**' for another meaning..."
+  />
+  <Typography variant="body2" color="textSecondary" style={{ marginTop: "10px" }}>
+    * Represents [Your Meaning 1] <br />
+    ** Represents [Your Meaning 2]
+  </Typography>
+</Container>
+
+
 
         </>
       )}
-      <Box display="flex" justifyContent="space-between" sx={{ mt: 2 }}>
-        <Button variant="outlined" onClick={() => navigate(-1)}>
+      <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
+        <Button variant="outlined"sx={{ mr: 2 }} onClick={() => navigate(-1)}>
           Back
         </Button>
         <Button variant="contained" onClick={() => navigate("/home")}>
