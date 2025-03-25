@@ -13,6 +13,7 @@ import EditFan from "./Pages/EditFan";
 import ActualFan from "./Pages/ActualFan";
 import ActualPump from "./Pages/ActualPump";
 import { Home } from "./Pages/Home";
+import PumpCreation from "./Pages/PumpCreation";
 
 function App() {
   const router = createBrowserRouter([
@@ -55,6 +56,10 @@ function App() {
         {
           path: "home",
           element: <Home/>,
+        },
+        {
+          path: "pumpCreation",
+          element: <PumpCreation/>,
         }
       ],
     },
