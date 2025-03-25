@@ -591,7 +591,7 @@ const ActualPump = () => {
         <Button variant="outlined"sx={{ mr: 2 }} onClick={() => navigate(-1)}>
           Back
         </Button>
-        <Button variant="contained" onClick={() => navigate("/home")}>
+        <Button variant="contained" onClick={() => navigate("/appPump")}>
           Submit
         </Button>
       </Box>
