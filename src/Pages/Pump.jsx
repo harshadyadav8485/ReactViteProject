@@ -10,11 +10,14 @@ import {
   Typography,
   Tabs,
   Tab,
-  Input,
+  Input,Select,MenuItem,
 } from "@mui/material";
 
 const Pump = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
+  const [impellerSizeOption, setImpellerSizeOption] = useState("Not Applicable");
+  const [impellerSizeInput, setImpellerSizeInput] = useState("");
+
 
   return (
     <>
@@ -93,7 +96,7 @@ const Pump = () => {
               />
             </Box>
 
-            <Box display="flex" alignItems="center">
+            {/* <Box display="flex" alignItems="center">
               <Typography sx={{ minWidth: "110px" }}>
                 Impeller Size :
               </Typography>
@@ -108,8 +111,28 @@ const Pump = () => {
                   borderRadius: "4px",
                 }}
               />
-            </Box>
+            </Box> */}
 
+<Box display="flex" alignItems="center">
+            <Typography sx={{ minWidth: "110px" }}>Impeller Size :</Typography>
+            <Select
+              value={impellerSizeOption}
+              onChange={(e) => setImpellerSizeOption(e.target.value)}
+              sx={{ width: "50%" }}
+            >
+              <MenuItem value="Existing">Existing</MenuItem>
+              <MenuItem value="Not Listed">Not Listed</MenuItem>
+              <MenuItem value="Not Applicable">Not Applicable</MenuItem>
+            </Select>
+            {impellerSizeOption === "Not Listed" && (
+              <Input
+                value={impellerSizeInput}
+                onChange={(e) => setImpellerSizeInput(e.target.value)}
+                placeholder="Enter Impeller Size"
+                sx={{ ml: 2, border: "1px solid #ccc", padding: "5px", borderRadius: "4px" }}
+              />
+            )}
+          </Box>
             {/* <Box display="flex" alignItems="center">
               <Typography sx={{ minWidth: "110px" }}>
                 Pump Capacity :
@@ -240,7 +263,7 @@ const Pump = () => {
             >
               Back
             </Button>
-            <Button variant="contained" onClick={() => navigate("/actualPump")}>Submit</Button>
+            <Button variant="contained" onClick={() => navigate("/allPump")}>Submit</Button>
           </Box>
       </Box>
     </>
