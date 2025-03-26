@@ -195,7 +195,7 @@ const CreatePump = () => {
               >
                 Back
               </Button>
-              <Button variant="contained"  onClick={() => navigate("/allPump")}>Submit</Button>
+              <Button variant="contained"  onClick={() => navigate("/sampleTestData")}>Submit</Button>
             </Box>
       </Box>
     </>

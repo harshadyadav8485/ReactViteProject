@@ -63,6 +63,7 @@ function PumpCreation() {
                     <MenuItem value="Parallel">Parallel</MenuItem>
                     <MenuItem value="Stand By">Stand By</MenuItem>
                     <MenuItem value="Stand Alone">Stand Alone</MenuItem>
+                    <MenuItem value="Stand Alone">Lead/Lag</MenuItem>
                     </Select>
 
         </Box>
