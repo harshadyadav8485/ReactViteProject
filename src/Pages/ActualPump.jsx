@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box,Container,Grid, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TextField, Button, Tabs, Tab, Divider } from "@mui/material";
+import { Box,Container,Grid, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TextField, Button, Tabs, Tab, Divider,Select,MenuItem  } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const ActualPump = () => {
@@ -80,13 +80,6 @@ const ActualPump = () => {
   const handleChange1 = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
- 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     console.log("Form Data Submitted:", formData);
-//   };
-
-
   const [actualValues, setActualValues] = useState({
     make: "",
     model: "",
@@ -102,11 +95,6 @@ const ActualPump = () => {
   const handleChange = (field, value) => {
     setActualValues((prev) => ({ ...prev, [field]: value }));
   };
-
-//   const handleConvert = (field) => {
-//     console.log(`Convert ${field} unit`);
-//   };
-
   const pumpData = [
     { field: "Make", specified: "BELL & GOSSETT", key: "make", showConverter: false },
     { field: "Model", specified: "e-80SC 5x5x11", key: "model", showConverter: false },
@@ -142,9 +130,36 @@ const ActualPump = () => {
     console.log("Comments:", comments);
   };
 
+  
+    const [pump, setPump] = useState("P-06-07A");
+  
+    // const handleChange = (event) => {
+    //   setPump(event.target.value);
+    
   return (
     <Box sx={{ pl: 9, pr: 9, mt: 2 }}>
-     <h2>Pump Number : P-06-07A</h2>
+       <Typography variant="h5" style={{ fontWeight: "bold", marginBottom: "10px" }}>
+    Project Name:UBC School of Biomedical Engineering 
+  </Typography>
+        <Box display="flex" alignItems="center">
+    <Typography variant="h6" style={{ fontWeight: "bold", marginRight: "10px" }}>
+      Pump Number:
+    </Typography>
+    <Select
+      value={pump}
+      onChange={handleChange}
+      variant="standard"
+      style={{
+        fontSize: "1.2rem", // Smaller font size
+        fontWeight: "bold",
+        borderBottom: "none",
+      }}
+    >
+      <MenuItem value="P-06-07A">P-06-07A</MenuItem>
+      <MenuItem value="P-06-07B">P-06-07B</MenuItem>
+      <MenuItem value="P-06-07C">P-06-07C</MenuItem>
+    </Select>
+  </Box>
       <Tabs value={tabIndex} onChange={(e, newIndex) => setTabIndex(newIndex)} sx={{mb:1}}>
         <Tab label="Actual Pump Data" />
         <Tab label="Test Data" />

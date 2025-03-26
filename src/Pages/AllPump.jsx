@@ -7,7 +7,7 @@ const AllPump = () => {
 
   // Sample data for projects
   const [projects, setProjects] = useState([
-    { id: "P001", name: "Cooling Tower System", pumpNumber: "P-06-07A" },
+    { id: "P001", name: "UBC School of Biomedical Engineering", pumpNumber: "P-06-07A" },
     { id: "P002", name: "Boiler Feed Pump", pumpNumber: "P-08-09B" },
     { id: "P003", name: "Chilled Water System", pumpNumber: "P-10-11C" },
   ]);
