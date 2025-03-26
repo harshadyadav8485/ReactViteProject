@@ -579,67 +579,83 @@ const ActualPump = () => {
 <br></br><hr></hr>
 
 <Container maxWidth="xl" sx={{ marginTop: "25px" }}>
+  <Grid container >
     <Grid item xs={6}>
       <Container>
-        <Typography variant="h6" gutterBottom align="center" style={{ fontWeight: "bold", marginBottom: "20px" }}>
-        ****
+        <Typography variant="h6" gutterBottom align="center" sx={{ fontWeight: "bold", mb: 2 }}>
+          ****
         </Typography>
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2}>
+            {/* PUMP Section */}
             <Grid item xs={12}>
-              <Typography variant="subtitle1" style={{ fontWeight: 500, marginTop: "10px" }}>
-                PUMP
-              </Typography>
-            </Grid>
+          <Typography variant="subtitle1" sx={{ fontWeight: 600, mt: 1 }}>
+            PUMP
+          </Typography>
+          </Grid >
             {[
               { label: "Pump Capacity", name: "pumpOperatingHeadSP2" },
               { label: "System Capacity", name: "pumpOperatingHeadDP2" },
             ].map((field, index) => (
-              <Grid item xs={4} key={index}>
-                <label >{field.label}    :   </label>
+              <Grid item xs={6} key={index}>
+                <label>{field.label} :</label>
                 <input
                   type="text"
                   name={field.name}
                   value={formData[field.name]}
                   onChange={handleChange1}
-                  style={{ width: "80%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
+                  style={{width: "80%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc",}}
                 />
               </Grid>
             ))}
+
+            {/* MOTOR Section */}
             <Grid item xs={12}>
-              <Typography variant="subtitle1" style={{ fontWeight: 500, marginTop: "10px" }}>
+              <Typography variant="subtitle1" sx={{ fontWeight: 600, mt: 1 }}>
                 MOTOR
               </Typography>
             </Grid>
+
+            {/* BHP SINGLE OPERATION */}
+            <Grid item xs={12}>
+              <Typography variant="subtitle2" sx={{ fontWeight: 500, mt: 1 }}>
+                BHP SINGLE OPERATION
+              </Typography>
+            </Grid>
             {[
-              { label: "Full Flow", name: "pumpShutOffHeadSP2" },
               { label: "Full Flow", name: "pumpShutOffHeadDP2" },
               { label: "Balanced Position", name: "pumpShutOffHeadTP2" },
             ].map((field, index) => (
-              <Grid item xs={4} key={index}>
-                <label>{field.label}    :   </label>
+              <Grid item xs={6} key={index}>
+                <label>{field.label} :</label>
                 <input
                   type="text"
                   name={field.name}
                   value={formData[field.name]}
                   onChange={handleChange1}
-                  style={{ width: "80%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
+                  style={{width: "80%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc",}}
                 />
               </Grid>
             ))}
+
+            {/* BHP PARALLEL OPERATION */}
+            <Grid item xs={12}>
+              <Typography variant="subtitle2" sx={{ fontWeight: 500, mt: 1 }}>
+                BHP PARALLEL OPERATION
+              </Typography>
+            </Grid>
             {[
-              { label: "Pump Speed", name: "pumpSpeed2" },
-              { label: "Motor Amps", name: "motorAmps2" },
-              { label: "Specified Head (KPA)", name: "specifiedHead2" },
+              { label: "Full Flow", name: "pumpShutOffHeadDP2" },
+              { label: "Balanced Position", name: "pumpShutOffHeadTP2" },
             ].map((field, index) => (
-              <Grid item xs={4} key={index}>
-                <label>{field.label}    :   </label>
+              <Grid item xs={6} key={index}>
+                <label>{field.label} :</label>
                 <input
                   type="text"
                   name={field.name}
                   value={formData[field.name]}
                   onChange={handleChange1}
-                  style={{ width: "80%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
+                  style={{width: "80%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc",}}
                 />
               </Grid>
             ))}
@@ -647,7 +663,9 @@ const ActualPump = () => {
         </form>
       </Container>
     </Grid>
+  </Grid>
 </Container>
+
 
 <br></br><hr></hr>
 
