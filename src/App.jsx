@@ -15,6 +15,7 @@ import ActualPump from "./Pages/ActualPump";
 import { Home } from "./Pages/Home";
 import PumpCreation from "./Pages/PumpCreation";
 import AllPump from "./Pages/AllPump";
+import SampleTestData from "./Pages/SampleTestData";
 
 function App() {
   const router = createBrowserRouter([
@@ -65,6 +66,10 @@ function App() {
         {
           path: "allPump",
           element: <AllPump/>,
+        },
+        {
+          path: "sampleTestData",
+          element: <SampleTestData/>,
         }
       ],
     },
