@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box,Container,Grid, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TextField, Button, Tabs, Tab } from "@mui/material";
+import { Box,Container,Grid, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TextField, Button, Tabs, Tab, Divider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const ActualPump = () => {
@@ -234,16 +234,20 @@ const ActualPump = () => {
             </Table>
           </TableContainer> */}
 
-<Container maxWidth="xl">
+
+
+
+
+        </>
+
+        
+      )}
+
+<Container maxWidth="xl" sx={{ marginTop: "40px" }}>
   <Grid container spacing={2}>
     <Grid item xs={6}>
       <Container>
-        <Typography
-          variant="h6"
-          gutterBottom
-          align="center"
-          style={{ fontWeight: "bold", marginBottom: "20px" }}
-        >
+        <Typography variant="h6" gutterBottom align="center" style={{ fontWeight: "bold", marginBottom: "20px" }}>
           SINGLE OPERATION FULL FLOW
         </Typography>
         <form onSubmit={handleSubmit}>
@@ -254,18 +258,18 @@ const ActualPump = () => {
               </Typography>
             </Grid>
             {[
-              { label: "Suction Pressure (SP)", name: "pumpOperatingHeadSP" },
-              { label: "Discharge Pressure (DP)", name: "pumpOperatingHeadDP" },
-              { label: "Total Pressure (TP)", name: "pumpOperatingHeadTP" },
+              { label: "SP", name: "pumpOperatingHeadSP" },
+              { label: "DP", name: "pumpOperatingHeadDP" },
+              { label: "TP", name: "pumpOperatingHeadTP" },
             ].map((field, index) => (
               <Grid item xs={4} key={index}>
-                <TextField
-                  fullWidth
-                  label={field.label}
+                <label >{field.label}    :   </label>
+                <input
+                  type="text"
                   name={field.name}
                   value={formData[field.name]}
                   onChange={handleChange1}
-                  variant="outlined"
+                  style={{ width: "80%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
                 />
               </Grid>
             ))}
@@ -275,18 +279,18 @@ const ActualPump = () => {
               </Typography>
             </Grid>
             {[
-              { label: "Suction Pressure (SP)", name: "pumpShutOffHeadSP" },
-              { label: "Discharge Pressure (DP)", name: "pumpShutOffHeadDP" },
-              { label: "Total Pressure (TP)", name: "pumpShutOffHeadTP" },
+              { label: "SP", name: "pumpShutOffHeadSP" },
+              { label: "DP", name: "pumpShutOffHeadDP" },
+              { label: "TP", name: "pumpShutOffHeadTP" },
             ].map((field, index) => (
               <Grid item xs={4} key={index}>
-                <TextField
-                  fullWidth
-                  label={field.label}
+                <label>{field.label}    :   </label>
+                <input
+                  type="text"
                   name={field.name}
                   value={formData[field.name]}
                   onChange={handleChange1}
-                  variant="outlined"
+                  style={{ width: "80%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
                 />
               </Grid>
             ))}
@@ -296,13 +300,13 @@ const ActualPump = () => {
               { label: "Specified Head (KPA)", name: "specifiedHead" },
             ].map((field, index) => (
               <Grid item xs={4} key={index}>
-                <TextField
-                  fullWidth
-                  label={field.label}
+                <label>{field.label}    :   </label>
+                <input
+                  type="text"
                   name={field.name}
                   value={formData[field.name]}
                   onChange={handleChange1}
-                  variant="outlined"
+                  style={{ width: "80%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
                 />
               </Grid>
             ))}
@@ -313,12 +317,7 @@ const ActualPump = () => {
 
     <Grid item xs={6}>
       <Container>
-        <Typography
-          variant="h6"
-          gutterBottom
-          align="center"
-          style={{ fontWeight: "bold", marginBottom: "20px" }}
-        >
+        <Typography variant="h6" gutterBottom align="center" style={{ fontWeight: "bold", marginBottom: "20px" }}>
           SINGLE OPERATION BALANCED FLOW
         </Typography>
         <form onSubmit={handleSubmit}>
@@ -329,18 +328,18 @@ const ActualPump = () => {
               </Typography>
             </Grid>
             {[
-              { label: "Suction Pressure (SP)", name: "pumpOperatingHeadSP1" },
-              { label: "Discharge Pressure (DP)", name: "pumpOperatingHeadDP1" },
-              { label: "Total Pressure (TP)", name: "pumpOperatingHeadTP1" },
+              { label: "SP", name: "pumpOperatingHeadSP1" },
+              { label: "DP", name: "pumpOperatingHeadDP1" },
+              { label: "TP", name: "pumpOperatingHeadTP1" },
             ].map((field, index) => (
               <Grid item xs={4} key={index}>
-                <TextField
-                  fullWidth
-                  label={field.label}
+                <label>{field.label}    :   </label>
+                <input
+                  type="text"
                   name={field.name}
                   value={formData[field.name]}
                   onChange={handleChange1}
-                  variant="outlined"
+                  style={{ width: "80%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
                 />
               </Grid>
             ))}
@@ -350,18 +349,18 @@ const ActualPump = () => {
               </Typography>
             </Grid>
             {[
-              { label: "Suction Pressure (SP)", name: "pumpShutOffHeadSP1" },
-              { label: "Discharge Pressure (DP)", name: "pumpShutOffHeadDP1" },
-              { label: "Total Pressure (TP)", name: "pumpShutOffHeadTP1" },
+              { label: "SP", name: "pumpShutOffHeadSP1" },
+              { label: "DP", name: "pumpShutOffHeadDP1" },
+              { label: "TP", name: "pumpShutOffHeadTP1" },
             ].map((field, index) => (
               <Grid item xs={4} key={index}>
-                <TextField
-                  fullWidth
-                  label={field.label}
+                <label>{field.label}    :   </label>
+                <input
+                  type="text"
                   name={field.name}
                   value={formData[field.name]}
                   onChange={handleChange1}
-                  variant="outlined"
+                  style={{ width: "80%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
                 />
               </Grid>
             ))}
@@ -371,13 +370,13 @@ const ActualPump = () => {
               { label: "Specified Head (KPA)", name: "specifiedHead1" },
             ].map((field, index) => (
               <Grid item xs={4} key={index}>
-                <TextField
-                  fullWidth
-                  label={field.label}
+                <label>{field.label}    :   </label>
+                <input
+                  type="text"
                   name={field.name}
                   value={formData[field.name]}
                   onChange={handleChange1}
-                  variant="outlined"
+                  style={{ width: "80%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
                 />
               </Grid>
             ))}
@@ -388,17 +387,14 @@ const ActualPump = () => {
   </Grid>
 </Container>
 
-<Container maxWidth="xl" sx={{ marginTop: "40px" }}>
+<br></br><hr></hr>
+
+<Container maxWidth="xl" sx={{ marginTop: "25px" }}>
   <Grid container spacing={2}>
     <Grid item xs={6}>
       <Container>
-        <Typography
-          variant="h6"
-          gutterBottom
-          align="center"
-          style={{ fontWeight: "bold", marginBottom: "20px" }}
-        >
-         PARALLEL OPERATION FULL FLOW
+        <Typography variant="h6" gutterBottom align="center" style={{ fontWeight: "bold", marginBottom: "20px" }}>
+        PARALLEL OPERATION FULL FLOW
         </Typography>
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2}>
@@ -408,18 +404,18 @@ const ActualPump = () => {
               </Typography>
             </Grid>
             {[
-              { label: "Suction Pressure (SP)", name: "pumpOperatingHeadSP2" },
-              { label: "Discharge Pressure (DP)", name: "pumpOperatingHeadDP2" },
-              { label: "Total Pressure (TP)", name: "pumpOperatingHeadTP2" },
+              { label: "SP", name: "pumpOperatingHeadSP2" },
+              { label: "DP", name: "pumpOperatingHeadDP2" },
+              { label: "TP", name: "pumpOperatingHeadTP2" },
             ].map((field, index) => (
               <Grid item xs={4} key={index}>
-                <TextField
-                  fullWidth
-                  label={field.label}
+                <label >{field.label}    :   </label>
+                <input
+                  type="text"
                   name={field.name}
                   value={formData[field.name]}
                   onChange={handleChange1}
-                  variant="outlined"
+                  style={{ width: "80%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
                 />
               </Grid>
             ))}
@@ -429,18 +425,18 @@ const ActualPump = () => {
               </Typography>
             </Grid>
             {[
-              { label: "Suction Pressure (SP)", name: "pumpShutOffHeadSP2" },
-              { label: "Discharge Pressure (DP)", name: "pumpShutOffHeadDP2" },
-              { label: "Total Pressure (TP)", name: "pumpShutOffHeadTP2" },
+              { label: "SP", name: "pumpShutOffHeadSP2" },
+              { label: "DP", name: "pumpShutOffHeadDP2" },
+              { label: "TP", name: "pumpShutOffHeadTP2" },
             ].map((field, index) => (
               <Grid item xs={4} key={index}>
-                <TextField
-                  fullWidth
-                  label={field.label}
+                <label>{field.label}    :   </label>
+                <input
+                  type="text"
                   name={field.name}
                   value={formData[field.name]}
                   onChange={handleChange1}
-                  variant="outlined"
+                  style={{ width: "80%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
                 />
               </Grid>
             ))}
@@ -450,13 +446,13 @@ const ActualPump = () => {
               { label: "Specified Head (KPA)", name: "specifiedHead2" },
             ].map((field, index) => (
               <Grid item xs={4} key={index}>
-                <TextField
-                  fullWidth
-                  label={field.label}
+                <label>{field.label}    :   </label>
+                <input
+                  type="text"
                   name={field.name}
                   value={formData[field.name]}
                   onChange={handleChange1}
-                  variant="outlined"
+                  style={{ width: "80%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
                 />
               </Grid>
             ))}
@@ -467,13 +463,8 @@ const ActualPump = () => {
 
     <Grid item xs={6}>
       <Container>
-        <Typography
-          variant="h6"
-          gutterBottom
-          align="center"
-          style={{ fontWeight: "bold", marginBottom: "20px" }}
-        >
-          PARALLEL OPERATION BALANCED FLOW
+        <Typography variant="h6" gutterBottom align="center" style={{ fontWeight: "bold", marginBottom: "20px" }}>
+        PARALLEL OPERATION BALANCED FLOW
         </Typography>
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2}>
@@ -483,18 +474,18 @@ const ActualPump = () => {
               </Typography>
             </Grid>
             {[
-              { label: "Suction Pressure (SP)", name: "pumpOperatingHeadSP3" },
-              { label: "Discharge Pressure (DP)", name: "pumpOperatingHeadDP3" },
-              { label: "Total Pressure (TP)", name: "pumpOperatingHeadTP3" },
+              { label: "SP", name: "pumpOperatingHeadSP3" },
+              { label: "DP", name: "pumpOperatingHeadDP3" },
+              { label: "TP", name: "pumpOperatingHeadTP3" },
             ].map((field, index) => (
               <Grid item xs={4} key={index}>
-                <TextField
-                  fullWidth
-                  label={field.label}
+                <label>{field.label}    :   </label>
+                <input
+                  type="text"
                   name={field.name}
                   value={formData[field.name]}
                   onChange={handleChange1}
-                  variant="outlined"
+                  style={{ width: "80%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
                 />
               </Grid>
             ))}
@@ -504,18 +495,18 @@ const ActualPump = () => {
               </Typography>
             </Grid>
             {[
-              { label: "Suction Pressure (SP)", name: "pumpShutOffHeadSP3" },
-              { label: "Discharge Pressure (DP)", name: "pumpShutOffHeadDP3" },
-              { label: "Total Pressure (TP)", name: "pumpShutOffHeadTP3" },
+              { label: "SP", name: "pumpShutOffHeadSP3" },
+              { label: "DP", name: "pumpShutOffHeadDP3" },
+              { label: "TP", name: "pumpShutOffHeadTP3" },
             ].map((field, index) => (
               <Grid item xs={4} key={index}>
-                <TextField
-                  fullWidth
-                  label={field.label}
+                <label>{field.label}    :   </label>
+                <input
+                  type="text"
                   name={field.name}
                   value={formData[field.name]}
                   onChange={handleChange1}
-                  variant="outlined"
+                  style={{ width: "80%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
                 />
               </Grid>
             ))}
@@ -525,13 +516,13 @@ const ActualPump = () => {
               { label: "Specified Head (KPA)", name: "specifiedHead3" },
             ].map((field, index) => (
               <Grid item xs={4} key={index}>
-                <TextField
-                  fullWidth
-                  label={field.label}
+                <label>{field.label}    :   </label>
+                <input
+                  type="text"
                   name={field.name}
                   value={formData[field.name]}
                   onChange={handleChange1}
-                  variant="outlined"
+                  style={{ width: "80%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
                 />
               </Grid>
             ))}
@@ -542,27 +533,110 @@ const ActualPump = () => {
   </Grid>
 </Container>
 
-
 <Container maxWidth="md" style={{ marginTop: "20px" }}>
   <Grid container spacing={2}>
     <Grid item xs={6}>
-      <TextField
-        fullWidth
-        label="Pump Balancing Valve Position"
-        variant="outlined"
-      />
+      
+        <label>Pump Balancing Valve Position    :   </label>
+        <input
+            type="text"
+            name="Pump Balancing Valve Position"
+            value=""
+            onChange={handleChange1}
+            style={{ width: "80%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
+          />
+
     </Grid>
     <Grid item xs={6}>
-      <TextField
-        fullWidth
-        label="System Differential Pressure Setpoint				"
-        variant="outlined"
-      />
+      
+      <label>System Differential Pressure Setpoint    :   </label>
+        <input
+            type="text"
+            name="System Differential Pressure Setpoint"
+            value=""
+            onChange={handleChange1}
+            style={{ width: "80%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
+          />
     </Grid>
   </Grid>
 </Container>
 
-<Container maxWidth="md" style={{ marginTop: "20px" }}>
+<br></br><hr></hr>
+
+<Container maxWidth="xl" sx={{ marginTop: "25px" }}>
+    <Grid item xs={6}>
+      <Container>
+        <Typography variant="h6" gutterBottom align="center" style={{ fontWeight: "bold", marginBottom: "20px" }}>
+        ****
+        </Typography>
+        <form onSubmit={handleSubmit}>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Typography variant="subtitle1" style={{ fontWeight: 500, marginTop: "10px" }}>
+                PUMP
+              </Typography>
+            </Grid>
+            {[
+              { label: "Pump Capacity", name: "pumpOperatingHeadSP2" },
+              { label: "System Capacity", name: "pumpOperatingHeadDP2" },
+            ].map((field, index) => (
+              <Grid item xs={4} key={index}>
+                <label >{field.label}    :   </label>
+                <input
+                  type="text"
+                  name={field.name}
+                  value={formData[field.name]}
+                  onChange={handleChange1}
+                  style={{ width: "80%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
+                />
+              </Grid>
+            ))}
+            <Grid item xs={12}>
+              <Typography variant="subtitle1" style={{ fontWeight: 500, marginTop: "10px" }}>
+                MOTOR
+              </Typography>
+            </Grid>
+            {[
+              { label: "Full Flow", name: "pumpShutOffHeadSP2" },
+              { label: "Full Flow", name: "pumpShutOffHeadDP2" },
+              { label: "Balanced Position", name: "pumpShutOffHeadTP2" },
+            ].map((field, index) => (
+              <Grid item xs={4} key={index}>
+                <label>{field.label}    :   </label>
+                <input
+                  type="text"
+                  name={field.name}
+                  value={formData[field.name]}
+                  onChange={handleChange1}
+                  style={{ width: "80%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
+                />
+              </Grid>
+            ))}
+            {[
+              { label: "Pump Speed", name: "pumpSpeed2" },
+              { label: "Motor Amps", name: "motorAmps2" },
+              { label: "Specified Head (KPA)", name: "specifiedHead2" },
+            ].map((field, index) => (
+              <Grid item xs={4} key={index}>
+                <label>{field.label}    :   </label>
+                <input
+                  type="text"
+                  name={field.name}
+                  value={formData[field.name]}
+                  onChange={handleChange1}
+                  style={{ width: "80%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </form>
+      </Container>
+    </Grid>
+</Container>
+
+<br></br><hr></hr>
+
+<Container maxWidth="md" style={{ marginTop: "25px"}}>
   {/* <Typography variant="h6" gutterBottom style={{ fontWeight: "bold" }}>
     Comments Section
   </Typography> */}
@@ -583,11 +657,7 @@ const ActualPump = () => {
   </Typography>
 </Container>
 
-
-
-        </>
-      )}
-      <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
+<Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
         <Button variant="outlined"sx={{ mr: 2 }} onClick={() => navigate(-1)}>
           Back
         </Button>
@@ -595,6 +665,8 @@ const ActualPump = () => {
           Submit
         </Button>
       </Box>
+
+
     </Box>
   );
 };
