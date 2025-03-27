@@ -18,6 +18,8 @@ import AllPump from "./Pages/AllPump";
 import SampleTestData from "./Pages/SampleTestData";
 import Projects from "./Pages/Projects";
 import CreateProject from "./Pages/CreateProject";
+import EditProject from "./Pages/EditProject";
+
 
 function App() {
   const router = createBrowserRouter([
@@ -80,6 +82,10 @@ function App() {
         {
           path: "createProject",
           element: <CreateProject/>,
+        },
+        {
+          path: "editProject",
+          element: <EditProject/>,
         }
       ],
     },

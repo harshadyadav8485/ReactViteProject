@@ -10,30 +10,23 @@ import {
   TableRow,
   Button,
   TextField,
+  Tooltip,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const AllPump = () => {
   const navigate = useNavigate();
 
-  // Sample data for projects
   const [projects, setProjects] = useState([
     { id: "P001", name: "UBC School of Biomedical Engineering", customerName: "Smith Sheet Metal Works Ltd" },
     { id: "P002", name: "Boiler Feed Pump", customerName: "Smith Sheet Metal Works Ltd" },
-    { id: "P003", name: "Chilled Water System", customerName:"Smith Sheet Metal Works Ltd" },
+    { id: "P003", name: "Chilled Water System", customerName: "Smith Sheet Metal Works Ltd" },
   ]);
 
-  // Handle edit (navigate to pumpCreation with project ID)
   const handleEdit = (id) => {
-    navigate(`/pumpCreation?id=${id}`);
+    navigate(`/editProject?id=${id}`);
   };
 
-  // Handle inspect (navigate to ActualPump with project ID)
-  const handleInspect = (id) => {
-    navigate(`/actualPump?id=${id}`);
-  };
-
-  // Handle delete
   const handleDelete = (id) => {
     const updatedProjects = projects.filter((project) => project.id !== id);
     setProjects(updatedProjects);
@@ -72,15 +65,17 @@ const AllPump = () => {
               <TableRow key={project.id}>
                 <TableCell>{project.id}</TableCell>
                 
-                {/* Clickable Project Name */}
+                {/* Tooltip on Project Name */}
                 <TableCell>
-                  <Button
-                    variant="text"
-                    color="primary"
-                    onClick={() => navigate(`/projects?id=${project.id}`)}
-                  >
-                    {project.name}
-                  </Button>
+                  <Tooltip title="Click to view project details" arrow>
+                    <Button
+                      variant="text"
+                      color="primary"
+                      onClick={() => navigate(`/projects?id=${project.id}`)}
+                    >
+                      {project.name}
+                    </Button>
+                  </Tooltip>
                 </TableCell>
 
                 <TableCell>{project.customerName}</TableCell>
@@ -93,15 +88,6 @@ const AllPump = () => {
                     onClick={() => handleEdit(project.id)}
                   >
                     Edit
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="success"
-                    size="small"
-                    sx={{ mr: 1 }}
-                    onClick={() => handleInspect(project.id)}
-                  >
-                    Inspect
                   </Button>
                   <Button
                     variant="contained"
