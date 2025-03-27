@@ -1,5 +1,16 @@
 import React, { useState } from "react";
-import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, TextField } from "@mui/material";
+import {
+  Box,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Button,
+  TextField,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const AllPump = () => {
@@ -7,9 +18,9 @@ const AllPump = () => {
 
   // Sample data for projects
   const [projects, setProjects] = useState([
-    { id: "P001", name: "UBC School of Biomedical Engineering", pumpNumber: "P-06-07A" },
-    { id: "P002", name: "Boiler Feed Pump", pumpNumber: "P-08-09B" },
-    { id: "P003", name: "Chilled Water System", pumpNumber: "P-10-11C" },
+    { id: "P001", name: "UBC School of Biomedical Engineering", customerName: "Smith Sheet Metal Works Ltd" },
+    { id: "P002", name: "Boiler Feed Pump", customerName: "Smith Sheet Metal Works Ltd" },
+    { id: "P003", name: "Chilled Water System", customerName:"Smith Sheet Metal Works Ltd" },
   ]);
 
   // Handle edit (navigate to pumpCreation with project ID)
@@ -30,7 +41,7 @@ const AllPump = () => {
 
   return (
     <Box sx={{ pl: 9, pr: 9, mt: 2 }}>
-      <h2>Pump Projects</h2>
+      <h2>Projects</h2>
       <Box display="flex" justifyContent="space-between" sx={{ mb: 2 }}>
         <TextField
           variant="outlined"
@@ -40,7 +51,7 @@ const AllPump = () => {
             sx: { height: "40px" },
           }}
         />
-        <Button variant="contained" onClick={() => navigate("/createPump")}>
+        <Button variant="contained" onClick={() => navigate("/createProject")}>
           Create New
         </Button>
       </Box>
@@ -52,7 +63,7 @@ const AllPump = () => {
             <TableRow>
               <TableCell sx={{ color: "white", fontWeight: "bold" }}>Project ID</TableCell>
               <TableCell sx={{ color: "white", fontWeight: "bold" }}>Project Name</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Pump Number</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Customer Name</TableCell>
               <TableCell sx={{ color: "white", fontWeight: "bold" }}>Action</TableCell>
             </TableRow>
           </TableHead>
@@ -60,8 +71,19 @@ const AllPump = () => {
             {projects.map((project) => (
               <TableRow key={project.id}>
                 <TableCell>{project.id}</TableCell>
-                <TableCell>{project.name}</TableCell>
-                <TableCell>{project.pumpNumber}</TableCell>
+                
+                {/* Clickable Project Name */}
+                <TableCell>
+                  <Button
+                    variant="text"
+                    color="primary"
+                    onClick={() => navigate(`/projects?id=${project.id}`)}
+                  >
+                    {project.name}
+                  </Button>
+                </TableCell>
+
+                <TableCell>{project.customerName}</TableCell>
                 <TableCell>
                   <Button
                     variant="contained"
