@@ -61,46 +61,47 @@ const AllPump = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {projects.map((project) => (
-              <TableRow key={project.id}>
-                <TableCell>{project.id}</TableCell>
-                
-                {/* Tooltip on Project Name */}
-                <TableCell>
-                  <Tooltip title="Click to view project details" arrow>
-                    <Button
-                      variant="text"
-                      color="primary"
-                      onClick={() => navigate(`/projects?id=${project.id}`)}
-                    >
-                      {project.name}
-                    </Button>
-                  </Tooltip>
-                </TableCell>
+  {projects.map((project) => (
+    <TableRow key={project.id} sx={{ height: "40px" }}>
+      <TableCell sx={{ py: 0.5 }}>{project.id}</TableCell>
+      
+      {/* Tooltip on Project Name */}
+      <TableCell sx={{ py: 0.5 }}>
+        <Tooltip title="Click to view project details" arrow>
+          <Button
+            variant="text"
+            color="primary"
+            onClick={() => navigate(`/projects?id=${project.id}`)}
+          >
+            {project.name}
+          </Button>
+        </Tooltip>
+      </TableCell>
 
-                <TableCell>{project.customerName}</TableCell>
-                <TableCell>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    size="small"
-                    sx={{ mr: 1 }}
-                    onClick={() => handleEdit(project.id)}
-                  >
-                    Edit
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="error"
-                    size="small"
-                    onClick={() => handleDelete(project.id)}
-                  >
-                    Delete
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
+      <TableCell sx={{ py: 0.5 }}>{project.customerName}</TableCell>
+      <TableCell sx={{ py: 0.5 }}>
+        <Button
+          variant="contained"
+          color="primary"
+          size="small"
+          sx={{ mr: 1 }}
+          onClick={() => handleEdit(project.id)}
+        >
+          Edit
+        </Button>
+        <Button
+          variant="contained"
+          color="error"
+          size="small"
+          onClick={() => handleDelete(project.id)}
+        >
+          Delete
+        </Button>
+      </TableCell>
+    </TableRow>
+  ))}
+</TableBody>
+
         </Table>
       </TableContainer>
     </Box>
