@@ -186,7 +186,7 @@ function PumpCreation() {
         <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
              <Button
                           variant="outlined"
-                          onClick={() => navigate("/allPump")}
+                          onClick={() => navigate("/projects")}
                           sx={{ mr: 2 }}
                         >
                           Back

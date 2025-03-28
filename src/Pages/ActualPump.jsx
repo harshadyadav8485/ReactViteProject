@@ -136,17 +136,15 @@ const ActualPump = () => {
   
     const [pump, setPump] = useState("P-06-07A");
   
-    // const handleChange = (event) => {
-    //   setPump(event.target.value);
-    
   return (
-    <Box sx={{ pl: 9, pr: 9, mt: 2 }}>
+    <Box >
+       <Box sx={{ pl: 9, pr: 9, mt: 1 }}>
        <Typography variant="h5" style={{ fontWeight: "bold", marginBottom: "10px" }}>
-    Project Name:UBC School of Biomedical Engineering 
+    Project Name : UBC School of Biomedical Engineering 
   </Typography>
         <Box display="flex" alignItems="center">
     <Typography variant="h6" style={{ fontWeight: "bold", marginRight: "10px" }}>
-      Pump Number:
+      Pump Number :
     </Typography>
     <Select
       value={pump}
@@ -211,6 +209,7 @@ const ActualPump = () => {
           </TableContainer>
         </>
       )}
+      </Box>
       {tabIndex === 1 && (
         <>
         <Box sx={{ pl: 9, pr: 9, mt: 1 }}>
@@ -1059,26 +1058,23 @@ const ActualPump = () => {
         </>
 )}
 
-<Container maxWidth="md" style={{ marginTop: "25px"}}>
-  {/* <Typography variant="h6" gutterBottom style={{ fontWeight: "bold" }}>
-    Comments Section
-  </Typography> */}
-  <h3>Comments Section</h3>
-  <TextField
-    fullWidth
-    label="Enter your comments"
-    multiline
-    rows={4}
-    variant="outlined"
-    value={comments}
-    onChange={handleCommentChange}
-    placeholder="Use '*' for some meaning and '**' for another meaning..."
-  />
-  <Typography variant="body2" color="textSecondary" style={{ marginTop: "10px" }}>
-    * Represents [Your Meaning 1] <br />
-    ** Represents [Your Meaning 2]
-  </Typography>
-</Container>
+        <Container maxWidth="md" style={{ marginTop: "25px"}}>
+          <h3>Comments Section</h3>
+          <TextField
+            fullWidth
+            label="Enter your comments"
+            multiline
+            rows={4}
+            variant="outlined"
+            value={comments}
+            onChange={handleCommentChange}
+            placeholder="Use '*' for some meaning and '**' for another meaning..."
+          />
+          <Typography variant="body2" color="textSecondary" style={{ marginTop: "10px" }}>
+            * Represents [Your Meaning 1] <br />
+            ** Represents [Your Meaning 2]
+          </Typography>
+        </Container>
 
 <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
         <Button variant="outlined"sx={{ mr: 2 }} onClick={() => navigate(-1)}>
