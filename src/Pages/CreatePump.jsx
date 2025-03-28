@@ -190,7 +190,7 @@ const CreatePump = () => {
         <Box display="flex" justifyContent="flex-end" sx={{mt:2}}>
               <Button
                 variant="outlined"
-                onClick={() => navigate("/projects")}
+                onClick={() => navigate("/createPumpCreation")}
                 sx={{ mr: 2 }}
               >
                 Back

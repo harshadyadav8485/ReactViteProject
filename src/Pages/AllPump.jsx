@@ -38,7 +38,7 @@ const AllPump = () => {
       <Box display="flex" justifyContent="space-between" sx={{ mb: 2 }}>
         <TextField
           variant="outlined"
-          placeholder="Search Pump..."
+          placeholder="Search Project..."
           sx={{ width: "50%" }}
           InputProps={{
             sx: { height: "40px" },

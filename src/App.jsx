@@ -19,6 +19,7 @@ import SampleTestData from "./Pages/SampleTestData";
 import Projects from "./Pages/Projects";
 import CreateProject from "./Pages/CreateProject";
 import EditProject from "./Pages/EditProject";
+import CreatePumpCreation from "./Pages/CreatePumpCreation";
 
 
 function App() {
@@ -86,7 +87,11 @@ function App() {
         {
           path: "editProject",
           element: <EditProject/>,
+        },{
+          path: "createPumpCreation",
+          element: <CreatePumpCreation/>,
         }
+
       ],
     },
   ]);
