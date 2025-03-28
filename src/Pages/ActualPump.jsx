@@ -204,9 +204,30 @@ const ActualPump = () => {
                     </TableCell>
                   </TableRow>
                 ))}
+                
               </TableBody>
             </Table>
           </TableContainer>
+
+            <Box width="100%">
+                  <h3 style={{ alignSelf: "flex-start" }}>Comments :</h3>
+                  <TextField
+                    fullWidth
+                    label="Enter your comments"
+                    multiline
+                    rows={4}
+                    variant="outlined"
+                    value={comments}
+                    onChange={handleCommentChange}
+                    placeholder="Use '*' for some meaning and '**' for another meaning..."
+                    style={{ width: "100%" }}
+                  />
+                  <Typography variant="body2" color="textSecondary" style={{ marginTop: "10px", textAlign: "left" }}>
+                    * Represents [Your Meaning 1] <br />
+                    ** Represents [Your Meaning 2]
+                  </Typography>
+            </Box>
+
         </>
       )}
       </Box>
@@ -356,20 +377,26 @@ const ActualPump = () => {
                   />
                 </Box>
 
-                <TextField
-                  fullWidth
-                  label="Enter your comments"
-                  multiline
-                  rows={4}
-                  variant="outlined"
-                  value={comments}
-                  onChange={handleCommentChange}
-                  placeholder="Use '*' for some meaning and '**' for another meaning..."
-                />
-                <Typography variant="body2" color="textSecondary" style={{ marginTop: "10px" }}>
-                  * Represents [Your Meaning 1] <br />
-                  ** Represents [Your Meaning 2]
-                </Typography>
+                <Box width="100%">
+                  <h3 style={{ alignSelf: "flex-start" }}>Comments :</h3>
+                  <TextField
+                    fullWidth
+                    label="Enter your comments"
+                    multiline
+                    rows={4}
+                    variant="outlined"
+                    value={comments}
+                    onChange={handleCommentChange}
+                    placeholder="Use '*' for some meaning and '**' for another meaning..."
+                    style={{ width: "100%" }}
+                  />
+                  <Typography variant="body2" color="textSecondary" style={{ marginTop: "10px", textAlign: "left" }}>
+                    * Represents [Your Meaning 1] <br />
+                    ** Represents [Your Meaning 2]
+                  </Typography>
+                </Box>
+
+
               </Box>
               <Box display="flex" justifyContent="flex-end" sx={{mt:2}}>
                     <Button
@@ -528,20 +555,24 @@ const ActualPump = () => {
                   />
                 </Box>
 
-                <TextField
-                  fullWidth
-                  label="Enter your comments"
-                  multiline
-                  rows={4}
-                  variant="outlined"
-                  value={comments}
-                  onChange={handleCommentChange}
-                  placeholder="Use '*' for some meaning and '**' for another meaning..."
-                />
-                <Typography variant="body2" color="textSecondary" style={{ marginTop: "10px" }}>
-                  * Represents [Your Meaning 1] <br />
-                  ** Represents [Your Meaning 2]
-                </Typography>
+                <Box width="100%">
+                  <h3 style={{ alignSelf: "flex-start" }}>Comments :</h3>
+                  <TextField
+                    fullWidth
+                    label="Enter your comments"
+                    multiline
+                    rows={4}
+                    variant="outlined"
+                    value={comments}
+                    onChange={handleCommentChange}
+                    placeholder="Use '*' for some meaning and '**' for another meaning..."
+                    style={{ width: "100%" }}
+                  />
+                  <Typography variant="body2" color="textSecondary" style={{ marginTop: "10px", textAlign: "left" }}>
+                    * Represents [Your Meaning 1] <br />
+                    ** Represents [Your Meaning 2]
+                  </Typography>
+                </Box>
               </Box>
 
               <Box display="flex" justifyContent="flex-end" sx={{mt:2}}>
@@ -702,20 +733,24 @@ const ActualPump = () => {
                   />
                 </Box>
 
-              <TextField
-                fullWidth
-                label="Enter your comments"
-                multiline
-                rows={4}
-                variant="outlined"
-                value={comments}
-                onChange={handleCommentChange}
-                placeholder="Use '*' for some meaning and '**' for another meaning..."
-              />
-              <Typography variant="body2" color="textSecondary" style={{ marginTop: "10px" }}>
-                * Represents [Your Meaning 1] <br />
-                ** Represents [Your Meaning 2]
-              </Typography>
+                <Box width="100%">
+                  <h3 style={{ alignSelf: "flex-start" }}>Comments :</h3>
+                  <TextField
+                    fullWidth
+                    label="Enter your comments"
+                    multiline
+                    rows={4}
+                    variant="outlined"
+                    value={comments}
+                    onChange={handleCommentChange}
+                    placeholder="Use '*' for some meaning and '**' for another meaning..."
+                    style={{ width: "100%" }}
+                  />
+                  <Typography variant="body2" color="textSecondary" style={{ marginTop: "10px", textAlign: "left" }}>
+                    * Represents [Your Meaning 1] <br />
+                    ** Represents [Your Meaning 2]
+                  </Typography>
+                </Box>
               
               </Box>
               <Box display="flex" justifyContent="flex-end" sx={{mt:2}}>
@@ -875,20 +910,25 @@ const ActualPump = () => {
                     }}
                   />
                 </Box>
-                <TextField
-                  fullWidth
-                  label="Enter your comments"
-                  multiline
-                  rows={4}
-                  variant="outlined"
-                  value={comments}
-                  onChange={handleCommentChange}
-                  placeholder="Use '*' for some meaning and '**' for another meaning..."
-                />
-                <Typography variant="body2" color="textSecondary" style={{ marginTop: "10px" }}>
-                  * Represents [Your Meaning 1] <br />
-                  ** Represents [Your Meaning 2]
-                </Typography>
+
+                <Box width="100%">
+                  <h3 style={{ alignSelf: "flex-start" }}>Comments :</h3>
+                  <TextField
+                    fullWidth
+                    label="Enter your comments"
+                    multiline
+                    rows={4}
+                    variant="outlined"
+                    value={comments}
+                    onChange={handleCommentChange}
+                    placeholder="Use '*' for some meaning and '**' for another meaning..."
+                    style={{ width: "100%" }}
+                  />
+                  <Typography variant="body2" color="textSecondary" style={{ marginTop: "10px", textAlign: "left" }}>
+                    * Represents [Your Meaning 1] <br />
+                    ** Represents [Your Meaning 2]
+                  </Typography>
+                </Box>
 
               </Box>
               <Box display="flex" justifyContent="flex-end" sx={{mt:2}}>
@@ -1052,29 +1092,30 @@ const ActualPump = () => {
                   />
                 </Box>
               </Box>
-              
+
+              <Box width="100%">
+                  <h3 style={{ alignSelf: "flex-start" }}>Comments :</h3>
+                  <TextField
+                    fullWidth
+                    label="Enter your comments"
+                    multiline
+                    rows={4}
+                    variant="outlined"
+                    value={comments}
+                    onChange={handleCommentChange}
+                    placeholder="Use '*' for some meaning and '**' for another meaning..."
+                    style={{ width: "100%" }}
+                  />
+                  <Typography variant="body2" color="textSecondary" style={{ marginTop: "10px", textAlign: "left" }}>
+                    * Represents [Your Meaning 1] <br />
+                    ** Represents [Your Meaning 2]
+                  </Typography>
+                </Box>
+
             </Box>
           </Box>
         </>
 )}
-
-        <Container maxWidth="md" style={{ marginTop: "25px"}}>
-          <h3>Comments Section</h3>
-          <TextField
-            fullWidth
-            label="Enter your comments"
-            multiline
-            rows={4}
-            variant="outlined"
-            value={comments}
-            onChange={handleCommentChange}
-            placeholder="Use '*' for some meaning and '**' for another meaning..."
-          />
-          <Typography variant="body2" color="textSecondary" style={{ marginTop: "10px" }}>
-            * Represents [Your Meaning 1] <br />
-            ** Represents [Your Meaning 2]
-          </Typography>
-        </Container>
 
 <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
         <Button variant="outlined"sx={{ mr: 2 }} onClick={() => navigate(-1)}>
