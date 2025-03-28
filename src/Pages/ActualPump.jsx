@@ -99,18 +99,17 @@ const ActualPump = () => {
     setActualValues((prev) => ({ ...prev, [field]: value }));
   };
   const pumpData = [
-    { field: "Make", specified: "BELL & GOSSETT", key: "make", showConverter: false },
-    { field: "Model", specified: "e-80SC 5x5x11", key: "model", showConverter: false },
-    { field: "Impeller Size", specified: "", key: "impellerSize", showConverter: true },
-    { field: "Manufacturer ", specified: "", key: "manufacturer ", showConverter: true },
+    { field: "Make", specified: "BELL & GOSSETT", actual: "TACO", key: "make", showConverter: false },
+    { field: "Model", specified: "e-80SC 5x5x11", actual: "KS6011D-4P-PM", key: "model", showConverter: false },
+    { field: "Impeller Size", specified: "", actual: '9.5"', key: "impellerSize", showConverter: true },
+    { field: "Manufacturer ", specified: "", actual: "WEG", key: "manufacturer ", showConverter: true },
     // { field: "Pump Capacity", specified: "0.5 L/s", key: "pumpCapacity", showConverter: true },
     // { field: "System Capacity", specified: "0.5 L/s", key: "systemCapacity", showConverter: true },
-    { field: "Motor Size", specified: "20 HP ", key: "size", showConverter: true },
-    { field: "Volts/Phase", specified: "575/3", key: "volts", showConverter: true },
-    { field: "Amperage", specified: "23.60", key: "amperage", showConverter: true },
-    { field: "R.P.M", specified: "", key: "rpm", showConverter: true }
+    { field: "Motor Size", specified: "20 HP ", actual: "25 HP", key: "size", showConverter: true },
+    { field: "Volts/Phase", specified: "575/3", actual: "575/3",  key: "volts", showConverter: true },
+    { field: "Amperage", specified: "23.60", actual: "As Below", key: "amperage", showConverter: true },
+    { field: "R.P.M", specified: "", actual: "",  key: "rpm", showConverter: true }
   ];
-
   const testData = [
     { field: "PUMP OPERATING HEAD (KPA)", specified: "Little Giant", key: "make", showConverter: false },
     { field: "Model", specified: "VCMA-20 Series", key: "model", showConverter: false },
@@ -168,46 +167,58 @@ const ActualPump = () => {
       </Tabs>
       {tabIndex === 0 && (
         <>
-          <TableContainer component={Paper}>
+      <TableContainer component={Paper} sx={{ mt: 2 }}>
             <Table>
               <TableHead sx={{ backgroundColor: "#1976d2" }}>
-                <TableRow>
-                  <TableCell sx={{ color: "white", fontWeight: "bold" }}>Field</TableCell>
-                  <TableCell sx={{ color: "white", fontWeight: "bold" }}>Specified Value</TableCell>
-                  <TableCell sx={{ color: "white", fontWeight: "bold" }}>Actual Value</TableCell>
-                  <TableCell sx={{ color: "white", fontWeight: "bold" }}>Action</TableCell>
+                <TableRow sx={{ height: "30px" }}>
+                  <TableCell sx={{ color: "white", fontWeight: "bold", px: 1 }}>Field</TableCell>
+                  <TableCell sx={{ color: "white", fontWeight: "bold", px: 1 }}>Specified Value</TableCell>
+                  <TableCell sx={{ color: "white", fontWeight: "bold", px: 1, textAlign: "center" }}>Actual Value</TableCell>
+                  <TableCell sx={{ color: "white", fontWeight: "bold", px: 1, textAlign: "center" }}>Action</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {pumpData.map((row) => (
-                  <TableRow key={row.field}>
-                    <TableCell>{row.field}</TableCell>
-                    <TableCell>{row.specified}</TableCell>
-                    <TableCell>
-                      <TextField
-                        variant="outlined"
-                        size="small"
-                        value={actualValues[row.key]}
-                        onChange={(e) => handleChange(row.key, e.target.value)}
-                      />
+                  <TableRow key={row.field} sx={{ height: "40px" }}>
+                    <TableCell sx={{ py: 0.3, px: 1 }}>{row.field}</TableCell>
+                    <TableCell sx={{ py: 0.3, px: 1 }}>{row.specified}</TableCell>
+                    <TableCell sx={{ py: 0.3, px: 1, textAlign: "center" }}>
+                      <Box sx={{ display: "flex", justifyContent: "center" }}>
+                        <TextField
+                          variant="outlined"
+                          size="small"
+                          value={actualValues[row.key]}
+                          onChange={(e) => handleChange(row.key, e.target.value)}
+                          sx={{
+                            width: "100px",
+                            "& .MuiInputBase-root": { height: "30px", fontSize: "0.75rem" },
+                          }}
+                        />
+                      </Box>
                     </TableCell>
-                    <TableCell>
-                    {row.showConverter && (
+                    <TableCell sx={{ py: 0.3, px: 1, textAlign: "center" }}>
+                      {row.showConverter && (
                         <Button
-                        variant="contained"
-                        size="small"
-                        onClick={() => handleConvert(row.key)}
+                          variant="contained"
+                          size="small"
+                          onClick={() => handleConvert(row.key)}
+                          sx={{
+                            minWidth: "60px",
+                            height: "30px",
+                            fontSize: "0.75rem",
+                            padding: "2px 6px",
+                          }}
                         >
-                        Convert
+                          Convert
                         </Button>
-                    )}
+                      )}
                     </TableCell>
                   </TableRow>
                 ))}
-                
               </TableBody>
             </Table>
           </TableContainer>
+
 
             <Box width="100%">
                   <h3 style={{ alignSelf: "flex-start" }}>Comments :</h3>
