@@ -19,9 +19,9 @@ export default function Projects() {
               id: "1a",
               name: "P-06-07A",
               progressList: [
-                { label: "Actual Data", value: 0, color: "primary" },
-                { label: "Test Data", value: 0, color: "secondary" },
-                { label: "Pump Performance", value: 0, color: "success" },
+                { label: "Actual Data", value: 100, color: "primary" },
+                { label: "Test Data", value: 100, color: "secondary" },
+                { label: "Pump Performance", value: 100, color: "success" },
               ],
             },
             { id: "1b", name: "P-06-07B",
@@ -148,45 +148,56 @@ export default function Projects() {
                     {card.subCards && (
                       <Grid container spacing={1}>
                         {card.subCards.map((subCard) => (
-                          <Grid item xs={12} sm={4} key={subCard.id}>
-                            <Tooltip title={`Click here to fill actual data for ${subCard.name}`}>
-                              <Card
-                                sx={{ p: 1, boxShadow: 1, cursor: "pointer", position: "relative" }}
-                                onClick={() => navigate(`/actualPump?id=${subCard.id}`)}
-                              >
-                                <CardContent>
-                                  <Typography variant="subtitle2" sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                                    {subCard.name}
-                                    <Tooltip title="Edit Pump Data">
-                                      <IconButton
-                                        size="small"
-                                        onClick={(e) => {
-                                          e.stopPropagation();
-                                          navigate(`/pumpCreation?id=${subCard.id}`);
-                                        }}
-                                      >
-                                        <Edit fontSize="small" />
-                                      </IconButton>
-                                    </Tooltip>
-                                  </Typography>
-                                  {subCard.progressList.map((progressItem) => (
-                                    <div key={progressItem.label}>
-                                      <Typography variant="body2" color="text.secondary">
-                                        {progressItem.label}
-                                      </Typography>
-                                      <LinearProgress
-                                        variant="determinate"
-                                        value={progressItem.value}
-                                        color="error"
-                                        sx={{ mb: 1 }}
-                                      />
-                                    </div>
-                                  ))}
-                                </CardContent>
-                              </Card>
-                            </Tooltip>
-                          </Grid>
-                        ))}
+  <Grid item xs={12} sm={4} key={subCard.id}>
+    <Tooltip title={`Click here to fill actual data for ${subCard.name}`}>
+      <Card
+        sx={{ p: 1, boxShadow: 1, cursor: "pointer", position: "relative" }}
+        onClick={() => navigate(`/actualPump?id=${subCard.id}`)}
+      >
+        <CardContent>
+          <Typography
+            variant="subtitle2"
+            sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}
+          >
+            {subCard.name}
+            <Tooltip title="Edit Pump Data">
+              <IconButton
+                size="small"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigate(`/pumpCreation?id=${subCard.id}`);
+                }}
+              >
+                <Edit fontSize="small" />
+              </IconButton>
+            </Tooltip>
+          </Typography>
+
+          {/* Show an underline for each data type */}
+          {subCard.progressList.map((progressItem) => (
+            <Typography
+              key={progressItem.label}
+              variant="body2"
+              sx={{
+                borderBottom: `3px solid ${
+                  progressItem.label === "Actual Data" && progressItem.value > 0 ? "green" : "red"
+                }`,
+                display: "inline-block",
+                width: "100%",
+                mt: 1,
+                pb: 0.5, // Space between text and underline
+              }}
+            >
+              {progressItem.label}
+            </Typography>
+          ))}
+        </CardContent>
+      </Card>
+    </Tooltip>
+  </Grid>
+))}
+
+                        
                       </Grid>
                     )}
                   </CardContent>
