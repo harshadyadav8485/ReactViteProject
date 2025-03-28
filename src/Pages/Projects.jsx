@@ -1,9 +1,9 @@
-import { Card, CardContent, Typography, Grid, Container, LinearProgress, IconButton, Tooltip,Button, Box } from "@mui/material";
+import { Card, CardContent, Typography, Grid, Container, LinearProgress, IconButton, Tooltip, Button, Box } from "@mui/material";
 import { Edit } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
 export default function Projects() {
-  const navigate = useNavigate(); // Initialize navigation
+  const navigate = useNavigate();
 
   const projectTitle = "UBC School of Biomedical Engineering";
 
@@ -133,14 +133,9 @@ export default function Projects() {
       {sections.map((section) => (
         <div key={section.id} style={{ marginBottom: "2rem" }}>
           <Box display="flex" justifyContent="flex-end">
-              <Button 
-                variant="contained" 
-                color="primary" 
-                onClick={() => navigate("/createPump")}
-              >
-                Create Pump
-              </Button>
-            
+            <Button variant="contained" color="primary" onClick={() => navigate("/createPumpCreation")}>
+              Create Pump
+            </Button>
           </Box>
           <Typography variant="h6" gutterBottom>
             {section.title}
@@ -154,33 +149,25 @@ export default function Projects() {
                       <Grid container spacing={1}>
                         {card.subCards.map((subCard) => (
                           <Grid item xs={12} sm={4} key={subCard.id}>
-                            <Tooltip title={subCard.name === "P-06-07A" ? "Click here to fill actual data" : ""}>
+                            <Tooltip title={`Click here to fill actual data for ${subCard.name}`}>
                               <Card
-                                sx={{
-                                  p: 1,
-                                  boxShadow: 1,
-                                  cursor: "pointer",
-                                  position: "relative",
-                                }}
+                                sx={{ p: 1, boxShadow: 1, cursor: "pointer", position: "relative" }}
                                 onClick={() => navigate(`/actualPump?id=${subCard.id}`)}
                               >
                                 <CardContent>
                                   <Typography variant="subtitle2" sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                                     {subCard.name}
-                                    {/* Add Edit Button with Tooltip for P-06-07A */}
-                                    {subCard.name === "P-06-07A" && (
-                                      <Tooltip title="Edit Pump Data">
-                                        <IconButton
-                                          size="small"
-                                          onClick={(e) => {
-                                            e.stopPropagation(); // Prevent card click
-                                            navigate(`/pumpCreation?id=${subCard.id}`);
-                                          }}
-                                        >
-                                          <Edit fontSize="small" />
-                                        </IconButton>
-                                      </Tooltip>
-                                    )}
+                                    <Tooltip title="Edit Pump Data">
+                                      <IconButton
+                                        size="small"
+                                        onClick={(e) => {
+                                          e.stopPropagation();
+                                          navigate(`/pumpCreation?id=${subCard.id}`);
+                                        }}
+                                      >
+                                        <Edit fontSize="small" />
+                                      </IconButton>
+                                    </Tooltip>
                                   </Typography>
                                   {subCard.progressList.map((progressItem) => (
                                     <div key={progressItem.label}>
@@ -190,7 +177,7 @@ export default function Projects() {
                                       <LinearProgress
                                         variant="determinate"
                                         value={progressItem.value}
-                                        color="error" // Set all progress bars to red
+                                        color="error"
                                         sx={{ mb: 1 }}
                                       />
                                     </div>
