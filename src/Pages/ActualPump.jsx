@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box,Container,Grid, Typography, Table, TableBody, TableCell, TableContainer, 
-  TableHead, TableRow, Paper, TextField, Button, Tabs, Tab, Divider,Select,MenuItem, Input  } from "@mui/material";
+  TableHead, TableRow, Paper, TextField, Button, Tabs, Tab, Divider,Select,MenuItem, Input, Snackbar, Alert } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
 
@@ -52,6 +52,8 @@ const ActualPump = () => {
   });
   
   const [comments, setComments] = useState("");
+
+  
 
   const handleConvert = (fieldKey) => {
     setActualValues((prev) => {
@@ -126,14 +128,24 @@ const ActualPump = () => {
     setComments(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form Data Submitted:", formData);
-    console.log("Comments:", comments);
-  };
+    // const handleSubmit = (e) => {
+    //   e.preventDefault();
+    //   console.log("Form Data Submitted:", formData);
+    //   console.log("Comments:", comments);
+    // };
+
+    const handleSubmit = () => {
+      setOpenSnackbar(true);
+      setTimeout(() => {
+        // navigate("/sampleTestData");
+      }, 2000);
+    };
+
+
 
   
     const [pump, setPump] = useState("P-06-07A");
+    const [openSnackbar, setOpenSnackbar] = useState(false);
   
   return (
     <Box >
@@ -238,6 +250,26 @@ const ActualPump = () => {
                     ** Represents [Your Meaning 2]
                   </Typography>
             </Box>
+
+            <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
+            <Button variant="outlined" sx={{ mr: 2 }} onClick={() => navigate("/allPump")}>
+              Back
+            </Button>
+            <Button variant="contained" onClick={handleSubmit}>
+              Submit
+            </Button>
+          </Box>
+
+          <Snackbar
+            open={openSnackbar}
+            autoHideDuration={2000}
+            onClose={() => setOpenSnackbar(false)}
+            anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          >
+            <Alert onClose={() => setOpenSnackbar(false)} severity="success" variant="filled">
+              Data Submitted Successfully!
+            </Alert>
+          </Snackbar>
 
         </>
       )}
@@ -387,8 +419,9 @@ const ActualPump = () => {
                     }}
                   />
                 </Box>
+              </Box>
 
-                <Box width="100%">
+              <Box width="100%">
                   <h3 style={{ alignSelf: "flex-start" }}>Comments :</h3>
                   <TextField
                     fullWidth
@@ -407,18 +440,27 @@ const ActualPump = () => {
                   </Typography>
                 </Box>
 
+          <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
+            <Button variant="outlined" sx={{ mr: 2 }} onClick={() => navigate("/allPump")}>
+              Back
+            </Button>
+            <Button variant="contained" onClick={handleSubmit}>
+              Submit
+            </Button>
+          </Box>
 
-              </Box>
-              <Box display="flex" justifyContent="flex-end" sx={{mt:2}}>
-                    <Button
-                      variant="outlined"
-                      // onClick={() => navigate("/allPump")}
-                      sx={{ mr: 2 }}
-                    >
-                    Back
-                    </Button>
-                      <Button variant="contained"  onClick={() => navigate("/sampleTestData")}>Submit</Button>
-                </Box>
+          <Snackbar
+            open={openSnackbar}
+            autoHideDuration={2000}
+            onClose={() => setOpenSnackbar(false)}
+            anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          >
+            <Alert onClose={() => setOpenSnackbar(false)} severity="success" variant="filled">
+            Data Submitted Successfully!
+            </Alert>
+          </Snackbar>
+
+
             </Box>
           </Box>
 
@@ -565,8 +607,9 @@ const ActualPump = () => {
                     }}
                   />
                 </Box>
+              </Box>
 
-                <Box width="100%">
+              <Box width="100%">
                   <h3 style={{ alignSelf: "flex-start" }}>Comments :</h3>
                   <TextField
                     fullWidth
@@ -584,18 +627,26 @@ const ActualPump = () => {
                     ** Represents [Your Meaning 2]
                   </Typography>
                 </Box>
-              </Box>
 
-              <Box display="flex" justifyContent="flex-end" sx={{mt:2}}>
-                    <Button
-                      variant="outlined"
-                      // onClick={() => navigate("/allPump")}
-                      sx={{ mr: 2 }}
-                    >
-                    Back
-                    </Button>
-                      <Button variant="contained"  onClick={() => navigate("/sampleTestData")}>Submit</Button>
-                </Box>
+                <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
+            <Button variant="outlined" sx={{ mr: 2 }} onClick={() => navigate("/allPump")}>
+              Back
+            </Button>
+            <Button variant="contained" onClick={handleSubmit}>
+              Submit
+            </Button>
+          </Box>
+
+          <Snackbar
+            open={openSnackbar}
+            autoHideDuration={2000}
+            onClose={() => setOpenSnackbar(false)}
+            anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          >
+            <Alert onClose={() => setOpenSnackbar(false)} severity="success" variant="filled">
+             Data Submitted Successfully!
+            </Alert>
+          </Snackbar>
               
             </Box>
         </Box>
@@ -743,8 +794,9 @@ const ActualPump = () => {
                     }}
                   />
                 </Box>
+              </Box>
 
-                <Box width="100%">
+              <Box width="100%">
                   <h3 style={{ alignSelf: "flex-start" }}>Comments :</h3>
                   <TextField
                     fullWidth
@@ -762,18 +814,26 @@ const ActualPump = () => {
                     ** Represents [Your Meaning 2]
                   </Typography>
                 </Box>
-              
-              </Box>
-              <Box display="flex" justifyContent="flex-end" sx={{mt:2}}>
-                    <Button
-                      variant="outlined"
-                      // onClick={() => navigate("/allPump")}
-                      sx={{ mr: 2 }}
-                    >
-                    Back
-                    </Button>
-                      <Button variant="contained"  onClick={() => navigate("/sampleTestData")}>Submit</Button>
-                </Box>
+
+                <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
+            <Button variant="outlined" sx={{ mr: 2 }} onClick={() => navigate("/allPump")}>
+              Back
+            </Button>
+            <Button variant="contained" onClick={handleSubmit}>
+              Submit
+            </Button>
+          </Box>
+
+          <Snackbar
+            open={openSnackbar}
+            autoHideDuration={2000}
+            onClose={() => setOpenSnackbar(false)}
+            anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          >
+            <Alert onClose={() => setOpenSnackbar(false)} severity="success" variant="filled">
+            Data Submitted Successfully!
+            </Alert>
+          </Snackbar>
               
             </Box>
             </Box>
@@ -921,8 +981,9 @@ const ActualPump = () => {
                     }}
                   />
                 </Box>
+              </Box>
 
-                <Box width="100%">
+              <Box width="100%">
                   <h3 style={{ alignSelf: "flex-start" }}>Comments :</h3>
                   <TextField
                     fullWidth
@@ -941,17 +1002,25 @@ const ActualPump = () => {
                   </Typography>
                 </Box>
 
-              </Box>
-              <Box display="flex" justifyContent="flex-end" sx={{mt:2}}>
-                    <Button
-                      variant="outlined"
-                      // onClick={() => navigate("/allPump")}
-                      sx={{ mr: 2 }}
-                    >
-                    Back
-                    </Button>
-                      <Button variant="contained"  onClick={() => navigate("/sampleTestData")}>Submit</Button>
-                </Box>
+                <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
+            <Button variant="outlined" sx={{ mr: 2 }} onClick={() => navigate("/allPump")}>
+              Back
+            </Button>
+            <Button variant="contained" onClick={handleSubmit}>
+              Submit
+            </Button>
+          </Box>
+
+          <Snackbar
+            open={openSnackbar}
+            autoHideDuration={2000}
+            onClose={() => setOpenSnackbar(false)}
+            anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          >
+            <Alert onClose={() => setOpenSnackbar(false)} severity="success" variant="filled">
+            Data Submitted Successfully!
+            </Alert>
+          </Snackbar>
               
             </Box>
         </Box>
@@ -1123,20 +1192,30 @@ const ActualPump = () => {
                   </Typography>
                 </Box>
 
+                <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
+            <Button variant="outlined" sx={{ mr: 2 }} onClick={() => navigate("/allPump")}>
+              Back
+            </Button>
+            <Button variant="contained" onClick={handleSubmit}>
+              Submit
+            </Button>
+          </Box>
+
+          <Snackbar
+            open={openSnackbar}
+            autoHideDuration={2000}
+            onClose={() => setOpenSnackbar(false)}
+            anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          >
+            <Alert onClose={() => setOpenSnackbar(false)} severity="success" variant="filled">
+              Data Submitted Successfully!
+            </Alert>
+          </Snackbar>
+
             </Box>
           </Box>
         </>
 )}
-
-<Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
-        <Button variant="outlined"sx={{ mr: 2 }} onClick={() => navigate(-1)}>
-          Back
-        </Button>
-        <Button variant="contained" onClick={() => navigate("/appPump")}>
-          Submit
-        </Button>
-      </Box>
-
 
     </Box>
   );
