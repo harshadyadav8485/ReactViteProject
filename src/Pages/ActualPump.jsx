@@ -86,32 +86,44 @@ const ActualPump = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const [actualValues, setActualValues] = useState({
-    make: "",
-    model: "",
-    impellerSize: "",
-    pumpCapacity: "",
-    systemCapacity: "",
-    size: "",
-    volts: "",
-    amperage: "",
+    make: " TACO",
+    model: "KS6011D-4P-PM",
+    impellerSize: '9.5"',
+    Manufacturer: "WEG",
+    size: "25HP",
+    volts: "575/3",
+    amperage: "As Below",
     rpm: ""
   });
 
   const handleChange = (field, value) => {
     setActualValues((prev) => ({ ...prev, [field]: value }));
   };
+
   const pumpData = [
-    { field: "Make", specified: "BELL & GOSSETT", actual: "TACO", key: "make", showConverter: false },
-    { field: "Model", specified: "e-80SC 5x5x11", actual: "KS6011D-4P-PM", key: "model", showConverter: false },
-    { field: "Impeller Size", specified: "", actual: '9.5"', key: "impellerSize", showConverter: true },
-    { field: "Manufacturer ", specified: "", actual: "WEG", key: "manufacturer ", showConverter: true },
+    { field: "Make", specified: "BELL & GOSSETT", actual: "TACO", key: "make"},
+    { field: "Model", specified: "e-80SC 5x5x11", actual: "KS6011D-4P-PM", key: "model"},
+    { field: "Impeller Size", specified: "", actual: '9.5"', key: "impellerSize" },
+    { field: "Manufacturer ", specified: "", actual: "WEG", key: "manufacturer " },
     // { field: "Pump Capacity", specified: "0.5 L/s", key: "pumpCapacity", showConverter: true },
     // { field: "System Capacity", specified: "0.5 L/s", key: "systemCapacity", showConverter: true },
-    { field: "Motor Size", specified: "20 HP ", actual: "25 HP", key: "size", showConverter: true },
-    { field: "Volts/Phase", specified: "575/3", actual: "575/3",  key: "volts", showConverter: true },
-    { field: "Amperage", specified: "23.60", actual: "As Below", key: "amperage", showConverter: true },
-    { field: "R.P.M", specified: "", actual: "",  key: "rpm", showConverter: true }
+    { field: "Motor Size", specified: "20 HP ", actual: "25 HP", key: "size" },
+    { field: "Volts/Phase", specified: "575/3", actual: "575/3",  key: "volts"},
+    { field: "Amperage", specified: "23.60", actual: "As Below", key: "amperage" },
+    { field: "R.P.M", specified: "", actual: "",  key: "rpm"}
   ];
+  // const pumpData = [
+  //   { field: "Make", specified: "BELL & GOSSETT", actual: "TACO", key: "make", showConverter: false },
+  //   { field: "Model", specified: "e-80SC 5x5x11", actual: "KS6011D-4P-PM", key: "model", showConverter: false },
+  //   { field: "Impeller Size", specified: "", actual: '9.5"', key: "impellerSize", showConverter: false },
+  //   { field: "Manufacturer ", specified: "", actual: "WEG", key: "manufacturer ", showConverter: false },
+  //   // { field: "Pump Capacity", specified: "0.5 L/s", key: "pumpCapacity", showConverter: true },
+  //   // { field: "System Capacity", specified: "0.5 L/s", key: "systemCapacity", showConverter: true },
+  //   { field: "Motor Size", specified: "20 HP ", actual: "25 HP", key: "size", showConverter: false },
+  //   { field: "Volts/Phase", specified: "575/3", actual: "575/3",  key: "volts", showConverter: false },
+  //   { field: "Amperage", specified: "23.60", actual: "As Below", key: "amperage", showConverter: false },
+  //   { field: "R.P.M", specified: "", actual: "",  key: "rpm", showConverter: false }
+  // ];
   const testData = [
     { field: "PUMP OPERATING HEAD (KPA)", specified: "Little Giant", key: "make", showConverter: false },
     { field: "Model", specified: "VCMA-20 Series", key: "model", showConverter: false },
@@ -128,22 +140,13 @@ const ActualPump = () => {
     setComments(e.target.value);
   };
 
-    // const handleSubmit = (e) => {
-    //   e.preventDefault();
-    //   console.log("Form Data Submitted:", formData);
-    //   console.log("Comments:", comments);
-    // };
-
-    const handleSubmit = () => {
+  const handleSubmit = () => {
       setOpenSnackbar(true);
       setTimeout(() => {
         // navigate("/sampleTestData");
       }, 2000);
     };
 
-
-
-  
     const [pump, setPump] = useState("P-06-07A");
     const [openSnackbar, setOpenSnackbar] = useState(false);
   
@@ -186,7 +189,7 @@ const ActualPump = () => {
                   <TableCell sx={{ color: "white", fontWeight: "bold", px: 1 }}>Field</TableCell>
                   <TableCell sx={{ color: "white", fontWeight: "bold", px: 1 }}>Specified Value</TableCell>
                   <TableCell sx={{ color: "white", fontWeight: "bold", px: 1, textAlign: "center" }}>Actual Value</TableCell>
-                  <TableCell sx={{ color: "white", fontWeight: "bold", px: 1, textAlign: "center" }}>Action</TableCell>
+                  {/* <TableCell sx={{ color: "white", fontWeight: "bold", px: 1, textAlign: "center" }}>Action</TableCell> */}
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -208,7 +211,7 @@ const ActualPump = () => {
                         />
                       </Box>
                     </TableCell>
-                    <TableCell sx={{ py: 0.3, px: 1, textAlign: "center" }}>
+                    {/* <TableCell sx={{ py: 0.3, px: 1, textAlign: "center" }}>
                       {row.showConverter && (
                         <Button
                           variant="contained"
@@ -224,7 +227,7 @@ const ActualPump = () => {
                           Convert
                         </Button>
                       )}
-                    </TableCell>
+                    </TableCell> */}
                   </TableRow>
                 ))}
               </TableBody>
