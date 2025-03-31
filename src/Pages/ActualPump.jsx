@@ -227,6 +227,15 @@ const ActualPump = () => {
     }, 2000);
   };
 
+  const handleCheckboxChange = (formName) => {
+    setSelectedForms(
+      (prev) =>
+        prev.includes(formName)
+          ? prev.filter((item) => item !== formName) // Remove if already selected
+          : [...prev, formName] // Add if not selected
+    );
+  };
+
   const [pump, setPump] = useState("P-06-07A");
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [selectedForms, setSelectedForms] = useState([]);
@@ -1316,6 +1325,96 @@ const ActualPump = () => {
               <Typography variant="h6" sx={{ fontWeight: 600 }}>
                 Pump
               </Typography>
+              <Box>
+                <Box display="flex" alignItems="center" marginBottom="6px">
+                  <Typography sx={{ minWidth: "150px" }}>
+                    Pump Capacity:
+                  </Typography>
+                  <Box display="flex" alignItems="center" gap={2}>
+                    {/* <TextField defaultValue="34.700 L/S"  fullWidth variant="outlined" />
+              <TextField label="Actual Value" fullWidth variant="outlined" /> */}
+                    <Input
+                      fullWidth
+                      name="text"
+                      defaultValue="37.700 L/s"
+                      readOnly
+                      sx={{
+                        border: "1px solid #ccc",
+                        padding: "5px",
+                        borderRadius: "4px",
+                      }}
+                    />
+                    <Input
+                      fullWidth
+                      name="text"
+                      placeholder="Actual Value"
+                      sx={{
+                        border: "1px solid #ccc",
+                        padding: "5px",
+                        borderRadius: "4px",
+                      }}
+                    />
+                    <Button
+                      variant="contained"
+                      size="small"
+                      onClick={() => handleConvert(row.key)}
+                      sx={{
+                        minWidth: "100px",
+                        height: "30px",
+                        fontSize: "0.75rem",
+                        padding: "2px 6px",
+                      }}
+                    >
+                      Convert
+                    </Button>
+                  </Box>
+                </Box>
+
+                <Box display="flex" alignItems="center">
+                  <Typography sx={{ minWidth: "150px", gap: 2 }}>
+                    System Capacity:
+                  </Typography>
+                  <Box display="flex" alignItems="center" gap={2}>
+                    {/* <TextField defaultValue="187.629 L/S" fullWidth variant="outlined" />
+              <TextField label="Actual Value" fullWidth variant="outlined" /> */}
+                    <Input
+                      fullWidth
+                      name="text"
+                      defaultValue="187.629 L/s"
+                      readOnly
+                      sx={{
+                        border: "1px solid #ccc",
+                        padding: "5px",
+                        borderRadius: "4px",
+                      }}
+                    />
+                    <Input
+                      fullWidth
+                      name="text"
+                      placeholder="Actual Value"
+                      sx={{
+                        border: "1px solid #ccc",
+                        padding: "5px",
+                        borderRadius: "4px",
+                      }}
+                    />
+                    <Button
+                      variant="contained"
+                      size="small"
+                      onClick={() => handleConvert(row.key)}
+                      sx={{
+                        minWidth: "100px",
+                        height: "30px",
+                        fontSize: "0.75rem",
+                        padding: "2px 6px",
+                      }}
+                    >
+                      Convert
+                    </Button>
+                  </Box>
+                </Box>
+              </Box>
+
               <Box
                 sx={{
                   display: "grid",
@@ -1324,37 +1423,7 @@ const ActualPump = () => {
                 }}
               >
                 <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "210px" }}>
-                    Pump Capacity :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="size"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "210px" }}>
-                    System Capacity :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="volts"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "210px" }}>
+                  <Typography sx={{ minWidth: "110px" }}>
                     Pump Balancing Valve Position :
                   </Typography>
                   <Input
@@ -1369,7 +1438,7 @@ const ActualPump = () => {
                 </Box>
 
                 <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "210px" }}>
+                  <Typography sx={{ minWidth: "110px" }}>
                     System Differential Pressure Setpoint :
                   </Typography>
                   <Input
