@@ -10,14 +10,16 @@ import {
   Typography,
   Tabs,
   Tab,
-  Input,Select,MenuItem,
+  Input,
+  Select,
+  MenuItem,
 } from "@mui/material";
 
 const Pump = () => {
-  const navigate = useNavigate(); 
-  const [impellerSizeOption, setImpellerSizeOption] = useState("Not Applicable");
+  const navigate = useNavigate();
+  const [impellerSizeOption, setImpellerSizeOption] =
+    useState("Not Applicable");
   const [impellerSizeInput, setImpellerSizeInput] = useState("");
-
 
   return (
     <>
@@ -57,7 +59,9 @@ const Pump = () => {
             borderRadius: 2,
           }}
         >
-           <Typography variant="h6"sx={{ fontWeight: 600 }}>Pump</Typography>
+          <Typography variant="h6" sx={{ fontWeight: 600 }}>
+            Pump
+          </Typography>
           <Box
             sx={{
               display: "grid",
@@ -65,7 +69,6 @@ const Pump = () => {
               gap: 2,
             }}
           >
-           
             <Box display="flex" alignItems="center">
               <Typography sx={{ minWidth: "110px" }}>Make :</Typography>
               <Input
@@ -113,26 +116,33 @@ const Pump = () => {
               />
             </Box> */}
 
-<Box display="flex" alignItems="center">
-            <Typography sx={{ minWidth: "110px" }}>Impeller Size :</Typography>
-            <Select
-              value={impellerSizeOption}
-              onChange={(e) => setImpellerSizeOption(e.target.value)}
-              sx={{ width: "50%" }}
-            >
-              <MenuItem value="Existing">Existing</MenuItem>
-              <MenuItem value="Not Listed">Not Listed</MenuItem>
-              <MenuItem value="Not Applicable">Not Applicable</MenuItem>
-            </Select>
-            {impellerSizeOption === "Not Listed" && (
-              <Input
-                value={impellerSizeInput}
-                onChange={(e) => setImpellerSizeInput(e.target.value)}
-                placeholder="Enter Impeller Size"
-                sx={{ ml: 2, border: "1px solid #ccc", padding: "5px", borderRadius: "4px" }}
-              />
-            )}
-          </Box>
+            <Box display="flex" alignItems="center">
+              <Typography sx={{ minWidth: "110px" }}>
+                Impeller Size :
+              </Typography>
+              <Select
+                value={impellerSizeOption}
+                onChange={(e) => setImpellerSizeOption(e.target.value)}
+                sx={{ width: "50%" }}
+              >
+                <MenuItem value="Existing">Existing</MenuItem>
+                <MenuItem value="Not Listed">Not Listed</MenuItem>
+                <MenuItem value="Not Applicable">Not Applicable</MenuItem>
+              </Select>
+              {impellerSizeOption === "Not Listed" && (
+                <Input
+                  value={impellerSizeInput}
+                  onChange={(e) => setImpellerSizeInput(e.target.value)}
+                  placeholder="Enter Impeller Size"
+                  sx={{
+                    ml: 2,
+                    border: "1px solid #ccc",
+                    padding: "5px",
+                    borderRadius: "4px",
+                  }}
+                />
+              )}
+            </Box>
             {/* <Box display="flex" alignItems="center">
               <Typography sx={{ minWidth: "110px" }}>
                 Pump Capacity :
@@ -169,7 +179,9 @@ const Pump = () => {
           </Box>
           <Divider />
 
-          <Typography variant="h6" sx={{ fontWeight: 600 }}>Motor</Typography>
+          <Typography variant="h6" sx={{ fontWeight: 600 }}>
+            Motor
+          </Typography>
           <Box
             sx={{
               display: "grid",
@@ -177,7 +189,7 @@ const Pump = () => {
               gap: 2,
             }}
           >
-             <Box display="flex" alignItems="center">
+            <Box display="flex" alignItems="center">
               <Typography sx={{ minWidth: "110px" }}>Manufacturer :</Typography>
               <Input
                 defaultValue=""
@@ -253,18 +265,20 @@ const Pump = () => {
           </Box>
         </Box>
         <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
-            {/* <Button variant="outlined" startIcon={<AddIcon />}>
+          {/* <Button variant="outlined" startIcon={<AddIcon />}>
               Add Parameters
             </Button> */}
-             <Button
-              variant="outlined"
-              onClick={() => navigate("/pumpCreation")}
-              sx={{ mr: 2 }}
-            >
-              Back
-            </Button>
-            <Button variant="contained" onClick={() => navigate("/projects")}>Submit</Button>
-          </Box>
+          <Button
+            variant="outlined"
+            onClick={() => navigate("/pumpCreation")}
+            sx={{ mr: 2 }}
+          >
+            Back
+          </Button>
+          <Button variant="contained" onClick={() => navigate("/projects")}>
+            Submit
+          </Button>
+        </Box>
       </Box>
     </>
   );
