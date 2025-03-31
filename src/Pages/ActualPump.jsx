@@ -267,7 +267,7 @@ const ActualPump = () => {
             anchorOrigin={{ vertical: "top", horizontal: "center" }}
           >
             <Alert onClose={() => setOpenSnackbar(false)} severity="success" variant="filled">
-              Data Submitted Successfully!
+            Data Submitted Successfully!
             </Alert>
           </Snackbar>
 
