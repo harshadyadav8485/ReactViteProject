@@ -35,7 +35,6 @@ const CreateFlowMeter = () => {
             borderRadius: 2,
           }}
         >
-           <Typography variant="h6"sx={{ fontWeight: 600 }}>Pump</Typography>
           <Box
             sx={{
               display: "grid",
@@ -44,7 +43,7 @@ const CreateFlowMeter = () => {
             }}
           >
             <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "110px" }}>Make :</Typography>
+              <Typography sx={{ minWidth: "110px" }}>Meter :</Typography>
               <Input
                 fullWidth
                 name="make"
@@ -57,7 +56,7 @@ const CreateFlowMeter = () => {
             </Box>
 
             <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "110px" }}>Model :</Typography>
+              <Typography sx={{ minWidth: "110px" }}>Service :</Typography>
               <Input
                 fullWidth
                 name="model"
@@ -71,7 +70,7 @@ const CreateFlowMeter = () => {
 
             <Box display="flex" alignItems="center">
               <Typography sx={{ minWidth: "110px" }}>
-                Impeller Size :
+                Make :
               </Typography>
               <Input
                 fullWidth
@@ -84,48 +83,10 @@ const CreateFlowMeter = () => {
               />
             </Box>
 
-            {/* <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "110px" }}>
-                Pump Capacity :
-              </Typography>
-              <Input
-                fullWidth
-                name="pumpCapacity"
-                sx={{
-                  border: "1px solid #ccc",
-                  padding: "5px",
-                  borderRadius: "4px",
-                }}
-              />
-            </Box> */}
-
-            {/* <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "110px" }}>
-                System Capacity :
-              </Typography>
-              <Input
-                fullWidth
-                name="systemCapacity"
-                sx={{
-                  border: "1px solid #ccc",
-                  padding: "5px",
-                  borderRadius: "4px",
-                }}
-              />
-            </Box> */}
-          </Box>
-          <Divider />
-
-          <Typography variant="h6" sx={{ fontWeight: 600 }}>Motor</Typography>
-          <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, 1fr)", // 2 columns
-              gap: 2, // Spacing between items
-            }}
-          >
             <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "110px" }}>Size :</Typography>
+              <Typography sx={{ minWidth: "110px" }}>
+                Size :
+              </Typography>
               <Input
                 fullWidth
                 name="size"
@@ -138,7 +99,66 @@ const CreateFlowMeter = () => {
             </Box>
 
             <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "110px" }}>Volts/Phase :</Typography>
+              <Typography sx={{ minWidth: "110px" }}>
+                Position :
+              </Typography>
+              <Input
+                fullWidth
+                name="systemCapacity"
+                sx={{
+                  border: "1px solid #ccc",
+                  padding: "5px",
+                  borderRadius: "4px",
+                }}
+              />
+            </Box>
+          </Box>
+          {/* <Divider /> */}
+          <Typography variant="h6" sx={{ fontWeight: 600 }}>Specified</Typography>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "repeat(2, 1fr)", // 2 columns
+              gap: 2, // Spacing between items
+            }}
+          >
+             <Box display="flex" alignItems="center">
+              <Typography sx={{ minWidth: "110px" }}>Flow :</Typography>
+              <Input
+                fullWidth
+                name="size"
+                sx={{
+                  border: "1px solid #ccc",
+                  padding: "5px",
+                  borderRadius: "4px",
+                }}
+              />
+            </Box>
+          </Box>
+
+          <Typography variant="h6" sx={{ fontWeight: 600 }}>Operating</Typography>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "repeat(2, 1fr)", // 2 columns
+              gap: 2, // Spacing between items
+            }}
+          >
+            <Box display="flex" alignItems="center">
+              <Typography sx={{ minWidth: "110px" }}>Signal :</Typography>
+              <Input
+                fullWidth
+                name="size"
+                sx={{
+                  border: "1px solid #ccc",
+                  padding: "5px",
+                  borderRadius: "4px",
+                }}
+              />
+            </Box>
+
+            <Box display="flex" alignItems="center">
+              <Typography sx={{ minWidth: "110px" }}>Flow :</Typography>
               <Input
                 fullWidth
                 name="volts"
@@ -149,50 +169,19 @@ const CreateFlowMeter = () => {
                 }}
               />
             </Box>
-
-            <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "110px" }}>Amperage :</Typography>
-              <Input
-                fullWidth
-                name="amperage"
-                sx={{
-                  border: "1px solid #ccc",
-                  padding: "5px",
-                  borderRadius: "4px",
-                }}
-              />
-            </Box>
-
-            <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "110px" }}>R.P.M :</Typography>
-              <Input
-                fullWidth
-                name="rpm"
-                sx={{
-                  border: "1px solid #ccc",
-                  padding: "5px",
-                  borderRadius: "4px",
-                }}
-              />
-            </Box>
           </Box>
-          <Box display="flex" justifyContent="space-between">
-            <Button variant="outlined" startIcon={<AddIcon />}>
-              Add Parameters
-            </Button>
-           
-          </Box>
-          
         </Box>
         <Box display="flex" justifyContent="flex-end" sx={{mt:2}}>
               <Button
                 variant="outlined"
-                onClick={() => navigate("/createPumpCreation")}
+                // onClick={() => navigate("/createPumpCreation")}
                 sx={{ mr: 2 }}
               >
                 Back
               </Button>
-              <Button variant="contained"  onClick={() => navigate("/projects")}>Submit</Button>
+              <Button variant="contained" 
+            //    onClick={() => navigate("/projects")}
+               >Submit</Button>
             </Box>
       </Box>
     </>
