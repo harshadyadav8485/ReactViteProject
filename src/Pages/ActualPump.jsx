@@ -26,6 +26,7 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
+import pump_report from '../assets/pump_report.pdf';
 
 const ActualPump = () => {
   const navigate = useNavigate();
@@ -1832,9 +1833,12 @@ const ActualPump = () => {
                 >
                   Back
                 </Button>
-                <Button variant="contained" onClick={handleSubmit}>
-                  Submit
+                <Button variant="contained" onClick={handleSubmit} sx={{ color: "white" }}>
+                  <a href={pump_report} download="pump_report" style={{ color: "inherit", textDecoration: "none" }}>
+                    Submit & Generate Report
+                  </a>
                 </Button>
+
               </Box>
 
               <Snackbar

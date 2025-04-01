@@ -21,6 +21,10 @@ import CreateProject from "./Pages/CreateProject";
 import EditProject from "./Pages/EditProject";
 import CreatePumpCreation from "./Pages/CreatePumpCreation";
 
+import ChillerCreation from "./Pages/ChillerCreation";
+import CreateChiller from "./Pages/CreateChiller";
+import ActualChiller from "./Pages/ActualChiller";
+
 
 function App() {
   const router = createBrowserRouter([
@@ -39,6 +43,18 @@ function App() {
         {
           path: "chiller",
           element: <Chiller />,
+        },
+        {
+          path: "chillerCreation",
+          element: <ChillerCreation />,
+        },
+        {
+          path: "createChiller",
+          element: <CreateChiller />,
+        },
+        {
+          path: "actualChiller",
+          element: <ActualChiller />,
         },
         {
           path: "createPump",
