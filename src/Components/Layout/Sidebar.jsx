@@ -15,7 +15,11 @@ const menuItems = [
   // { name: "Villages", path: "/villages", icon: <PublicIcon /> },
   // { name: "Projects", path: "/projects", icon: <WorkIcon /> },
   { name: "Flow Meter", path: "/createFlowMeter", icon: <PublicIcon /> },
-  { name: "Domestic Hot Water", path: "/createDomesticHotWater", icon: <WorkIcon /> },
+  {
+    name: "Domestic Hot Water",
+    path: "/createDomesticHotWater",
+    icon: <WorkIcon />,
+  },
 ];
 
 const Sidebar = ({ open, toggleSidebar }) => {
