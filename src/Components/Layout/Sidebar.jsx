@@ -12,8 +12,8 @@ const menuItems = [
   { name: "Projects", path: "/allPump", icon: <GridViewIcon /> },
   { name: "Fan", path: "/fan", icon: <GridViewIcon /> },
   { name: "Chiller", path: "/chiller", icon: <GridViewIcon /> },
-  { name: "Flow Meter", path: "/flowMeter", icon: <PublicIcon /> },
-  { name: "Domestic Hot Water", path: "/domesticHotWater", icon: <WorkIcon /> },
+  { name: "Flow Meter", path: "/createFlowMeter", icon: <PublicIcon /> },
+  { name: "Domestic Hot Water", path: "/createDomesticHotWater", icon: <WorkIcon /> },
 ];
 
 const Sidebar = ({ open, toggleSidebar }) => {
