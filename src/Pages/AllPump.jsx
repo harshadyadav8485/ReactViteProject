@@ -18,9 +18,21 @@ const AllPump = () => {
   const navigate = useNavigate();
 
   const [projects, setProjects] = useState([
-    { id: "P001", name: "UBC School of Biomedical Engineering", customerName: "Smith Sheet Metal Works Ltd" },
-    { id: "P002", name: "Boiler Feed Pump", customerName: "Smith Sheet Metal Works Ltd" },
-    { id: "P003", name: "Chilled Water System", customerName: "Smith Sheet Metal Works Ltd" },
+    {
+      id: "P001",
+      name: "UBC School of Biomedical Engineering",
+      customerName: "Smith Sheet Metal Works Ltd",
+    },
+    {
+      id: "P002",
+      name: "Boiler Feed Pump",
+      customerName: "Smith Sheet Metal Works Ltd",
+    },
+    {
+      id: "P003",
+      name: "Chilled Water System",
+      customerName: "Smith Sheet Metal Works Ltd",
+    },
   ]);
 
   const handleEdit = (id) => {
@@ -54,54 +66,61 @@ const AllPump = () => {
         <Table>
           <TableHead sx={{ backgroundColor: "#1976d2" }}>
             <TableRow>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Project ID</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Project Name</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Customer Name</TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Action</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>
+                Project ID
+              </TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>
+                Project Name
+              </TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>
+                Customer Name
+              </TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>
+                Action
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-  {projects.map((project) => (
-    <TableRow key={project.id} sx={{ height: "40px" }}>
-      <TableCell sx={{ py: 0.5 }}>{project.id}</TableCell>
-      
-      {/* Tooltip on Project Name */}
-      <TableCell sx={{ py: 0.5 }}>
-        <Tooltip title="Click to view project details" arrow>
-          <Button
-            variant="text"
-            color="primary"
-            onClick={() => navigate(`/projects?id=${project.id}`)}
-          >
-            {project.name}
-          </Button>
-        </Tooltip>
-      </TableCell>
+            {projects.map((project) => (
+              <TableRow key={project.id} sx={{ height: "40px" }}>
+                <TableCell sx={{ py: 0.5 }}>{project.id}</TableCell>
 
-      <TableCell sx={{ py: 0.5 }}>{project.customerName}</TableCell>
-      <TableCell sx={{ py: 0.5 }}>
-        <Button
-          variant="contained"
-          color="primary"
-          size="small"
-          sx={{ mr: 1 }}
-          onClick={() => handleEdit(project.id)}
-        >
-          Edit
-        </Button>
-        <Button
-          variant="contained"
-          color="error"
-          size="small"
-          onClick={() => handleDelete(project.id)}
-        >
-          Delete
-        </Button>
-      </TableCell>
-    </TableRow>
-  ))}
-</TableBody>
+                {/* Tooltip on Project Name */}
+                <TableCell sx={{ py: 0.5 }}>
+                  <Tooltip title="Click to view project details" arrow>
+                    <Button
+                      variant="text"
+                      color="primary"
+                      onClick={() => navigate(`/projects?id=${project.id}`)}
+                    >
+                      {project.name}
+                    </Button>
+                  </Tooltip>
+                </TableCell>
 
+                <TableCell sx={{ py: 0.5 }}>{project.customerName}</TableCell>
+                <TableCell sx={{ py: 0.5 }}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    size="small"
+                    sx={{ mr: 1 }}
+                    onClick={() => handleEdit(project.id)}
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="error"
+                    size="small"
+                    onClick={() => handleDelete(project.id)}
+                  >
+                    Delete
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
         </Table>
       </TableContainer>
     </Box>
