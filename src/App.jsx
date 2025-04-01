@@ -20,6 +20,8 @@ import Projects from "./Pages/Projects";
 import CreateProject from "./Pages/CreateProject";
 import EditProject from "./Pages/EditProject";
 import CreatePumpCreation from "./Pages/CreatePumpCreation";
+import CreateFlowMeter from "./Pages/CreateFlowMeter";
+import CreateDomesticHotWater from "./Pages/CreateDomesticHotWater";
 
 
 function App() {
@@ -87,11 +89,19 @@ function App() {
         {
           path: "editProject",
           element: <EditProject/>,
-        },{
+        },
+        {
           path: "createPumpCreation",
           element: <CreatePumpCreation/>,
+        },
+        {
+          path: "createFlowMeter",
+          element: <CreateFlowMeter/>,
+        },
+        {
+          path: "createDomesticHotWater",
+          element: <CreateDomesticHotWater/>,
         }
-
       ],
     },
   ]);
