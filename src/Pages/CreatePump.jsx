@@ -38,7 +38,9 @@ const CreatePump = () => {
             borderRadius: 2,
           }}
         >
-           <Typography variant="h6"sx={{ fontWeight: 600 }}>Pump</Typography>
+          <Typography variant="h6" sx={{ fontWeight: 600 }}>
+            Pump
+          </Typography>
           <Box
             sx={{
               display: "grid",
@@ -119,7 +121,9 @@ const CreatePump = () => {
           </Box>
           <Divider />
 
-          <Typography variant="h6" sx={{ fontWeight: 600 }}>Motor</Typography>
+          <Typography variant="h6" sx={{ fontWeight: 600 }}>
+            Motor
+          </Typography>
           <Box
             sx={{
               display: "grid",
@@ -183,20 +187,20 @@ const CreatePump = () => {
             <Button variant="outlined" startIcon={<AddIcon />}>
               Add Parameters
             </Button>
-           
           </Box>
-          
         </Box>
-        <Box display="flex" justifyContent="flex-end" sx={{mt:2}}>
-              <Button
-                variant="outlined"
-                onClick={() => navigate("/createPumpCreation")}
-                sx={{ mr: 2 }}
-              >
-                Back
-              </Button>
-              <Button variant="contained"  onClick={() => navigate("/projects")}>Submit</Button>
-            </Box>
+        <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
+          <Button
+            variant="outlined"
+            onClick={() => navigate("/createPumpCreation")}
+            sx={{ mr: 2 }}
+          >
+            Back
+          </Button>
+          <Button variant="contained" onClick={() => navigate("/projects")}>
+            Submit
+          </Button>
+        </Box>
       </Box>
     </>
   );
