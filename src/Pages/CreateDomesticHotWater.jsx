@@ -8,8 +8,10 @@ import {
   MenuItem,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
+import { useNavigate } from "react-router-dom";
 
 const CreateDomesticHotWater = () => {
+  const navigate = useNavigate();
   return (
     <>
       <Box sx={{ pl: 9, pr: 9, mt: 1 }}>
@@ -182,7 +184,7 @@ const CreateDomesticHotWater = () => {
               </Button>
               <Button
                 variant="contained"
-                onClick={() => navigate("/createpump")}
+                onClick={() => navigate("/createPump")}
               >
                 Submit
               </Button>
@@ -190,7 +192,11 @@ const CreateDomesticHotWater = () => {
           </Box>
         </Box>
         <Box marginTop="6px">
-          <Button variant="outlined" startIcon={<AddIcon />}>
+          <Button
+            variant="outlined"
+            startIcon={<AddIcon />}
+            onClick={() => navigate("/createFanCreation")}
+          >
             Add Floor
           </Button>
         </Box>
