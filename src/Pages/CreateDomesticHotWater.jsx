@@ -192,11 +192,7 @@ const CreateDomesticHotWater = () => {
           </Box>
         </Box>
         <Box marginTop="6px">
-          <Button
-            variant="outlined"
-            startIcon={<AddIcon />}
-            onClick={() => navigate("/createFanCreation")}
-          >
+          <Button variant="outlined" startIcon={<AddIcon />}>
             Add Floor
           </Button>
         </Box>

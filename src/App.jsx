@@ -27,6 +27,7 @@ import ChillerCreation from "./Pages/ChillerCreation";
 import CreateChiller from "./Pages/CreateChiller";
 import ActualChiller from "./Pages/ActualChiller";
 import CreateFanCreation from "./Pages/CreateFanCreation";
+import CreateFan1 from "./Pages/CreateFan1";
 
 function App() {
   const router = createBrowserRouter([
@@ -121,6 +122,10 @@ function App() {
         {
           path: "createFanCreation",
           element: <CreateFanCreation />,
+        },
+        {
+          path: "createFan1",
+          element: <CreateFan1 />,
         },
       ],
     },

@@ -94,7 +94,7 @@ function CreateFanCreation() {
             }}
           >
             <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "110px" }}>Pump No. :</Typography>
+              <Typography sx={{ minWidth: "110px" }}>System :</Typography>
               <Input
                 fullWidth
                 name="pumpNumber"
@@ -122,9 +122,7 @@ function CreateFanCreation() {
             </Box>
 
             <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "110px" }}>
-                System Served :
-              </Typography>
+              <Typography sx={{ minWidth: "110px" }}>Area Served :</Typography>
               <Input
                 fullWidth
                 name="systemServed"
@@ -137,56 +135,7 @@ function CreateFanCreation() {
               />
             </Box>
           </Box>
-
-          {/* Pump Running Mates Section */}
-          <Box sx={{ mt: 2 }}>
-            <Typography sx={{ fontWeight: "bold" }}>
-              Pump Running Mates
-            </Typography>
-            {pumpRunningMates.map((mate, index) => (
-              <Box
-                key={index}
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 1,
-                  mt: 1,
-                }}
-              >
-                <Input
-                  placeholder={`Pump Running Mate ${index + 1}`}
-                  fullWidth
-                  value={mate}
-                  onChange={(e) => handlePumpMateChange(index, e.target.value)}
-                  sx={{
-                    border: "1px solid #ccc",
-                    padding: "5px",
-                    borderRadius: "4px",
-                  }}
-                />
-                <Button
-                  variant="outlined"
-                  color="error"
-                  size="small"
-                  onClick={() => handleRemovePumpMate(index)}
-                  disabled={pumpRunningMates.length === 1} // Prevent removing last field
-                >
-                  <RemoveIcon />
-                </Button>
-              </Box>
-            ))}
-            <Button
-              variant="contained"
-              color="primary"
-              size="small"
-              sx={{ mt: 1 }}
-              onClick={handleAddPumpMate}
-            >
-              <AddIcon /> Add Pump Running Mate
-            </Button>
-          </Box>
         </Box>
-
         <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
           <Button
             variant="outlined"
@@ -195,7 +144,7 @@ function CreateFanCreation() {
           >
             Back
           </Button>
-          <Button variant="contained" onClick={() => navigate("/createPump")}>
+          <Button variant="contained" onClick={() => navigate("/createFan1")}>
             Submit
           </Button>
         </Box>
