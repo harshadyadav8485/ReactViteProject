@@ -63,8 +63,8 @@ export default function Projects() {
       ],
     },
     // {
-    //   id: "hydraulic",
-    //   title: "Hydraulic",
+    //   id: "flowMeter",
+    //   title: "Flow Meter",
     //   cards: [
     //     { id: 4, 
     //        subCards: [
@@ -116,8 +116,8 @@ export default function Projects() {
     //   ],
     // },
     // {
-    //   id: "air",
-    //   title: "Air",
+    //   id: "domesticHotWater",
+    //   title: "Domestic Hot Water",
     //   cards: [
     //     { id: 7, name: "Air Project 1", description: "Description of project 1" },
     //     { id: 8, name: "Air Project 2", description: "Description of project 2" },
@@ -125,21 +125,31 @@ export default function Projects() {
     // },
   ];
 
+
   return (
-    <Container sx={{ py: 4 }}>
-      <Typography variant="h5" gutterBottom>
+    <Container sx={{ py: 2 }}>
+      <Typography variant="h5" sx={{fontWeight: 600}} gutterBottom>
         Project Name : {projectTitle}
       </Typography>
-      {sections.map((section) => (
+
+      {/* Hydronic Card */}
+      <Typography variant="h6" sx={{fontWeight: 600, mb:2}}>Hydronics</Typography>
+      <Card sx={{ mb: 3, p: 2, boxShadow: 3, cursor: "pointer" }} 
+      // onClick={() => navigate("/hydronicOverview") }
+      >
+        <CardContent>
+          {sections.map((section) => (
         <div key={section.id} style={{ marginBottom: "2rem" }}>
-          <Box display="flex" justifyContent="flex-end">
+         <Box display="flex" justifyContent="space-between" marginBottom="10px">
+         <Typography variant="h6" gutterBottom>
+            {section.title}
+          </Typography>
+          
             <Button variant="contained" color="primary" onClick={() => navigate("/createPumpCreation")}>
               Create Pump
             </Button>
-          </Box>
-          <Typography variant="h6" gutterBottom>
-            {section.title}
-          </Typography>
+         </Box>
+         
           <Grid container spacing={3}>
             {section.cards.map((card) => (
               <Grid item xs={12} sm={6} key={card.id}>
@@ -148,56 +158,52 @@ export default function Projects() {
                     {card.subCards && (
                       <Grid container spacing={1}>
                         {card.subCards.map((subCard) => (
-  <Grid item xs={12} sm={4} key={subCard.id}>
-    <Tooltip title={`Click here to fill actual data for ${subCard.name}`}>
-      <Card
-        sx={{ p: 1, boxShadow: 1, cursor: "pointer", position: "relative" }}
-        onClick={() => navigate(`/actualPump?id=${subCard.id}`)}
-      >
-        <CardContent>
-          <Typography
-            variant="subtitle2"
-            sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}
-          >
-            {subCard.name}
-            <Tooltip title="Edit Pump Data">
-              <IconButton
-                size="small"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  navigate(`/pumpCreation?id=${subCard.id}`);
-                }}
-              >
-                <Edit fontSize="small" />
-              </IconButton>
-            </Tooltip>
-          </Typography>
-
-          {/* Show an underline for each data type */}
-          {subCard.progressList.map((progressItem) => (
-            <Typography
-              key={progressItem.label}
-              variant="body2"
-              sx={{
-                borderBottom: `3px solid ${
-                  progressItem.label === "Actual Data" && progressItem.value > 0 ? "green" : "red"
-                }`,
-                display: "inline-block",
-                width: "100%",
-                mt: 1,
-                pb: 0.5, // Space between text and underline
-              }}
-            >
-              {progressItem.label}
-            </Typography>
-          ))}
-        </CardContent>
-      </Card>
-    </Tooltip>
-  </Grid>
-))}
-
-                        
+                          <Grid item xs={12} sm={4} key={subCard.id}>
+                            <Tooltip title={`Click here to fill actual data for ${subCard.name}`}>
+                              <Card
+                                sx={{ p: 1, boxShadow: 1, cursor: "pointer" }}
+                                onClick={() => navigate(`/actualPump?id=${subCard.id}`)}
+                              >
+                                <CardContent>
+                                  <Typography
+                                    variant="subtitle2"
+                                    sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}
+                                  >
+                                    {subCard.name}
+                                    <Tooltip title="Edit Pump Data">
+                                      <IconButton
+                                        size="small"
+                                        onClick={(e) => {
+                                          e.stopPropagation();
+                                          navigate(`/pumpCreation?id=${subCard.id}`);
+                                        }}
+                                      >
+                                        <Edit fontSize="small" />
+                                      </IconButton>
+                                    </Tooltip>
+                                  </Typography>
+                                  {subCard.progressList.map((progressItem) => (
+                                    <Typography
+                                      key={progressItem.label}
+                                      variant="body2"
+                                      sx={{
+                                        borderBottom: `3px solid ${
+                                          progressItem.label === "Actual Data" && progressItem.value > 0 ? "green" : "red"
+                                        }`,
+                                        display: "inline-block",
+                                        width: "100%",
+                                        mt: 1,
+                                        pb: 0.5,
+                                      }}
+                                    >
+                                      {progressItem.label}
+                                    </Typography>
+                                  ))}
+                                </CardContent>
+                              </Card>
+                            </Tooltip>
+                          </Grid>
+                        ))}
                       </Grid>
                     )}
                   </CardContent>
@@ -207,6 +213,8 @@ export default function Projects() {
           </Grid>
         </div>
       ))}
+        </CardContent>
+      </Card>
     </Container>
   );
 }

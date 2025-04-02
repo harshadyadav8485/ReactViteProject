@@ -43,7 +43,7 @@ const CreateFlowMeter = () => {
             }}
           >
             <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "110px" }}>Meter :</Typography>
+              <Typography sx={{ minWidth: "80px" }}>Meter :</Typography>
               <Input
                 fullWidth
                 name="make"
@@ -56,7 +56,7 @@ const CreateFlowMeter = () => {
             </Box>
 
             <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "110px" }}>Service :</Typography>
+              <Typography sx={{ minWidth: "80px" }}>Service :</Typography>
               <Input
                 fullWidth
                 name="model"
@@ -69,7 +69,7 @@ const CreateFlowMeter = () => {
             </Box>
 
             <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "110px" }}>
+              <Typography sx={{ minWidth: "80px" }}>
                 Make :
               </Typography>
               <Input
@@ -84,7 +84,7 @@ const CreateFlowMeter = () => {
             </Box>
 
             <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "110px" }}>
+              <Typography sx={{ minWidth: "80px" }}>
                 Size :
               </Typography>
               <Input
@@ -99,7 +99,7 @@ const CreateFlowMeter = () => {
             </Box>
 
             <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "110px" }}>
+              <Typography sx={{ minWidth: "80px" }}>
                 Position :
               </Typography>
               <Input
@@ -123,7 +123,7 @@ const CreateFlowMeter = () => {
             }}
           >
              <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "110px" }}>Flow :</Typography>
+              <Typography sx={{ minWidth: "80px" }}>Flow :</Typography>
               <Input
                 fullWidth
                 name="size"
@@ -145,7 +145,7 @@ const CreateFlowMeter = () => {
             }}
           >
             <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "110px" }}>Signal :</Typography>
+              <Typography sx={{ minWidth: "80px" }}>Signal :</Typography>
               <Input
                 fullWidth
                 name="size"
@@ -158,7 +158,7 @@ const CreateFlowMeter = () => {
             </Box>
 
             <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "110px" }}>Flow :</Typography>
+              <Typography sx={{ minWidth: "80px" }}>Flow :</Typography>
               <Input
                 fullWidth
                 name="volts"
