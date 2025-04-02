@@ -135,18 +135,18 @@ function CreateFanCreation() {
               />
             </Box>
           </Box>
-          <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
-            <Button
-              variant="outlined"
-              onClick={() => navigate("/projects")}
-              sx={{ mr: 2 }}
-            >
-              Back
-            </Button>
-            <Button variant="contained" onClick={() => navigate("/createFan1")}>
-              Submit
-            </Button>
-          </Box>
+        </Box>
+        <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
+          <Button
+            variant="outlined"
+            onClick={() => navigate("/projects")}
+            sx={{ mr: 2 }}
+          >
+            Back
+          </Button>
+          <Button variant="contained" onClick={() => navigate("/createFan1")}>
+            Submit
+          </Button>
         </Box>
       </Box>
     </>

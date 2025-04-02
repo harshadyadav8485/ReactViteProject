@@ -82,7 +82,7 @@ const CreateFan1 = () => {
           <Box
             sx={{
               display: "grid",
-              gridTemplateColumns: "repeat(2, 1fr)", // 2 columns
+              gridTemplateColumns: "repeat(1, 1fr)", // 2 columns
               gap: 2, // Spacing between items
             }}
           >
@@ -124,7 +124,7 @@ const CreateFan1 = () => {
               />
             </Box>
 
-            <Box display="flex" alignItems="center">
+            {/* <Box display="flex" alignItems="center">
               <Typography sx={{ minWidth: "110px" }}>
                 {" "}
                 Supply Amperage :
@@ -183,7 +183,7 @@ const CreateFan1 = () => {
                   borderRadius: "4px",
                 }}
               />
-            </Box>
+            </Box> */}
           </Box>
           <Box display="flex" justifyContent="space-between">
             <Box>
@@ -191,19 +191,19 @@ const CreateFan1 = () => {
                 Add Parameters
               </Button>
             </Box>
-            <Box>
-              <Button
-                variant="outlined"
-                onClick={() => navigate("/createPumpCreation")}
-                sx={{ mr: 2 }}
-              >
-                Back
-              </Button>
-              <Button variant="contained" onClick={() => navigate("/projects")}>
-                Submit
-              </Button>
-            </Box>
           </Box>
+        </Box>
+        <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
+          <Button
+            variant="outlined"
+            onClick={() => navigate("/createPumpCreation")}
+            sx={{ mr: 2 }}
+          >
+            Back
+          </Button>
+          <Button variant="contained" onClick={() => navigate("/projects")}>
+            Submit
+          </Button>
         </Box>
       </Box>
     </>
