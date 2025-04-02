@@ -12,7 +12,7 @@ import { Divider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
 
-const CreateFan1 = () => {
+const EditFan1 = () => {
   const navigate = useNavigate();
 
   return (
@@ -22,7 +22,7 @@ const CreateFan1 = () => {
           {/* <Typography variant="h6" sx={{ fontWeight: "bold" }}>
             Create Pump
           </Typography> */}
-          <h2> Create Fan</h2>
+          <h2> Edit Fan</h2>
         </Box>
 
         <Box
@@ -53,6 +53,8 @@ const CreateFan1 = () => {
               <Input
                 fullWidth
                 name="make"
+                defaultValue="SWEGON"
+                // readOnly
                 sx={{
                   border: "1px solid #ccc",
                   padding: "5px",
@@ -66,6 +68,8 @@ const CreateFan1 = () => {
               <Input
                 fullWidth
                 name="model"
+                defaultValue="R15-H SMART"
+                // readOnly
                 sx={{
                   border: "1px solid #ccc",
                   padding: "5px",
@@ -92,6 +96,8 @@ const CreateFan1 = () => {
               <Input
                 name="supply"
                 fullWidth
+                defaultValue="0.37HP"
+                // readOnly
                 sx={{
                   border: "1px solid #ccc",
                   padding: "5px",
@@ -103,6 +109,8 @@ const CreateFan1 = () => {
               <Input
                 name="exhaust"
                 fullWidth
+                defaultValue="0.42HP"
+                // readOnly
                 sx={{
                   border: "1px solid #ccc",
                   padding: "5px",
@@ -116,6 +124,8 @@ const CreateFan1 = () => {
               <Input
                 fullWidth
                 name="volts"
+                defaultValue="115/1"
+                // readOnly
                 sx={{
                   border: "1px solid #ccc",
                   padding: "5px",
@@ -196,7 +206,7 @@ const CreateFan1 = () => {
         <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
           <Button
             variant="outlined"
-            onClick={() => navigate("/createFanCreation")}
+            onClick={() => navigate("/editFan")}
             sx={{ mr: 2 }}
           >
             Back
@@ -210,4 +220,4 @@ const CreateFan1 = () => {
   );
 };
 
-export default CreateFan1;
+export default EditFan1;
