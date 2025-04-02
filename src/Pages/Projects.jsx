@@ -165,7 +165,6 @@ export default function Projects() {
     },
   ];
 
-  
   return (
     <Container sx={{ py: 2 }}>
       <Typography variant="h5" sx={{ fontWeight: 600 }} gutterBottom>
@@ -287,90 +286,102 @@ export default function Projects() {
         </CardContent>
       </Card>
       <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
-  Air
-</Typography>
+        Air
+      </Typography>
 
-<Card sx={{ mb: 3, p: 2, boxShadow: 3 }}>
-  <CardContent>
-    {airSections.map((section) => (
-      <div key={section.id} style={{ marginBottom: "2rem" }}>
-        <Box display="flex" justifyContent="space-between" marginBottom="10px">
-          <Typography variant="h6" gutterBottom>
-            {section.title}
-          </Typography>
+      <Card sx={{ mb: 3, p: 2, boxShadow: 3 }}>
+        <CardContent>
+          {airSections.map((section) => (
+            <div key={section.id} style={{ marginBottom: "2rem" }}>
+              <Box
+                display="flex"
+                justifyContent="space-between"
+                marginBottom="10px"
+              >
+                <Typography variant="h6" gutterBottom>
+                  {section.title}
+                </Typography>
 
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => navigate("/createFanCreation")}
-          >
-            Create Fan
-          </Button>
-        </Box>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => navigate("/createFanCreation")}
+                >
+                  Create Fan
+                </Button>
+              </Box>
 
-        <Grid container spacing={2}>
-          {section.cards.flatMap((card) => 
-            card.subCards.map((subCard) => (
-              <Grid item xs={12} sm={2} key={subCard.id}>
-                <Tooltip title={`Click here to fill actual data for ${subCard.name}`}>
-                  <Card
-                    sx={{ p: 2, boxShadow: 3, cursor: "pointer" }}
-                    onClick={() => navigate(`/actualPump?id=${subCard.id}`)}
-                  >
-                    <CardContent>
-                      <Typography
-                        variant="subtitle2"
-                        sx={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "space-between",
-                        }}
+              <Grid container spacing={2}>
+                {section.cards.flatMap((card) =>
+                  card.subCards.map((subCard) => (
+                    <Grid item xs={12} sm={2} key={subCard.id}>
+                      <Tooltip
+                        title={`Click here to fill actual data for ${subCard.name}`}
                       >
-                        {subCard.name}
-                        <Tooltip title="Edit Fan Data">
-                          <IconButton
-                            size="small"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              navigate(`/pumpCreation?id=${subCard.id}`);
-                            }}
-                          >
-                            <Edit fontSize="small" />
-                          </IconButton>
-                        </Tooltip>
-                      </Typography>
-                      {subCard.progressList.map((progressItem) => (
-                        <Typography
-                          key={progressItem.label}
-                          variant="body2"
-                          sx={{
-                            borderBottom: `3px solid ${
-                              progressItem.label === "Actual Data" &&
-                              progressItem.value > 0
-                                ? "green"
-                                : "red"
-                            }`,
-                            display: "inline-block",
-                            width: "100%",
-                            mt: 1,
-                            pb: 0.5,
-                          }}
+                        <Card
+                          sx={{ p: 2, boxShadow: 3, cursor: "pointer" }}
+                          onClick={() =>
+                            navigate(`/actualPump?id=${subCard.id}`)
+                          }
                         >
-                          {progressItem.label}
-                        </Typography>
-                      ))}
-                    </CardContent>
-                  </Card>
-                </Tooltip>
+                          <CardContent>
+                            <Typography
+                              variant="subtitle2"
+                              sx={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "space-between",
+                              }}
+                            >
+                              {subCard.name}
+                              <Tooltip title="Edit Fan Data">
+                                <IconButton
+                                  size="small"
+                                  // onClick={(e) => {
+                                  //   e.stopPropagation();
+                                  //   navigate(`/pumpCreation?id=${subCard.id}`);
+                                  // }}
+                                  // onClick={() => navigate("/editFan")}
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    navigate(`/editFan?id=${subCard.id}`);
+                                  }}
+                                >
+                                  <Edit fontSize="small" />
+                                </IconButton>
+                              </Tooltip>
+                            </Typography>
+                            {subCard.progressList.map((progressItem) => (
+                              <Typography
+                                key={progressItem.label}
+                                variant="body2"
+                                sx={{
+                                  borderBottom: `3px solid ${
+                                    progressItem.label === "Actual Data" &&
+                                    progressItem.value > 0
+                                      ? "green"
+                                      : "red"
+                                  }`,
+                                  display: "inline-block",
+                                  width: "100%",
+                                  mt: 1,
+                                  pb: 0.5,
+                                }}
+                              >
+                                {progressItem.label}
+                              </Typography>
+                            ))}
+                          </CardContent>
+                        </Card>
+                      </Tooltip>
+                    </Grid>
+                  ))
+                )}
               </Grid>
-            ))
-          )}
-        </Grid>
-      </div>
-    ))}
-  </CardContent>
-</Card>
-
+            </div>
+          ))}
+        </CardContent>
+      </Card>
     </Container>
   );
 }

@@ -28,6 +28,7 @@ import CreateChiller from "./Pages/CreateChiller";
 import ActualChiller from "./Pages/ActualChiller";
 import CreateFanCreation from "./Pages/CreateFanCreation";
 import CreateFan1 from "./Pages/CreateFan1";
+import EditFan1 from "./Pages/EditFan1";
 
 function App() {
   const router = createBrowserRouter([
@@ -70,6 +71,10 @@ function App() {
         {
           path: "editFan",
           element: <EditFan />,
+        },
+        {
+          path: "editFan1",
+          element: <EditFan1 />,
         },
         {
           path: "actualFan",
