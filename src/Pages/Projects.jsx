@@ -143,6 +143,28 @@ export default function Projects() {
     // },
   ];
 
+  const airSections = [
+    {
+      id: "fan",
+      title: "Fan",
+      cards: [
+        {
+          id: 1,
+          subCards: [
+            {
+              id: "1a",
+              name: "HRV",
+              progressList: [
+                { label: "Actual Data", value: 100, color: "primary" },
+                { label: "Pump Performance", value: 100, color: "success" },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ];
+
   return (
     <Container sx={{ py: 2 }}>
       <Typography variant="h5" sx={{ fontWeight: 600 }} gutterBottom>
@@ -211,6 +233,120 @@ export default function Projects() {
                                       >
                                         {subCard.name}
                                         <Tooltip title="Edit Pump Data">
+                                          <IconButton
+                                            size="small"
+                                            onClick={(e) => {
+                                              e.stopPropagation();
+                                              navigate(
+                                                `/pumpCreation?id=${subCard.id}`
+                                              );
+                                            }}
+                                          >
+                                            <Edit fontSize="small" />
+                                          </IconButton>
+                                        </Tooltip>
+                                      </Typography>
+                                      {subCard.progressList.map(
+                                        (progressItem) => (
+                                          <Typography
+                                            key={progressItem.label}
+                                            variant="body2"
+                                            sx={{
+                                              borderBottom: `3px solid ${
+                                                progressItem.label ===
+                                                  "Actual Data" &&
+                                                progressItem.value > 0
+                                                  ? "green"
+                                                  : "red"
+                                              }`,
+                                              display: "inline-block",
+                                              width: "100%",
+                                              mt: 1,
+                                              pb: 0.5,
+                                            }}
+                                          >
+                                            {progressItem.label}
+                                          </Typography>
+                                        )
+                                      )}
+                                    </CardContent>
+                                  </Card>
+                                </Tooltip>
+                              </Grid>
+                            ))}
+                          </Grid>
+                        )}
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                ))}
+              </Grid>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
+
+      <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
+        Air
+      </Typography>
+      <Card
+        sx={{ mb: 3, p: 2, boxShadow: 3, cursor: "pointer" }}
+        // onClick={() => navigate("/hydronicOverview") }
+      >
+        <CardContent>
+          {airSections.map((section) => (
+            <div key={section.id} style={{ marginBottom: "2rem" }}>
+              <Box
+                display="flex"
+                justifyContent="space-between"
+                marginBottom="10px"
+              >
+                <Typography variant="h6" gutterBottom>
+                  {section.title}
+                </Typography>
+
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => navigate("/createFanCreation")}
+                >
+                  Create Fan
+                </Button>
+              </Box>
+
+              <Grid container spacing={3}>
+                {section.cards.map((card) => (
+                  <Grid item xs={12} sm={6} key={card.id}>
+                    <Card sx={{ p: 2, boxShadow: 3 }}>
+                      <CardContent>
+                        {card.subCards && (
+                          <Grid container spacing={1}>
+                            {card.subCards.map((subCard) => (
+                              <Grid item xs={12} sm={4} key={subCard.id}>
+                                <Tooltip
+                                  title={`Click here to fill actual data for ${subCard.name}`}
+                                >
+                                  <Card
+                                    sx={{
+                                      p: 1,
+                                      boxShadow: 1,
+                                      cursor: "pointer",
+                                    }}
+                                    onClick={() =>
+                                      navigate(`/actualPump?id=${subCard.id}`)
+                                    }
+                                  >
+                                    <CardContent>
+                                      <Typography
+                                        variant="subtitle2"
+                                        sx={{
+                                          display: "flex",
+                                          alignItems: "center",
+                                          justifyContent: "space-between",
+                                        }}
+                                      >
+                                        {subCard.name}
+                                        <Tooltip title="Edit Fan Data">
                                           <IconButton
                                             size="small"
                                             onClick={(e) => {
