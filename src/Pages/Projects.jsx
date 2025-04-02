@@ -161,11 +161,9 @@ export default function Projects() {
             },
           ],
         },
-
       ],
     },
   ];
-
 
   return (
     <Container sx={{ py: 2 }}>
@@ -401,7 +399,6 @@ export default function Projects() {
           ))}
         </CardContent>
       </Card>
-      
     </Container>
   );
 }
