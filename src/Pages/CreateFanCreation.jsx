@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 
-function CreatePumpCreation() {
+function CreateFanCreation() {
   const navigate = useNavigate();
 
   const [pumpRunningMates, setPumpRunningMates] = useState(["", ""]);
@@ -47,11 +47,11 @@ function CreatePumpCreation() {
     <>
       <Box sx={{ pl: 9, pr: 9, mt: 1 }}>
         <Box sx={{ mb: 1 }}>
-          <h2>Pump Creation</h2>
+          <h2>Fan Creation</h2>
         </Box>
 
         {/* Dropdown for Pump Type */}
-        <Box sx={{ mb: 2 }}>
+        {/* <Box sx={{ mb: 2 }}>
           <Typography sx={{ fontWeight: "bold" }}>Pump Type:</Typography>
           <Select
             value={pumpType}
@@ -71,7 +71,7 @@ function CreatePumpCreation() {
             <MenuItem value="Stand Alone">Stand Alone</MenuItem>
             <MenuItem value="Stand Alone">Lead/Lag</MenuItem>
           </Select>
-        </Box>
+        </Box> */}
 
         <Box
           component="form"
@@ -204,4 +204,4 @@ function CreatePumpCreation() {
   );
 }
 
-export default CreatePumpCreation;
+export default CreateFanCreation;
