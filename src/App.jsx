@@ -26,7 +26,9 @@ import CreateDomesticHotWater from "./Pages/CreateDomesticHotWater";
 import ChillerCreation from "./Pages/ChillerCreation";
 import CreateChiller from "./Pages/CreateChiller";
 import ActualChiller from "./Pages/ActualChiller";
-
+import CreateFanCreation from "./Pages/CreateFanCreation";
+import CreateFan1 from "./Pages/CreateFan1";
+import EditFan1 from "./Pages/EditFan1";
 
 function App() {
   const router = createBrowserRouter([
@@ -71,6 +73,10 @@ function App() {
           element: <EditFan />,
         },
         {
+          path: "editFan1",
+          element: <EditFan1 />,
+        },
+        {
           path: "actualFan",
           element: <ActualFan />,
         },
@@ -80,44 +86,52 @@ function App() {
         },
         {
           path: "home",
-          element: <Home/>,
+          element: <Home />,
         },
         {
           path: "pumpCreation",
-          element: <PumpCreation/>,
+          element: <PumpCreation />,
         },
         {
           path: "allPump",
-          element: <AllPump/>,
+          element: <AllPump />,
         },
         {
           path: "sampleTestData",
-          element: <SampleTestData/>,
+          element: <SampleTestData />,
         },
         {
           path: "projects",
-          element: <Projects/>,
+          element: <Projects />,
         },
         {
           path: "createProject",
-          element: <CreateProject/>,
+          element: <CreateProject />,
         },
         {
           path: "editProject",
-          element: <EditProject/>,
+          element: <EditProject />,
         },
         {
           path: "createPumpCreation",
-          element: <CreatePumpCreation/>,
+          element: <CreatePumpCreation />,
         },
         {
           path: "createFlowMeter",
-          element: <CreateFlowMeter/>,
+          element: <CreateFlowMeter />,
         },
         {
           path: "createDomesticHotWater",
-          element: <CreateDomesticHotWater/>,
-        }
+          element: <CreateDomesticHotWater />,
+        },
+        {
+          path: "createFanCreation",
+          element: <CreateFanCreation />,
+        },
+        {
+          path: "createFan1",
+          element: <CreateFan1 />,
+        },
       ],
     },
   ]);

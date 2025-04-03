@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 
-function EditFan() {
+function CreateFanCreation() {
   const navigate = useNavigate();
 
   const [pumpRunningMates, setPumpRunningMates] = useState(["", ""]);
@@ -47,7 +47,7 @@ function EditFan() {
     <>
       <Box sx={{ pl: 9, pr: 9, mt: 1 }}>
         <Box sx={{ mb: 1 }}>
-          <h2>Edit Fan</h2>
+          <h2>Fan Creation</h2>
         </Box>
 
         {/* Dropdown for Pump Type */}
@@ -98,8 +98,7 @@ function EditFan() {
               <Input
                 fullWidth
                 name="pumpNumber"
-                defaultValue="ERV-1"
-                // readOnly
+                readOnly
                 sx={{
                   border: "1px solid #ccc",
                   padding: "5px",
@@ -113,8 +112,7 @@ function EditFan() {
               <Input
                 fullWidth
                 name="location"
-                defaultValue="KITCHEN AREA "
-                // readOnly
+                readOnly
                 sx={{
                   border: "1px solid #ccc",
                   padding: "5px",
@@ -128,8 +126,7 @@ function EditFan() {
               <Input
                 fullWidth
                 name="systemServed"
-                defaultValue="ENTIRE SPACE"
-                // readOnly
+                readOnly
                 sx={{
                   border: "1px solid #ccc",
                   padding: "5px",
@@ -147,7 +144,7 @@ function EditFan() {
           >
             Back
           </Button>
-          <Button variant="contained" onClick={() => navigate("/editFan1")}>
+          <Button variant="contained" onClick={() => navigate("/createFan1")}>
             Submit
           </Button>
         </Box>
@@ -156,4 +153,4 @@ function EditFan() {
   );
 }
 
-export default EditFan;
+export default CreateFanCreation;

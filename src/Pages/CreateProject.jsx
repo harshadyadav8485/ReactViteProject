@@ -38,12 +38,12 @@ const CreateProject = () => {
           <Box
             sx={{
               display: "grid",
-              gridTemplateColumns: "repeat(2, 1fr)", 
-              gap: 2, 
+              gridTemplateColumns: "repeat(2, 1fr)",
+              gap: 2,
             }}
           >
             <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "110px" }}>Project Id :</Typography>
+              <Typography sx={{ minWidth: "100px" }}>Project Id :</Typography>
               <Input
                 fullWidth
                 name="make"
@@ -56,7 +56,7 @@ const CreateProject = () => {
             </Box>
 
             <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "110px" }}>Project Name :</Typography>
+              <Typography sx={{ minWidth: "100px" }}>Project Name :</Typography>
               <Input
                 fullWidth
                 name="model"
@@ -69,7 +69,7 @@ const CreateProject = () => {
             </Box>
 
             <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "110px" }}>
+              <Typography sx={{ minWidth: "100px" }}>
                 Customer Name :
               </Typography>
               <Input
@@ -82,18 +82,20 @@ const CreateProject = () => {
                 }}
               />
             </Box>
-          </Box> 
+          </Box>
         </Box>
-        <Box display="flex" justifyContent="flex-end" sx={{mt:2}}>
-              <Button
-                variant="outlined"
-                onClick={() => navigate("/allPump")}
-                sx={{ mr: 2 }}
-              >
-                Back
-              </Button>
-              <Button variant="contained"  onClick={() => navigate("/allPump")}>Submit</Button>
-            </Box>
+        <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
+          <Button
+            variant="outlined"
+            onClick={() => navigate("/allPump")}
+            sx={{ mr: 2 }}
+          >
+            Back
+          </Button>
+          <Button variant="contained" onClick={() => navigate("/allPump")}>
+            Submit
+          </Button>
+        </Box>
       </Box>
     </>
   );

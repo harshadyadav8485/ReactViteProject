@@ -1,14 +1,21 @@
 import React, { useState } from "react";
-import { Box, Input, Button, Typography, Select, MenuItem } from "@mui/material";
+import {
+  Box,
+  Input,
+  Button,
+  Typography,
+  Select,
+  MenuItem,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 
 function CreatePumpCreation() {
   const navigate = useNavigate();
-  
-   const [pumpRunningMates, setPumpRunningMates] = useState(["", ""]);
-   
+
+  const [pumpRunningMates, setPumpRunningMates] = useState(["", ""]);
+
   // State for dropdown selection
   const [pumpType, setPumpType] = useState("");
 
@@ -46,25 +53,24 @@ function CreatePumpCreation() {
         {/* Dropdown for Pump Type */}
         <Box sx={{ mb: 2 }}>
           <Typography sx={{ fontWeight: "bold" }}>Pump Type:</Typography>
-                <Select
-                    value={pumpType}
-                    onChange={handlePumpTypeChange}
-                    fullWidth
-                    sx={{
-                        border: "1px solid #ccc",
-                        padding: "2px", 
-                        borderRadius: "4px",
-                        mt: 1,
-                        height: "40px", 
-                        fontSize: "14px", 
-                    }}
-                    >
-                    <MenuItem value="Parallel">Parallel</MenuItem>
-                    <MenuItem value="Stand By">Stand By</MenuItem>
-                    <MenuItem value="Stand Alone">Stand Alone</MenuItem>
-                    <MenuItem value="Stand Alone">Lead/Lag</MenuItem>
-                    </Select>
-
+          <Select
+            value={pumpType}
+            onChange={handlePumpTypeChange}
+            fullWidth
+            sx={{
+              border: "1px solid #ccc",
+              padding: "2px",
+              borderRadius: "4px",
+              mt: 1,
+              height: "40px",
+              fontSize: "14px",
+            }}
+          >
+            <MenuItem value="Parallel">Parallel</MenuItem>
+            <MenuItem value="Stand By">Stand By</MenuItem>
+            <MenuItem value="Stand Alone">Stand Alone</MenuItem>
+            <MenuItem value="Stand Alone">Lead/Lag</MenuItem>
+          </Select>
         </Box>
 
         <Box
@@ -134,7 +140,9 @@ function CreatePumpCreation() {
 
           {/* Pump Running Mates Section */}
           <Box sx={{ mt: 2 }}>
-            <Typography sx={{ fontWeight: "bold" }}>Pump Running Mates</Typography>
+            <Typography sx={{ fontWeight: "bold" }}>
+              Pump Running Mates
+            </Typography>
             {pumpRunningMates.map((mate, index) => (
               <Box
                 key={index}
@@ -180,14 +188,14 @@ function CreatePumpCreation() {
         </Box>
 
         <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
-             <Button
-                          variant="outlined"
-                          onClick={() => navigate("/projects")}
-                          sx={{ mr: 2 }}
-                        >
-                          Back
-                        </Button>
-          <Button variant="contained" onClick={() => navigate("/createpump")}>
+          <Button
+            variant="outlined"
+            onClick={() => navigate("/projects")}
+            sx={{ mr: 2 }}
+          >
+            Back
+          </Button>
+          <Button variant="contained" onClick={() => navigate("/createPump")}>
             Submit
           </Button>
         </Box>
