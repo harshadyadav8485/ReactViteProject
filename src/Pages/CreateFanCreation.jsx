@@ -145,7 +145,7 @@ function CreateFanCreation() {
             Back
           </Button>
           <Button variant="contained" onClick={() => navigate("/createFan1")}>
-            Submit
+            Next{" "}
           </Button>
         </Box>
       </Box>

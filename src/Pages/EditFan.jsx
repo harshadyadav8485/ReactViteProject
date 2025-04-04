@@ -148,7 +148,7 @@ function EditFan() {
             Back
           </Button>
           <Button variant="contained" onClick={() => navigate("/editFan1")}>
-            Submit
+            Next{" "}
           </Button>
         </Box>
       </Box>
