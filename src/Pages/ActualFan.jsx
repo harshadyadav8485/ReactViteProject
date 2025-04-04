@@ -26,53 +26,11 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
-import pump_report from '../assets/pump_report.pdf';
+import fan_report from '../assets/fan_report.pdf';
 
 const ActualFan = () => {
   const navigate = useNavigate();
   const [tabIndex, setTabIndex] = useState(0);
-
-  const [formData, setFormData] = useState({
-    pumpOperatingHeadSP: "",
-    pumpOperatingHeadDP: "",
-    pumpOperatingHeadTP: "",
-    pumpShutOffHeadSP: "",
-    pumpShutOffHeadDP: "",
-    pumpShutOffHeadTP: "",
-    pumpSpeed: "",
-    motorAmps: "",
-    specifiedHead: "",
-
-    pumpOperatingHeadSP1: "",
-    pumpOperatingHeadDP1: "",
-    pumpOperatingHeadTP1: "",
-    pumpShutOffHeadSP1: "",
-    pumpShutOffHeadDP1: "",
-    pumpShutOffHeadTP1: "",
-    pumpSpeed1: "",
-    motorAmps1: "",
-    specifiedHead1: "",
-
-    pumpOperatingHeadSP2: "",
-    pumpOperatingHeadDP2: "",
-    pumpOperatingHeadTP2: "",
-    pumpShutOffHeadSP2: "",
-    pumpShutOffHeadDP2: "",
-    pumpShutOffHeadTP2: "",
-    pumpSpeed2: "",
-    motorAmps2: "",
-    specifiedHead2: "",
-
-    pumpOperatingHeadSP3: "",
-    pumpOperatingHeadDP3: "",
-    pumpOperatingHeadTP3: "",
-    pumpShutOffHeadSP3: "",
-    pumpShutOffHeadDP3: "",
-    pumpShutOffHeadTP3: "",
-    pumpSpeed3: "",
-    motorAmps3: "",
-    specifiedHead3: "",
-  });
 
   const [comments, setComments] = useState("");
 
@@ -82,21 +40,6 @@ const ActualFan = () => {
       if (isNaN(value)) {
         alert("Please enter a valid number for conversion.");
         return prev;
-      }
-
-      let convertedValue;
-      switch (fieldKey) {
-        case "pumpCapacity":
-        case "systemCapacity":
-          // Check the format and convert accordingly
-          if (prev[fieldKey].includes("L/s")) {
-            convertedValue = (value * 15.85).toFixed(2) + " GPM"; // Convert L/s to GPM
-          } else {
-            convertedValue = (value * 0.0631).toFixed(2) + " L/s"; // Convert GPM to L/s
-          }
-          break;
-        default:
-          convertedValue = value; // If no conversion is needed
       }
 
       return { ...prev, [fieldKey]: convertedValue };
@@ -208,7 +151,7 @@ const ActualFan = () => {
     );
   };
 
-  const [pump, setPump] = useState("P-06-07A");
+  const [fan, setFan] = useState("ERV-1");
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [selectedForms, setSelectedForms] = useState([]);
 
@@ -229,7 +172,7 @@ const ActualFan = () => {
             System :
           </Typography>
           <Select
-            value={pump}
+            value={fan}
             onChange={handleChange}
             variant="standard"
             style={{
@@ -238,7 +181,7 @@ const ActualFan = () => {
               borderBottom: "none",
             }}
           >
-            <MenuItem value="P-06-07A">ERV-1</MenuItem>
+            <MenuItem value="ERV-1">ERV-1</MenuItem>
           </Select>
         </Box>
         <Tabs
@@ -275,7 +218,6 @@ const ActualFan = () => {
                     >
                       Actual Value
                     </TableCell>
-                    {/* <TableCell sx={{ color: "white", fontWeight: "bold", px: 1, textAlign: "center" }}>Action</TableCell> */}
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -287,40 +229,30 @@ const ActualFan = () => {
                       </TableCell>
                       <TableCell sx={{ py: 0.3, px: 1, textAlign: "center" }}>
                         <Box sx={{ display: "flex", justifyContent: "center" }}>
-                          <TextField
-                            variant="outlined"
-                            size="small"
-                            value={actualValues[row.key]}
-                            onChange={(e) =>
-                              handleChange(row.key, e.target.value)
-                            }
-                            sx={{
-                              width: "100px",
-                              "& .MuiInputBase-root": {
-                                height: "30px",
-                                fontSize: "0.75rem",
-                              },
-                            }}
-                          />
+                        <TextField
+                          variant="outlined"
+                          size="small"
+                          value={actualValues[row.key]}
+                          onChange={(e) => handleChange(row.key, e.target.value)}
+                          sx={{
+                            width: 'auto',
+                            minWidth: '100px',
+                            fontSize: '0.75rem',
+                            '& .MuiInputBase-root': {
+                              height: '30px',
+                              fontSize: '0.75rem',
+                              overflow: 'hidden',
+                              textOverflow: 'ellipsis',
+                            },
+                            '& input': {
+                              width: '100%',
+                            },
+                          }}
+                        />
+
                         </Box>
                       </TableCell>
-                      {/* <TableCell sx={{ py: 0.3, px: 1, textAlign: "center" }}>
-                      {row.showConverter && (
-                        <Button
-                          variant="contained"
-                          size="small"
-                          onClick={() => handleConvert(row.key)}
-                          sx={{
-                            minWidth: "60px",
-                            height: "30px",
-                            fontSize: "0.75rem",
-                            padding: "2px 6px",
-                          }}
-                        >
-                          Convert
-                        </Button>
-                      )}
-                    </TableCell> */}
+                     
                     </TableRow>
                   ))}
                 </TableBody>
@@ -527,7 +459,7 @@ const ActualFan = () => {
 
                         <Box display="flex" alignItems="center">
                           <Typography sx={{ minWidth: "110px" }}>
-                          Standard Static Pressure :
+                          Standard Static Pressure(SSP) :
                           </Typography>
                           <Input
                             fullWidth
@@ -542,7 +474,7 @@ const ActualFan = () => {
         
                         <Box display="flex" alignItems="center">
                           <Typography sx={{ minWidth: "110px" }}>
-                          Differential Static Pressure :
+                          Differential Static Pressure(DSP) :
                           </Typography>
                           <Input
                             fullWidth
@@ -557,7 +489,7 @@ const ActualFan = () => {
         
                         <Box display="flex" alignItems="center">
                           <Typography sx={{ minWidth: "110px" }}>
-                          Total Static Pressure :
+                          Total Static Pressure(TSP) :
                           </Typography>
                           <Input
                             fullWidth
@@ -576,7 +508,7 @@ const ActualFan = () => {
 
                         <Box display="flex" alignItems="center">
                           <Typography sx={{ minWidth: "110px" }}>
-                          Standard Static Pressure :
+                          Standard Static Pressure(SSP) :
                           </Typography>
                           <Input
                             fullWidth
@@ -591,7 +523,7 @@ const ActualFan = () => {
         
                         <Box display="flex" alignItems="center">
                           <Typography sx={{ minWidth: "110px" }}>
-                          Differential Static Pressure   :
+                          Differential Static Pressure(DSP)   :
                           </Typography>
                           <Input
                             fullWidth
@@ -606,7 +538,7 @@ const ActualFan = () => {
         
                         <Box display="flex" alignItems="center">
                           <Typography sx={{ minWidth: "110px" }}>
-                          Total Static Pressure :
+                          Total Static Pressure(TSP) :
                           </Typography>
                           <Input
                             fullWidth
@@ -817,8 +749,10 @@ const ActualFan = () => {
                         >
                           Back
                         </Button>
-                        <Button variant="contained" onClick={handleSubmit}>
-                          Submit
+                        <Button variant="contained" onClick={handleSubmit} sx={{ color: "white" }}>
+                          <a href={fan_report} download="fan_report" style={{ color: "inherit", textDecoration: "none" }}>
+                              Submit & Generate Report
+                          </a>
                         </Button>
                       </Box>
         

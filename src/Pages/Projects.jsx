@@ -156,7 +156,7 @@ export default function Projects() {
               name: "HRV",
               progressList: [
                 { label: "Actual Data", value: 100, color: "primary" },
-                { label: "Pump Performance", value: 100, color: "success" },
+                { label: "Fan Performance", value: 100, color: "success" },
               ],
             },
           ],
@@ -321,7 +321,7 @@ export default function Projects() {
                         <Card
                           sx={{ p: 2, boxShadow: 3, cursor: "pointer" }}
                           onClick={() =>
-                            navigate(`/actualPump?id=${subCard.id}`)
+                            navigate(`/actualFan`)
                           }
                         >
                           <CardContent>
