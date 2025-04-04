@@ -196,7 +196,7 @@ function CreatePumpCreation() {
             Back
           </Button>
           <Button variant="contained" onClick={() => navigate("/createPump")}>
-            Submit
+            Next{" "}
           </Button>
         </Box>
       </Box>
