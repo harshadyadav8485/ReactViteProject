@@ -153,7 +153,7 @@ export default function Projects() {
           subCards: [
             {
               id: "1a",
-              name: "HRV",
+              name: "ERV-1",
               progressList: [
                 { label: "Actual Data", value: 100, color: "primary" },
                 { label: "Fan Performance", value: 100, color: "success" },
@@ -320,9 +320,7 @@ export default function Projects() {
                       >
                         <Card
                           sx={{ p: 2, boxShadow: 3, cursor: "pointer" }}
-                          onClick={() =>
-                            navigate(`/actualFan`)
-                          }
+                          onClick={() => navigate(`/actualFan`)}
                         >
                           <CardContent>
                             <Typography
