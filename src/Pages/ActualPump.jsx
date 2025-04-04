@@ -26,7 +26,7 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
-import pump_report from '../assets/pump_report.pdf';
+import pump_report from "../assets/pump_report.pdf";
 
 const ActualPump = () => {
   const navigate = useNavigate();
@@ -1327,34 +1327,41 @@ const ActualPump = () => {
                 Pump
               </Typography>
               <Box>
-                <Box display="flex" alignItems="center" marginBottom="6px">
+                <Box display="flex" alignItems="center" marginBottom="12px">
                   <Typography sx={{ minWidth: "150px" }}>
                     Pump Capacity:
                   </Typography>
                   <Box display="flex" alignItems="center" gap={2}>
-                    {/* <TextField defaultValue="34.700 L/S"  fullWidth variant="outlined" />
-              <TextField label="Actual Value" fullWidth variant="outlined" /> */}
-                    <Input
+                    <TextField
+                      defaultValue="34.700 L/S"
+                      label="Specified Value"
                       fullWidth
-                      name="text"
-                      defaultValue="37.700 L/s"
-                      readOnly
+                      variant="outlined"
+                      InputProps={{ readOnly: true }}
                       sx={{
-                        border: "1px solid #ccc",
-                        padding: "5px",
-                        borderRadius: "4px",
+                        "& .MuiInputBase-root": {
+                          height: 40,
+                        },
+                        "& .MuiInputBase-input": {
+                          padding: "10px 14px",
+                        },
                       }}
                     />
-                    <Input
+                    <TextField
+                      label="Actual Value"
                       fullWidth
-                      name="text"
-                      placeholder="Actual Value"
+                      variant="outlined"
+                      InputProps={{ readOnly: true }}
                       sx={{
-                        border: "1px solid #ccc",
-                        padding: "5px",
-                        borderRadius: "4px",
+                        "& .MuiInputBase-root": {
+                          height: 40,
+                        },
+                        "& .MuiInputBase-input": {
+                          padding: "10px 14px",
+                        },
                       }}
                     />
+
                     <Button
                       variant="contained"
                       size="small"
@@ -1376,29 +1383,34 @@ const ActualPump = () => {
                     System Capacity:
                   </Typography>
                   <Box display="flex" alignItems="center" gap={2}>
-                    {/* <TextField defaultValue="187.629 L/S" fullWidth variant="outlined" />
-              <TextField label="Actual Value" fullWidth variant="outlined" /> */}
-                    <Input
-                      fullWidth
-                      name="text"
+                    <TextField
                       defaultValue="187.629 L/s"
-                      readOnly
-                      sx={{
-                        border: "1px solid #ccc",
-                        padding: "5px",
-                        borderRadius: "4px",
-                      }}
-                    />
-                    <Input
+                      label="Specified Value"
                       fullWidth
-                      name="text"
-                      placeholder="Actual Value"
+                      variant="outlined"
                       sx={{
-                        border: "1px solid #ccc",
-                        padding: "5px",
-                        borderRadius: "4px",
+                        "& .MuiInputBase-root": {
+                          height: 40,
+                        },
+                        "& .MuiInputBase-input": {
+                          padding: "10px 14px",
+                        },
                       }}
                     />
+                    <TextField
+                      label="Actual Value"
+                      fullWidth
+                      variant="outlined"
+                      sx={{
+                        "& .MuiInputBase-root": {
+                          height: 40,
+                        },
+                        "& .MuiInputBase-input": {
+                          padding: "10px 14px",
+                        },
+                      }}
+                    />
+
                     <Button
                       variant="contained"
                       size="small"
@@ -1833,12 +1845,19 @@ const ActualPump = () => {
                 >
                   Back
                 </Button>
-                <Button variant="contained" onClick={handleSubmit} sx={{ color: "white" }}>
-                  <a href={pump_report} download="pump_report" style={{ color: "inherit", textDecoration: "none" }}>
+                <Button
+                  variant="contained"
+                  onClick={handleSubmit}
+                  sx={{ color: "white" }}
+                >
+                  <a
+                    href={pump_report}
+                    download="pump_report"
+                    style={{ color: "inherit", textDecoration: "none" }}
+                  >
                     Submit & Generate Report
                   </a>
                 </Button>
-
               </Box>
 
               <Snackbar

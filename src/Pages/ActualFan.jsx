@@ -26,7 +26,7 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
-import fan_report from '../assets/fan_report.pdf';
+import fan_report from "../assets/fan_report.pdf";
 
 const ActualFan = () => {
   const navigate = useNavigate();
@@ -52,10 +52,10 @@ const ActualFan = () => {
   const [actualValues, setActualValues] = useState({
     make: " MITSUBISHI ELECTRIC",
     model: "LGH-F470RVX2-E",
-    supplyFanCapacity: '387 L/s',
-    supplyOutletCapacity: '387 L/s',
-    exhaustFanCapacitycity: '309 L/s',
-    exhaustOutletCapacity: '309 L/s',
+    supplyFanCapacity: "387 L/s",
+    supplyOutletCapacity: "387 L/s",
+    exhaustFanCapacitycity: "309 L/s",
+    exhaustOutletCapacity: "309 L/s",
     size: "",
     volts: "575/3",
     supply: "0.37HP",
@@ -67,11 +67,11 @@ const ActualFan = () => {
   };
 
   const fanData = [
-    { 
-      field: "Make", 
-      specified: "SWEGON", 
-      actual: "MITSUBISHI ELECTRIC", 
-      key: "make" 
+    {
+      field: "Make",
+      specified: "SWEGON",
+      actual: "MITSUBISHI ELECTRIC",
+      key: "make",
     },
     {
       field: "Model",
@@ -104,32 +104,31 @@ const ActualFan = () => {
       actual: "309 L/s",
       key: "exhaustOutletCapacity",
     },
-    { 
-      field: "Motor Size", 
-      specified: "-", 
-      actual: "-", 
-      key: "size" 
+    {
+      field: "Motor Size",
+      specified: "-",
+      actual: "-",
+      key: "size",
     },
-    { 
-      field: "Supply", 
-      specified: "-", 
-      actual: "0.37 HP", 
-      key: "supply" 
+    {
+      field: "Supply",
+      specified: "-",
+      actual: "0.37 HP",
+      key: "supply",
     },
-    { 
-      field: "Exhaust", 
-      specified: "-", 
-      actual: "0.42 HP", 
-      key: "exhaust" 
+    {
+      field: "Exhaust",
+      specified: "-",
+      actual: "0.42 HP",
+      key: "exhaust",
     },
-    { 
+    {
       field: "Volts/Phase",
-      specified: "115/1", 
-      actual: "115/1", 
-      key: "volts" 
+      specified: "115/1",
+      actual: "115/1",
+      key: "volts",
     },
-  ];	
-
+  ];
 
   const handleCommentChange = (e) => {
     setComments(e.target.value);
@@ -229,30 +228,30 @@ const ActualFan = () => {
                       </TableCell>
                       <TableCell sx={{ py: 0.3, px: 1, textAlign: "center" }}>
                         <Box sx={{ display: "flex", justifyContent: "center" }}>
-                        <TextField
-                          variant="outlined"
-                          size="small"
-                          value={actualValues[row.key]}
-                          onChange={(e) => handleChange(row.key, e.target.value)}
-                          sx={{
-                            width: 'auto',
-                            minWidth: '100px',
-                            fontSize: '0.75rem',
-                            '& .MuiInputBase-root': {
-                              height: '30px',
-                              fontSize: '0.75rem',
-                              overflow: 'hidden',
-                              textOverflow: 'ellipsis',
-                            },
-                            '& input': {
-                              width: '100%',
-                            },
-                          }}
-                        />
-
+                          <TextField
+                            variant="outlined"
+                            size="small"
+                            value={actualValues[row.key]}
+                            onChange={(e) =>
+                              handleChange(row.key, e.target.value)
+                            }
+                            sx={{
+                              width: "auto",
+                              minWidth: "100px",
+                              fontSize: "0.75rem",
+                              "& .MuiInputBase-root": {
+                                height: "30px",
+                                fontSize: "0.75rem",
+                                overflow: "hidden",
+                                textOverflow: "ellipsis",
+                              },
+                              "& input": {
+                                width: "100%",
+                              },
+                            }}
+                          />
                         </Box>
                       </TableCell>
-                     
                     </TableRow>
                   ))}
                 </TableBody>
@@ -315,464 +314,519 @@ const ActualFan = () => {
 
       {tabIndex === 1 && (
         <>
-                  <Box sx={{ pl: 9, pr: 9, mt: 1 }}>
-                    <Box
-                      component="form"
+          <Box sx={{ pl: 9, pr: 9, mt: 1 }}>
+            <Box
+              component="form"
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 2,
+                maxWidth: 1100,
+                margin: "auto",
+                padding: 3,
+                boxShadow: 3,
+                borderRadius: 2,
+              }}
+            >
+              <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                Fan
+              </Typography>
+
+              <Box
+                sx={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(2, 1fr)",
+                  gap: 2,
+                }}
+              >
+                <Box display="flex" alignItems="center">
+                  <Typography sx={{ minWidth: "110px" }}>
+                    Supply Fan R.P.M :
+                  </Typography>
+                  <Input
+                    fullWidth
+                    name="amperage"
+                    sx={{
+                      border: "1px solid #ccc",
+                      padding: "5px",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </Box>
+
+                <Box display="flex" alignItems="center">
+                  <Typography sx={{ minWidth: "110px" }}>
+                    Exhaust Fan R.P.M :
+                  </Typography>
+                  <Input
+                    fullWidth
+                    name="rpm"
+                    sx={{
+                      border: "1px solid #ccc",
+                      padding: "5px",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </Box>
+              </Box>
+              <Divider />
+
+              <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                Motor
+              </Typography>
+              <Box>
+                <Box display="flex" alignItems="center" marginBottom="12px">
+                  <Typography sx={{ minWidth: "150px" }}>
+                    Supply Amperage:
+                  </Typography>
+                  <Box display="flex" alignItems="center" gap={2}>
+                    <TextField
+                      defaultValue="4.1"
+                      label="Specified Value"
+                      fullWidth
+                      variant="outlined"
+                      InputProps={{ readOnly: true }}
                       sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: 2,
-                        maxWidth: 1100,
-                        margin: "auto",
-                        padding: 3,
-                        boxShadow: 3,
-                        borderRadius: 2,
+                        "& .MuiInputBase-root": {
+                          height: 40,
+                        },
+                        "& .MuiInputBase-input": {
+                          padding: "10px 14px",
+                        },
                       }}
-                    >
-                      <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                        Fan
-                      </Typography>
-        
-                      <Box
-                        sx={{
-                          display: "grid",
-                          gridTemplateColumns: "repeat(3, 1fr)", // 2 columns
-                          gap: 2, // Spacing between items
-                        }}
-                      >
-                        <Box display="flex" alignItems="center">
-                          <Typography sx={{ minWidth: "110px" }}>
-                            Supply Fan R.P.M :
-                          </Typography>
-                          <Input
-                            fullWidth
-                            name="size"
-                            sx={{
-                              border: "1px solid #ccc",
-                              padding: "5px",
-                              borderRadius: "4px",
-                            }}
-                          />
-                        </Box>
-        
-                        <Box display="flex" alignItems="center">
-                          <Typography sx={{ minWidth: "110px" }}>
-                            Exhaust Fan R.P.M :
-                          </Typography>
-                          <Input
-                            fullWidth
-                            name="volts"
-                            sx={{
-                              border: "1px solid #ccc",
-                              padding: "5px",
-                              borderRadius: "4px",
-                            }}
-                          />
-                        </Box>
-        
-                        <Box display="flex" alignItems="center">
-                          
-                        </Box>
-        
-                        <Typography variant="h8" sx={{ fontWeight: 600 }}>
-                          Motor
-                        </Typography>
-                        <br></br>
-                        <hr></hr>
-        
-                        <Box display="flex" alignItems="center">
-                          <Typography sx={{ minWidth: "110px" }}>
-                            Supply Amperage :
-                          </Typography>
-                          <Input
-                            fullWidth
-                            name="size"
-                            sx={{
-                              border: "1px solid #ccc",
-                              padding: "5px",
-                              borderRadius: "4px",
-                            }}
-                          />
-                        </Box>
-        
-                        <Box display="flex" alignItems="center">
-                          <Typography sx={{ minWidth: "110px" }}>
-                            Exhaust Amperage :
-                          </Typography>
-                          <Input
-                            fullWidth
-                            name="volts"
-                            sx={{
-                              border: "1px solid #ccc",
-                              padding: "5px",
-                              borderRadius: "4px",
-                            }}
-                          />
-                        </Box>
-        
-                        <Box display="flex" alignItems="center">
-                        
-                        </Box>
-        
-                        <Box display="flex" alignItems="center">
-                          <Typography sx={{ minWidth: "110px" }}>
-                          Supply R.P.M :
-                          </Typography>
-                          <Input
-                            fullWidth
-                            name="size"
-                            sx={{
-                              border: "1px solid #ccc",
-                              padding: "5px",
-                              borderRadius: "4px",
-                            }}
-                          />
-                        </Box>
-        
-                        <Box display="flex" alignItems="center">
-                          <Typography sx={{ minWidth: "110px" }}>
-                          Exhaust R.P.M :
-                          </Typography>
-                          <Input
-                            fullWidth
-                            name="volts"
-                            sx={{
-                              border: "1px solid #ccc",
-                              padding: "5px",
-                              borderRadius: "4px",
-                            }}
-                          />
-                        </Box>
-        
-                        <Box display="flex" alignItems="center">
-                          
-                        </Box>
-
-                        <Typography variant="h8" sx={{ fontWeight: 600 }}>
-                        STATIC PRESSURE (Pa)
-                        </Typography><hr></hr><hr></hr>
-
-                        <Typography variant="h8" sx={{ fontWeight: 550 }}>
-                        Supply   
-                        </Typography><hr></hr><hr></hr>
-                        
-
-                        <Box display="flex" alignItems="center">
-                          <Typography sx={{ minWidth: "110px" }}>
-                          Standard Static Pressure(SSP) :
-                          </Typography>
-                          <Input
-                            fullWidth
-                            name="size"
-                            sx={{
-                              border: "1px solid #ccc",
-                              padding: "5px",
-                              borderRadius: "4px",
-                            }}
-                          />
-                        </Box>
-        
-                        <Box display="flex" alignItems="center">
-                          <Typography sx={{ minWidth: "110px" }}>
-                          Differential Static Pressure(DSP) :
-                          </Typography>
-                          <Input
-                            fullWidth
-                            name="volts"
-                            sx={{
-                              border: "1px solid #ccc",
-                              padding: "5px",
-                              borderRadius: "4px",
-                            }}
-                          />
-                        </Box>
-        
-                        <Box display="flex" alignItems="center">
-                          <Typography sx={{ minWidth: "110px" }}>
-                          Total Static Pressure(TSP) :
-                          </Typography>
-                          <Input
-                            fullWidth
-                            name="amperage"
-                            sx={{
-                              border: "1px solid #ccc",
-                              padding: "5px",
-                              borderRadius: "4px",
-                            }}
-                          />
-                        </Box>
-
-                        <Typography variant="h8" sx={{ fontWeight: 550 }}>
-                        Exhaust  
-                        </Typography><hr></hr><hr></hr>
-
-                        <Box display="flex" alignItems="center">
-                          <Typography sx={{ minWidth: "110px" }}>
-                          Standard Static Pressure(SSP) :
-                          </Typography>
-                          <Input
-                            fullWidth
-                            name="size"
-                            sx={{
-                              border: "1px solid #ccc",
-                              padding: "5px",
-                              borderRadius: "4px",
-                            }}
-                          />
-                        </Box>
-        
-                        <Box display="flex" alignItems="center">
-                          <Typography sx={{ minWidth: "110px" }}>
-                          Differential Static Pressure(DSP)   :
-                          </Typography>
-                          <Input
-                            fullWidth
-                            name="volts"
-                            sx={{
-                              border: "1px solid #ccc",
-                              padding: "5px",
-                              borderRadius: "4px",
-                            }}
-                          />
-                        </Box>
-        
-                        <Box display="flex" alignItems="center">
-                          <Typography sx={{ minWidth: "110px" }}>
-                          Total Static Pressure(TSP) :
-                          </Typography>
-                          <Input
-                            fullWidth
-                            name="amperage"
-                            sx={{
-                              border: "1px solid #ccc",
-                              padding: "5px",
-                              borderRadius: "4px",
-                            }}
-                          />
-                        </Box>
-
-                        <Typography variant="h8" sx={{ fontWeight: 600 }}>
-                        SUPPLY FAN DRIVE INFORMATION
-                        </Typography>
-                        <br></br>
-                        <hr></hr>
-        
-                        <Box display="flex" alignItems="center">
-                          <Typography sx={{ minWidth: "110px" }}>
-                            Motor Sheave :
-                          </Typography>
-                          <Input
-                            fullWidth
-                            name="size"
-                            sx={{
-                              border: "1px solid #ccc",
-                              padding: "5px",
-                              borderRadius: "4px",
-                            }}
-                          />
-                        </Box>
-        
-                        <Box display="flex" alignItems="center">
-                          <Typography sx={{ minWidth: "110px" }}>
-                            Position :
-                          </Typography>
-                          <Input
-                            fullWidth
-                            name="volts"
-                            sx={{
-                              border: "1px solid #ccc",
-                              padding: "5px",
-                              borderRadius: "4px",
-                            }}
-                          />
-                        </Box>
-        
-                        <Box display="flex" alignItems="center">
-                        <Typography sx={{ minWidth: "110px" }}>
-                          Fan Sheave :
-                          </Typography>
-                          <Input
-                            fullWidth
-                            name="size"
-                            sx={{
-                              border: "1px solid #ccc",
-                              padding: "5px",
-                              borderRadius: "4px",
-                            }}
-                          />
-                        </Box>
-
-                        <Box display="flex" alignItems="center">
-                        <Typography sx={{ minWidth: "110px" }}>
-                            Centres :
-                          </Typography>
-                          <Input
-                            fullWidth
-                            name="volts"
-                            sx={{
-                              border: "1px solid #ccc",
-                              padding: "5px",
-                              borderRadius: "4px",
-                            }}
-                          />
-                        </Box>
-        
-                        <Box display="flex" alignItems="center">
-                        <Typography sx={{ minWidth: "110px" }}>
-                            Belt Quantity/ Size :
-                          </Typography>
-                          <Input
-                            fullWidth
-                            name="volts"
-                            sx={{
-                              border: "1px solid #ccc",
-                              padding: "5px",
-                              borderRadius: "4px",
-                            }}
-                          />
-                        </Box>
-
-                        <Box display="flex" alignItems="center">
-                        </Box>  
-
-                        <Typography variant="h8" sx={{ fontWeight: 600 }}>
-                        EXHAUST FAN DRIVE INFORMATION
-                        </Typography>
-                        <br></br>
-                        <hr></hr>
-        
-                        <Box display="flex" alignItems="center">
-                          <Typography sx={{ minWidth: "110px" }}>
-                            Motor Sheave :
-                          </Typography>
-                          <Input
-                            fullWidth
-                            name="size"
-                            sx={{
-                              border: "1px solid #ccc",
-                              padding: "5px",
-                              borderRadius: "4px",
-                            }}
-                          />
-                        </Box>
-        
-                        <Box display="flex" alignItems="center">
-                          <Typography sx={{ minWidth: "110px" }}>
-                            Position :
-                          </Typography>
-                          <Input
-                            fullWidth
-                            name="volts"
-                            sx={{
-                              border: "1px solid #ccc",
-                              padding: "5px",
-                              borderRadius: "4px",
-                            }}
-                          />
-                        </Box>
-        
-                        <Box display="flex" alignItems="center">
-                        <Typography sx={{ minWidth: "110px" }}>
-                          Fan Sheave :
-                          </Typography>
-                          <Input
-                            fullWidth
-                            name="size"
-                            sx={{
-                              border: "1px solid #ccc",
-                              padding: "5px",
-                              borderRadius: "4px",
-                            }}
-                          />
-                        </Box>
-
-                        <Box display="flex" alignItems="center">
-                        <Typography sx={{ minWidth: "110px" }}>
-                            Centres :
-                          </Typography>
-                          <Input
-                            fullWidth
-                            name="volts"
-                            sx={{
-                              border: "1px solid #ccc",
-                              padding: "5px",
-                              borderRadius: "4px",
-                            }}
-                          />
-                        </Box>
-        
-                        <Box display="flex" alignItems="center">
-                        <Typography sx={{ minWidth: "110px" }}>
-                            Belt Quantity/ Size :
-                          </Typography>
-                          <Input
-                            fullWidth
-                            name="volts"
-                            sx={{
-                              border: "1px solid #ccc",
-                              padding: "5px",
-                              borderRadius: "4px",
-                            }}
-                          />
-                        </Box>
-
-                      </Box>
-        
-                      <Box width="100%">
-                        <h3 style={{ alignSelf: "flex-start" }}>Comments :</h3>
-                        <TextField
-                          fullWidth
-                          label="Enter your comments"
-                          multiline
-                          rows={4}
-                          variant="outlined"
-                          value={comments}
-                          onChange={handleCommentChange}
-                          placeholder="Use '*' for some meaning and '**' for another meaning..."
-                          style={{ width: "100%" }}
-                        />
-                        <Typography
-                          variant="body2"
-                          color="textSecondary"
-                          style={{ marginTop: "10px", textAlign: "left" }}
-                        >
-                          * Represents [Your Meaning 1] <br />
-                          ** Represents [Your Meaning 2]
-                        </Typography>
-                      </Box>
-        
-                      <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
-                        <Button
-                          variant="outlined"
-                          sx={{ mr: 2 }}
-                          onClick={() => navigate("/allPump")}
-                        >
-                          Back
-                        </Button>
-                        <Button variant="contained" onClick={handleSubmit} sx={{ color: "white" }}>
-                          <a href={fan_report} download="fan_report" style={{ color: "inherit", textDecoration: "none" }}>
-                              Submit & Generate Report
-                          </a>
-                        </Button>
-                      </Box>
-        
-                      <Snackbar
-                        open={openSnackbar}
-                        autoHideDuration={2000}
-                        onClose={() => setOpenSnackbar(false)}
-                        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-                      >
-                        <Alert
-                          onClose={() => setOpenSnackbar(false)}
-                          severity="success"
-                          variant="filled"
-                        >
-                          Data Submitted Successfully!
-                        </Alert>
-                      </Snackbar>
-                    </Box>
+                    />
+                    <TextField
+                      label="Actual Value"
+                      fullWidth
+                      variant="outlined"
+                      InputProps={{ readOnly: true }}
+                      sx={{
+                        "& .MuiInputBase-root": {
+                          height: 40,
+                        },
+                        "& .MuiInputBase-input": {
+                          padding: "10px 14px",
+                        },
+                      }}
+                    />
                   </Box>
-                </>
+                </Box>
+
+                <Box display="flex" alignItems="center">
+                  <Typography sx={{ minWidth: "150px", gap: 2 }}>
+                    Exhaust Amperage:
+                  </Typography>
+                  <Box display="flex" alignItems="center" gap={2}>
+                    <TextField
+                      defaultValue="4.1"
+                      label="Specified Value"
+                      fullWidth
+                      variant="outlined"
+                      InputProps={{ readOnly: true }}
+                      sx={{
+                        "& .MuiInputBase-root": {
+                          height: 40,
+                        },
+                        "& .MuiInputBase-input": {
+                          padding: "10px 14px",
+                        },
+                      }}
+                    />
+                    <TextField
+                      label="Actual Value"
+                      fullWidth
+                      variant="outlined"
+                      InputProps={{ readOnly: true }}
+                      sx={{
+                        "& .MuiInputBase-root": {
+                          height: 40,
+                        },
+                        "& .MuiInputBase-input": {
+                          padding: "10px 14px",
+                        },
+                      }}
+                    />
+                  </Box>
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(2, 1fr)", // 2 columns
+                  gap: 2, // Spacing between items
+                }}
+              >
+                <Box display="flex" alignItems="center">
+                  <Typography sx={{ minWidth: "110px" }}>
+                    Supply R.P.M :
+                  </Typography>
+                  <Input
+                    fullWidth
+                    name="amperage"
+                    sx={{
+                      border: "1px solid #ccc",
+                      padding: "5px",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </Box>
+
+                <Box display="flex" alignItems="center">
+                  <Typography sx={{ minWidth: "110px" }}>
+                    Exhaust R.P.M :
+                  </Typography>
+                  <Input
+                    fullWidth
+                    name="rpm"
+                    sx={{
+                      border: "1px solid #ccc",
+                      padding: "5px",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </Box>
+              </Box>
+              <Divider />
+
+              <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                STATIC PRESSURE (Pa)
+              </Typography>
+              <Typography variant="h7" sx={{ fontWeight: 600 }}>
+                Supply
+              </Typography>
+
+              <Box
+                sx={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(3, 1fr)", // 2 columns
+                  gap: 2, // Spacing between items
+                }}
+              >
+                <Box display="flex" alignItems="center">
+                  <Typography sx={{ minWidth: "110px" }}>
+                    Standard Static Pressure(SSP) :{" "}
+                  </Typography>
+                  <Input
+                    fullWidth
+                    name="amperage"
+                    sx={{
+                      border: "1px solid #ccc",
+                      padding: "5px",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </Box>
+
+                <Box display="flex" alignItems="center">
+                  <Typography sx={{ minWidth: "110px" }}>
+                    Differential Static Pressure(DSP) :{" "}
+                  </Typography>
+                  <Input
+                    fullWidth
+                    name="rpm"
+                    sx={{
+                      border: "1px solid #ccc",
+                      padding: "5px",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </Box>
+                <Box display="flex" alignItems="center">
+                  <Typography sx={{ minWidth: "110px" }}>
+                    Total Static Pressure(TSP) :{" "}
+                  </Typography>
+                  <Input
+                    fullWidth
+                    name="rpm"
+                    sx={{
+                      border: "1px solid #ccc",
+                      padding: "5px",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </Box>
+              </Box>
+              <Divider />
+              <Typography variant="h7" sx={{ fontWeight: 600 }}>
+                Exhaust
+              </Typography>
+              <Box
+                sx={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(3, 1fr)", // 2 columns
+                  gap: 2, // Spacing between items
+                }}
+              >
+                <Box display="flex" alignItems="center">
+                  <Typography sx={{ minWidth: "110px" }}>
+                    Standard Static Pressure(SSP) :{" "}
+                  </Typography>
+                  <Input
+                    fullWidth
+                    name="amperage"
+                    sx={{
+                      border: "1px solid #ccc",
+                      padding: "5px",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </Box>
+
+                <Box display="flex" alignItems="center">
+                  <Typography sx={{ minWidth: "110px" }}>
+                    Differential Static Pressure(DSP) :{" "}
+                  </Typography>
+                  <Input
+                    fullWidth
+                    name="rpm"
+                    sx={{
+                      border: "1px solid #ccc",
+                      padding: "5px",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </Box>
+                <Box display="flex" alignItems="center">
+                  <Typography sx={{ minWidth: "110px" }}>
+                    Total Static Pressure(TSP) :{" "}
+                  </Typography>
+                  <Input
+                    fullWidth
+                    name="rpm"
+                    sx={{
+                      border: "1px solid #ccc",
+                      padding: "5px",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </Box>
+              </Box>
+              <Divider />
+              <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                SUPPLY FAN DRIVE INFORMATION
+              </Typography>
+              <Box
+                sx={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(3, 1fr)", // 2 columns
+                  gap: 2, // Spacing between items
+                }}
+              >
+                <Box display="flex" alignItems="center">
+                  <Typography sx={{ minWidth: "110px" }}>
+                    Motor Sheave :{" "}
+                  </Typography>
+                  <Input
+                    fullWidth
+                    name="amperage"
+                    sx={{
+                      border: "1px solid #ccc",
+                      padding: "5px",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </Box>
+
+                <Box display="flex" alignItems="center">
+                  <Typography sx={{ minWidth: "110px" }}>
+                    Position :{" "}
+                  </Typography>
+                  <Input
+                    fullWidth
+                    name="rpm"
+                    sx={{
+                      border: "1px solid #ccc",
+                      padding: "5px",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </Box>
+                <Box display="flex" alignItems="center">
+                  <Typography sx={{ minWidth: "110px" }}>
+                    Fan Sheave :{" "}
+                  </Typography>
+                  <Input
+                    fullWidth
+                    name="rpm"
+                    sx={{
+                      border: "1px solid #ccc",
+                      padding: "5px",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </Box>
+                <Box display="flex" alignItems="center">
+                  <Typography sx={{ minWidth: "110px" }}>Centres : </Typography>
+                  <Input
+                    fullWidth
+                    name="rpm"
+                    sx={{
+                      border: "1px solid #ccc",
+                      padding: "5px",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </Box>
+                <Box display="flex" alignItems="center">
+                  <Typography sx={{ minWidth: "110px" }}>
+                    Belt Quantity/ Size :{" "}
+                  </Typography>
+                  <Input
+                    fullWidth
+                    name="rpm"
+                    sx={{
+                      border: "1px solid #ccc",
+                      padding: "5px",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </Box>
+              </Box>
+              <Divider />
+              <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                Exhaust FAN DRIVE INFORMATION
+              </Typography>
+              <Box
+                sx={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(3, 1fr)", // 2 columns
+                  gap: 2, // Spacing between items
+                }}
+              >
+                <Box display="flex" alignItems="center">
+                  <Typography sx={{ minWidth: "110px" }}>
+                    Motor Sheave :{" "}
+                  </Typography>
+                  <Input
+                    fullWidth
+                    name="amperage"
+                    sx={{
+                      border: "1px solid #ccc",
+                      padding: "5px",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </Box>
+
+                <Box display="flex" alignItems="center">
+                  <Typography sx={{ minWidth: "110px" }}>
+                    Position :{" "}
+                  </Typography>
+                  <Input
+                    fullWidth
+                    name="rpm"
+                    sx={{
+                      border: "1px solid #ccc",
+                      padding: "5px",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </Box>
+                <Box display="flex" alignItems="center">
+                  <Typography sx={{ minWidth: "110px" }}>
+                    Fan Sheave :{" "}
+                  </Typography>
+                  <Input
+                    fullWidth
+                    name="rpm"
+                    sx={{
+                      border: "1px solid #ccc",
+                      padding: "5px",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </Box>
+                <Box display="flex" alignItems="center">
+                  <Typography sx={{ minWidth: "110px" }}>Centres : </Typography>
+                  <Input
+                    fullWidth
+                    name="rpm"
+                    sx={{
+                      border: "1px solid #ccc",
+                      padding: "5px",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </Box>
+                <Box display="flex" alignItems="center">
+                  <Typography sx={{ minWidth: "110px" }}>
+                    Belt Quantity/ Size :{" "}
+                  </Typography>
+                  <Input
+                    fullWidth
+                    name="rpm"
+                    sx={{
+                      border: "1px solid #ccc",
+                      padding: "5px",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </Box>
+              </Box>
+
+              <Box width="100%">
+                <h3 style={{ alignSelf: "flex-start" }}>Comments :</h3>
+                <TextField
+                  fullWidth
+                  label="Enter your comments"
+                  multiline
+                  rows={4}
+                  variant="outlined"
+                  value={comments}
+                  onChange={handleCommentChange}
+                  placeholder="Use '*' for some meaning and '**' for another meaning..."
+                  style={{ width: "100%" }}
+                />
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  style={{ marginTop: "10px", textAlign: "left" }}
+                >
+                  * Represents [Your Meaning 1] <br />
+                  ** Represents [Your Meaning 2]
+                </Typography>
+              </Box>
+
+              <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
+                <Button
+                  variant="outlined"
+                  sx={{ mr: 2 }}
+                  onClick={() => navigate("/allPump")}
+                >
+                  Back
+                </Button>
+                <Button
+                  variant="contained"
+                  onClick={handleSubmit}
+                  sx={{ color: "white" }}
+                >
+                  <a
+                    href={fan_report}
+                    download="fan_report"
+                    style={{ color: "inherit", textDecoration: "none" }}
+                  >
+                    Submit & Generate Report
+                  </a>
+                </Button>
+              </Box>
+
+              <Snackbar
+                open={openSnackbar}
+                autoHideDuration={2000}
+                onClose={() => setOpenSnackbar(false)}
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+              >
+                <Alert
+                  onClose={() => setOpenSnackbar(false)}
+                  severity="success"
+                  variant="filled"
+                >
+                  Data Submitted Successfully!
+                </Alert>
+              </Snackbar>
+            </Box>
+          </Box>
+        </>
       )}
     </Box>
   );
