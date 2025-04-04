@@ -203,7 +203,7 @@ function PumpCreation() {
             Back
           </Button>
           <Button variant="contained" onClick={() => navigate("/pump")}>
-            Submit
+            Next{" "}
           </Button>
         </Box>
       </Box>
