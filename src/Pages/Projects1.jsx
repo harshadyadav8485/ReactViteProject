@@ -66,6 +66,16 @@ const projectData = [
     status: "Not Started",
     tooltip: "Click to view project details",
   },
+  {
+    id: "P004",
+
+    name: "BOILED FEED PUMP1",
+
+    customer: "Smith Sheet Metal\nWorks Ltd",
+
+    status: "Completed",
+    tooltip: "Click to view project details",
+  },
 ];
 
 const Projects1 = () => {
@@ -230,8 +240,8 @@ const Projects1 = () => {
                         sx={{
                           whiteSpace: "pre-line",
                           cursor: "pointer",
-                          textDecoration: "underline",
-                          color: "#1976d2", // Optional: Make it look like a link
+                          textDecoration: "none", // Remove underline
+                          color: "#000000",
                         }}
                         onClick={() => navigate("/project2")}
                       >
