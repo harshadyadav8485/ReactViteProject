@@ -99,7 +99,7 @@ const menuItems = [
     selected: true,
   },
   { text: "Projects", icon: <AssignmentIcon />, path: "/project1" },
-  { text: "Projects", icon: <AssignmentIcon />, path: "/project2" },
+  // { text: "Projects", icon: <AssignmentIcon />, path: "/project2" },
 ];
 
 const Sidebar = () => {

@@ -8,6 +8,7 @@ import NavigateBefore from "@mui/icons-material/NavigateBefore";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import NavigateNext from "@mui/icons-material/NavigateNext";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
+import { Tooltip } from "@mui/material";
 import {
   Box,
   Button,
@@ -221,13 +222,22 @@ const Projects1 = () => {
                     <Typography fontWeight="bold">{project.id}</Typography>
                   </TableCell>
                   <TableCell>
+                  <Tooltip title={project.name} arrow>
                     <Typography
                       fontWeight="medium"
-                      style={{ whiteSpace: "pre-line" }}
+                      sx={{
+                        whiteSpace: "pre-line",
+                        cursor: "pointer",
+                        textDecoration: "underline",
+                        color: "#1976d2", // Optional: Make it look like a link
+                      }}
+                      onClick={() => navigate("/project2")}
                     >
                       {project.name}
                     </Typography>
-                  </TableCell>
+                  </Tooltip>
+                </TableCell>
+
                   <TableCell>
                     <Typography
                       fontWeight="medium"

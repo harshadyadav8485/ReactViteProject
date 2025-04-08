@@ -15,8 +15,10 @@ import {
 } from "@mui/material";
 import React from "react";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import { useNavigate } from "react-router-dom";
 
 const Projects2 = () => {
+  const navigate = useNavigate();
   // Status card data
   const statusCards = [
     { title: "Not Started", count: 5 },
@@ -158,7 +160,7 @@ const Projects2 = () => {
               overflow: "hidden",
             }}
           >
-      <Container maxWidth="lg">
+      
         <Typography
           variant="h5" component="h1" fontWeight="bold" sx={{ mb: 4 }}
         >
@@ -195,7 +197,7 @@ const Projects2 = () => {
                 {/* <FiberManualRecordIcon color={card.color} fontSize="small" /> */}
                 </Box>
                 <Typography
-                  variant="h4"
+                  variant="h5"
                   sx={{
                     fontFamily:"Poppins, sans-serif",
                     fontWeight: 700,
@@ -279,6 +281,7 @@ const Projects2 = () => {
             <Button
               variant="contained"
               endIcon={<AddIcon />}
+              // onClick={() => navigate("/createPump1")} 
               sx={{
                 bgcolor: "#99caff",
                 color: "black",
@@ -359,7 +362,7 @@ const Projects2 = () => {
             ))}
           </Grid>
         </Paper>
-      </Container>
+      
     </Box>
   );
 };
