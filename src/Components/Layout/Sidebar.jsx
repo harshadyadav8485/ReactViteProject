@@ -1,71 +1,206 @@
-import React from "react";
-import { List, ListItem, ListItemText, ListItemIcon, Box } from "@mui/material";
-import { useNavigate, useLocation } from "react-router-dom";
+// import React from "react";
+// import { List, ListItem, ListItemText, ListItemIcon, Box } from "@mui/material";
+// import { useNavigate, useLocation } from "react-router-dom";
 
-import HomeIcon from "@mui/icons-material/Home";
-import LocationCityIcon from "@mui/icons-material/LocationCity";
-import DomainIcon from "@mui/icons-material/Domain";
-import PublicIcon from "@mui/icons-material/Public";
-import WorkIcon from "@mui/icons-material/Work";
-import GridViewIcon from "@mui/icons-material/GridView";
+// import HomeIcon from "@mui/icons-material/Home";
+// import LocationCityIcon from "@mui/icons-material/LocationCity";
+// import DomainIcon from "@mui/icons-material/Domain";
+// import PublicIcon from "@mui/icons-material/Public";
+// import WorkIcon from "@mui/icons-material/Work";
+// import GridViewIcon from "@mui/icons-material/GridView";
+// const menuItems = [
+//   { name: "Projects", path: "/allPump", icon: <GridViewIcon /> },
+//   // { name: "Fan", path: "/fan", icon: <GridViewIcon /> },
+//   // { name: "Chiller", path: "/chillerCreation", icon: <GridViewIcon /> },
+//   // { name: "Villages", path: "/villages", icon: <PublicIcon /> },
+//   // { name: "Projects", path: "/projects", icon: <WorkIcon /> },
+//   // { name: "Flow Meter", path: "/createFlowMeter", icon: <PublicIcon /> },
+//   // {
+//   //   name: "Domestic Hot Water",
+//   //   path: "/createDomesticHotWater",
+//   //   icon: <WorkIcon />,
+//   // },
+// ];
+
+// const Sidebar = ({ open, toggleSidebar }) => {
+//   const navigate = useNavigate();
+//   const location = useLocation();
+
+//   return (
+//     <Box
+//       sx={{
+//         width: 220,
+//         bgcolor: "white",
+//         position: "fixed",
+//         left: 0,
+//         top: "64px",
+//         height: "calc(100vh - 64px)",
+//         color: "black",
+//         height: "100vh",
+//         p: 2,
+//         boxShadow: 3,
+//       }}
+//     >
+//       <h2> Equipment Library</h2>
+//       <List>
+//         {menuItems.map(({ name, path, icon }) => (
+//           <ListItem
+//             key={path}
+//             button
+//             sx={{
+//               backgroundColor:
+//                 location.pathname === path ? "#E0E0E0" : "inherit",
+//               "&:hover": { backgroundColor: "#E0E0E0" },
+//               cursor: "pointer",
+//               borderRadius: "5px",
+//               marginBottom: "5px",
+//             }}
+//             onClick={() => {
+//               navigate(path);
+//               toggleSidebar();
+//             }}
+//           >
+//             <ListItemIcon sx={{ color: "black" }}>{icon}</ListItemIcon>
+//             <ListItemText primary={name} />
+//           </ListItem>
+//         ))}
+//       </List>
+//     </Box>
+//   );
+// };
+
+// export default Sidebar;
+
+// Sidebar.js
+
+import React from "react";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import FolderIcon from "@mui/icons-material/Folder";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { useNavigate, useLocation } from "react-router-dom";
+import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
+import AssignmentIcon from "@mui/icons-material/Assignment";
+
+import {
+  Box,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Paper,
+  Typography,
+} from "@mui/material";
+
 const menuItems = [
-  { name: "Projects", path: "/allPump", icon: <GridViewIcon /> },
-  // { name: "Fan", path: "/fan", icon: <GridViewIcon /> },
-  // { name: "Chiller", path: "/chillerCreation", icon: <GridViewIcon /> },
-  // { name: "Villages", path: "/villages", icon: <PublicIcon /> },
-  // { name: "Projects", path: "/projects", icon: <WorkIcon /> },
-  // { name: "Flow Meter", path: "/createFlowMeter", icon: <PublicIcon /> },
-  // {
-  //   name: "Domestic Hot Water",
-  //   path: "/createDomesticHotWater",
-  //   icon: <WorkIcon />,
-  // },
+  {
+    text: "Dashboard",
+    icon: <DashboardIcon />,
+    path: "/dashboard",
+    selected: true,
+  },
+  { text: "Projects", icon: <AssignmentIcon />, path: "/project1" },
+  { text: "Projects", icon: <AssignmentIcon />, path: "/project2" },
 ];
 
-const Sidebar = ({ open, toggleSidebar }) => {
+const Sidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const handleMenuItemClick = (path) => {
+    navigate(path);
+  };
   return (
-    <Box
+    <Paper
+      elevation={4}
       sx={{
-        width: 220,
-        bgcolor: "white",
-        position: "fixed",
-        left: 0,
-        top: "64px",
-        height: "calc(100vh - 64px)",
-        color: "black",
+        width: "270px",
         height: "100vh",
-        p: 2,
-        boxShadow: 3,
+        position: "fixed",
+        top: 0,
+        left: 0,
+        zIndex: 1200,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between", // ✅ Pushes logout to bottom
       }}
     >
-      <h2> Equipment Library</h2>
-      <List>
-        {menuItems.map(({ name, path, icon }) => (
-          <ListItem
-            key={path}
-            button
-            sx={{
-              backgroundColor:
-                location.pathname === path ? "#E0E0E0" : "inherit",
-              "&:hover": { backgroundColor: "#E0E0E0" },
+      {/* Top content */}
+      <Box>
+        <Typography
+          variant="h6"
+          sx={{
+            mt: 3,
+            ml: 5,
+            fontFamily: "Poppins-Bold, Helvetica",
+            fontWeight: 700,
+            fontSize: "20px",
+          }}
+        >
+          TAB REPORTING
+        </Typography>
+
+        <List sx={{ mt: 6, px: 1 }}>
+          {menuItems.map((item) => (
+            <ListItem
+              key={item.text}
+              onClick={() => handleMenuItemClick(item.path)}
+              sx={{
+                borderRadius: "10px",
+                mb: 1,
+                bgcolor:
+                  location.pathname === item.path ? "#d1d4d2" : "transparent",
+                height: "52px",
+                "&:hover": {
+                  bgcolor:
+                    location.pathname === item.path ? "#d1d4d2" : "#f5f5f5",
+                  cursor: "pointer",
+                },
+              }}
+            >
+              <ListItemIcon
+                sx={{ minWidth: "40px", ml: "12px", color: "#000000" }}
+              >
+                {item.icon}
+              </ListItemIcon>
+              <ListItemText
+                primary={item.text}
+                primaryTypographyProps={{
+                  fontFamily: "Poppins-Medium, Helvetica",
+                  fontWeight: 500,
+                  fontSize: "16px",
+                }}
+              />
+            </ListItem>
+          ))}
+        </List>
+      </Box>
+
+      {/* Bottom logout */}
+      <Box>
+        <ListItem
+          onClick={() => handleMenuItemClick("/logout")}
+          sx={{
+            mb: 3,
+            "&:hover": {
+              bgcolor: "#f5f5f5",
               cursor: "pointer",
-              borderRadius: "5px",
-              marginBottom: "5px",
+            },
+          }}
+        >
+          <ListItemIcon sx={{ minWidth: "40px", ml: "12px", color: "#000000" }}>
+            <LogoutIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary="Log Out"
+            primaryTypographyProps={{
+              fontFamily: "Poppins-Medium, Helvetica",
+              fontWeight: 500,
+              fontSize: "16px",
             }}
-            onClick={() => {
-              navigate(path);
-              toggleSidebar();
-            }}
-          >
-            <ListItemIcon sx={{ color: "black" }}>{icon}</ListItemIcon>
-            <ListItemText primary={name} />
-          </ListItem>
-        ))}
-      </List>
-    </Box>
+          />
+        </ListItem>
+      </Box>
+    </Paper>
   );
 };
 
