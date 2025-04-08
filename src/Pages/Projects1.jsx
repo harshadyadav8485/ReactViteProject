@@ -42,6 +42,7 @@ const projectData = [
     customer: "Smith Sheet Metal\nWorks Ltd",
 
     status: "Completed",
+    tooltip: "Click to view project details",
   },
 
   {
@@ -52,6 +53,7 @@ const projectData = [
     customer: "Smith Sheet Metal\nWorks Ltd",
 
     status: "In progress",
+    tooltip: "Click to view project details",
   },
 
   {
@@ -62,6 +64,7 @@ const projectData = [
     customer: "Smith Sheet Metal\nWorks Ltd",
 
     status: "Not Started",
+    tooltip: "Click to view project details",
   },
 ];
 
@@ -174,7 +177,6 @@ const Projects1 = () => {
               },
             }}
             onClick={() => {
-              console.log("Button clicked");
               navigate("/createProject");
             }}
           >
@@ -222,21 +224,21 @@ const Projects1 = () => {
                     <Typography fontWeight="bold">{project.id}</Typography>
                   </TableCell>
                   <TableCell>
-                  <Tooltip title={project.name} arrow>
-                    <Typography
-                      fontWeight="medium"
-                      sx={{
-                        whiteSpace: "pre-line",
-                        cursor: "pointer",
-                        textDecoration: "underline",
-                        color: "#1976d2", // Optional: Make it look like a link
-                      }}
-                      onClick={() => navigate("/project2")}
-                    >
-                      {project.name}
-                    </Typography>
-                  </Tooltip>
-                </TableCell>
+                    <Tooltip title={project.tooltip} arrow>
+                      <Typography
+                        fontWeight="medium"
+                        sx={{
+                          whiteSpace: "pre-line",
+                          cursor: "pointer",
+                          textDecoration: "underline",
+                          color: "#1976d2", // Optional: Make it look like a link
+                        }}
+                        onClick={() => navigate("/project2")}
+                      >
+                        {project.name}
+                      </Typography>
+                    </Tooltip>
+                  </TableCell>
 
                   <TableCell>
                     <Typography
@@ -249,7 +251,13 @@ const Projects1 = () => {
                   <TableCell>{getStatusChip(project.status)}</TableCell>
                   <TableCell>
                     <Stack direction="row" spacing={1}>
-                      <IconButton size="small" color="primary">
+                      <IconButton
+                        size="small"
+                        color="primary"
+                        onClick={() => {
+                          navigate("/editProject");
+                        }}
+                      >
                         <BorderColorIcon />
                       </IconButton>
                       <IconButton size="small" color="error">
