@@ -28,6 +28,7 @@ import {
 } from "@mui/material";
 
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const projectData = [
   {
@@ -62,6 +63,8 @@ const projectData = [
 ];
 
 const Projects1 = () => {
+  const navigate = useNavigate(); 
+
   const getStatusChip = (status) => {
     let bgColor = "#e0e0e0";
 
@@ -152,6 +155,10 @@ const Projects1 = () => {
               "&:hover": {
                 bgcolor: "#88b9ee",
               },
+            }}
+            onClick={() => {
+              console.log("Button clicked");
+              navigate("/createProject");
             }}
           >
             Create Project
