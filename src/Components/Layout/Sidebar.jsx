@@ -96,10 +96,8 @@ const menuItems = [
     text: "Dashboard",
     icon: <DashboardIcon />,
     path: "/dashboard",
-    selected: true,
   },
   { text: "Projects", icon: <AssignmentIcon />, path: "/project1" },
-  // { text: "Projects", icon: <AssignmentIcon />, path: "/project2" },
 ];
 
 const Sidebar = () => {
