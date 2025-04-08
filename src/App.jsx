@@ -29,6 +29,8 @@ import ActualChiller from "./Pages/ActualChiller";
 import CreateFanCreation from "./Pages/CreateFanCreation";
 import CreateFan1 from "./Pages/CreateFan1";
 import EditFan1 from "./Pages/EditFan1";
+import Dashboard from "./Pages/Dashboard";
+import Project1 from "./Pages/Projects1";
 
 function App() {
   const router = createBrowserRouter([
@@ -36,6 +38,10 @@ function App() {
       path: "/",
       element: <AppLayout />,
       children: [
+        {
+          index: true, // This makes Dashboard the default page for "/"
+          element: <Dashboard />,
+        },
         {
           path: "pump", // Still keeping "/home" accessible
           element: <Pump />,
@@ -131,6 +137,14 @@ function App() {
         {
           path: "createFan1",
           element: <CreateFan1 />,
+        },
+        {
+          path: "dashboard",
+          element: <Dashboard />,
+        },
+        {
+          path: "project1",
+          element: <Project1 />,
         },
       ],
     },
