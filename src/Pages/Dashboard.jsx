@@ -8,6 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const statusData = [
   {
@@ -17,7 +18,7 @@ const statusData = [
   },
   {
     title: "In Progress",
-    count: 4,
+    count: 3,
     bgColor: "#FFC107",
   },
   {
@@ -28,6 +29,8 @@ const statusData = [
 ];
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
   return (
     <Box
       sx={{
@@ -49,11 +52,15 @@ const Dashboard = () => {
         {statusData.map((item, index) => (
           <Grid item xs={12} md={4} key={index}>
             <Card
+              onClick={() => {
+                navigate("/projects");
+              }}
               sx={{
                 borderRadius: "10px",
                 boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
                 position: "relative",
                 p: 2,
+                cursor: "pointer",
               }}
             >
               <CardContent sx={{ position: "relative", p: 2 }}>
