@@ -65,7 +65,7 @@ const CreateFan = () => {
           mb: 4,
         }}
       >
-        <Typography variant="h6" fontWeight="bold" sx={{ mb: 3 }}>
+        <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
           Fan
         </Typography>
 

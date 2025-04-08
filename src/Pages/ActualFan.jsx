@@ -23,6 +23,7 @@ import React, { useState } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Snackbar, Alert } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import fan_report from "../assets/fan_report.pdf";
 
 const ActualFan = () => {
   const navigate = useNavigate();
@@ -49,8 +50,7 @@ const ActualFan = () => {
       // navigate("/sampleTestData");
     }, 2000);
   };
-
-  const fanSpecifications = [
+  const [fanSpecifications, setFanSpecifications] = useState([
     {
       field: "Make",
       specifiedValue: "SWEGOAN",
@@ -85,7 +85,7 @@ const ActualFan = () => {
     { field: "Supply", specifiedValue: "", actualValue: "0.37HP" },
     { field: "Exhaust", specifiedValue: "", actualValue: "0.42HP" },
     { field: "Volts/Phase", specifiedValue: "115 L/s", actualValue: "575/3" },
-  ];
+  ]);
 
   return (
     <Box
@@ -1105,6 +1105,36 @@ const ActualFan = () => {
               >
                 Submit & Generate Report
                 {/* <a
+        <Stack direction="row" spacing={1} justifyContent="flex-end"  mb={2}>
+           <Button
+                            variant="outlined"
+                            onClick={() => navigate("/project2")}
+                            sx={{
+                              borderRadius: "10px",
+                              border: "1px solid black",
+                              color: "black",
+                              px: 3,
+                            }}
+                          >
+                            Back
+                          </Button>
+         <Button
+                           variant="contained"
+                           onClick={handleSubmit}
+                           sx={{
+                             backgroundColor: "#99caff",
+                             borderRadius: "10px",
+                             color: "black",
+                             textTransform: "none",
+                             minWidth: "101px",
+                             height: "42px",
+                             "&:hover": {
+                               backgroundColor: "#7bb8ff",
+                             },
+                           }}
+                         >
+                      
+                          <a
                                             href={fan_report}
                                             download="fan_report"
                                             style={{ color: "inherit", textDecoration: "none" }}

@@ -63,7 +63,7 @@ const CreatePump = () => {
           mb: 4,
         }}
       >
-        <Typography variant="body1" fontWeight="bold" sx={{ mb: 3 }}>
+        <Typography variant="h6" fontWeight="bold" sx={{ mb: 3 }}>
           Pump
         </Typography>
 
@@ -134,7 +134,7 @@ const CreatePump = () => {
 
         <Divider sx={{ my: 3, borderRadius: "5px" }} />
 
-        <Typography variant="body1" fontWeight="bold" sx={{ mb: 3 }}>
+        <Typography variant="h6" fontWeight="bold" sx={{ mb: 3 }}>
           Motor
         </Typography>
 
@@ -147,7 +147,7 @@ const CreatePump = () => {
                   fontWeight: 500,
                 }}
               >
-                Manufacturer :
+                Manufacturer:
               </Typography>
               <TextField
                 fullWidth

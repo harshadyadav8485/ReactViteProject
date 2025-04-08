@@ -19,12 +19,16 @@ const CreateFan = () => {
   const [formData, setFormData] = useState({
     make: "SWEAGON",
     model: "R15-H SMART",
-    exhaustFanRpm: "550 L/s",
-    exhaust: "0.42 HP",
-    supply: "0.37 HP",
+    supplyFanCapacity: "550 L/s",
+    supplyOutletCapacity: "552 L/s",
+    exhaustFanCapacity: "550 L/s",
+    exhaustOutletCapacity: "424 L/s",
+    supplyFanRpm: "Not Listed",
+    exhaustFanRpm: "Not Listed",
+    exhaust: "",
+    supply: "",
     size: "",
     voltsPhase: "115/1",
-    supplyFanRpm: "550 L/s",
     rpm: "",
   });
 
@@ -65,12 +69,12 @@ const CreateFan = () => {
           mb: 4,
         }}
       >
-        <Typography variant="body1" fontWeight="bold" sx={{ mb: 2 }}>
+        <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
           Fan
         </Typography>
 
-        <Grid container spacing={4}>
-          <Grid item xs={12} md={6}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={4}>
             <Stack direction="row" spacing={2} alignItems="center">
               <Typography
                 sx={{
@@ -90,7 +94,7 @@ const CreateFan = () => {
               />
             </Stack>
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={4}>
             <Stack direction="row" spacing={2} alignItems="center">
               <Typography
                 sx={{
@@ -111,7 +115,89 @@ const CreateFan = () => {
             </Stack>
           </Grid>
 
-          <Grid item xs={12} md={6}>
+           <Grid item xs={12} md={4}>
+                      <Stack direction="row" spacing={2} alignItems="center">
+                        <Typography
+                          sx={{
+                            width: 100,
+                            fontWeight: 500,
+                          }}
+                        >
+                          Supply Fan Capacity :
+                        </Typography>
+                        <TextField
+                          fullWidth
+                          size="small"
+                          name="supplyFanRpm"
+                          value={formData.supplyFanCapacity}
+                          onChange={handleChange}
+                          variant="outlined"
+                        />
+                      </Stack>
+                    </Grid>
+          
+                    <Grid item xs={12} md={4}>
+                      <Stack direction="row" spacing={2} alignItems="center">
+                        <Typography
+                          sx={{
+                            width: 100,
+                            fontWeight: 500,
+                          }}
+                        >
+                         Supply Outlet Capacity :
+                        </Typography>
+                        <TextField
+                          fullWidth
+                          size="small"
+                          name="exhaustFanRpm"
+                          value={formData. supplyOutletCapacity}
+                          onChange={handleChange}
+                          variant="outlined"
+                        />
+                      </Stack>
+                    </Grid>
+                    <Grid item xs={12} md={4}>
+                      <Stack direction="row" spacing={2} alignItems="center">
+                        <Typography
+                          sx={{
+                            width: 100,
+                            fontWeight: 500,
+                          }}
+                        >
+                          Exhaust Fan Capacity :
+                        </Typography>
+                        <TextField
+                          fullWidth
+                          size="small"
+                          name="supplyFanRpm"
+                          value={formData.exhaustFanCapacity}
+                          onChange={handleChange}
+                          variant="outlined"
+                        />
+                      </Stack>
+                    </Grid>
+                    <Grid item xs={12} md={4}>
+                      <Stack direction="row" spacing={2} alignItems="center">
+                        <Typography
+                          sx={{
+                            width: 100,
+                            fontWeight: 500,
+                          }}
+                        >
+                          Exhaust Outlet Capacity :
+                        </Typography>
+                        <TextField
+                          fullWidth
+                          size="small"
+                          name="supplyFanRpm"
+                          value={formData.exhaustOutletCapacity}
+                          onChange={handleChange}
+                          variant="outlined"
+                        />
+                      </Stack>
+                    </Grid>
+
+          <Grid item xs={12} md={4}>
             <Stack direction="row" spacing={2} alignItems="center">
               <Typography
                 sx={{
@@ -132,7 +218,7 @@ const CreateFan = () => {
             </Stack>
           </Grid>
 
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={4}>
             <Stack direction="row" spacing={2} alignItems="center">
               <Typography
                 sx={{
@@ -156,76 +242,76 @@ const CreateFan = () => {
 
         <Divider sx={{ my: 3 }} />
 
-        <Typography variant="body1" fontWeight="bold" sx={{ mb: 2 }}>
+      <Typography variant="h6" fontWeight="bold" sx={{ mb: 1 }}>
           Motor
         </Typography>
-
-        <Typography variant="body1" fontWeight="semibold" sx={{ mb: 2 }}>
-          Size
-        </Typography>
-
-        <Grid container spacing={4}>
-          <Grid item xs={12} md={6}>
-            <Stack direction="row" spacing={2} alignItems="center">
-              <Typography
-                sx={{
-                  width: 100,
-                  fontWeight: 500,
-                }}
-              >
-                Supply :
-              </Typography>
-              <TextField
-                fullWidth
-                size="small"
-                name="supply"
-                value={formData.supply}
-                onChange={handleChange}
-                variant="outlined"
-              />
-            </Stack>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Stack direction="row" spacing={2} alignItems="center">
-              <Typography
-                sx={{
-                  width: 100,
-                  fontWeight: 500,
-                }}
-              >
-                Exhaust :
-              </Typography>
-              <TextField
-                fullWidth
-                size="small"
-                name="exhaust"
-                value={formData.exhaust}
-                onChange={handleChange}
-                variant="outlined"
-              />
-            </Stack>
-          </Grid>
-
-          <Grid item xs={12} md={6}>
-            <Stack direction="row" spacing={2} alignItems="center">
-              <Typography
-                sx={{
-                  width: 100,
-                  fontWeight: 500,
-                }}
-              >
-                Volts/ Phase :
-              </Typography>
-              <TextField
-                fullWidth
-                size="small"
-                name="voltsPhase"
-                value={formData.voltsPhase}
-                onChange={handleChange}
-                variant="outlined"
-              />
-            </Stack>
-          </Grid>
+       <Grid container spacing={1} alignItems="center" sx={{ mb: 2 }}>
+               <Grid item xs={12} md={1}>
+           <Typography variant="body1" fontWeight="bold">Size :</Typography>
+         </Grid>
+       
+               
+                 <Grid item xs={12} md={4}>
+                   <Stack direction="row" spacing={1} alignItems="center">
+                     <Typography
+                       sx={{
+                         width: 60,
+                         fontWeight: 500,
+                       }}
+                     >
+                       Supply :
+                     </Typography>
+                     <TextField
+                       size="small"
+                       name="supply"
+                       value={formData.supply}
+                       onChange={handleChange}
+                       variant="outlined"
+                      
+                     />
+                   </Stack>
+                 </Grid>
+                 <Grid item xs={12} md={4}>
+                   <Stack direction="row" spacing={1} alignItems="center">
+                     <Typography
+                       sx={{
+                         width: 60,
+                         fontWeight: 500,
+                       }}
+                     >
+                       Exhaust :
+                     </Typography>
+                     <TextField
+                       size="small"
+                       name="supply"
+                       value={formData.supply}
+                       onChange={handleChange}
+                       variant="outlined"
+                      
+                     />
+                   </Stack>
+                 </Grid>
+       
+                 <Grid item xs={12} md={4}>
+                   <Stack direction="row" spacing={1} alignItems="center">
+                     <Typography
+                       sx={{
+                         width: 110,
+                         fontWeight: 500,
+                       }}
+                     >
+                       Volts/<br /> Phase :
+                     </Typography>
+                     <TextField
+                       fullWidth
+                       size="small"
+                       name="voltsPhase"
+                       value={formData.voltsPhase}
+                       onChange={handleChange}
+                       variant="outlined"
+                     />
+                   </Stack>
+                 </Grid>
         </Grid>
       </Paper>
 
