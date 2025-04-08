@@ -3,9 +3,9 @@ import Add from "@mui/icons-material/Add";
 import ArrowDropDown from "@mui/icons-material/ArrowDropDown";
 
 import Delete from "@mui/icons-material/Delete";
-
+import { useState } from "react";
 import NavigateBefore from "@mui/icons-material/NavigateBefore";
-
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import NavigateNext from "@mui/icons-material/NavigateNext";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import {
@@ -25,6 +25,8 @@ import {
   TableRow,
   TextField,
   Typography,
+  Menu,
+  MenuItem,
 } from "@mui/material";
 
 import React from "react";
@@ -63,8 +65,22 @@ const projectData = [
 ];
 
 const Projects1 = () => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [selectedValue, setSelectedValue] = useState(10); // default value
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = (value) => {
+    if (value) {
+      setSelectedValue(value);
+    }
+    setAnchorEl(null);
+  };
   const getStatusChip = (status) => {
     let bgColor = "#e0e0e0";
 
@@ -113,7 +129,7 @@ const Projects1 = () => {
           variant="h5"
           component="h1"
           fontWeight="bold"
-          sx={{ mb: 4 }}
+          sx={{ mb: 2 }}
         >
           Projects
         </Typography>
@@ -298,7 +314,7 @@ const Projects1 = () => {
               );
             }}
           />
-          <Button
+          {/* <Button
             variant="outlined"
             size="small"
             sx={{
@@ -317,8 +333,36 @@ const Projects1 = () => {
               textTransform: "none",
             }}
           >
-            more pages...
-          </Button>
+            10 / Pages <KeyboardArrowDownIcon sx={{ fontSize: "16px" }} />
+          </Button> */}
+          <Box>
+            <Button
+              variant="outlined"
+              size="small"
+              onClick={handleClick}
+              sx={{
+                ml: 1,
+                border: "1px solid #a7a6a6",
+                borderRadius: "5px",
+                bgcolor: "#f2f4f5",
+                color: "#747474",
+                fontSize: "10px",
+                textTransform: "none",
+                display: "flex",
+                alignItems: "center",
+                gap: "4px",
+              }}
+            >
+              {selectedValue} / Pages{" "}
+              <KeyboardArrowDownIcon sx={{ fontSize: "16px" }} />
+            </Button>
+
+            <Menu anchorEl={anchorEl} open={open} onClose={() => handleClose()}>
+              <MenuItem onClick={() => handleClose(10)}>10/page</MenuItem>
+              <MenuItem onClick={() => handleClose(20)}>25/page</MenuItem>
+              <MenuItem onClick={() => handleClose(50)}>50/page</MenuItem>
+            </Menu>
+          </Box>
         </Box>
       </Box>
     </Box>

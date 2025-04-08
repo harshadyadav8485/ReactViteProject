@@ -13,7 +13,7 @@ const statusData = [
   {
     title: "Not Started",
     count: 5,
-    bgColor: "#28A745",
+    bgColor: "#DC3545",
   },
   {
     title: "In Progress",
@@ -23,7 +23,7 @@ const statusData = [
   {
     title: "Completed",
     count: 50,
-    bgColor: "#DC3545",
+    bgColor: "#28A745",
   },
 ];
 
@@ -41,7 +41,7 @@ const Dashboard = () => {
         overflow: "hidden",
       }}
     >
-      <Typography variant="h5" component="h1" fontWeight="bold" sx={{ mb: 4 }}>
+      <Typography variant="h5" component="h1" fontWeight="bold" sx={{ mb: 2 }}>
         Project Status
       </Typography>
 
