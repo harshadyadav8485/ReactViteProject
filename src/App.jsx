@@ -31,6 +31,7 @@ import CreateFan1 from "./Pages/CreateFan1";
 import EditFan1 from "./Pages/EditFan1";
 import Dashboard from "./Pages/Dashboard";
 import Project1 from "./Pages/Projects1";
+import Projects2 from "./Pages/Projects2";
 
 function App() {
   const router = createBrowserRouter([
@@ -145,6 +146,10 @@ function App() {
         {
           path: "project1",
           element: <Project1 />,
+        },
+        {
+          path: "project2",
+          element: <Projects2 />,
         },
       ],
     },

@@ -79,6 +79,7 @@ import FolderIcon from "@mui/icons-material/Folder";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useNavigate, useLocation } from "react-router-dom";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
+import AssignmentIcon from "@mui/icons-material/Assignment";
 
 import {
   Box,
@@ -97,7 +98,8 @@ const menuItems = [
     path: "/dashboard",
     selected: true,
   },
-  { text: "Projects", icon: <WorkOutlineIcon />, path: "/project1" },
+  { text: "Projects", icon: <AssignmentIcon />, path: "/project1" },
+  { text: "Projects", icon: <AssignmentIcon />, path: "/project2" },
 ];
 
 const Sidebar = () => {
@@ -117,82 +119,87 @@ const Sidebar = () => {
         top: 0,
         left: 0,
         zIndex: 1200,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between", // ✅ Pushes logout to bottom
       }}
     >
-      <Typography
-        variant="h6"
-        sx={{
-          position: "absolute",
-          top: "29px",
-          left: "56px",
-          fontFamily: "Poppins-Bold, Helvetica",
-          fontWeight: 700,
-          fontSize: "20px",
-        }}
-      >
-        TAB REPORTING
-      </Typography>
-
-      <List sx={{ mt: 10, px: 1 }}>
-        {menuItems.map((item) => (
-          <ListItem
-            key={item.text}
-            onClick={() => handleMenuItemClick(item.path)}
-            sx={{
-              borderRadius: "10px",
-              mb: 1,
-              bgcolor:
-                location.pathname === item.path ? "#d1d4d2" : "transparent",
-              height: "52px",
-              "&:hover": {
-                bgcolor:
-                  location.pathname === item.path ? "#d1d4d2" : "#f5f5f5",
-                cursor: "pointer",
-              },
-            }}
-          >
-            <ListItemIcon
-              sx={{ minWidth: "40px", ml: "12px", color: "#000000" }}
-            >
-              {item.icon}
-            </ListItemIcon>
-            <ListItemText
-              primary={item.text}
-              primaryTypographyProps={{
-                fontFamily: "Poppins-Medium, Helvetica",
-                fontWeight: 500,
-                fontSize: "16px",
-              }}
-            />
-          </ListItem>
-        ))}
-      </List>
-
-      <ListItem
-        onClick={() => handleMenuItemClick("/logout")}
-        sx={{
-          position: "absolute",
-          bottom: "170px",
-          left: 0,
-          width: "100%",
-          "&:hover": {
-            bgcolor: "#f5f5f5",
-            cursor: "pointer",
-          },
-        }}
-      >
-        <ListItemIcon sx={{ minWidth: "40px", ml: "12px", color: "#000000" }}>
-          <LogoutIcon />
-        </ListItemIcon>
-        <ListItemText
-          primary="Log Out"
-          primaryTypographyProps={{
-            fontFamily: "Poppins-Medium, Helvetica",
-            fontWeight: 500,
-            fontSize: "16px",
+      {/* Top content */}
+      <Box>
+        <Typography
+          variant="h6"
+          sx={{
+            mt: 3,
+            ml: 5,
+            fontFamily: "Poppins-Bold, Helvetica",
+            fontWeight: 700,
+            fontSize: "20px",
           }}
-        />
-      </ListItem>
+        >
+          TAB REPORTING
+        </Typography>
+
+        <List sx={{ mt: 6, px: 1 }}>
+          {menuItems.map((item) => (
+            <ListItem
+              key={item.text}
+              onClick={() => handleMenuItemClick(item.path)}
+              sx={{
+                borderRadius: "10px",
+                mb: 1,
+                bgcolor:
+                  location.pathname === item.path ? "#d1d4d2" : "transparent",
+                height: "52px",
+                "&:hover": {
+                  bgcolor:
+                    location.pathname === item.path ? "#d1d4d2" : "#f5f5f5",
+                  cursor: "pointer",
+                },
+              }}
+            >
+              <ListItemIcon
+                sx={{ minWidth: "40px", ml: "12px", color: "#000000" }}
+              >
+                {item.icon}
+              </ListItemIcon>
+              <ListItemText
+                primary={item.text}
+                primaryTypographyProps={{
+                  fontFamily: "Poppins-Medium, Helvetica",
+                  fontWeight: 500,
+                  fontSize: "16px",
+                }}
+              />
+            </ListItem>
+          ))}
+        </List>
+      </Box>
+
+      {/* Bottom logout */}
+      <Box>
+        <ListItem
+          onClick={() => handleMenuItemClick("/logout")}
+          sx={{
+            mb: 3,
+            "&:hover": {
+              bgcolor: "#f5f5f5",
+              cursor: "pointer",
+            },
+          }}
+        >
+          <ListItemIcon sx={{ minWidth: "40px", ml: "12px", color: "#000000" }}>
+            <LogoutIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary="Log Out"
+            primaryTypographyProps={{
+              fontFamily: "Poppins-Medium, Helvetica",
+              fontWeight: 500,
+              fontSize: "16px",
+            }}
+          />
+        </ListItem>
+      </Box>
     </Paper>
   );
 };
