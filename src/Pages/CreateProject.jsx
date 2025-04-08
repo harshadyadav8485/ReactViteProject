@@ -1,104 +1,104 @@
-import React from "react";
 import {
   Box,
-  TextField,
   Button,
+  Container,
+  Grid,
+  Paper,
+  Stack,
+  TextField,
   Typography,
-  Tabs,
-  Tab,
-  Input,
 } from "@mui/material";
-import { Divider } from "@mui/material";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import AddIcon from "@mui/icons-material/Add";
 
-const CreateProject = () => {
+const Desktop = () => {
   const navigate = useNavigate();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Form submission logic would go here
+  };
 
   return (
-    <>
-      <Box sx={{ pl: 9, pr: 9, mt: 1 }}>
-        <Box>
-          <h2> Create Project</h2>
-        </Box>
-
-        <Box
-          component="form"
+    <Box
           sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 2,
-            maxWidth: 1100,
-            margin: "auto",
-            padding: 3,
-            boxShadow: 3,
-            borderRadius: 2,
+            bgcolor: "#f2f4f5",
+            minHeight: "100vh",
+            py: 4,
+            pl: "70px",
+            pt: "30px",
+            pr: "24px",
+            boxSizing: "border-box",
+            overflow: "hidden",
           }}
         >
-          <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, 1fr)",
-              gap: 2,
-            }}
-          >
-            <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "100px" }}>Project Id :</Typography>
-              <Input
-                fullWidth
-                name="make"
-                sx={{
-                  border: "1px solid #ccc",
-                  padding: "5px",
-                  borderRadius: "4px",
-                }}
-              />
-            </Box>
 
-            <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "100px" }}>Project Name :</Typography>
-              <Input
-                fullWidth
-                name="model"
-                sx={{
-                  border: "1px solid #ccc",
-                  padding: "5px",
-                  borderRadius: "4px",
-                }}
-              />
-            </Box>
+          <Typography variant="h5" component="h1" fontWeight="bold" sx={{ mb: 2 }}>
+              Project Status
+          </Typography>
+        <Paper
+          elevation={3}
+          sx={{
+            p: 4,
+            borderRadius: "10px",
+            mb: 3,
+          }}
+        >
+          <Grid container spacing={4}>
+            <Grid item xs={12} md={6}>
+              <Stack direction="row" spacing={2} alignItems="center">
+                <Typography fontWeight="medium">Project Id :</Typography>
+                <TextField fullWidth variant="outlined" size="small" />
+              </Stack>
+            </Grid>
 
-            <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "100px" }}>
-                Customer Name :
-              </Typography>
-              <Input
-                fullWidth
-                name="impellerSize"
-                sx={{
-                  border: "1px solid #ccc",
-                  padding: "5px",
-                  borderRadius: "4px",
-                }}
-              />
-            </Box>
-          </Box>
-        </Box>
-        <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
+            <Grid item xs={12} md={6}>
+              <Stack direction="row" spacing={2} alignItems="center">
+                <Typography fontWeight="medium">Project Name :</Typography>
+                <TextField fullWidth variant="outlined" size="small" />
+              </Stack>
+            </Grid>
+
+            <Grid item xs={12} md={6}>
+              <Stack direction="row" spacing={2} alignItems="center">
+                <Typography fontWeight="medium" sx={{ whiteSpace: "pre-line" }}>
+                  Customer{"\n"} Name :
+                </Typography>
+                <TextField fullWidth variant="outlined" size="small" />
+              </Stack>
+            </Grid>
+          </Grid>
+        </Paper>
+
+        <Stack direction="row" spacing={1} justifyContent="flex-end">
           <Button
             variant="outlined"
-            onClick={() => navigate("/allPump")}
-            sx={{ mr: 2 }}
+            sx={{
+              borderRadius: "10px",
+              bgcolor: "#f2f4f5",
+              px: 3,
+              color:"black",
+              border:"1px solid black",
+            }}
           >
             Back
           </Button>
-          <Button variant="contained" onClick={() => navigate("/allPump")}>
+          <Button
+            variant="contained"
+            sx={{
+              borderRadius: "10px",
+              bgcolor: "#99CAFF",
+              color: "black",
+              px: 3,
+            }}
+            onClick={() => {
+              navigate("/project1");
+            }}
+          >
             Submit
           </Button>
-        </Box>
-      </Box>
-    </>
+        </Stack>
+    </Box>
   );
 };
 
-export default CreateProject;
+export default Desktop;
