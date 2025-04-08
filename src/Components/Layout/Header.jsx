@@ -73,7 +73,7 @@ const Header = () => {
               fontSize: 16,
             }}
           >
-            Rohn
+            Admin
           </Typography>
         </Box>
       </Paper>

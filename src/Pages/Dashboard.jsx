@@ -13,17 +13,17 @@ const statusData = [
   {
     title: "Not Started",
     count: 5,
-    color: "error",
+    bgColor: "#28A745",
   },
   {
     title: "In Progress",
     count: 4,
-    color: "warning",
+    bgColor: "#FFC107",
   },
   {
     title: "Completed",
     count: 50,
-    color: "success",
+    bgColor: "#DC3545",
   },
 ];
 
@@ -72,7 +72,10 @@ const Dashboard = () => {
                   >
                     {item.title}
                   </Typography>
-                  <FiberManualRecordIcon color={item.color} fontSize="small" />
+                  <FiberManualRecordIcon
+                    sx={{ color: item.bgColor }}
+                    fontSize="small"
+                  />
                 </Box>
                 <Typography
                   variant="h4"

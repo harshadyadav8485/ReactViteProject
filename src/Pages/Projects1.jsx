@@ -7,9 +7,7 @@ import Delete from "@mui/icons-material/Delete";
 import NavigateBefore from "@mui/icons-material/NavigateBefore";
 
 import NavigateNext from "@mui/icons-material/NavigateNext";
-
-import Visibility from "@mui/icons-material/Visibility";
-
+import BorderColorIcon from "@mui/icons-material/BorderColor";
 import {
   Box,
   Button,
@@ -65,26 +63,21 @@ const projectData = [
 
 const Projects1 = () => {
   const getStatusChip = (status) => {
-    let color = "default";
+    let bgColor = "#e0e0e0";
 
-    if (status === "Completed") color = "success";
-    else if (status === "In progress") color = "warning";
-    else if (status === "Not Started") color = "error";
-
+    if (status === "Completed") bgColor = "#28A745";
+    else if (status === "In progress") bgColor = "#FFC107";
+    else if (status === "Not Started") bgColor = "#DC3545";
     return (
       <Chip
         label={status}
-        color={color}
         sx={{
           borderRadius: "20px",
-
           color: "white",
-
           fontWeight: 500,
-
           minWidth: "132px",
-
           textAlign: "center",
+          backgroundColor: bgColor,
         }}
       />
     );
@@ -121,12 +114,18 @@ const Projects1 = () => {
         >
           Projects
         </Typography>
-        <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{ mb: 3 }}
+          justifyContent="space-between"
+        >
           <TextField
-            placeholder="Search by Project Id, Project Name & Customer Name"
+            placeholder="Search by Project Id, Project Name & Customer Name..."
             variant="outlined"
-            fullWidth
+            // fullWidth
             sx={{
+              width: "50%",
               bgcolor: "#f2f4f5",
 
               borderRadius: "10px",
@@ -136,18 +135,20 @@ const Projects1 = () => {
               },
             }}
           />
+
           <Button
             variant="contained"
-            startIcon={<Add />}
+            endIcon={<Add />}
             sx={{
               bgcolor: "#99caff",
-
+              width: "190px",
               color: "black",
-
               borderRadius: "10px",
-
               fontWeight: "bold",
-
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
               "&:hover": {
                 bgcolor: "#88b9ee",
               },
@@ -216,7 +217,7 @@ const Projects1 = () => {
                   <TableCell>
                     <Stack direction="row" spacing={1}>
                       <IconButton size="small" color="primary">
-                        <Visibility />
+                        <BorderColorIcon />
                       </IconButton>
                       <IconButton size="small" color="error">
                         <Delete />
