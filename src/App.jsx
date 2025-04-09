@@ -31,6 +31,7 @@ import EditFan1 from "./Pages/EditFan1";
 import Dashboard from "./Pages/Dashboard";
 import Project1 from "./Pages/Projects1";
 import Projects2 from "./Pages/Projects2";
+import { Navigate } from "react-router-dom";
 import EditPumpCreation from "./Pages/EditPumpCreation";
 
 function App() {
@@ -40,8 +41,12 @@ function App() {
       element: <AppLayout />,
       children: [
         {
-          index: true, // This makes Dashboard the default page for "/"
+          path: "dashboard",
           element: <Dashboard />,
+        },
+        {
+          index: true,
+          element: <Navigate to="/dashboard" />,
         },
         {
           path: "editPump", // Still keeping "/home" accessible
