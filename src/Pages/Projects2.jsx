@@ -12,7 +12,9 @@ import {
   Stack,
   TextField,
   Typography,
+  IconButton,
 } from "@mui/material";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
 import React from "react";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import { useNavigate } from "react-router-dom";
@@ -21,9 +23,21 @@ const Projects2 = () => {
   const navigate = useNavigate();
   // Status card data
   const statusCards = [
-    { title: "Not Started", count: 5 },
-    { title: "In Progress", count: 10 },
-    { title: "Completed", count: 50 },
+    {
+      title: "Not Started",
+      count: 5,
+      bgColor: "#DC3545",
+    },
+    {
+      title: "In Progress",
+      count: 3,
+      bgColor: "#FFC107",
+    },
+    {
+      title: "Completed",
+      count: 50,
+      bgColor: "#28A745",
+    },
   ];
 
   // Pump data
@@ -43,7 +57,7 @@ const Projects2 = () => {
   // Render equipment card
   const renderEquipmentCard = (item) => {
     const isFan = item.type === "Fan";
-
+  
     return (
       <Card
         key={item.id}
@@ -55,25 +69,42 @@ const Projects2 = () => {
         }}
       >
         <CardContent>
-        <Typography
-              variant="subtitle1" 
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              mb: 2,
+            }}
+          >
+            <Typography
+              variant="subtitle1"
               sx={{
                 fontFamily: "Poppins, sans-serif",
                 fontWeight: 600,
-                fontSize: "18px", 
-                mb: 2,
+                fontSize: "18px",
                 mt: 1,
               }}
             >
               {item.id}
             </Typography>
-
-
+  
+            <IconButton
+                        size="small"
+                        color="primary"
+                        onClick={() => {
+                          navigate("/editPumpCreation");
+                        }}
+                      >
+                        <BorderColorIcon />
+                      </IconButton>
+          </Box>
+  
           <Stack spacing={3}>
             <Box>
               <Typography
                 sx={{
-                  fontFamily:"Poppins, sans-serif",
+                  fontFamily: "Poppins, sans-serif",
                   fontWeight: 500,
                   mb: 1,
                 }}
@@ -93,11 +124,11 @@ const Projects2 = () => {
                 }}
               />
             </Box>
-
+  
             <Box>
               <Typography
                 sx={{
-                  fontFamily:"Poppins, sans-serif",
+                  fontFamily: "Poppins, sans-serif",
                   fontWeight: 500,
                   mb: 1,
                 }}
@@ -117,11 +148,11 @@ const Projects2 = () => {
                 }}
               />
             </Box>
-
+  
             <Box>
               <Typography
                 sx={{
-                  fontFamily:"Poppins, sans-serif",
+                  fontFamily: "Poppins, sans-serif",
                   fontWeight: 500,
                   mb: 1,
                 }}
@@ -146,6 +177,7 @@ const Projects2 = () => {
       </Card>
     );
   };
+  
 
   return (
       <Box
@@ -216,10 +248,10 @@ const Projects2 = () => {
                     borderRadius: "50%",
                     bgcolor:
                       index === 0
-                        ? "error.main"
+                        ? "#DC3545"
                         : index === 1
-                          ? "warning.main"
-                          : "success.main",
+                          ? "#FFC107"
+                          : "#28A745",
                   }}
                 />
               </Paper>
@@ -229,24 +261,24 @@ const Projects2 = () => {
 
         {/* Search Bar */}
         <Autocomplete
-  freeSolo
-  options={[]}
-  sx={{ width: "50%", mb: 4 }} // set width here
-  renderInput={(params) => (
-    <TextField
-      {...params}
-      placeholder="Search by equipments..."
-      variant="outlined"
-      sx={{
-        bgcolor: "#f2f4f5",
-        "& .MuiOutlinedInput-root": {
-          borderRadius: "10px",
-          borderColor: "#939393",
-        },
-      }}
-    />
-  )}
-/>
+              freeSolo
+              options={[]}
+              sx={{ width: "50%", mb: 4 }} // set width here
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  placeholder="Search by equipments..."
+                  variant="outlined"
+                  sx={{
+                    bgcolor: "#f2f4f5",
+                    "& .MuiOutlinedInput-root": {
+                      borderRadius: "10px",
+                      borderColor: "#939393",
+                    },
+                  }}
+                />
+              )}
+            />
 
         {/* Hydronics Section */}
         <Typography
