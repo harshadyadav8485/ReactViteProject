@@ -32,10 +32,7 @@ import Dashboard from "./Pages/Dashboard";
 import Project1 from "./Pages/Projects1";
 import Projects2 from "./Pages/Projects2";
 import { Navigate } from "react-router-dom";
-<<<<<<< HEAD
 import EditPumpCreation from "./Pages/EditPumpCreation";
-=======
->>>>>>> bfd4a24e786674e5afe90ca688bc76705b5ce327
 
 function App() {
   const router = createBrowserRouter([
@@ -52,8 +49,6 @@ function App() {
           element: <Navigate to="/dashboard" />,
         },
         {
-          path: "pump",
-          element: <Pump />,
           path: "editPump", // Still keeping "/home" accessible
           element: <EditPump />,
         },
