@@ -32,7 +32,7 @@ const CreateProject = () => {
       }}
     >
       <Typography variant="h5" component="h1" fontWeight="bold" sx={{ mb: 2 }}>
-        Project Status
+        Create Project
       </Typography>
       <Paper
         elevation={3}
@@ -77,6 +77,9 @@ const CreateProject = () => {
             px: 3,
             color: "black",
             border: "1px solid black",
+          }}
+          onClick={() => {
+            navigate("/project1");
           }}
         >
           Back

@@ -93,6 +93,9 @@ const EditProject = () => {
             color: "black",
             border: "1px solid black",
           }}
+          onClick={() => {
+            navigate("/project1");
+          }}
         >
           Back
         </Button>
