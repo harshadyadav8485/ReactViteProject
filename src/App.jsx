@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./App.css";
 import AppLayout from "./Components/Layout/AppLayout";
-import Pump from "./Pages/Pump";
+import EditPump from "./Pages/EditPump";
 import Fan from "./Pages/Fan";
 import Chiller from "./Pages/Chiller";
 import CreatePump from "./Pages/CreatePump";
@@ -13,7 +13,6 @@ import EditFan from "./Pages/EditFan";
 import ActualFan from "./Pages/ActualFan";
 import ActualPump from "./Pages/ActualPump";
 import { Home } from "./Pages/Home";
-import PumpCreation from "./Pages/PumpCreation";
 import AllPump from "./Pages/AllPump";
 import SampleTestData from "./Pages/SampleTestData";
 import Projects from "./Pages/Projects";
@@ -33,6 +32,7 @@ import Dashboard from "./Pages/Dashboard";
 import Project1 from "./Pages/Projects1";
 import Projects2 from "./Pages/Projects2";
 import { Navigate } from "react-router-dom";
+import EditPumpCreation from "./Pages/EditPumpCreation";
 
 function App() {
   const router = createBrowserRouter([
@@ -51,6 +51,8 @@ function App() {
         {
           path: "pump",
           element: <Pump />,
+          path: "editPump", // Still keeping "/home" accessible
+          element: <EditPump />,
         },
         {
           path: "fan",
@@ -101,8 +103,8 @@ function App() {
           element: <Home />,
         },
         {
-          path: "pumpCreation",
-          element: <PumpCreation />,
+          path: "editPumpCreation",
+          element: <EditPumpCreation />,
         },
         {
           path: "allPump",
