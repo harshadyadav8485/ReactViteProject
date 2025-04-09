@@ -75,11 +75,9 @@
 
 import React from "react";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import FolderIcon from "@mui/icons-material/Folder";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { useNavigate, useLocation } from "react-router-dom";
-import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import AssignmentIcon from "@mui/icons-material/Assignment";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import {
   Box,
@@ -97,7 +95,11 @@ const menuItems = [
     icon: <DashboardIcon />,
     path: "/dashboard",
   },
-  { text: "Projects", icon: <AssignmentIcon />, path: "/project1" },
+  {
+    text: "Projects",
+    icon: <AssignmentIcon />,
+    path: "/project1",
+  },
 ];
 
 const Sidebar = () => {
@@ -107,11 +109,16 @@ const Sidebar = () => {
   const handleMenuItemClick = (path) => {
     navigate(path);
   };
+
   return (
     <Paper
       elevation={4}
       sx={{
-        width: "270px",
+        width: {
+          xs: "180px", // 📱 small screens like tablets
+          sm: "220px", // 🧾 slightly larger screens
+          md: "270px", // 🖥️ default (desktop)
+        },
         height: "100vh",
         position: "fixed",
         top: 0,
@@ -119,19 +126,19 @@ const Sidebar = () => {
         zIndex: 1200,
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between", // ✅ Pushes logout to bottom
+        justifyContent: "space-between",
+        transition: "width 0.3s ease", // 🔁 smooth resizing
       }}
     >
-      {/* Top content */}
       <Box>
         <Typography
           variant="h6"
           sx={{
             mt: 3,
-            ml: 5,
+            ml: 4,
             fontFamily: "Poppins-Bold, Helvetica",
             fontWeight: 700,
-            fontSize: "20px",
+            fontSize: "18px", // 🔹 reduced size for all screens
           }}
         >
           TAB REPORTING
@@ -156,7 +163,7 @@ const Sidebar = () => {
               }}
             >
               <ListItemIcon
-                sx={{ minWidth: "40px", ml: "12px", color: "#000000" }}
+                sx={{ minWidth: "36px", ml: "8px", color: "#000000" }} // 🎯 adjusted spacing
               >
                 {item.icon}
               </ListItemIcon>
@@ -165,7 +172,7 @@ const Sidebar = () => {
                 primaryTypographyProps={{
                   fontFamily: "Poppins-Medium, Helvetica",
                   fontWeight: 500,
-                  fontSize: "16px",
+                  fontSize: "15px", // 🎯 slight font size tweak
                 }}
               />
             </ListItem>
@@ -173,7 +180,6 @@ const Sidebar = () => {
         </List>
       </Box>
 
-      {/* Bottom logout */}
       <Box>
         <ListItem
           onClick={() => handleMenuItemClick("/logout")}
@@ -185,7 +191,7 @@ const Sidebar = () => {
             },
           }}
         >
-          <ListItemIcon sx={{ minWidth: "40px", ml: "12px", color: "#000000" }}>
+          <ListItemIcon sx={{ minWidth: "36px", ml: "8px", color: "#000000" }}>
             <LogoutIcon />
           </ListItemIcon>
           <ListItemText
@@ -193,7 +199,7 @@ const Sidebar = () => {
             primaryTypographyProps={{
               fontFamily: "Poppins-Medium, Helvetica",
               fontWeight: 500,
-              fontSize: "16px",
+              fontSize: "15px",
             }}
           />
         </ListItem>

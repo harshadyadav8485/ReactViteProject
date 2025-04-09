@@ -32,6 +32,7 @@ import EditFan1 from "./Pages/EditFan1";
 import Dashboard from "./Pages/Dashboard";
 import Project1 from "./Pages/Projects1";
 import Projects2 from "./Pages/Projects2";
+import { Navigate } from "react-router-dom";
 
 function App() {
   const router = createBrowserRouter([
@@ -40,11 +41,15 @@ function App() {
       element: <AppLayout />,
       children: [
         {
-          index: true, // This makes Dashboard the default page for "/"
+          path: "dashboard",
           element: <Dashboard />,
         },
         {
-          path: "pump", // Still keeping "/home" accessible
+          index: true,
+          element: <Navigate to="/dashboard" />,
+        },
+        {
+          path: "pump",
           element: <Pump />,
         },
         {

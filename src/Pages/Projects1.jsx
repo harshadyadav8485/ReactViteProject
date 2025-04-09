@@ -82,7 +82,7 @@ const Projects1 = () => {
   const navigate = useNavigate();
 
   const [anchorEl, setAnchorEl] = useState(null);
-  const [selectedValue, setSelectedValue] = useState(10); // default value
+  const [selectedValue, setSelectedValue] = useState(5); // default value
   const open = Boolean(anchorEl);
 
   const handleClick = (event) => {
@@ -386,9 +386,9 @@ const Projects1 = () => {
             </Button>
 
             <Menu anchorEl={anchorEl} open={open} onClose={() => handleClose()}>
-              <MenuItem onClick={() => handleClose(10)}>10/page</MenuItem>
-              <MenuItem onClick={() => handleClose(20)}>25/page</MenuItem>
-              <MenuItem onClick={() => handleClose(50)}>50/page</MenuItem>
+              <MenuItem onClick={() => handleClose(10)}>5/page</MenuItem>
+              <MenuItem onClick={() => handleClose(20)}>10/page</MenuItem>
+              <MenuItem onClick={() => handleClose(50)}>15/page</MenuItem>
             </Menu>
           </Box>
         </Box>

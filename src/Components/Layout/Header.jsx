@@ -34,7 +34,7 @@ const Header = () => {
       sx={{
         position: "fixed",
         top: 0,
-        left: 255,
+        left: 165,
         right: 0,
         zIndex: 1200,
         px: 2,
