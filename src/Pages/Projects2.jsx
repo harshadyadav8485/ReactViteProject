@@ -60,127 +60,145 @@ const Projects2 = () => {
     const isFan = item.type === "Fan";
   
     return (
-      <Card
-        key={item.id}
-        sx={{
-          height: 265,
-          border: 1,
-          borderColor: "black",
-          borderRadius: "10px",
-        }}
-      >
-        <CardContent>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              mb: 2,
-            }}
-          >
-            <Typography
-              variant="subtitle1"
+      <Tooltip title="Click here to fill actual data" arrow>
+        <Card
+          key={item.id}
+          onClick={() => {
+            if (item.type === "Pump") {
+              navigate("/actualPump");
+            }
+          }}
+          sx={{
+            height: 265,
+            border: 1,
+            borderColor: "black",
+            borderRadius: "10px",
+            cursor: item.type === "Pump" ? "pointer" : "default",
+            transition: "transform 0.2s",
+            "&:hover": {
+              transform: item.type === "Pump" ? "scale(1.02)" : "none",
+            },
+          }}
+        >
+          <CardContent>
+            <Box
               sx={{
-                fontFamily: "Poppins, sans-serif",
-                fontWeight: 600,
-                fontSize: "18px",
-                mt: 1,
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                mb: 2,
               }}
             >
-              {item.id}
-            </Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  fontFamily: "Poppins, sans-serif",
+                  fontWeight: 600,
+                  fontSize: "18px",
+                  mt: 1,
+                }}
+              >
+                {item.id}
+              </Typography>
   
-            <Tooltip title="Edit Pump">
+              {/* ✅ Show edit button for both Pump and Fan */}
+              <Tooltip title={`Edit ${item.type}`}>
                 <IconButton
                   size="small"
                   color="primary"
-                  onClick={() => {
-                    navigate("/editPumpCreation");
+                  onClick={(e) => {
+                    e.stopPropagation(); // prevents card click
+                    if (item.type === "Pump") {
+                      navigate("/editPumpCreation");
+                    } else if (item.type === "Fan") {
+                      navigate("/editFanCreation"); // ⚠️ Make sure this route exists
+                    }
                   }}
                 >
                   <BorderColorIcon />
                 </IconButton>
               </Tooltip>
-          </Box>
-  
-          <Stack spacing={3}>
-            <Box>
-              <Typography
-                sx={{
-                  fontFamily: "Poppins, sans-serif",
-                  fontWeight: 500,
-                  mb: 1,
-                }}
-              >
-                Actual Data
-              </Typography>
-              <LinearProgress
-                variant="determinate"
-                value={100}
-                sx={{
-                  height: 5,
-                  borderRadius: "10px",
-                  bgcolor: "#e9ecef",
-                  "& .MuiLinearProgress-bar": {
-                    bgcolor: "#28a745",
-                  },
-                }}
-              />
             </Box>
   
-            <Box>
-              <Typography
-                sx={{
-                  fontFamily: "Poppins, sans-serif",
-                  fontWeight: 500,
-                  mb: 1,
-                }}
-              >
-                Test Data
-              </Typography>
-              <LinearProgress
-                variant="determinate"
-                value={100}
-                sx={{
-                  height: 5,
-                  borderRadius: "10px",
-                  bgcolor: "#e9ecef",
-                  "& .MuiLinearProgress-bar": {
-                    bgcolor: "#ffc107",
-                  },
-                }}
-              />
-            </Box>
+            {/* Progress bars... unchanged */}
+            <Stack spacing={3}>
+              <Box>
+                <Typography
+                  sx={{
+                    fontFamily: "Poppins, sans-serif",
+                    fontWeight: 500,
+                    mb: 1,
+                  }}
+                >
+                  Actual Data
+                </Typography>
+                <LinearProgress
+                  variant="determinate"
+                  value={100}
+                  sx={{
+                    height: 5,
+                    borderRadius: "10px",
+                    bgcolor: "#e9ecef",
+                    "& .MuiLinearProgress-bar": {
+                      bgcolor: "#28a745",
+                    },
+                  }}
+                />
+              </Box>
   
-            <Box>
-              <Typography
-                sx={{
-                  fontFamily: "Poppins, sans-serif",
-                  fontWeight: 500,
-                  mb: 1,
-                }}
-              >
-                {isFan ? "Fan" : "Pump"} Performance
-              </Typography>
-              <LinearProgress
-                variant="determinate"
-                value={100}
-                sx={{
-                  height: 5,
-                  borderRadius: "10px",
-                  bgcolor: "#e9ecef",
-                  "& .MuiLinearProgress-bar": {
-                    bgcolor: "#dc3545",
-                  },
-                }}
-              />
-            </Box>
-          </Stack>
-        </CardContent>
-      </Card>
+              <Box>
+                <Typography
+                  sx={{
+                    fontFamily: "Poppins, sans-serif",
+                    fontWeight: 500,
+                    mb: 1,
+                  }}
+                >
+                  Test Data
+                </Typography>
+                <LinearProgress
+                  variant="determinate"
+                  value={100}
+                  sx={{
+                    height: 5,
+                    borderRadius: "10px",
+                    bgcolor: "#e9ecef",
+                    "& .MuiLinearProgress-bar": {
+                      bgcolor: "#ffc107",
+                    },
+                  }}
+                />
+              </Box>
+  
+              <Box>
+                <Typography
+                  sx={{
+                    fontFamily: "Poppins, sans-serif",
+                    fontWeight: 500,
+                    mb: 1,
+                  }}
+                >
+                  {isFan ? "Fan" : "Pump"} Performance
+                </Typography>
+                <LinearProgress
+                  variant="determinate"
+                  value={100}
+                  sx={{
+                    height: 5,
+                    borderRadius: "10px",
+                    bgcolor: "#e9ecef",
+                    "& .MuiLinearProgress-bar": {
+                      bgcolor: "#dc3545",
+                    },
+                  }}
+                />
+              </Box>
+            </Stack>
+          </CardContent>
+        </Card>
+      </Tooltip>
     );
-  };
-  
+  };  
 
   return (
       <Box
