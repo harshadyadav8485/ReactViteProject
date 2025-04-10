@@ -1,159 +1,140 @@
-import React, { useState } from "react";
+import AddIcon from "@mui/icons-material/Add";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import RemoveIcon from "@mui/icons-material/Remove";
 import {
   Box,
-  Input,
   Button,
-  Typography,
-  Select,
+  Container,
+  Grid,
+  IconButton,
   MenuItem,
+  Paper,
+  Select,
+  TextField,
+  Typography,
 } from "@mui/material";
+import React from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
 
-function EditFan() {
+const EditFan = () => {
   const navigate = useNavigate();
-
-  const [pumpRunningMates, setPumpRunningMates] = useState(["", ""]);
-
-  // State for dropdown selection
-  const [pumpType, setPumpType] = useState("");
-
-  // Handle dropdown change
-  const handlePumpTypeChange = (event) => {
-    setPumpType(event.target.value);
-  };
-
-  // Handle adding a new pump running mate field
-  const handleAddPumpMate = () => {
-    setPumpRunningMates([...pumpRunningMates, ""]);
-  };
-
-  // Handle removing a pump running mate field
-  const handleRemovePumpMate = (index) => {
-    const updatedPumpMates = [...pumpRunningMates];
-    updatedPumpMates.splice(index, 1);
-    setPumpRunningMates(updatedPumpMates);
-  };
-
-  // Handle input change
-  const handlePumpMateChange = (index, value) => {
-    const updatedPumpMates = [...pumpRunningMates];
-    updatedPumpMates[index] = value;
-    setPumpRunningMates(updatedPumpMates);
-  };
-
   return (
-    <>
-      <Box sx={{ pl: 9, pr: 9, mt: 1 }}>
-        <Box sx={{ mb: 1 }}>
-          <h2>Edit Fan</h2>
-        </Box>
+    <Box
+      sx={{
+        bgcolor: "#f2f4f5",
+        minHeight: "100vh",
+        py: 4,
+        pl: "70px",
+        pt: "30px",
+        pr: "24px",
+        boxSizing: "border-box",
+        overflow: "hidden",
+      }}
+    >
+      <Typography variant="h5" component="h1" fontWeight="bold" sx={{ mb: 4 }}>
+        Edit Fan Creation
+      </Typography>
 
-        {/* Dropdown for Pump Type */}
-        {/* <Box sx={{ mb: 2 }}>
-          <Typography sx={{ fontWeight: "bold" }}>Pump Type:</Typography>
-          <Select
-            value={pumpType}
-            onChange={handlePumpTypeChange}
-            fullWidth
-            sx={{
-              border: "1px solid #ccc",
-              padding: "2px",
-              borderRadius: "4px",
-              mt: 1,
-              height: "40px",
-              fontSize: "14px",
-            }}
-          >
-            <MenuItem value="Parallel">Parallel</MenuItem>
-            <MenuItem value="Stand By">Stand By</MenuItem>
-            <MenuItem value="Stand Alone">Stand Alone</MenuItem>
-            <MenuItem value="Stand Alone">Lead/Lag</MenuItem>
-          </Select>
-        </Box> */}
+      <Paper
+        elevation={4}
+        sx={{
+          p: 4,
+          borderRadius: "10px",
+          mb: 4,
+        }}
+      >
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={6}>
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Typography
+                variant="body1"
+                fontWeight="500"
+                sx={{ mr: 2, minWidth: "80px" }}
+              >
+                System :
+              </Typography>
+              <TextField
+                fullWidth
+                variant="outlined"
+                size="small"
+                defaultValue="ERV-1"
+              />
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Typography
+                variant="body1"
+                fontWeight="500"
+                sx={{ mr: 2, minWidth: "80px" }}
+              >
+                Location :
+              </Typography>
+              <TextField
+                fullWidth
+                variant="outlined"
+                size="small"
+                defaultValue="KITCHEN AREA "
+              />
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+              <Typography
+                variant="body1"
+                fontWeight="500"
+                sx={{ mr: 2, minWidth: "80px" }}
+              >
+                Area <br></br> Served :
+              </Typography>
+              <TextField
+                fullWidth
+                variant="outlined"
+                size="small"
+                defaultValue="ENTIRE SPACE"
+              />
+            </Box>
+          </Grid>
+        </Grid>
+      </Paper>
 
-        <Box
-          component="form"
+      <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 2 }}>
+        <Button
+          variant="outlined"
+          onClick={() => navigate("/project2")}
           sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 2,
-            maxWidth: 1100,
-            margin: "auto",
-            padding: 3,
-            boxShadow: 3,
-            borderRadius: 2,
+            borderRadius: "10px",
+            border: "1px solid black",
+            color: "black",
+            bgcolor: "#f2f4f5",
+            px: 3,
+            "&:hover": {
+              bgcolor: "#e5e7e8",
+              border: "1px solid black",
+            },
           }}
         >
-          <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, 1fr)",
-              gap: 2,
-            }}
-          >
-            <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "110px" }}>System :</Typography>
-              <Input
-                fullWidth
-                name="pumpNumber"
-                defaultValue="ERV-1"
-                // readOnly
-                sx={{
-                  border: "1px solid #ccc",
-                  padding: "5px",
-                  borderRadius: "4px",
-                }}
-              />
-            </Box>
-
-            <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "110px" }}>Location :</Typography>
-              <Input
-                fullWidth
-                name="location"
-                defaultValue="KITCHEN AREA "
-                // readOnly
-                sx={{
-                  border: "1px solid #ccc",
-                  padding: "5px",
-                  borderRadius: "4px",
-                }}
-              />
-            </Box>
-
-            <Box display="flex" alignItems="center">
-              <Typography sx={{ minWidth: "110px" }}>Area Served :</Typography>
-              <Input
-                fullWidth
-                name="systemServed"
-                defaultValue="ENTIRE SPACE"
-                // readOnly
-                sx={{
-                  border: "1px solid #ccc",
-                  padding: "5px",
-                  borderRadius: "4px",
-                }}
-              />
-            </Box>
-          </Box>
-        </Box>
-        <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
-          <Button
-            variant="outlined"
-            onClick={() => navigate("/projects")}
-            sx={{ mr: 2 }}
-          >
-            Back
-          </Button>
-          <Button variant="contained" onClick={() => navigate("/editFan1")}>
-            Next{" "}
-          </Button>
-        </Box>
+          Back
+        </Button>
+        <Button
+          variant="contained"
+          onClick={() => navigate("/editFan1")}
+          sx={{
+            borderRadius: "10px",
+            bgcolor: "#99caff",
+            color: "black",
+            px: 3,
+            "&:hover": {
+              bgcolor: "#7bb8ff",
+            },
+          }}
+        >
+          Next
+        </Button>
       </Box>
-    </>
+    </Box>
   );
-}
+};
 
 export default EditFan;
