@@ -104,6 +104,8 @@ const menuItems = [
     text: "Pump Performance",
     icon: <AssignmentIcon />,
     path: "/pumpPerformance",
+  },
+  {
     text: "Projects",
     icon: <AssignmentIcon />,
     path: "/actualPump",
