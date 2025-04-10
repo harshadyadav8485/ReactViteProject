@@ -172,8 +172,8 @@ const ActualPump = () => {
                           size="small"
                           value={row.actualValue}
                           sx={{
-                            width: "200px", // 👉 Set the width you want
-                            bgcolor: "white", // 👉 Set background color to white
+                            width: "200px",
+                            bgcolor: "white",
                             "& .MuiOutlinedInput-root": {
                               borderRadius: "5px",
                               "& .MuiOutlinedInput-notchedOutline": {
@@ -196,21 +196,20 @@ const ActualPump = () => {
             <TextField
               fullWidth
               multiline
-              rows={6}
+              rows={5}
               placeholder="Enter your comments..."
-              value={comments}
-              onChange={(e) => setComments(e.target.value)}
               sx={{
                 mb: 2,
+                backgroundColor: "white",
+                borderRadius: "5px",
                 "& .MuiOutlinedInput-root": {
-                  bgcolor: "#f2f4f5",
-                  borderRadius: "5px",
-                  border: "1px solid #9d9d9d",
-                  boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+                  backgroundColor: "white",
+                  "& fieldset": {
+                    borderColor: "#9d9d9d",
+                  },
                 },
               }}
             />
-
             <Typography variant="body1" color="text.secondary" mb={1}>
               *Represents[Your meaning 1]
             </Typography>
@@ -387,12 +386,14 @@ const ActualPump = () => {
                 rows={5}
                 placeholder="Enter your comments..."
                 sx={{
-                  bgcolor: "white",
                   mb: 2,
-                  backgroundColor: "#f2f4f5",
+                  backgroundColor: "white",
                   borderRadius: "5px",
                   "& .MuiOutlinedInput-root": {
-                    borderColor: "#9d9d9d",
+                    backgroundColor: "white",
+                    "& fieldset": {
+                      borderColor: "#9d9d9d",
+                    },
                   },
                 }}
               />
@@ -562,12 +563,14 @@ const ActualPump = () => {
                 rows={5}
                 placeholder="Enter your comments..."
                 sx={{
-                  bgcolor: "white",
                   mb: 2,
-                  backgroundColor: "#f2f4f5",
+                  backgroundColor: "white",
                   borderRadius: "5px",
                   "& .MuiOutlinedInput-root": {
-                    borderColor: "#9d9d9d",
+                    backgroundColor: "white",
+                    "& fieldset": {
+                      borderColor: "#9d9d9d",
+                    },
                   },
                 }}
               />
@@ -737,12 +740,14 @@ const ActualPump = () => {
                 rows={5}
                 placeholder="Enter your comments..."
                 sx={{
-                  bgcolor: "white",
                   mb: 2,
-                  backgroundColor: "#f2f4f5",
+                  backgroundColor: "white",
                   borderRadius: "5px",
                   "& .MuiOutlinedInput-root": {
-                    borderColor: "#9d9d9d",
+                    backgroundColor: "white",
+                    "& fieldset": {
+                      borderColor: "#9d9d9d",
+                    },
                   },
                 }}
               />
@@ -912,12 +917,14 @@ const ActualPump = () => {
                 rows={5}
                 placeholder="Enter your comments..."
                 sx={{
-                  bgcolor: "white",
                   mb: 2,
-                  backgroundColor: "#f2f4f5",
+                  backgroundColor: "white",
                   borderRadius: "5px",
                   "& .MuiOutlinedInput-root": {
-                    borderColor: "#9d9d9d",
+                    backgroundColor: "white",
+                    "& fieldset": {
+                      borderColor: "#9d9d9d",
+                    },
                   },
                 }}
               />
