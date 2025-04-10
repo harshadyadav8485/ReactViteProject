@@ -14,6 +14,7 @@ import {
   Typography,
   IconButton,
 } from "@mui/material";
+import Tooltip from "@mui/material/Tooltip";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import React from "react";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
@@ -50,8 +51,8 @@ const Projects2 = () => {
   // Fan data
   const fanData = [
     { id: "F-06-07A", type: "Fan" },
-    { id: "F-06-07B", type: "Fan" },
-    { id: "F-06-07C", type: "Fan" },
+    // { id: "F-06-07B", type: "Fan" },
+    // { id: "F-06-07C", type: "Fan" },
   ];
 
   // Render equipment card
@@ -89,15 +90,17 @@ const Projects2 = () => {
               {item.id}
             </Typography>
   
-            <IconButton
-                        size="small"
-                        color="primary"
-                        onClick={() => {
-                          navigate("/editPumpCreation");
-                        }}
-                      >
-                        <BorderColorIcon />
-                      </IconButton>
+            <Tooltip title="Edit Pump">
+                <IconButton
+                  size="small"
+                  color="primary"
+                  onClick={() => {
+                    navigate("/editPumpCreation");
+                  }}
+                >
+                  <BorderColorIcon />
+                </IconButton>
+              </Tooltip>
           </Box>
   
           <Stack spacing={3}>
