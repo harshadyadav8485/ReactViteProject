@@ -59,6 +59,9 @@ const Projects2 = () => {
   const renderEquipmentCard = (item) => {
     const isFan = item.type === "Fan";
   
+    // Red override for P-06-07B and P-06-07C
+    const useRedColor = item.id === "P-06-07B" || item.id === "P-06-07C";
+  
     return (
       <Tooltip title="Click here to fill actual data" arrow>
         <Card
@@ -101,7 +104,6 @@ const Projects2 = () => {
                 {item.id}
               </Typography>
   
-              {/* ✅ Show edit button for both Pump and Fan */}
               <Tooltip title={`Edit ${item.type}`}>
                 <IconButton
                   size="small"
@@ -111,7 +113,7 @@ const Projects2 = () => {
                     if (item.type === "Pump") {
                       navigate("/editPumpCreation");
                     } else if (item.type === "Fan") {
-                      navigate("/editFanCreation"); // ⚠️ Make sure this route exists
+                      navigate("/editFanCreation");
                     }
                   }}
                 >
@@ -120,7 +122,7 @@ const Projects2 = () => {
               </Tooltip>
             </Box>
   
-            {/* Progress bars... unchanged */}
+            {/* Progress bars with conditional colors */}
             <Stack spacing={3}>
               <Box>
                 <Typography
@@ -140,7 +142,7 @@ const Projects2 = () => {
                     borderRadius: "10px",
                     bgcolor: "#e9ecef",
                     "& .MuiLinearProgress-bar": {
-                      bgcolor: "#28a745",
+                      bgcolor: useRedColor ? "#dc3545" : "#28a745", // red or green
                     },
                   }}
                 />
@@ -164,7 +166,7 @@ const Projects2 = () => {
                     borderRadius: "10px",
                     bgcolor: "#e9ecef",
                     "& .MuiLinearProgress-bar": {
-                      bgcolor: "#ffc107",
+                      bgcolor: useRedColor ? "#dc3545" : "#ffc107", // red or yellow
                     },
                   }}
                 />
@@ -188,7 +190,7 @@ const Projects2 = () => {
                     borderRadius: "10px",
                     bgcolor: "#e9ecef",
                     "& .MuiLinearProgress-bar": {
-                      bgcolor: "#dc3545",
+                      bgcolor: "#dc3545", // Always red
                     },
                   }}
                 />
@@ -198,7 +200,8 @@ const Projects2 = () => {
         </Card>
       </Tooltip>
     );
-  };  
+  };
+  
 
   return (
       <Box
