@@ -174,6 +174,8 @@ const ActualPump = () => {
                           sx={{
                             width: "200px",
                             bgcolor: "white",
+                            width: "200px", // 👉 Set the width you want
+                            bgcolor: "white", // 👉 Set background color to white
                             "& .MuiOutlinedInput-root": {
                               borderRadius: "5px",
                               "& .MuiOutlinedInput-notchedOutline": {
