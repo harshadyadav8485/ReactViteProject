@@ -1,1883 +1,963 @@
-import React, { useState } from "react";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import {
   Box,
+  Button,
   Container,
-  Grid,
-  Typography,
+  Divider,
+  Paper,
+  Stack,
+  Tab,
   Table,
   TableBody,
   TableCell,
   TableContainer,
-  TableHead,
   TableRow,
-  Paper,
-  TextField,
-  Button,
+  TableHead,
   Tabs,
-  Tab,
-  Divider,
-  Select,
+  Menu,
   MenuItem,
-  Input,
-  Snackbar,
-  Alert,
-  FormControlLabel,
-  Checkbox,
+  TextField,
+  Typography,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import AddIcon from "@mui/icons-material/Add";
-import pump_report from "../assets/pump_report.pdf";
+import React, { useState } from "react";
+
+const pumpData = [
+  { field: "Make", specifiedValue: "BELL & GOSSETT", actualValue: "TACO" },
+  {
+    field: "Model",
+    specifiedValue: "e-805C 5x5x11",
+    actualValue: "K56011D-4-PM",
+  },
+  { field: "Impeller Size", specifiedValue: "", actualValue: "2.5" },
+  { field: "Manufacturer", specifiedValue: "", actualValue: "" },
+  { field: "Motor Size", specifiedValue: "20 HP", actualValue: "25 HP" },
+  { field: "Volts/Phase", specifiedValue: "575/3", actualValue: "575/3" },
+  { field: "Amperage", specifiedValue: "23,60", actualValue: "As Below" },
+  { field: "R.P.M", specifiedValue: "", actualValue: "" },
+];
 
 const ActualPump = () => {
-  const navigate = useNavigate();
-  const [tabIndex, setTabIndex] = useState(0);
-
-  const [formData, setFormData] = useState({
-    pumpOperatingHeadSP: "",
-    pumpOperatingHeadDP: "",
-    pumpOperatingHeadTP: "",
-    pumpShutOffHeadSP: "",
-    pumpShutOffHeadDP: "",
-    pumpShutOffHeadTP: "",
-    pumpSpeed: "",
-    motorAmps: "",
-    specifiedHead: "",
-
-    pumpOperatingHeadSP1: "",
-    pumpOperatingHeadDP1: "",
-    pumpOperatingHeadTP1: "",
-    pumpShutOffHeadSP1: "",
-    pumpShutOffHeadDP1: "",
-    pumpShutOffHeadTP1: "",
-    pumpSpeed1: "",
-    motorAmps1: "",
-    specifiedHead1: "",
-
-    pumpOperatingHeadSP2: "",
-    pumpOperatingHeadDP2: "",
-    pumpOperatingHeadTP2: "",
-    pumpShutOffHeadSP2: "",
-    pumpShutOffHeadDP2: "",
-    pumpShutOffHeadTP2: "",
-    pumpSpeed2: "",
-    motorAmps2: "",
-    specifiedHead2: "",
-
-    pumpOperatingHeadSP3: "",
-    pumpOperatingHeadDP3: "",
-    pumpOperatingHeadTP3: "",
-    pumpShutOffHeadSP3: "",
-    pumpShutOffHeadDP3: "",
-    pumpShutOffHeadTP3: "",
-    pumpSpeed3: "",
-    motorAmps3: "",
-    specifiedHead3: "",
-  });
-
+  const [tabValue, setTabValue] = useState(0);
   const [comments, setComments] = useState("");
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [selectedPump, setSelectedPump] = useState("P-06-07A");
 
-  const handleConvert = (fieldKey) => {
-    setActualValues((prev) => {
-      const value = parseFloat(prev[fieldKey]); // Get actual value input
-      if (isNaN(value)) {
-        alert("Please enter a valid number for conversion.");
-        return prev;
-      }
-
-      let convertedValue;
-      switch (fieldKey) {
-        case "pumpCapacity":
-        case "systemCapacity":
-          // Check the format and convert accordingly
-          if (prev[fieldKey].includes("L/s")) {
-            convertedValue = (value * 15.85).toFixed(2) + " GPM"; // Convert L/s to GPM
-          } else {
-            convertedValue = (value * 0.0631).toFixed(2) + " L/s"; // Convert GPM to L/s
-          }
-          break;
-        default:
-          convertedValue = value; // If no conversion is needed
-      }
-
-      return { ...prev, [fieldKey]: convertedValue };
-    });
+  const handleTabChange = (event, newValue) => {
+    setTabValue(newValue);
+  };
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
   };
 
-  const handleChange1 = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleClose = (pumpName) => {
+    if (pumpName) {
+      setSelectedPump(pumpName);
+    }
+    setAnchorEl(null);
   };
-  const [actualValues, setActualValues] = useState({
-    make: " TACO",
-    model: "KS6011D-4P-PM",
-    impellerSize: '9.5"',
-    Manufacturer: "WEG",
-    size: "25HP",
-    volts: "575/3",
-    amperage: "As Below",
-    rpm: "",
-  });
-
-  const handleChange = (field, value) => {
-    setActualValues((prev) => ({ ...prev, [field]: value }));
-  };
-
-  const pumpData = [
-    { field: "Make", specified: "BELL & GOSSETT", actual: "TACO", key: "make" },
-    {
-      field: "Model",
-      specified: "e-80SC 5x5x11",
-      actual: "KS6011D-4P-PM",
-      key: "model",
-    },
-    {
-      field: "Impeller Size",
-      specified: "",
-      actual: '9.5"',
-      key: "impellerSize",
-    },
-    {
-      field: "Manufacturer ",
-      specified: "",
-      actual: "WEG",
-      key: "manufacturer ",
-    },
-    // { field: "Pump Capacity", specified: "0.5 L/s", key: "pumpCapacity", showConverter: true },
-    // { field: "System Capacity", specified: "0.5 L/s", key: "systemCapacity", showConverter: true },
-    { field: "Motor Size", specified: "20 HP ", actual: "25 HP", key: "size" },
-    { field: "Volts/Phase", specified: "575/3", actual: "575/3", key: "volts" },
-    {
-      field: "Amperage",
-      specified: "23.60",
-      actual: "As Below",
-      key: "amperage",
-    },
-    { field: "R.P.M", specified: "", actual: "", key: "rpm" },
-  ];
-  // const pumpData = [
-  //   { field: "Make", specified: "BELL & GOSSETT", actual: "TACO", key: "make", showConverter: false },
-  //   { field: "Model", specified: "e-80SC 5x5x11", actual: "KS6011D-4P-PM", key: "model", showConverter: false },
-  //   { field: "Impeller Size", specified: "", actual: '9.5"', key: "impellerSize", showConverter: false },
-  //   { field: "Manufacturer ", specified: "", actual: "WEG", key: "manufacturer ", showConverter: false },
-  //   // { field: "Pump Capacity", specified: "0.5 L/s", key: "pumpCapacity", showConverter: true },
-  //   // { field: "System Capacity", specified: "0.5 L/s", key: "systemCapacity", showConverter: true },
-  //   { field: "Motor Size", specified: "20 HP ", actual: "25 HP", key: "size", showConverter: false },
-  //   { field: "Volts/Phase", specified: "575/3", actual: "575/3",  key: "volts", showConverter: false },
-  //   { field: "Amperage", specified: "23.60", actual: "As Below", key: "amperage", showConverter: false },
-  //   { field: "R.P.M", specified: "", actual: "",  key: "rpm", showConverter: false }
-  // ];
-  const testData = [
-    {
-      field: "PUMP OPERATING HEAD (KPA)",
-      specified: "Little Giant",
-      key: "make",
-      showConverter: false,
-    },
-    {
-      field: "Model",
-      specified: "VCMA-20 Series",
-      key: "model",
-      showConverter: false,
-    },
-    {
-      field: "Impeller Size",
-      specified: "200 mm",
-      key: "impellerSize",
-      showConverter: true,
-    },
-    {
-      field: "Pump Capacity",
-      specified: "0.5 L/s",
-      key: "pumpCapacity",
-      showConverter: true,
-    },
-    {
-      field: "System Capacity",
-      specified: "0.5 L/s",
-      key: "systemCapacity",
-      showConverter: true,
-    },
-    {
-      field: "Motor Size",
-      specified: "1 HP",
-      key: "size",
-      showConverter: true,
-    },
-    {
-      field: "Volts/Phase",
-      specified: "230V",
-      key: "volts",
-      showConverter: true,
-    },
-    {
-      field: "Amperage",
-      specified: "7.5 Amps",
-      key: "amperage",
-      showConverter: true,
-    },
-    { field: "R.P.M", specified: "1725 RPM", key: "rpm", showConverter: true },
-  ];
-
-  const handleCommentChange = (e) => {
-    setComments(e.target.value);
-  };
-
-  const handleSubmit = () => {
-    setOpenSnackbar(true);
-    setTimeout(() => {
-      // navigate("/sampleTestData");
-    }, 2000);
-  };
-
-  const handleCheckboxChange = (formName) => {
-    setSelectedForms(
-      (prev) =>
-        prev.includes(formName)
-          ? prev.filter((item) => item !== formName) // Remove if already selected
-          : [...prev, formName] // Add if not selected
-    );
-  };
-
-  const [pump, setPump] = useState("P-06-07A");
-  const [openSnackbar, setOpenSnackbar] = useState(false);
-  const [selectedForms, setSelectedForms] = useState([]);
 
   return (
-    <Box>
-      <Box sx={{ pl: 9, pr: 9, mt: 1 }}>
+    <Box
+      sx={{
+        bgcolor: "#f2f4f5",
+        display: "flex",
+        justifyContent: "center",
+        width: "100%",
+      }}
+    >
+      <Box
+        sx={{
+          bgcolor: "#f2f4f5",
+          minHeight: "100vh",
+          width: "100vw",
+          py: 4,
+          pl: "70px",
+          pt: "30px",
+          pr: "24px",
+          boxSizing: "border-box",
+          overflow: "hidden",
+          position: "relative",
+        }}
+      >
         <Typography
           variant="h5"
-          style={{ fontWeight: "bold", marginBottom: "10px" }}
+          component="h1"
+          fontWeight="bold"
+          sx={{ mb: 2 }}
         >
           Project Name : UBC School of Biomedical Engineering
         </Typography>
-        <Box display="flex" alignItems="center">
-          <Typography
-            variant="h6"
-            style={{ fontWeight: "bold", marginRight: "10px" }}
-          >
+
+        <Box display="flex" alignItems="center" mb={2}>
+          <Typography variant="h6" fontWeight="semibold">
             Pump Number :
           </Typography>
-          <Select
-            value={pump}
-            onChange={handleChange}
-            variant="standard"
-            style={{
-              fontSize: "1.2rem", // Smaller font size
-              fontWeight: "bold",
-              borderBottom: "none",
-            }}
-          >
-            <MenuItem value="P-06-07A">P-06-07A</MenuItem>
-            <MenuItem value="P-06-07B">P-06-07B</MenuItem>
-            <MenuItem value="P-06-07C">P-06-07C</MenuItem>
-          </Select>
+          <Typography variant="body1" ml={2}>
+            {selectedPump}
+          </Typography>
+          <KeyboardArrowDownIcon
+            fontSize="small"
+            sx={{ ml: 1, cursor: "pointer" }}
+            onClick={handleClick}
+          />
         </Box>
-        <Tabs
-          value={tabIndex}
-          onChange={(e, newIndex) => setTabIndex(newIndex)}
-          sx={{ mb: 1 }}
+
+        <Menu
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={() => handleClose()}
         >
-          <Tab label="Actual Pump Data" />
-          <Tab label="Test Data" />
-          <Tab label="Pump Performance" />
+          <MenuItem onClick={() => handleClose("P-06-07B")}>P-06-07A</MenuItem>
+
+          <MenuItem onClick={() => handleClose("P-06-07B")}>P-06-07B</MenuItem>
+          <MenuItem onClick={() => handleClose("P-06-07C")}>P-06-07C</MenuItem>
+        </Menu>
+
+        <Tabs
+          value={tabValue}
+          onChange={handleTabChange}
+          sx={{ mb: 2 }}
+          TabIndicatorProps={{ sx: { bgcolor: "#99caff", height: 3 } }}
+        >
+          <Tab label="Actual Pump Data" sx={{ fontWeight: 500 }} />
+          <Tab label="Test Data" sx={{ fontWeight: 500 }} />
+          <Tab label="Pump Performance" sx={{ fontWeight: 500 }} />
         </Tabs>
-        {tabIndex === 0 && (
+
+        {tabValue === 0 && (
           <>
-            <TableContainer component={Paper} sx={{ mt: 2 }}>
+            <TableContainer
+              component={Paper}
+              sx={{ mb: 2, borderRadius: "10px 10px 0 0" }}
+            >
               <Table>
-                <TableHead sx={{ backgroundColor: "#1976d2" }}>
-                  <TableRow sx={{ height: "30px" }}>
-                    <TableCell
-                      sx={{ color: "white", fontWeight: "bold", px: 1 }}
-                    >
-                      Field
+                <TableHead>
+                  <TableRow sx={{ bgcolor: "#99caff" }}>
+                    <TableCell sx={{ px: 3 }}>
+                      <Stack direction="row" alignItems="center" spacing={1}>
+                        <Typography fontWeight="bold">Fields</Typography>
+                      </Stack>
                     </TableCell>
-                    <TableCell
-                      sx={{ color: "white", fontWeight: "bold", px: 1 }}
-                    >
-                      Specified Value
+                    <TableCell>
+                      <Stack direction="row" alignItems="center" spacing={1}>
+                        <Typography fontWeight="bold">
+                          Specified Value
+                        </Typography>
+                      </Stack>
                     </TableCell>
-                    <TableCell
-                      sx={{
-                        color: "white",
-                        fontWeight: "bold",
-                        px: 1,
-                        textAlign: "center",
-                      }}
-                    >
-                      Actual Value
+                    <TableCell>
+                      <Stack direction="row" alignItems="center" spacing={1}>
+                        <Typography fontWeight="bold">Actual Value</Typography>
+                      </Stack>
                     </TableCell>
-                    {/* <TableCell sx={{ color: "white", fontWeight: "bold", px: 1, textAlign: "center" }}>Action</TableCell> */}
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {pumpData.map((row) => (
-                    <TableRow key={row.field} sx={{ height: "40px" }}>
-                      <TableCell sx={{ py: 0.3, px: 1 }}>{row.field}</TableCell>
-                      <TableCell sx={{ py: 0.3, px: 1 }}>
-                        {row.specified}
+                  {pumpData.map((row, index) => (
+                    <TableRow
+                      key={index}
+                      sx={{ borderBottom: "1px solid #cbcbcb" }}
+                    >
+                      <TableCell sx={{ py: 2 }}>
+                        <Typography fontWeight="medium">{row.field}</Typography>
                       </TableCell>
-                      <TableCell sx={{ py: 0.3, px: 1, textAlign: "center" }}>
-                        <Box sx={{ display: "flex", justifyContent: "center" }}>
-                          <TextField
-                            variant="outlined"
-                            size="small"
-                            value={actualValues[row.key]}
-                            onChange={(e) =>
-                              handleChange(row.key, e.target.value)
-                            }
-                            sx={{
-                              width: "100px",
-                              "& .MuiInputBase-root": {
-                                height: "30px",
-                                fontSize: "0.75rem",
-                              },
-                            }}
-                          />
-                        </Box>
+                      <TableCell sx={{ py: 2 }}>
+                        <Typography fontWeight="medium">
+                          {row.specifiedValue}
+                        </Typography>
                       </TableCell>
-                      {/* <TableCell sx={{ py: 0.3, px: 1, textAlign: "center" }}>
-                      {row.showConverter && (
-                        <Button
-                          variant="contained"
+                      <TableCell sx={{ py: 2 }}>
+                        <TextField
+                          variant="outlined"
                           size="small"
-                          onClick={() => handleConvert(row.key)}
+                          value={row.actualValue}
                           sx={{
-                            minWidth: "60px",
-                            height: "30px",
-                            fontSize: "0.75rem",
-                            padding: "2px 6px",
+                            width: "200px", // 👉 Set the width you want
+                            bgcolor: "white", // 👉 Set background color to white
+                            "& .MuiOutlinedInput-root": {
+                              borderRadius: "5px",
+                              "& .MuiOutlinedInput-notchedOutline": {
+                                borderColor: "#9d9d9d",
+                              },
+                            },
                           }}
-                        >
-                          Convert
-                        </Button>
-                      )}
-                    </TableCell> */}
+                        />
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
               </Table>
             </TableContainer>
 
-            <Box width="100%">
-              <h3 style={{ alignSelf: "flex-start" }}>Comments :</h3>
-              <TextField
-                fullWidth
-                label="Enter your comments"
-                multiline
-                rows={4}
-                variant="outlined"
-                value={comments}
-                onChange={handleCommentChange}
-                placeholder="Use '*' for some meaning and '**' for another meaning..."
-                style={{ width: "100%" }}
-              />
-              <Typography
-                variant="body2"
-                color="textSecondary"
-                style={{ marginTop: "10px", textAlign: "left" }}
-              >
-                * Represents [Your Meaning 1] <br />
-                ** Represents [Your Meaning 2]
-              </Typography>
-            </Box>
+            <Typography variant="h6" fontWeight="bold" mb={2}>
+              Comments :
+            </Typography>
 
-            <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
+            <TextField
+              fullWidth
+              multiline
+              rows={6}
+              placeholder="Enter your comments..."
+              value={comments}
+              onChange={(e) => setComments(e.target.value)}
+              sx={{
+                mb: 2,
+                "& .MuiOutlinedInput-root": {
+                  bgcolor: "#f2f4f5",
+                  borderRadius: "5px",
+                  border: "1px solid #9d9d9d",
+                  boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+                },
+              }}
+            />
+
+            <Typography variant="body1" color="text.secondary" mb={1}>
+              *Represents[Your meaning 1]
+            </Typography>
+            <Typography variant="body1" color="text.secondary" mb={2}>
+              **Represents[Your meaning 2]
+            </Typography>
+            <Stack direction="row" spacing={1} justifyContent="flex-end">
               <Button
                 variant="outlined"
-                sx={{ mr: 2 }}
-                onClick={() => navigate("/allPump")}
+                sx={{
+                  backgroundColor: "#f2f4f5",
+                  borderRadius: "10px",
+                  borderColor: "black",
+                  color: "black",
+                  textTransform: "none",
+                  minWidth: "91px",
+                  height: "42px",
+                }}
               >
                 Back
               </Button>
-              <Button variant="contained" onClick={handleSubmit}>
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "#99caff",
+                  borderRadius: "10px",
+                  color: "black",
+                  textTransform: "none",
+                  minWidth: "101px",
+                  height: "42px",
+                  "&:hover": {
+                    backgroundColor: "#7bb8ff",
+                  },
+                }}
+              >
                 Submit
               </Button>
-            </Box>
-
-            <Snackbar
-              open={openSnackbar}
-              autoHideDuration={2000}
-              onClose={() => setOpenSnackbar(false)}
-              anchorOrigin={{ vertical: "top", horizontal: "center" }}
-            >
-              <Alert
-                onClose={() => setOpenSnackbar(false)}
-                severity="success"
-                variant="filled"
-              >
-                Data Submitted Successfully!
-              </Alert>
-            </Snackbar>
+            </Stack>
           </>
         )}
-      </Box>
-      {tabIndex === 1 && (
-        <>
-          <Box sx={{ pl: 9, pr: 9, mt: 1 }}>
-            <Box
-              component="form"
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 2,
-                maxWidth: 1100,
-                margin: "auto",
-                padding: 3,
-                boxShadow: 3,
-                borderRadius: 2,
-              }}
-            >
-              <Typography variant="h6" sx={{ fontWeight: 600 }}>
+        {tabValue === 1 && (
+          <Box>
+            <Paper elevation={4} sx={{ p: 3, borderRadius: "10px", mb: 5 }}>
+              <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
                 SINGLE OPERATION FULL FLOW
               </Typography>
-              <Typography variant="h8" sx={{ fontWeight: 550 }}>
+
+              <Typography variant="subtitle1" fontWeight="600" sx={{ mb: 1 }}>
                 PUMP OPERATING HEAD (KPA)
               </Typography>
-
-              <Box
-                sx={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(3, 1fr)", // 2 columns
-                  gap: 2, // Spacing between items
-                }}
-              >
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Suction Pressure(SP) :
+              <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Suction{"\n"}Pressure (SP) :
                   </Typography>
-                  <Input
-                    fullWidth
-                    name="size"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
                   />
                 </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Discharge Pressure(DP) :
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Discharge{"\n"}Pressure (DP) :
                   </Typography>
-                  <Input
-                    fullWidth
-                    name="volts"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
                   />
                 </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Total Pressure(TP) :
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Total{"\n"}Pressure (TP) :
                   </Typography>
-                  <Input
-                    fullWidth
-                    name="amperage"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
                   />
                 </Box>
+              </Stack>
 
-                <Typography variant="h8" sx={{ fontWeight: 600 }}>
-                  PUMP SHUT OFF HEAD (KPA)
-                </Typography>
-                <br></br>
-                <hr></hr>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Suction Pressure(SP) :
+              <Typography variant="subtitle1" fontWeight="600" sx={{ mb: 1 }}>
+                PUMP SHUT OFF HEAD(KPA)
+              </Typography>
+              <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Suction{"\n"}Pressure (SP) :
                   </Typography>
-                  <Input
-                    fullWidth
-                    name="size"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
                   />
                 </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Discharge Pressure(DP) :
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Discharge{"\n"}Pressure (DP) :
                   </Typography>
-                  <Input
-                    fullWidth
-                    name="volts"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
                   />
                 </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Total Pressure(TP) :
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Total{"\n"}Pressure (TP) :
                   </Typography>
-                  <Input
-                    fullWidth
-                    name="amperage"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
                   />
                 </Box>
+              </Stack>
 
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
+              <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography sx={{ mr: 1, minWidth: "100px" }}>
                     Pump Speed :
                   </Typography>
-                  <Input
-                    fullWidth
-                    name="size"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
                   />
                 </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography sx={{ mr: 1, minWidth: "100px" }}>
                     Motor Amps :
                   </Typography>
-                  <Input
-                    fullWidth
-                    name="volts"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
                   />
                 </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Specified Head(KPA) :
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Specified{"\n"}Head (KPA) :
                   </Typography>
-                  <Input
-                    fullWidth
-                    name="amperage"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
                   />
                 </Box>
-              </Box>
+              </Stack>
 
-              <Box width="100%">
-                <h3 style={{ alignSelf: "flex-start" }}>Comments :</h3>
-                <TextField
-                  fullWidth
-                  label="Enter your comments"
-                  multiline
-                  rows={4}
-                  variant="outlined"
-                  value={comments}
-                  onChange={handleCommentChange}
-                  placeholder="Use '*' for some meaning and '**' for another meaning..."
-                  style={{ width: "100%" }}
-                />
-                <Typography
-                  variant="body2"
-                  color="textSecondary"
-                  style={{ marginTop: "10px", textAlign: "left" }}
-                >
-                  * Represents [Your Meaning 1] <br />
-                  ** Represents [Your Meaning 2]
-                </Typography>
-              </Box>
+              {/* Comments */}
+              <Typography variant="h6" fontWeight="bold" sx={{ mb: 1 }}>
+                Comments :
+              </Typography>
+              <TextField
+                fullWidth
+                multiline
+                rows={5}
+                placeholder="Enter your comments..."
+                sx={{
+                  bgcolor: "white",
+                  mb: 2,
+                  backgroundColor: "#f2f4f5",
+                  borderRadius: "5px",
+                  "& .MuiOutlinedInput-root": {
+                    borderColor: "#9d9d9d",
+                  },
+                }}
+              />
 
-              <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
+              <Typography color="text.secondary" sx={{ mb: 0.5 }}>
+                *Represents[Your meaning 1]
+              </Typography>
+              <Typography color="text.secondary" sx={{ mb: 3 }}>
+                **Represents[Your meaning 2]
+              </Typography>
+              <Box display="flex" justifyContent="flex-end" gap={2}>
                 <Button
                   variant="outlined"
-                  sx={{ mr: 2 }}
-                  onClick={() => navigate("/allPump")}
-                >
-                  Back
-                </Button>
-                <Button variant="contained" onClick={handleSubmit}>
-                  Submit
-                </Button>
-              </Box>
-
-              <Snackbar
-                open={openSnackbar}
-                autoHideDuration={2000}
-                onClose={() => setOpenSnackbar(false)}
-                anchorOrigin={{ vertical: "top", horizontal: "center" }}
-              >
-                <Alert
-                  onClose={() => setOpenSnackbar(false)}
-                  severity="success"
-                  variant="filled"
-                >
-                  Data Submitted Successfully!
-                </Alert>
-              </Snackbar>
-            </Box>
-          </Box>
-
-          <Box sx={{ pl: 9, pr: 9, mt: 1 }}>
-            <Box
-              component="form"
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 2,
-                maxWidth: 1100,
-                margin: "auto",
-                padding: 3,
-                boxShadow: 3,
-                borderRadius: 2,
-              }}
-            >
-              <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                SINGLE OPERATION BALANCED FLOW
-              </Typography>
-              <Typography variant="h8" sx={{ fontWeight: 550 }}>
-                PUMP OPERATING HEAD (KPA)
-              </Typography>
-
-              <Box
-                sx={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(3, 1fr)", // 2 columns
-                  gap: 2, // Spacing between items
-                }}
-              >
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Suction Pressure(SP) :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="size"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Discharge Pressure(DP) :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="volts"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Total Pressure(TP) :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="amperage"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Typography variant="h8" sx={{ fontWeight: 600 }}>
-                  PUMP SHUT OFF HEAD (KPA)
-                </Typography>
-                <br></br>
-                <hr></hr>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Suction Pressure(SP) :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="size"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Discharge Pressure(DP) :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="volts"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Total Pressure(TP) :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="amperage"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Pump Speed :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="size"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Motor Amps :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="volts"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Specified Head(KPA) :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="amperage"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-              </Box>
-
-              <Box width="100%">
-                <h3 style={{ alignSelf: "flex-start" }}>Comments :</h3>
-                <TextField
-                  fullWidth
-                  label="Enter your comments"
-                  multiline
-                  rows={4}
-                  variant="outlined"
-                  value={comments}
-                  onChange={handleCommentChange}
-                  placeholder="Use '*' for some meaning and '**' for another meaning..."
-                  style={{ width: "100%" }}
-                />
-                <Typography
-                  variant="body2"
-                  color="textSecondary"
-                  style={{ marginTop: "10px", textAlign: "left" }}
-                >
-                  * Represents [Your Meaning 1] <br />
-                  ** Represents [Your Meaning 2]
-                </Typography>
-              </Box>
-
-              <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
-                <Button
-                  variant="outlined"
-                  sx={{ mr: 2 }}
-                  onClick={() => navigate("/allPump")}
-                >
-                  Back
-                </Button>
-                <Button variant="contained" onClick={handleSubmit}>
-                  Submit
-                </Button>
-              </Box>
-
-              <Snackbar
-                open={openSnackbar}
-                autoHideDuration={2000}
-                onClose={() => setOpenSnackbar(false)}
-                anchorOrigin={{ vertical: "top", horizontal: "center" }}
-              >
-                <Alert
-                  onClose={() => setOpenSnackbar(false)}
-                  severity="success"
-                  variant="filled"
-                >
-                  Data Submitted Successfully!
-                </Alert>
-              </Snackbar>
-            </Box>
-          </Box>
-
-          <Box sx={{ pl: 9, pr: 9, mt: 1 }}>
-            <Box
-              component="form"
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 2,
-                maxWidth: 1100,
-                margin: "auto",
-                padding: 3,
-                boxShadow: 3,
-                borderRadius: 2,
-              }}
-            >
-              <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                PARALLEL OPERATION FULL FLOW
-              </Typography>
-              <Typography variant="h8" sx={{ fontWeight: 550 }}>
-                PUMP OPERATING HEAD (KPA)
-              </Typography>
-
-              <Box
-                sx={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(3, 1fr)", // 2 columns
-                  gap: 2, // Spacing between items
-                }}
-              >
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Suction Pressure(SP) :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="size"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Discharge Pressure(DP) :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="volts"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Total Pressure(TP) :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="amperage"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Typography variant="h8" sx={{ fontWeight: 600 }}>
-                  PUMP SHUT OFF HEAD (KPA)
-                </Typography>
-                <br></br>
-                <hr></hr>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Suction Pressure(SP) :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="size"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Discharge Pressure(DP) :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="volts"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Total Pressure(TP) :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="amperage"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Pump Speed :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="size"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Motor Amps :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="volts"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Specified Head(KPA) :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="amperage"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-              </Box>
-
-              <Box width="100%">
-                <h3 style={{ alignSelf: "flex-start" }}>Comments :</h3>
-                <TextField
-                  fullWidth
-                  label="Enter your comments"
-                  multiline
-                  rows={4}
-                  variant="outlined"
-                  value={comments}
-                  onChange={handleCommentChange}
-                  placeholder="Use '*' for some meaning and '**' for another meaning..."
-                  style={{ width: "100%" }}
-                />
-                <Typography
-                  variant="body2"
-                  color="textSecondary"
-                  style={{ marginTop: "10px", textAlign: "left" }}
-                >
-                  * Represents [Your Meaning 1] <br />
-                  ** Represents [Your Meaning 2]
-                </Typography>
-              </Box>
-
-              <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
-                <Button
-                  variant="outlined"
-                  sx={{ mr: 2 }}
-                  onClick={() => navigate("/allPump")}
-                >
-                  Back
-                </Button>
-                <Button variant="contained" onClick={handleSubmit}>
-                  Submit
-                </Button>
-              </Box>
-
-              <Snackbar
-                open={openSnackbar}
-                autoHideDuration={2000}
-                onClose={() => setOpenSnackbar(false)}
-                anchorOrigin={{ vertical: "top", horizontal: "center" }}
-              >
-                <Alert
-                  onClose={() => setOpenSnackbar(false)}
-                  severity="success"
-                  variant="filled"
-                >
-                  Data Submitted Successfully!
-                </Alert>
-              </Snackbar>
-            </Box>
-          </Box>
-
-          <Box sx={{ pl: 9, pr: 9, mt: 1 }}>
-            <Box
-              component="form"
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 2,
-                maxWidth: 1100,
-                margin: "auto",
-                padding: 3,
-                boxShadow: 3,
-                borderRadius: 2,
-              }}
-            >
-              <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                PARALLEL OPERATION BALANCED FLOW
-              </Typography>
-              <Typography variant="h8" sx={{ fontWeight: 550 }}>
-                PUMP OPERATING HEAD (KPA)
-              </Typography>
-
-              <Box
-                sx={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(3, 1fr)", // 2 columns
-                  gap: 2, // Spacing between items
-                }}
-              >
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Suction Pressure(SP) :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="size"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Discharge Pressure(DP) :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="volts"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Total Pressure(TP) :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="amperage"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Typography variant="h8" sx={{ fontWeight: 600 }}>
-                  PUMP SHUT OFF HEAD (KPA)
-                </Typography>
-                <br></br>
-                <hr></hr>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Suction Pressure(SP) :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="size"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Discharge Pressure(DP) :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="volts"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Total Pressure(TP) :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="amperage"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Pump Speed :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="size"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Motor Amps :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="volts"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Specified Head(KPA) :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="amperage"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-              </Box>
-
-              <Box width="100%">
-                <h3 style={{ alignSelf: "flex-start" }}>Comments :</h3>
-                <TextField
-                  fullWidth
-                  label="Enter your comments"
-                  multiline
-                  rows={4}
-                  variant="outlined"
-                  value={comments}
-                  onChange={handleCommentChange}
-                  placeholder="Use '*' for some meaning and '**' for another meaning..."
-                  style={{ width: "100%" }}
-                />
-                <Typography
-                  variant="body2"
-                  color="textSecondary"
-                  style={{ marginTop: "10px", textAlign: "left" }}
-                >
-                  * Represents [Your Meaning 1] <br />
-                  ** Represents [Your Meaning 2]
-                </Typography>
-              </Box>
-
-              <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
-                <Button
-                  variant="outlined"
-                  sx={{ mr: 2 }}
-                  onClick={() => navigate("/allPump")}
-                >
-                  Back
-                </Button>
-                <Button variant="contained" onClick={handleSubmit}>
-                  Submit
-                </Button>
-              </Box>
-
-              <Snackbar
-                open={openSnackbar}
-                autoHideDuration={2000}
-                onClose={() => setOpenSnackbar(false)}
-                anchorOrigin={{ vertical: "top", horizontal: "center" }}
-              >
-                <Alert
-                  onClose={() => setOpenSnackbar(false)}
-                  severity="success"
-                  variant="filled"
-                >
-                  Data Submitted Successfully!
-                </Alert>
-              </Snackbar>
-            </Box>
-          </Box>
-        </>
-      )}
-      {tabIndex === 2 && (
-        <>
-          <Box sx={{ pl: 9, pr: 9, mt: 1 }}>
-            <Box
-              component="form"
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 2,
-                maxWidth: 1100,
-                margin: "auto",
-                padding: 3,
-                boxShadow: 3,
-                borderRadius: 2,
-              }}
-            >
-              <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                Pump
-              </Typography>
-              <Box>
-                <Box display="flex" alignItems="center" marginBottom="12px">
-                  <Typography sx={{ minWidth: "150px" }}>
-                    Pump Capacity:
-                  </Typography>
-                  <Box display="flex" alignItems="center" gap={2}>
-                    <TextField
-                      defaultValue="34.700 L/S"
-                      label="Specified Value"
-                      fullWidth
-                      variant="outlined"
-                      InputProps={{ readOnly: true }}
-                      sx={{
-                        "& .MuiInputBase-root": {
-                          height: 40,
-                        },
-                        "& .MuiInputBase-input": {
-                          padding: "10px 14px",
-                        },
-                      }}
-                    />
-                    <TextField
-                      label="Actual Value"
-                      fullWidth
-                      variant="outlined"
-                      InputProps={{ readOnly: true }}
-                      sx={{
-                        "& .MuiInputBase-root": {
-                          height: 40,
-                        },
-                        "& .MuiInputBase-input": {
-                          padding: "10px 14px",
-                        },
-                      }}
-                    />
-
-                    <Button
-                      variant="contained"
-                      size="small"
-                      onClick={() => handleConvert(row.key)}
-                      sx={{
-                        minWidth: "100px",
-                        height: "30px",
-                        fontSize: "0.75rem",
-                        padding: "2px 6px",
-                      }}
-                    >
-                      Convert
-                    </Button>
-                  </Box>
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "150px", gap: 2 }}>
-                    System Capacity:
-                  </Typography>
-                  <Box display="flex" alignItems="center" gap={2}>
-                    <TextField
-                      defaultValue="187.629 L/s"
-                      label="Specified Value"
-                      fullWidth
-                      variant="outlined"
-                      sx={{
-                        "& .MuiInputBase-root": {
-                          height: 40,
-                        },
-                        "& .MuiInputBase-input": {
-                          padding: "10px 14px",
-                        },
-                      }}
-                    />
-                    <TextField
-                      label="Actual Value"
-                      fullWidth
-                      variant="outlined"
-                      sx={{
-                        "& .MuiInputBase-root": {
-                          height: 40,
-                        },
-                        "& .MuiInputBase-input": {
-                          padding: "10px 14px",
-                        },
-                      }}
-                    />
-
-                    <Button
-                      variant="contained"
-                      size="small"
-                      onClick={() => handleConvert(row.key)}
-                      sx={{
-                        minWidth: "100px",
-                        height: "30px",
-                        fontSize: "0.75rem",
-                        padding: "2px 6px",
-                      }}
-                    >
-                      Convert
-                    </Button>
-                  </Box>
-                </Box>
-              </Box>
-
-              <Box
-                sx={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(2, 1fr)", // 2 columns
-                  gap: 2, // Spacing between items
-                }}
-              >
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Pump Balancing Valve Position :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="amperage"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    System Differential Pressure Setpoint :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="rpm"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-              </Box>
-              <Divider />
-
-              <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                Motor
-              </Typography>
-              <Typography variant="h8" sx={{ fontWeight: 600 }}>
-                BHP SINGLE OPERATION
-              </Typography>
-
-              <Box
-                sx={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(2, 1fr)", // 2 columns
-                  gap: 2, // Spacing between items
-                }}
-              >
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Full Flow :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="size"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Balanced Position :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="volts"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-                <Typography variant="h8" sx={{ fontWeight: 600 }}>
-                  BHP PARALLEL OPERATION
-                </Typography>
-                <br></br>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Full Flow :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="amperage"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Balanced Position :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="rpm"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-              </Box>
-              <Divider />
-
-              <Box display="flex" gap={52}>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={selectedForms.includes("Flow Meter")}
-                      onChange={() => handleCheckboxChange("Flow Meter")}
-                    />
-                  }
-                  label="Flow Meter"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={selectedForms.includes(
-                        "Three Phase BHP Calculator"
-                      )}
-                      onChange={() =>
-                        handleCheckboxChange("Three Phase BHP Calculator")
-                      }
-                    />
-                  }
-                  label="Three Phase BHP Calculator"
-                />
-              </Box>
-
-              {/* Grid Layout for Forms */}
-              {selectedForms.length > 0 && (
-                <Box
                   sx={{
-                    display: "grid",
-                    gridTemplateColumns:
-                      selectedForms.length > 1
-                        ? "repeat(2, 1fr)"
-                        : "repeat(1, 1fr)",
-                    gap: 2,
+                    borderRadius: "10px",
+                    border: "1px solid black",
+                    color: "black",
+                    px: 3,
                   }}
-                >
-                  {/* Flow Meter Form */}
-                  {selectedForms.includes("Flow Meter") && (
-                    <Box
-                      sx={{
-                        border: "1px solid #ccc",
-                        padding: 2,
-                        borderRadius: 2,
-                        boxShadow: 2,
-                      }}
-                    >
-                      {/* <Typography variant="h6">Flow Meter</Typography> */}
-
-                      <Box
-                        display="flex"
-                        alignItems="center"
-                        marginBottom="16px"
-                      >
-                        <Typography sx={{ minWidth: "120px" }}>
-                          Type :
-                        </Typography>
-                        <Input
-                          name="type"
-                          fullWidth
-                          sx={{
-                            // width: "50%",
-                            border: "1px solid #ccc",
-                            padding: "5px",
-                            borderRadius: "4px",
-                          }}
-                        />
-                      </Box>
-
-                      <Box
-                        display="flex"
-                        alignItems="center"
-                        marginBottom="16px"
-                      >
-                        <Typography sx={{ minWidth: "120px" }}>
-                          Size :
-                        </Typography>
-                        <Input
-                          name="size"
-                          fullWidth
-                          sx={{
-                            border: "1px solid #ccc",
-                            padding: "5px",
-                            borderRadius: "4px",
-                          }}
-                        />
-                      </Box>
-
-                      <Box
-                        display="flex"
-                        alignItems="center"
-                        marginBottom="16px"
-                      >
-                        <Typography sx={{ minWidth: "120px" }}>
-                          Signal (FT) :
-                        </Typography>
-                        <Input
-                          name="signal"
-                          fullWidth
-                          sx={{
-                            border: "1px solid #ccc",
-                            padding: "5px",
-                            borderRadius: "4px",
-                          }}
-                        />
-                      </Box>
-
-                      <Box
-                        display="flex"
-                        alignItems="center"
-                        marginBottom="16px"
-                      >
-                        <Typography sx={{ minWidth: "120px" }}>
-                          Measured (GPM) :
-                        </Typography>
-                        <Input
-                          name="gpm"
-                          fullWidth
-                          sx={{
-                            border: "1px solid #ccc",
-                            padding: "5px",
-                            borderRadius: "4px",
-                          }}
-                        />
-                      </Box>
-
-                      <Box display="flex" alignItems="center">
-                        <Typography sx={{ minWidth: "120px" }}>
-                          Position :
-                        </Typography>
-                        <Input
-                          name="position"
-                          fullWidth
-                          sx={{
-                            border: "1px solid #ccc",
-                            padding: "5px",
-                            borderRadius: "4px",
-                          }}
-                        />
-                      </Box>
-                    </Box>
-                  )}
-
-                  {/* Three Phase BHP Calculator Form */}
-                  {selectedForms.includes("Three Phase BHP Calculator") && (
-                    <Box
-                      sx={{
-                        border: "1px solid #ccc",
-                        padding: 2,
-                        borderRadius: 2,
-                        boxShadow: 2,
-                      }}
-                    >
-                      {/* <Typography variant="h6">Flow Meter</Typography> */}
-
-                      <Box
-                        display="flex"
-                        alignItems="center"
-                        marginBottom="16px"
-                      >
-                        <Typography sx={{ minWidth: "120px" }}>
-                          Efficiency :
-                        </Typography>
-                        <Input
-                          name="efficiency"
-                          fullWidth
-                          sx={{
-                            // width: "50%",
-                            border: "1px solid #ccc",
-                            padding: "5px",
-                            borderRadius: "4px",
-                          }}
-                        />
-                      </Box>
-
-                      <Box
-                        display="flex"
-                        alignItems="center"
-                        marginBottom="16px"
-                      >
-                        <Typography sx={{ minWidth: "120px" }}>
-                          Meas. Amperage :
-                        </Typography>
-                        <Input
-                          name="amperage"
-                          fullWidth
-                          sx={{
-                            border: "1px solid #ccc",
-                            padding: "5px",
-                            borderRadius: "4px",
-                          }}
-                        />
-                      </Box>
-
-                      <Box
-                        display="flex"
-                        alignItems="center"
-                        marginBottom="16px"
-                      >
-                        <Typography sx={{ minWidth: "120px" }}>
-                          Meas. Voltage:
-                        </Typography>
-                        <Input
-                          name="voltage"
-                          fullWidth
-                          sx={{
-                            border: "1px solid #ccc",
-                            padding: "5px",
-                            borderRadius: "4px",
-                          }}
-                        />
-                      </Box>
-
-                      <Box
-                        display="flex"
-                        alignItems="center"
-                        marginBottom="16px"
-                      >
-                        <Typography sx={{ minWidth: "120px" }}>
-                          Power Factor :
-                        </Typography>
-                        <Input
-                          name="powerFactor"
-                          fullWidth
-                          sx={{
-                            border: "1px solid #ccc",
-                            padding: "5px",
-                            borderRadius: "4px",
-                          }}
-                        />
-                      </Box>
-
-                      <Box display="flex" alignItems="center">
-                        <Typography
-                          sx={{ minWidth: "110px", fontWeight: "bold" }}
-                        >
-                          EFM
-                        </Typography>
-                        <Typography sx={{ minWidth: "50px" }}>BHP :</Typography>
-                        <Input
-                          name="efm"
-                          fullWidth
-                          sx={{
-                            border: "1px solid #ccc",
-                            padding: "5px",
-                            borderRadius: "4px",
-                            marginRight: "8px",
-                          }}
-                        />
-                        <Typography sx={{ minWidth: "50px" }}>BKW :</Typography>
-                        <Input
-                          name="efm"
-                          fullWidth
-                          sx={{
-                            border: "1px solid #ccc",
-                            padding: "5px",
-                            borderRadius: "4px",
-                          }}
-                        />
-                      </Box>
-                    </Box>
-                  )}
-                </Box>
-              )}
-
-              <Divider />
-
-              <Box width="100%">
-                <h3 style={{ alignSelf: "flex-start" }}>Comments :</h3>
-                <TextField
-                  fullWidth
-                  label="Enter your comments"
-                  multiline
-                  rows={4}
-                  variant="outlined"
-                  value={comments}
-                  onChange={handleCommentChange}
-                  placeholder="Use '*' for some meaning and '**' for another meaning..."
-                  style={{ width: "100%" }}
-                />
-                <Typography
-                  variant="body2"
-                  color="textSecondary"
-                  style={{ marginTop: "10px", textAlign: "left" }}
-                >
-                  * Represents [Your Meaning 1] <br />
-                  ** Represents [Your Meaning 2]
-                </Typography>
-              </Box>
-
-              <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
-                <Button
-                  variant="outlined"
-                  sx={{ mr: 2 }}
-                  onClick={() => navigate("/allPump")}
                 >
                   Back
                 </Button>
                 <Button
                   variant="contained"
-                  onClick={handleSubmit}
-                  sx={{ color: "white" }}
+                  sx={{
+                    borderRadius: "10px",
+                    bgcolor: "#99caff",
+                    color: "black",
+                    px: 3,
+                  }}
                 >
-                  <a
-                    href={pump_report}
-                    download="pump_report"
-                    style={{ color: "inherit", textDecoration: "none" }}
-                  >
-                    Submit & Generate Report
-                  </a>
+                  Submit
                 </Button>
               </Box>
+            </Paper>
+            <Paper elevation={4} sx={{ p: 3, borderRadius: "10px", mb: 5 }}>
+              <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
+                SINGLE OPERATION BALANCED FLOW
+              </Typography>
 
-              <Snackbar
-                open={openSnackbar}
-                autoHideDuration={2000}
-                onClose={() => setOpenSnackbar(false)}
-                anchorOrigin={{ vertical: "top", horizontal: "center" }}
-              >
-                <Alert
-                  onClose={() => setOpenSnackbar(false)}
-                  severity="success"
-                  variant="filled"
+              <Typography variant="subtitle1" fontWeight="600" sx={{ mb: 1 }}>
+                PUMP OPERATING HEAD (KPA)
+              </Typography>
+              <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Suction{"\n"}Pressure (SP) :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Discharge{"\n"}Pressure (DP) :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Total{"\n"}Pressure (TP) :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+              </Stack>
+
+              <Typography variant="subtitle1" fontWeight="600" sx={{ mb: 1 }}>
+                PUMP SHUT OFF HEAD(KPA)
+              </Typography>
+              <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Suction{"\n"}Pressure (SP) :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Discharge{"\n"}Pressure (DP) :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Total{"\n"}Pressure (TP) :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+              </Stack>
+
+              <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography sx={{ mr: 1, minWidth: "100px" }}>
+                    Pump Speed :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography sx={{ mr: 1, minWidth: "100px" }}>
+                    Motor Amps :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Specified{"\n"}Head (KPA) :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+              </Stack>
+
+              {/* Comments */}
+              <Typography variant="h6" fontWeight="bold" sx={{ mb: 1 }}>
+                Comments :
+              </Typography>
+              <TextField
+                fullWidth
+                multiline
+                rows={5}
+                placeholder="Enter your comments..."
+                sx={{
+                  bgcolor: "white",
+                  mb: 2,
+                  backgroundColor: "#f2f4f5",
+                  borderRadius: "5px",
+                  "& .MuiOutlinedInput-root": {
+                    borderColor: "#9d9d9d",
+                  },
+                }}
+              />
+
+              <Typography color="text.secondary" sx={{ mb: 0.5 }}>
+                *Represents[Your meaning 1]
+              </Typography>
+              <Typography color="text.secondary" sx={{ mb: 3 }}>
+                **Represents[Your meaning 2]
+              </Typography>
+              <Box display="flex" justifyContent="flex-end" gap={2}>
+                <Button
+                  variant="outlined"
+                  sx={{
+                    borderRadius: "10px",
+                    border: "1px solid black",
+                    color: "black",
+                    px: 3,
+                  }}
                 >
-                  Data Submitted Successfully!
-                </Alert>
-              </Snackbar>
-            </Box>
+                  Back
+                </Button>
+                <Button
+                  variant="contained"
+                  sx={{
+                    borderRadius: "10px",
+                    bgcolor: "#99caff",
+                    color: "black",
+                    px: 3,
+                  }}
+                >
+                  Submit
+                </Button>
+              </Box>
+            </Paper>
+            <Paper elevation={4} sx={{ p: 3, borderRadius: "10px", mb: 5 }}>
+              <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
+                PARALLEL OPERATION FULL FLOW
+              </Typography>
+
+              <Typography variant="subtitle1" fontWeight="600" sx={{ mb: 1 }}>
+                PUMP OPERATING HEAD (KPA)
+              </Typography>
+              <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Suction{"\n"}Pressure (SP) :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Discharge{"\n"}Pressure (DP) :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Total{"\n"}Pressure (TP) :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+              </Stack>
+
+              <Typography variant="subtitle1" fontWeight="600" sx={{ mb: 1 }}>
+                PUMP SHUT OFF HEAD(KPA)
+              </Typography>
+              <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Suction{"\n"}Pressure (SP) :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Discharge{"\n"}Pressure (DP) :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Total{"\n"}Pressure (TP) :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+              </Stack>
+
+              <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography sx={{ mr: 1, minWidth: "100px" }}>
+                    Pump Speed :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography sx={{ mr: 1, minWidth: "100px" }}>
+                    Motor Amps :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Specified{"\n"}Head (KPA) :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+              </Stack>
+
+              {/* Comments */}
+              <Typography variant="h6" fontWeight="bold" sx={{ mb: 1 }}>
+                Comments :
+              </Typography>
+              <TextField
+                fullWidth
+                multiline
+                rows={5}
+                placeholder="Enter your comments..."
+                sx={{
+                  bgcolor: "white",
+                  mb: 2,
+                  backgroundColor: "#f2f4f5",
+                  borderRadius: "5px",
+                  "& .MuiOutlinedInput-root": {
+                    borderColor: "#9d9d9d",
+                  },
+                }}
+              />
+
+              <Typography color="text.secondary" sx={{ mb: 0.5 }}>
+                *Represents[Your meaning 1]
+              </Typography>
+              <Typography color="text.secondary" sx={{ mb: 3 }}>
+                **Represents[Your meaning 2]
+              </Typography>
+              <Box display="flex" justifyContent="flex-end" gap={2}>
+                <Button
+                  variant="outlined"
+                  sx={{
+                    borderRadius: "10px",
+                    border: "1px solid black",
+                    color: "black",
+                    px: 3,
+                  }}
+                >
+                  Back
+                </Button>
+                <Button
+                  variant="contained"
+                  sx={{
+                    borderRadius: "10px",
+                    bgcolor: "#99caff",
+                    color: "black",
+                    px: 3,
+                  }}
+                >
+                  Submit
+                </Button>
+              </Box>
+            </Paper>
+            <Paper elevation={4} sx={{ p: 3, borderRadius: "10px", mb: 5 }}>
+              <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
+                SINGLE OPERATION BALANCED FLOW
+              </Typography>
+
+              <Typography variant="subtitle1" fontWeight="600" sx={{ mb: 1 }}>
+                PUMP OPERATING HEAD (KPA)
+              </Typography>
+              <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Suction{"\n"}Pressure (SP) :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Discharge{"\n"}Pressure (DP) :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Total{"\n"}Pressure (TP) :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+              </Stack>
+
+              <Typography variant="subtitle1" fontWeight="600" sx={{ mb: 1 }}>
+                PUMP SHUT OFF HEAD(KPA)
+              </Typography>
+              <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Suction{"\n"}Pressure (SP) :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Discharge{"\n"}Pressure (DP) :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Total{"\n"}Pressure (TP) :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+              </Stack>
+
+              <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography sx={{ mr: 1, minWidth: "100px" }}>
+                    Pump Speed :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography sx={{ mr: 1, minWidth: "100px" }}>
+                    Motor Amps :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+                <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Typography
+                    sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                  >
+                    Specified{"\n"}Head (KPA) :
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: "200px", backgroundColor: "white" }}
+                  />
+                </Box>
+              </Stack>
+
+              {/* Comments */}
+              <Typography variant="h6" fontWeight="bold" sx={{ mb: 1 }}>
+                Comments :
+              </Typography>
+              <TextField
+                fullWidth
+                multiline
+                rows={5}
+                placeholder="Enter your comments..."
+                sx={{
+                  bgcolor: "white",
+                  mb: 2,
+                  backgroundColor: "#f2f4f5",
+                  borderRadius: "5px",
+                  "& .MuiOutlinedInput-root": {
+                    borderColor: "#9d9d9d",
+                  },
+                }}
+              />
+
+              <Typography color="text.secondary" sx={{ mb: 0.5 }}>
+                *Represents[Your meaning 1]
+              </Typography>
+              <Typography color="text.secondary" sx={{ mb: 3 }}>
+                **Represents[Your meaning 2]
+              </Typography>
+              <Box display="flex" justifyContent="flex-end" gap={2}>
+                <Button
+                  variant="outlined"
+                  sx={{
+                    borderRadius: "10px",
+                    border: "1px solid black",
+                    color: "black",
+                    px: 3,
+                  }}
+                >
+                  Back
+                </Button>
+                <Button
+                  variant="contained"
+                  sx={{
+                    borderRadius: "10px",
+                    bgcolor: "#99caff",
+                    color: "black",
+                    px: 3,
+                  }}
+                >
+                  Submit
+                </Button>
+              </Box>
+            </Paper>
           </Box>
-        </>
-      )}
+        )}
+
+        {tabValue === 2 && <Box>Pump Performance</Box>}
+      </Box>
     </Box>
   );
 };
