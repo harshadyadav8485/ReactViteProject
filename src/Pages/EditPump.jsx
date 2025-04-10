@@ -12,17 +12,17 @@ import {
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const CreatePump = () => {
+const EditPump = () => {
   const navigate = useNavigate();
 
   // State for form fields
   const [formData, setFormData] = useState({
-    make: "",
-    model: "",
+    make: "BELL & GOSSETT",
+    model: "e-80SC 5x5x11",
     impellerSize: "",
-    size: "",
-    voltsPhase: "",
-    amperage: "",
+    size: "20",
+    voltsPhase: "575/3",
+    amperage: "23.60",
     rpm: "",
   });
 
@@ -55,7 +55,7 @@ const CreatePump = () => {
         <Typography
              variant="h5" component="h1" fontWeight="bold" sx={{ mb: 4 }}
            >
-             Create Pump
+             Edit Pump
            </Typography>
 
         <Paper
@@ -88,6 +88,7 @@ const CreatePump = () => {
                 </Typography>
                 <TextField
                   fullWidth
+                  defaultValue="BELL & GOSSETT"
                   size="small"
                   name="make"
                   value={formData.make}
@@ -109,6 +110,7 @@ const CreatePump = () => {
                 </Typography>
                 <TextField
                   fullWidth
+                  defaultValue="e-80SC 5x5x11"
                   size="small"
                   name="model"
                   value={formData.model}
@@ -132,6 +134,7 @@ const CreatePump = () => {
                 </Typography>
                 <TextField
                   fullWidth
+                  defaultValue=""
                   size="small"
                   name="impellerSize"
                   value={formData.impellerSize}
@@ -168,6 +171,7 @@ const CreatePump = () => {
                 </Typography>
                 <TextField
                   fullWidth
+                  defaultValue=""
                   size="small"
                   name="size"
                   value={formData.size}
@@ -189,6 +193,7 @@ const CreatePump = () => {
                 </Typography>
                 <TextField
                   fullWidth
+                  defaultValue="20 "
                   size="small"
                   name="size"
                   value={formData.size}
@@ -212,6 +217,7 @@ const CreatePump = () => {
                 </Typography>
                 <TextField
                   fullWidth
+                  defaultValue="575/3"
                   size="small"
                   name="voltsPhase"
                   value={formData.voltsPhase}
@@ -233,6 +239,7 @@ const CreatePump = () => {
                 </Typography>
                 <TextField
                   fullWidth
+                   defaultValue="23.60"
                   size="small"
                   name="amperage"
                   value={formData.amperage}
@@ -254,6 +261,7 @@ const CreatePump = () => {
                 </Typography>
                 <TextField
                   fullWidth
+                  defaultValue=""
                   size="small"
                   name="rpm"
                   value={formData.rpm}
@@ -268,7 +276,7 @@ const CreatePump = () => {
         <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 2 }}>
           <Button
             variant="outlined"
-            onClick={() => navigate("/createPumpCreation")}
+            onClick={() => navigate("/editPumpCreation")}
             sx={{
               borderRadius: "10px",
               border: "1px solid black",
@@ -289,6 +297,7 @@ const CreatePump = () => {
             sx={{
               borderRadius: "10px",
               px: 3,
+              py: 1,
               bgcolor: "#99caff",
               color: "black",
               fontFamily: "Poppins",
@@ -305,4 +314,4 @@ const CreatePump = () => {
   );
 };
 
-export default CreatePump;
+export default EditPump;

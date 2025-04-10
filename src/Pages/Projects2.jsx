@@ -12,7 +12,10 @@ import {
   Stack,
   TextField,
   Typography,
+  IconButton,
 } from "@mui/material";
+import Tooltip from "@mui/material/Tooltip";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
 import React from "react";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import { useNavigate } from "react-router-dom";
@@ -21,9 +24,21 @@ const Projects2 = () => {
   const navigate = useNavigate();
   // Status card data
   const statusCards = [
-    { title: "Not Started", count: 5 },
-    { title: "In Progress", count: 10 },
-    { title: "Completed", count: 50 },
+    {
+      title: "Not Started",
+      count: 5,
+      bgColor: "#DC3545",
+    },
+    {
+      title: "In Progress",
+      count: 3,
+      bgColor: "#FFC107",
+    },
+    {
+      title: "Completed",
+      count: 50,
+      bgColor: "#28A745",
+    },
   ];
 
   // Pump data
@@ -36,116 +51,154 @@ const Projects2 = () => {
   // Fan data
   const fanData = [
     { id: "F-06-07A", type: "Fan" },
-    { id: "F-06-07B", type: "Fan" },
-    { id: "F-06-07C", type: "Fan" },
+    // { id: "F-06-07B", type: "Fan" },
+    // { id: "F-06-07C", type: "Fan" },
   ];
 
   // Render equipment card
   const renderEquipmentCard = (item) => {
     const isFan = item.type === "Fan";
-
+  
     return (
-      <Card
-        key={item.id}
-        sx={{
-          height: 265,
-          border: 1,
-          borderColor: "black",
-          borderRadius: "10px",
-        }}
-      >
-        <CardContent>
-        <Typography
-              variant="subtitle1" 
+      <Tooltip title="Click here to fill actual data" arrow>
+        <Card
+          key={item.id}
+          onClick={() => {
+            if (item.type === "Pump") {
+              navigate("/actualPump");
+            }
+          }}
+          sx={{
+            height: 265,
+            border: 1,
+            borderColor: "black",
+            borderRadius: "10px",
+            cursor: item.type === "Pump" ? "pointer" : "default",
+            transition: "transform 0.2s",
+            "&:hover": {
+              transform: item.type === "Pump" ? "scale(1.02)" : "none",
+            },
+          }}
+        >
+          <CardContent>
+            <Box
               sx={{
-                fontFamily: "Poppins, sans-serif",
-                fontWeight: 600,
-                fontSize: "18px", 
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
                 mb: 2,
-                mt: 1,
               }}
             >
-              {item.id}
-            </Typography>
-
-
-          <Stack spacing={3}>
-            <Box>
               <Typography
+                variant="subtitle1"
                 sx={{
-                  fontFamily:"Poppins, sans-serif",
-                  fontWeight: 500,
-                  mb: 1,
+                  fontFamily: "Poppins, sans-serif",
+                  fontWeight: 600,
+                  fontSize: "18px",
+                  mt: 1,
                 }}
               >
-                Actual Data
+                {item.id}
               </Typography>
-              <LinearProgress
-                variant="determinate"
-                value={100}
-                sx={{
-                  height: 5,
-                  borderRadius: "10px",
-                  bgcolor: "#e9ecef",
-                  "& .MuiLinearProgress-bar": {
-                    bgcolor: "#28a745",
-                  },
-                }}
-              />
+  
+              {/* ✅ Show edit button for both Pump and Fan */}
+              <Tooltip title={`Edit ${item.type}`}>
+                <IconButton
+                  size="small"
+                  color="primary"
+                  onClick={(e) => {
+                    e.stopPropagation(); // prevents card click
+                    if (item.type === "Pump") {
+                      navigate("/editPumpCreation");
+                    } else if (item.type === "Fan") {
+                      navigate("/editFanCreation"); // ⚠️ Make sure this route exists
+                    }
+                  }}
+                >
+                  <BorderColorIcon />
+                </IconButton>
+              </Tooltip>
             </Box>
-
-            <Box>
-              <Typography
-                sx={{
-                  fontFamily:"Poppins, sans-serif",
-                  fontWeight: 500,
-                  mb: 1,
-                }}
-              >
-                Test Data
-              </Typography>
-              <LinearProgress
-                variant="determinate"
-                value={100}
-                sx={{
-                  height: 5,
-                  borderRadius: "10px",
-                  bgcolor: "#e9ecef",
-                  "& .MuiLinearProgress-bar": {
-                    bgcolor: "#ffc107",
-                  },
-                }}
-              />
-            </Box>
-
-            <Box>
-              <Typography
-                sx={{
-                  fontFamily:"Poppins, sans-serif",
-                  fontWeight: 500,
-                  mb: 1,
-                }}
-              >
-                {isFan ? "Fan" : "Pump"} Performance
-              </Typography>
-              <LinearProgress
-                variant="determinate"
-                value={100}
-                sx={{
-                  height: 5,
-                  borderRadius: "10px",
-                  bgcolor: "#e9ecef",
-                  "& .MuiLinearProgress-bar": {
-                    bgcolor: "#dc3545",
-                  },
-                }}
-              />
-            </Box>
-          </Stack>
-        </CardContent>
-      </Card>
+  
+            {/* Progress bars... unchanged */}
+            <Stack spacing={3}>
+              <Box>
+                <Typography
+                  sx={{
+                    fontFamily: "Poppins, sans-serif",
+                    fontWeight: 500,
+                    mb: 1,
+                  }}
+                >
+                  Actual Data
+                </Typography>
+                <LinearProgress
+                  variant="determinate"
+                  value={100}
+                  sx={{
+                    height: 5,
+                    borderRadius: "10px",
+                    bgcolor: "#e9ecef",
+                    "& .MuiLinearProgress-bar": {
+                      bgcolor: "#28a745",
+                    },
+                  }}
+                />
+              </Box>
+  
+              <Box>
+                <Typography
+                  sx={{
+                    fontFamily: "Poppins, sans-serif",
+                    fontWeight: 500,
+                    mb: 1,
+                  }}
+                >
+                  Test Data
+                </Typography>
+                <LinearProgress
+                  variant="determinate"
+                  value={100}
+                  sx={{
+                    height: 5,
+                    borderRadius: "10px",
+                    bgcolor: "#e9ecef",
+                    "& .MuiLinearProgress-bar": {
+                      bgcolor: "#ffc107",
+                    },
+                  }}
+                />
+              </Box>
+  
+              <Box>
+                <Typography
+                  sx={{
+                    fontFamily: "Poppins, sans-serif",
+                    fontWeight: 500,
+                    mb: 1,
+                  }}
+                >
+                  {isFan ? "Fan" : "Pump"} Performance
+                </Typography>
+                <LinearProgress
+                  variant="determinate"
+                  value={100}
+                  sx={{
+                    height: 5,
+                    borderRadius: "10px",
+                    bgcolor: "#e9ecef",
+                    "& .MuiLinearProgress-bar": {
+                      bgcolor: "#dc3545",
+                    },
+                  }}
+                />
+              </Box>
+            </Stack>
+          </CardContent>
+        </Card>
+      </Tooltip>
     );
-  };
+  };  
 
   return (
       <Box
@@ -216,10 +269,10 @@ const Projects2 = () => {
                     borderRadius: "50%",
                     bgcolor:
                       index === 0
-                        ? "error.main"
+                        ? "#DC3545"
                         : index === 1
-                          ? "warning.main"
-                          : "success.main",
+                          ? "#FFC107"
+                          : "#28A745",
                   }}
                 />
               </Paper>
@@ -229,24 +282,24 @@ const Projects2 = () => {
 
         {/* Search Bar */}
         <Autocomplete
-  freeSolo
-  options={[]}
-  sx={{ width: "50%", mb: 4 }} // set width here
-  renderInput={(params) => (
-    <TextField
-      {...params}
-      placeholder="Search by equipments..."
-      variant="outlined"
-      sx={{
-        bgcolor: "#f2f4f5",
-        "& .MuiOutlinedInput-root": {
-          borderRadius: "10px",
-          borderColor: "#939393",
-        },
-      }}
-    />
-  )}
-/>
+              freeSolo
+              options={[]}
+              sx={{ width: "50%", mb: 4 }} // set width here
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  placeholder="Search by equipments..."
+                  variant="outlined"
+                  sx={{
+                    bgcolor: "#f2f4f5",
+                    "& .MuiOutlinedInput-root": {
+                      borderRadius: "10px",
+                      borderColor: "#939393",
+                    },
+                  }}
+                />
+              )}
+            />
 
         {/* Hydronics Section */}
         <Typography
