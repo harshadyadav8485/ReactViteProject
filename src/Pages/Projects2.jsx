@@ -402,6 +402,7 @@ const Projects2 = () => {
                   bgcolor: "#7ab8ff",
                 },
               }}
+              onClick={() => navigate("/createFanCreation")}
             >
               Create Fan
             </Button>
