@@ -100,16 +100,16 @@ const menuItems = [
     icon: <AssignmentIcon />,
     path: "/project1",
   },
-  {
-    text: "Pump Performance",
-    icon: <AssignmentIcon />,
-    path: "/pumpPerformance",
-  },
-  {
-    text: "Projects",
-    icon: <AssignmentIcon />,
-    path: "/actualPump",
-  },
+  // {
+  //   text: "Pump Performance",
+  //   icon: <AssignmentIcon />,
+  //   path: "/pumpPerformance",
+  // },
+  // {
+  //   text: "Projects",
+  //   icon: <AssignmentIcon />,
+  //   path: "/actualPump",
+  // },
 ];
 
 const Sidebar = () => {
