@@ -289,7 +289,6 @@ const CreatePump = () => {
             sx={{
               borderRadius: "10px",
               px: 3,
-              py: 1,
               bgcolor: "#99caff",
               color: "black",
               fontFamily: "Poppins",
