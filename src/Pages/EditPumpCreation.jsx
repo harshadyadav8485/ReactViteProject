@@ -19,10 +19,10 @@ import { useNavigate } from "react-router-dom";
 
 const EditPumpCreation = () => {
   const navigate = useNavigate();
-  const pumpRunningMates = [
-    { id: 1, name: "P-06-07A" },
-    { id: 2, name: "P-06-07B" },
-  ];
+  const [pumpRunningMates, setPumpRunningMates] = useState([
+    { id: 1, name: "P-06-07B" },
+    { id: 2, name: "P-06-07C" },
+  ]);
   
    // State for dropdown selection
    const [pumpType, setPumpType] = useState("Parallel");
@@ -32,9 +32,10 @@ const EditPumpCreation = () => {
      setPumpType(event.target.value);
    };
     // Handle adding a new pump running mate field
-  const handleAddPumpMate = () => {
-    setPumpRunningMates([...pumpRunningMates, ""]);
-  };
+    const handleAddPumpMate = () => {
+        const newId = pumpRunningMates.length + 1;
+        setPumpRunningMates([...pumpRunningMates, { id: newId, name: "" }]);
+      };
 
   // Handle removing a pump running mate field
   const handleRemovePumpMate = (index) => {
@@ -160,7 +161,7 @@ const EditPumpCreation = () => {
             </Typography>
 
             <Grid container spacing={4}>
-              {pumpRunningMates.map((pump) => (
+              {pumpRunningMates.map((pump,index) => (
                 <Grid item xs={12} md={6} key={pump.id}>
                   <Box sx={{ display: "flex", alignItems: "center" }}>
                     <TextField

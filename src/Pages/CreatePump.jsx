@@ -271,11 +271,14 @@ const CreatePump = () => {
             onClick={() => navigate("/createPumpCreation")}
             sx={{
               borderRadius: "10px",
-              px: 3,
-              py: 1,
+              border: "1px solid black",
+              color: "black",
               bgcolor: "#f2f4f5",
-              fontFamily: "Poppins",
-              fontWeight: 500,
+              px: 3,
+              "&:hover": {
+                bgcolor: "#e5e7e8",
+                border: "1px solid black",
+              },
             }}
           >
             Back
