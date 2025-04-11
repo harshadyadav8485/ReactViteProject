@@ -88,9 +88,9 @@ const ActualPump = () => {
           bgcolor: "#f2f4f5",
           minHeight: "100vh",
           width: "100vw",
-          py: 4,
+          // py: 4,
           pl: "70px",
-          pt: "30px",
+          pt: "12px",
           pr: "24px",
           boxSizing: "border-box",
           overflow: "hidden",
@@ -101,12 +101,14 @@ const ActualPump = () => {
           variant="h5"
           component="h1"
           fontWeight="bold"
-          sx={{ mb: 2 }}
+          sx={{ mb: 1 }}
         >
           Project Name : UBC School of Biomedical Engineering
         </Typography>
 
-        <Box display="flex" alignItems="center" mb={2}>
+        <Box display="flex" alignItems="center" 
+        // mb={2}
+        >
           <Typography variant="h6" fontWeight="semibold">
             Pump Number :
           </Typography>
@@ -144,59 +146,69 @@ const ActualPump = () => {
         {tabValue === 0 && (
           <>
            <TableContainer
-  component={Paper}
-  sx={{ mb: 2, borderRadius: "10px 10px 0 0" }}
->
-<Table sx={{ tableLayout: "fixed", width: "100%" }}>
-    <TableHead>
-      <TableRow sx={{ bgcolor: "#99caff" }}>
-        <TableCell sx={{ px: 3 }}>
-          <Typography fontWeight="bold">Fields</Typography>
-        </TableCell>
-        <TableCell>
-          <Typography fontWeight="bold">Specified Value</Typography>
-        </TableCell>
-        <TableCell>
-          <Typography fontWeight="bold">Actual Value</Typography>
-        </TableCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      {pumpData.map((row, index) => (
-        <TableRow key={index} sx={{ borderBottom: "1px solid #cbcbcb" }}>
-          <TableCell sx={{ py: 2, px: 3 }}>
-            <Typography fontWeight="medium">{row.field}</Typography>
-          </TableCell>
-          <TableCell sx={{ py: 2 }}>
-            <Typography fontWeight="medium">
-              {row.specifiedValue}
-            </Typography>
-          </TableCell>
-          <TableCell sx={{ py: 2 }}>
-            <TextField
-              fullWidth
-              variant="outlined"
-              size="small"
-              value={row.actualValue}
-              sx={{
-                bgcolor: "white",
-                "& .MuiOutlinedInput-root": {
-                  borderRadius: "5px",
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#9d9d9d",
-                  },
-                },
-              }}
-            />
-          </TableCell>
-        </TableRow>
-      ))}
-    </TableBody>
-  </Table>
-</TableContainer>
+                  component={Paper}
+                  sx={{ mb: 2, borderRadius: "10px 10px 0 0" }}
+                >
+                  <Table sx={{ tableLayout: "fixed", width: "100%" }}>
+                    <TableHead>
+                      <TableRow sx={{ bgcolor: "#99caff" }}>
+                        <TableCell sx={{ px: 3, py: 1 }}>
+                          <Typography fontWeight="bold">Fields</Typography>
+                        </TableCell>
+                        <TableCell sx={{ py: 1 }}>
+                          <Typography fontWeight="bold">Specified Value</Typography>
+                        </TableCell>
+                        <TableCell sx={{ py: 1 }}>
+                          <Typography fontWeight="bold">Actual Value</Typography>
+                        </TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {pumpData.map((row, index) => (
+                        <TableRow
+                          key={index}
+                          sx={{
+                            borderBottom: "1px solid #cbcbcb",
+                            "& td": { py: 1 }, 
+                          }}
+                        >
+                          <TableCell sx={{ px: 3 }}>
+                            <Typography fontWeight="medium" fontSize="0.9rem">
+                              {row.field}
+                            </Typography>
+                          </TableCell>
+                          <TableCell>
+                            <Typography fontWeight="medium" fontSize="0.9rem">
+                              {row.specifiedValue}
+                            </Typography>
+                          </TableCell>
+                          <TableCell>
+                            <TextField
+                              fullWidth
+                              variant="outlined"
+                              size="small"
+                              value={row.actualValue}
+                              sx={{
+                                bgcolor: "white",
+                                "& .MuiOutlinedInput-root": {
+                                  borderRadius: "5px",
+                                  "& .MuiOutlinedInput-notchedOutline": {
+                                    borderColor: "#9d9d9d",
+                                  },
+                                  fontSize: "0.9rem", 
+                                },
+                              }}
+                            />
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
 
 
-            <Typography variant="h6" fontWeight="bold" mb={2}>
+
+            <Typography variant="body1" fontWeight="bold" mb={1}>
               Comments :
             </Typography>
 
@@ -275,7 +287,7 @@ const ActualPump = () => {
         )}
         {tabValue === 1 && (
           <Box>
-            <Paper elevation={4} sx={{ p: 3, borderRadius: "10px", mb: 5 }}>
+            <Paper elevation={4} sx={{ p: 3, borderRadius: "10px", mb: 2 }}>
               <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
                 SINGLE OPERATION FULL FLOW
               </Typography>
@@ -400,7 +412,7 @@ const ActualPump = () => {
               </Stack>
 
               {/* Comments */}
-              <Typography variant="h6" fontWeight="bold" sx={{ mb: 1 }}>
+              <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
                 Comments :
               </Typography>
               <TextField
@@ -473,7 +485,7 @@ const ActualPump = () => {
                 </Alert>
               </Snackbar>
             </Paper>
-            <Paper elevation={4} sx={{ p: 3, borderRadius: "10px", mb: 5 }}>
+            <Paper elevation={4} sx={{ p: 3, borderRadius: "10px", mb: 2 }}>
               <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
                 SINGLE OPERATION BALANCED FLOW
               </Typography>
@@ -598,7 +610,7 @@ const ActualPump = () => {
               </Stack>
 
               {/* Comments */}
-              <Typography variant="h6" fontWeight="bold" sx={{ mb: 1 }}>
+              <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
                 Comments :
               </Typography>
               <TextField
@@ -671,7 +683,7 @@ const ActualPump = () => {
                 </Alert>
               </Snackbar>
             </Paper>
-            <Paper elevation={4} sx={{ p: 3, borderRadius: "10px", mb: 5 }}>
+            <Paper elevation={4} sx={{ p: 3, borderRadius: "10px", mb: 2 }}>
               <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
                 PARALLEL OPERATION FULL FLOW
               </Typography>
@@ -796,7 +808,7 @@ const ActualPump = () => {
               </Stack>
 
               {/* Comments */}
-              <Typography variant="h6" fontWeight="bold" sx={{ mb: 1 }}>
+              <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
                 Comments :
               </Typography>
               <TextField
@@ -869,7 +881,7 @@ const ActualPump = () => {
                 </Alert>
               </Snackbar>
             </Paper>
-            <Paper elevation={4} sx={{ p: 3, borderRadius: "10px", mb: 5 }}>
+            <Paper elevation={4} sx={{ p: 3, borderRadius: "10px", mb: 2 }}>
               <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
                 SINGLE OPERATION BALANCED FLOW
               </Typography>
@@ -994,7 +1006,7 @@ const ActualPump = () => {
               </Stack>
 
               {/* Comments */}
-              <Typography variant="h6" fontWeight="bold" sx={{ mb: 1 }}>
+              <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
                 Comments :
               </Typography>
               <TextField
@@ -1077,7 +1089,7 @@ const ActualPump = () => {
               sx={{
                 borderRadius: "10px",
                 p: 3,
-                mb: 4,
+                mb: 2,
               }}
             >
               <Box sx={{ position: "relative" }}>
@@ -1187,7 +1199,7 @@ const ActualPump = () => {
               <Divider sx={{ my: 3 }} />
 
               <Box>
-                <Typography variant="h6" fontWeight="bold" mb={3}>
+                <Typography variant="h6" fontWeight="bold" mb={2}>
                   Motor
                 </Typography>
 
@@ -1396,8 +1408,8 @@ const ActualPump = () => {
                 )}
               </Grid>
             </Paper>
-            <Box sx={{ mb: 5 }}>
-              <Typography variant="h6" fontWeight="bold" sx={{ mb: 1 }}>
+            <Box sx={{ mb: 2 }}>
+              <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
                 Comments :
               </Typography>
               <TextField
