@@ -65,11 +65,7 @@ const CreateFan = () => {
           mb: 4,
         }}
       >
-        <Typography
-          variant="h5"
-          fontWeight="bold"
-          sx={{ mb: 3, fontFamily: "Poppins" }}
-        >
+        <Typography variant="body1" fontWeight="bold" sx={{ mb: 2 }}>
           Fan
         </Typography>
 
@@ -79,7 +75,6 @@ const CreateFan = () => {
               <Typography
                 sx={{
                   width: 100,
-                  fontFamily: "Poppins",
                   fontWeight: 500,
                 }}
               >
@@ -100,7 +95,6 @@ const CreateFan = () => {
               <Typography
                 sx={{
                   width: 100,
-                  fontFamily: "Poppins",
                   fontWeight: 500,
                 }}
               >
@@ -122,7 +116,6 @@ const CreateFan = () => {
               <Typography
                 sx={{
                   width: 100,
-                  fontFamily: "Poppins",
                   fontWeight: 500,
                 }}
               >
@@ -144,7 +137,6 @@ const CreateFan = () => {
               <Typography
                 sx={{
                   width: 100,
-                  fontFamily: "Poppins",
                   fontWeight: 500,
                 }}
               >
@@ -164,19 +156,11 @@ const CreateFan = () => {
 
         <Divider sx={{ my: 3 }} />
 
-        <Typography
-          variant="h5"
-          fontWeight="bold"
-          sx={{ mb: 3, fontFamily: "Poppins" }}
-        >
+        <Typography variant="body1" fontWeight="bold" sx={{ mb: 2 }}>
           Motor
         </Typography>
 
-        <Typography
-          variant="h6"
-          fontWeight="semibold"
-          sx={{ mb: 2, fontFamily: "Poppins" }}
-        >
+        <Typography variant="body1" fontWeight="semibold" sx={{ mb: 2 }}>
           Size
         </Typography>
 
@@ -186,7 +170,6 @@ const CreateFan = () => {
               <Typography
                 sx={{
                   width: 100,
-                  fontFamily: "Poppins",
                   fontWeight: 500,
                 }}
               >
@@ -207,7 +190,6 @@ const CreateFan = () => {
               <Typography
                 sx={{
                   width: 100,
-                  fontFamily: "Poppins",
                   fontWeight: 500,
                 }}
               >
@@ -229,7 +211,6 @@ const CreateFan = () => {
               <Typography
                 sx={{
                   width: 100,
-                  fontFamily: "Poppins",
                   fontWeight: 500,
                 }}
               >
