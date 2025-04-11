@@ -34,6 +34,35 @@ const pumpRunningMates = [
 const CreatePumpCreation = () => {
   const navigate = useNavigate();
   const [pumpType, setPumpType] = useState("");
+  const [pumpRunningMates, setPumpRunningMates] = useState([
+    { id: 1, name: "Pump running 1" },
+    { id: 2, name: "Pump running 2" },
+  ]);
+
+  // Handle dropdown change
+  const handlePumpTypeChange = (event) => {
+    setPumpType(event.target.value);
+  };
+  // Handle adding a new pump running mate field
+  const handleAddPumpMate = () => {
+    const newId = pumpRunningMates.length + 1;
+    setPumpRunningMates([...pumpRunningMates, { id: newId, name: "" }]);
+  };
+
+  // Handle removing a pump running mate field
+  const handleRemovePumpMate = (index) => {
+    const updatedPumpMates = [...pumpRunningMates];
+    updatedPumpMates.splice(index, 1);
+    setPumpRunningMates(updatedPumpMates);
+  };
+
+  // Handle input change
+  const handlePumpMateChange = (index, value) => {
+    const updatedPumpMates = [...pumpRunningMates];
+    updatedPumpMates[index] = value;
+    setPumpRunningMates(updatedPumpMates);
+  };
+
   return (
     <Box
       sx={{
@@ -47,12 +76,12 @@ const CreatePumpCreation = () => {
         overflow: "hidden",
       }}
     >
-      <Typography variant="h5" component="h1" fontWeight="bold" sx={{ mb: 4 }}>
+      <Typography variant="h5" component="h1" fontWeight="bold" sx={{ mb: 2 }}>
         Pump Creation
       </Typography>
 
       <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 1 }}>
-        Pump Type :
+        Pump Types :
       </Typography>
 
       <Select
@@ -63,14 +92,14 @@ const CreatePumpCreation = () => {
         onChange={(e) => setPumpType(e.target.value)}
         IconComponent={KeyboardArrowDownIcon}
         sx={{
-          mb: 4,
-          bgcolor: "#f2f4f5",
+          mb: 3,
+          bgcolor: "#fff",
           borderRadius: "10px",
-          height: "58px",
+          height: "50px",
           width: "50%",
         }}
       >
-        <MenuItem value="" disabled>
+        <MenuItem value="">
           <em style={{ color: "#9e9e9e" }}>Select Pump Type</em>
         </MenuItem>
 
@@ -129,7 +158,7 @@ const CreatePumpCreation = () => {
           </Grid>
         </Grid>
 
-        <Box sx={{ mt: 5 }}>
+        {/* <Box sx={{ mt: 5 }}>
           <Typography variant="body1" fontWeight="bold" sx={{ mb: 2 }}>
             Pump Running Mates :
           </Typography>
@@ -169,6 +198,72 @@ const CreatePumpCreation = () => {
           <Button
             variant="contained"
             startIcon={<AddIcon />}
+            sx={{
+              mt: 3,
+              bgcolor: "#99caff",
+              color: "black",
+              borderRadius: "5px",
+              textTransform: "uppercase",
+              fontWeight: 500,
+              px: 2,
+              py: 1,
+              "&:hover": {
+                bgcolor: "#7bb8ff",
+              },
+            }}
+          >
+            Add Pump Running Mates
+          </Button>
+        </Box> */}
+        <Box sx={{ mt: 5 }}>
+          <Typography variant="body1" fontWeight="bold" sx={{ mb: 2 }}>
+            Pump Running Mates :
+          </Typography>
+
+          <Box display="flex" flexWrap="wrap" gap={2}>
+            {pumpRunningMates.map((pump, index) => (
+              <Box
+                key={pump.id}
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  width: "100%",
+                  // maxWidth: 600,
+                }}
+              >
+                <TextField
+                  fullWidth
+                  variant="outlined"
+                  size="small"
+                  placeholder={pump.name}
+                  onChange={(e) =>
+                    handlePumpMateChange(index, {
+                      ...pump,
+                      name: e.target.value,
+                    })
+                  }
+                />
+                <IconButton
+                  sx={{
+                    ml: 1,
+                    border: "1px solid #dc3545",
+                    borderRadius: "5px",
+                    color: "#df4958",
+                    height: "35px",
+                    width: "35px",
+                  }}
+                  onClick={() => handleRemovePumpMate(index)}
+                >
+                  <RemoveIcon />
+                </IconButton>
+              </Box>
+            ))}
+          </Box>
+
+          <Button
+            variant="contained"
+            endIcon={<AddIcon />}
+            onClick={handleAddPumpMate} // 🔥 Add this
             sx={{
               mt: 3,
               bgcolor: "#99caff",
