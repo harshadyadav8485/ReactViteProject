@@ -100,7 +100,7 @@ const CreatePumpCreation = () => {
         }}
       >
         <MenuItem value="">
-          <em style={{ color: "#9e9e9e" }}>Select Pump Type</em>
+          <p style={{ color: "#9e9e9e" }}>Select Pump Type</p>
         </MenuItem>
 
         <MenuItem value="parallel">Parallel</MenuItem>
