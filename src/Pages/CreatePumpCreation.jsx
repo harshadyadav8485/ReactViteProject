@@ -70,17 +70,19 @@ const CreatePumpCreation = () => {
         minHeight: "100vh",
         py: 4,
         pl: "70px",
-        pt: "30px",
+        pt: "12px",
         pr: "24px",
         boxSizing: "border-box",
         overflow: "hidden",
       }}
     >
-      <Typography variant="h5" component="h1" fontWeight="bold" sx={{ mb: 2 }}>
+      <Typography variant="h5" component="h1" fontWeight="bold" sx={{ mb: 1 }}>
         Pump Creation
       </Typography>
 
-      <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 1 }}>
+      <Typography variant="subtitle1" fontWeight="bold"
+       sx={{ mb: 1 }}
+       >
         Pump Types :
       </Typography>
 

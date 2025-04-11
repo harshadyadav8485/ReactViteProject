@@ -132,7 +132,7 @@ const Projects1 = () => {
           width: "100vw",
           py: 4,
           pl: "70px",
-          pt: "30px",
+          pt: "12px",
           pr: "24px",
           boxSizing: "border-box",
           overflow: "hidden",
@@ -161,7 +161,7 @@ const Projects1 = () => {
               width: "50%",
               // bgcolor: "#f2f4f5",
               bgcolor: "#fff",
-
+              height: "50px",
               borderRadius: "10px",
 
               "& .MuiOutlinedInput-root": {

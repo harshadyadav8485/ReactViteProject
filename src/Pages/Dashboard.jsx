@@ -38,7 +38,7 @@ const Dashboard = () => {
         minHeight: "100vh",
         py: 4,
         pl: "70px",
-        pt: "30px",
+        pt: "12px",
         pr: "24px",
         boxSizing: "border-box",
         overflow: "hidden",
