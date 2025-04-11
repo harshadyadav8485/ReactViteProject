@@ -290,7 +290,8 @@ const Projects2 = () => {
             placeholder="Search by equipments..."
             variant="outlined"
             sx={{
-              bgcolor: "#f2f4f5",
+              // bgcolor: "#f2f4f5",
+              bgcolor: "#fff",
               "& .MuiOutlinedInput-root": {
                 borderRadius: "10px",
                 borderColor: "#939393",
