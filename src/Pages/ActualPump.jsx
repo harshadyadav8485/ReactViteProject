@@ -25,6 +25,8 @@ import {
 import React, { useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import pump_report from "../assets/pump_report.pdf";
+import { useNavigate } from "react-router-dom";
+import { Snackbar, Alert } from "@mui/material";
 
 const pumpData = [
   { field: "Make", specifiedValue: "BELL & GOSSETT", actualValue: "TACO" },
@@ -48,6 +50,8 @@ const ActualPump = () => {
   const [selectedPump, setSelectedPump] = useState("P-06-07A");
   const [showFlowMeter, setShowFlowMeter] = useState(false);
   const [showBHP, setShowBHP] = useState(false);
+  const navigate = useNavigate();
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
@@ -139,70 +143,58 @@ const ActualPump = () => {
 
         {tabValue === 0 && (
           <>
-            <TableContainer
-              component={Paper}
-              sx={{ mb: 2, borderRadius: "10px 10px 0 0" }}
-            >
-              <Table>
-                <TableHead>
-                  <TableRow sx={{ bgcolor: "#99caff" }}>
-                    <TableCell sx={{ px: 3 }}>
-                      <Stack direction="row" alignItems="center" spacing={1}>
-                        <Typography fontWeight="bold">Fields</Typography>
-                      </Stack>
-                    </TableCell>
-                    <TableCell>
-                      <Stack direction="row" alignItems="center" spacing={1}>
-                        <Typography fontWeight="bold">
-                          Specified Value
-                        </Typography>
-                      </Stack>
-                    </TableCell>
-                    <TableCell>
-                      <Stack direction="row" alignItems="center" spacing={1}>
-                        <Typography fontWeight="bold">Actual Value</Typography>
-                      </Stack>
-                    </TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {pumpData.map((row, index) => (
-                    <TableRow
-                      key={index}
-                      sx={{ borderBottom: "1px solid #cbcbcb" }}
-                    >
-                      <TableCell sx={{ py: 2 }}>
-                        <Typography fontWeight="medium">{row.field}</Typography>
-                      </TableCell>
-                      <TableCell sx={{ py: 2 }}>
-                        <Typography fontWeight="medium">
-                          {row.specifiedValue}
-                        </Typography>
-                      </TableCell>
-                      <TableCell sx={{ py: 2 }}>
-                        <TextField
-                          variant="outlined"
-                          size="small"
-                          value={row.actualValue}
-                          sx={{
-                            width: "200px",
-                            bgcolor: "white",
-                            width: "200px", // 👉 Set the width you want
-                            bgcolor: "white", // 👉 Set background color to white
-                            "& .MuiOutlinedInput-root": {
-                              borderRadius: "5px",
-                              "& .MuiOutlinedInput-notchedOutline": {
-                                borderColor: "#9d9d9d",
-                              },
-                            },
-                          }}
-                        />
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
+           <TableContainer
+  component={Paper}
+  sx={{ mb: 2, borderRadius: "10px 10px 0 0" }}
+>
+<Table sx={{ tableLayout: "fixed", width: "100%" }}>
+    <TableHead>
+      <TableRow sx={{ bgcolor: "#99caff" }}>
+        <TableCell sx={{ px: 3 }}>
+          <Typography fontWeight="bold">Fields</Typography>
+        </TableCell>
+        <TableCell>
+          <Typography fontWeight="bold">Specified Value</Typography>
+        </TableCell>
+        <TableCell>
+          <Typography fontWeight="bold">Actual Value</Typography>
+        </TableCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {pumpData.map((row, index) => (
+        <TableRow key={index} sx={{ borderBottom: "1px solid #cbcbcb" }}>
+          <TableCell sx={{ py: 2, px: 3 }}>
+            <Typography fontWeight="medium">{row.field}</Typography>
+          </TableCell>
+          <TableCell sx={{ py: 2 }}>
+            <Typography fontWeight="medium">
+              {row.specifiedValue}
+            </Typography>
+          </TableCell>
+          <TableCell sx={{ py: 2 }}>
+            <TextField
+              fullWidth
+              variant="outlined"
+              size="small"
+              value={row.actualValue}
+              sx={{
+                bgcolor: "white",
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: "5px",
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#9d9d9d",
+                  },
+                },
+              }}
+            />
+          </TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+</TableContainer>
+
 
             <Typography variant="h6" fontWeight="bold" mb={2}>
               Comments :
@@ -234,6 +226,7 @@ const ActualPump = () => {
             <Stack direction="row" spacing={1} justifyContent="flex-end">
               <Button
                 variant="outlined"
+                onClick={() => navigate("/project2")}
                 sx={{
                   backgroundColor: "#f2f4f5",
                   borderRadius: "10px",
@@ -247,22 +240,37 @@ const ActualPump = () => {
                 Back
               </Button>
               <Button
-                variant="contained"
-                sx={{
-                  backgroundColor: "#99caff",
-                  borderRadius: "10px",
-                  color: "black",
-                  textTransform: "none",
-                  minWidth: "101px",
-                  height: "42px",
-                  "&:hover": {
-                    backgroundColor: "#7bb8ff",
-                  },
-                }}
-              >
-                Submit
-              </Button>
+                  variant="contained"
+                  onClick={handleSubmit}
+                  sx={{
+                    backgroundColor: "#99caff",
+                    borderRadius: "10px",
+                    color: "black",
+                    textTransform: "none",
+                    minWidth: "101px",
+                    height: "42px",
+                    "&:hover": {
+                      backgroundColor: "#7bb8ff",
+                    },
+                  }}
+                >
+                  Submit
+                </Button>
             </Stack>
+            <Snackbar
+                open={openSnackbar}
+                autoHideDuration={2000}
+                onClose={() => setOpenSnackbar(false)}
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+              >
+                <Alert
+                  onClose={() => setOpenSnackbar(false)}
+                  severity="success"
+                  variant="filled"
+                >
+                  Data Submitted Successfully!
+                </Alert>
+              </Snackbar>
           </>
         )}
         {tabValue === 1 && (
@@ -422,6 +430,7 @@ const ActualPump = () => {
               <Box display="flex" justifyContent="flex-end" gap={2}>
                 <Button
                   variant="outlined"
+                  onClick={() => navigate("/project2")}
                   sx={{
                     borderRadius: "10px",
                     border: "1px solid black",
@@ -433,16 +442,36 @@ const ActualPump = () => {
                 </Button>
                 <Button
                   variant="contained"
+                  onClick={handleSubmit}
                   sx={{
+                    backgroundColor: "#99caff",
                     borderRadius: "10px",
-                    bgcolor: "#99caff",
                     color: "black",
-                    px: 3,
+                    textTransform: "none",
+                    minWidth: "101px",
+                    height: "42px",
+                    "&:hover": {
+                      backgroundColor: "#7bb8ff",
+                    },
                   }}
                 >
                   Submit
                 </Button>
               </Box>
+              <Snackbar
+                open={openSnackbar}
+                autoHideDuration={2000}
+                onClose={() => setOpenSnackbar(false)}
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+              >
+                <Alert
+                  onClose={() => setOpenSnackbar(false)}
+                  severity="success"
+                  variant="filled"
+                >
+                  Data Submitted Successfully!
+                </Alert>
+              </Snackbar>
             </Paper>
             <Paper elevation={4} sx={{ p: 3, borderRadius: "10px", mb: 5 }}>
               <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
@@ -599,6 +628,7 @@ const ActualPump = () => {
               <Box display="flex" justifyContent="flex-end" gap={2}>
                 <Button
                   variant="outlined"
+                  onClick={() => navigate("/project2")}
                   sx={{
                     borderRadius: "10px",
                     border: "1px solid black",
@@ -610,16 +640,36 @@ const ActualPump = () => {
                 </Button>
                 <Button
                   variant="contained"
+                  onClick={handleSubmit}
                   sx={{
+                    backgroundColor: "#99caff",
                     borderRadius: "10px",
-                    bgcolor: "#99caff",
                     color: "black",
-                    px: 3,
+                    textTransform: "none",
+                    minWidth: "101px",
+                    height: "42px",
+                    "&:hover": {
+                      backgroundColor: "#7bb8ff",
+                    },
                   }}
                 >
                   Submit
                 </Button>
               </Box>
+              <Snackbar
+                open={openSnackbar}
+                autoHideDuration={2000}
+                onClose={() => setOpenSnackbar(false)}
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+              >
+                <Alert
+                  onClose={() => setOpenSnackbar(false)}
+                  severity="success"
+                  variant="filled"
+                >
+                  Data Submitted Successfully!
+                </Alert>
+              </Snackbar>
             </Paper>
             <Paper elevation={4} sx={{ p: 3, borderRadius: "10px", mb: 5 }}>
               <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
@@ -776,6 +826,7 @@ const ActualPump = () => {
               <Box display="flex" justifyContent="flex-end" gap={2}>
                 <Button
                   variant="outlined"
+                  onClick={() => navigate("/project2")}
                   sx={{
                     borderRadius: "10px",
                     border: "1px solid black",
@@ -787,16 +838,36 @@ const ActualPump = () => {
                 </Button>
                 <Button
                   variant="contained"
+                  onClick={handleSubmit}
                   sx={{
+                    backgroundColor: "#99caff",
                     borderRadius: "10px",
-                    bgcolor: "#99caff",
                     color: "black",
-                    px: 3,
+                    textTransform: "none",
+                    minWidth: "101px",
+                    height: "42px",
+                    "&:hover": {
+                      backgroundColor: "#7bb8ff",
+                    },
                   }}
                 >
                   Submit
                 </Button>
               </Box>
+              <Snackbar
+                open={openSnackbar}
+                autoHideDuration={2000}
+                onClose={() => setOpenSnackbar(false)}
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+              >
+                <Alert
+                  onClose={() => setOpenSnackbar(false)}
+                  severity="success"
+                  variant="filled"
+                >
+                  Data Submitted Successfully!
+                </Alert>
+              </Snackbar>
             </Paper>
             <Paper elevation={4} sx={{ p: 3, borderRadius: "10px", mb: 5 }}>
               <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
@@ -953,6 +1024,7 @@ const ActualPump = () => {
               <Box display="flex" justifyContent="flex-end" gap={2}>
                 <Button
                   variant="outlined"
+                  onClick={() => navigate("/project2")}
                   sx={{
                     borderRadius: "10px",
                     border: "1px solid black",
@@ -964,16 +1036,36 @@ const ActualPump = () => {
                 </Button>
                 <Button
                   variant="contained"
+                  onClick={handleSubmit}
                   sx={{
+                    backgroundColor: "#99caff",
                     borderRadius: "10px",
-                    bgcolor: "#99caff",
                     color: "black",
-                    px: 3,
+                    textTransform: "none",
+                    minWidth: "101px",
+                    height: "42px",
+                    "&:hover": {
+                      backgroundColor: "#7bb8ff",
+                    },
                   }}
                 >
                   Submit
                 </Button>
               </Box>
+              <Snackbar
+                open={openSnackbar}
+                autoHideDuration={2000}
+                onClose={() => setOpenSnackbar(false)}
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+              >
+                <Alert
+                  onClose={() => setOpenSnackbar(false)}
+                  severity="success"
+                  variant="filled"
+                >
+                  Data Submitted Successfully!
+                </Alert>
+              </Snackbar>
             </Paper>
           </Box>
         )}
@@ -993,8 +1085,8 @@ const ActualPump = () => {
                   Pump
                 </Typography>
 
-                <Grid container spacing={3}>
-                  <Grid item xs={2.5}>
+                <Grid container spacing={2}>
+                  <Grid item xs={1.5}>
                     <Typography variant="body1" fontWeight="medium">
                       Pump Capacity :
                     </Typography>
@@ -1031,8 +1123,8 @@ const ActualPump = () => {
                   </Grid>
                 </Grid>
 
-                <Grid container spacing={3} sx={{ mt: 1 }}>
-                  <Grid item xs={2.5}>
+                <Grid container spacing={2} sx={{ mt: 1 }}>
+                  <Grid item xs={1.5}>
                     <Typography variant="body1" fontWeight="medium">
                       System Capacity :
                     </Typography>
@@ -1069,8 +1161,8 @@ const ActualPump = () => {
                   </Grid>
                 </Grid>
 
-                <Grid container spacing={3} sx={{ mt: 1 }}>
-                  <Grid item xs={2.5}>
+                <Grid container spacing={2} sx={{ mt: 1 }}>
+                  <Grid item xs={1.5}>
                     <Typography variant="body1" fontWeight="medium">
                       Pump Balancing <br />
                       Valve Position :
@@ -1079,7 +1171,7 @@ const ActualPump = () => {
                   <Grid item xs={2.5}>
                     <TextField fullWidth size="small" variant="outlined" />
                   </Grid>
-                  <Grid item xs={2.5}>
+                  <Grid item xs={1.5}>
                     <Typography variant="body1" fontWeight="medium">
                       System Differential
                       <br />
@@ -1103,21 +1195,21 @@ const ActualPump = () => {
                   BHP SINGLE OPERATION
                 </Typography>
 
-                <Grid container spacing={3}>
-                  <Grid item xs={2.5}>
+                <Grid container spacing={2}>
+                  <Grid item xs={1.5}>
                     <Typography variant="body1" fontWeight="medium">
                       System Capacity :
                     </Typography>
                   </Grid>
-                  <Grid item xs={3}>
+                  <Grid item xs={2.5}>
                     <TextField fullWidth size="small" variant="outlined" />
                   </Grid>
-                  <Grid item xs={2.5}>
+                  <Grid item xs={1.5}>
                     <Typography variant="body1" fontWeight="medium">
                       Balanced position :
                     </Typography>
                   </Grid>
-                  <Grid item xs={3}>
+                  <Grid item xs={2.5}>
                     <TextField fullWidth size="small" variant="outlined" />
                   </Grid>
                 </Grid>
@@ -1126,21 +1218,21 @@ const ActualPump = () => {
                   BHP PARALLEL OPERATION
                 </Typography>
 
-                <Grid container spacing={3}>
-                  <Grid item xs={2.5}>
+                <Grid container spacing={2}>
+                  <Grid item xs={1.5}>
                     <Typography variant="body1" fontWeight="medium">
                       System Capacity :
                     </Typography>
                   </Grid>
-                  <Grid item xs={3}>
+                  <Grid item xs={2.5}>
                     <TextField fullWidth size="small" variant="outlined" />
                   </Grid>
-                  <Grid item xs={2.5}>
+                  <Grid item xs={1.5}>
                     <Typography variant="body1" fontWeight="medium">
                       Balanced position :
                     </Typography>
                   </Grid>
-                  <Grid item xs={3}>
+                  <Grid item xs={2.5}>
                     <TextField fullWidth size="small" variant="outlined" />
                   </Grid>
                 </Grid>
@@ -1174,7 +1266,7 @@ const ActualPump = () => {
               </Grid>
               <Grid container spacing={3} sx={{ mt: 1 }}>
                 {showFlowMeter && (
-                  <Grid item xs={showFlowMeter && !showBHP ? 12 : 6}>
+                  <Grid item xs={6}>
                     <Paper elevation={4} sx={{ p: 3, borderRadius: "10px" }}>
                       <Grid container spacing={2}>
                         <Grid item xs={3}>
@@ -1229,7 +1321,7 @@ const ActualPump = () => {
                 )}
 
                 {showBHP && (
-                  <Grid item xs={showBHP && !showFlowMeter ? 12 : 6}>
+                  <Grid item xs={6} sx={{ marginLeft: "auto" }}>
                     <Paper elevation={4} sx={{ p: 3, borderRadius: "10px" }}>
                       <Grid container spacing={2}>
                         <Grid item xs={3}>
@@ -1275,25 +1367,25 @@ const ActualPump = () => {
 
                         <Grid item xs={12}>
                           <Grid container spacing={2} alignItems="center">
-                            <Grid item xs={2}>
+                            <Grid item xs={3}>
                               <Typography variant="body2" fontWeight="bold">
                                 EFM
                               </Typography>
                             </Grid>
-                            <Grid item xs={3}>
+                            <Grid item xs="auto">
                               <Typography variant="body2" fontWeight="medium">
                                 BHP :
                               </Typography>
                             </Grid>
-                            <Grid item xs={2.5}>
+                            <Grid item xs={3}>
                               <TextField fullWidth size="small" />
                             </Grid>
-                            <Grid item xs={2}>
+                            <Grid item xs="auto">
                               <Typography variant="body2" fontWeight="medium">
                                 BKW :
                               </Typography>
                             </Grid>
-                            <Grid item xs={2.5}>
+                            <Grid item xs={3}>
                               <TextField fullWidth size="small" />
                             </Grid>
                           </Grid>
@@ -1342,6 +1434,7 @@ const ActualPump = () => {
             >
               <Button
                 variant="outlined"
+                onClick={() => navigate("/project2")}
                 sx={{
                   bgcolor: "#f2f4f5",
                   borderColor: "black",
@@ -1371,6 +1464,20 @@ const ActualPump = () => {
                 </a>
               </Button>
             </Stack>
+            <Snackbar
+                open={openSnackbar}
+                autoHideDuration={2000}
+                onClose={() => setOpenSnackbar(false)}
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+              >
+                <Alert
+                  onClose={() => setOpenSnackbar(false)}
+                  severity="success"
+                  variant="filled"
+                >
+                  Data Submitted Successfully!
+                </Alert>
+              </Snackbar>
           </Box>
         )}
       </Box>
