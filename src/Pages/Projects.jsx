@@ -149,8 +149,8 @@ const Projects = () => {
             // fullWidth
             sx={{
               width: "50%",
-              bgcolor: "#f2f4f5",
-
+              bgcolor: "#fff",
+              height: "50px",
               borderRadius: "10px",
 
               "& .MuiOutlinedInput-root": {

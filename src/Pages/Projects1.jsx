@@ -159,7 +159,8 @@ const Projects1 = () => {
             // fullWidth
             sx={{
               width: "50%",
-              bgcolor: "#f2f4f5",
+              // bgcolor: "#f2f4f5",
+              bgcolor: "#fff",
 
               borderRadius: "10px",
 
