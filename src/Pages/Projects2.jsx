@@ -69,6 +69,8 @@ const Projects2 = () => {
           onClick={() => {
             if (item.type === "Pump") {
               navigate("/actualPump");
+            } else if (item.type === "Fan") {
+              navigate("/actualFan");
             }
           }}
           sx={{

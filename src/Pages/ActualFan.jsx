@@ -1,137 +1,39 @@
-import React, { useState } from "react";
 import {
   Box,
+  Button,
   Container,
-  Grid,
-  Typography,
+  Divider,
+  Paper,
+  Stack,
+  Tab,
+  Tabs,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
-  Paper,
   TextField,
-  Button,
-  Tabs,
-  Tab,
-  Divider,
-  Select,
-  MenuItem,
-  Input,
-  Snackbar,
-  Alert,
-  FormControlLabel,
-  Checkbox,
+  Typography,
+  Grid,
 } from "@mui/material";
+import React, { useState } from "react";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { Snackbar, Alert } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import AddIcon from "@mui/icons-material/Add";
-import fan_report from "../assets/fan_report.pdf";
 
 const ActualFan = () => {
   const navigate = useNavigate();
-  const [tabIndex, setTabIndex] = useState(0);
+  const [tabValue, setTabValue] = useState(0);
+const [selectedFan, setSelectedFan] = useState("ERV-1");
+const [openSnackbar, setOpenSnackbar] = useState(false);
 
-  const [comments, setComments] = useState("");
-
-  const handleConvert = (fieldKey) => {
-    setActualValues((prev) => {
-      const value = parseFloat(prev[fieldKey]); // Get actual value input
-      if (isNaN(value)) {
-        alert("Please enter a valid number for conversion.");
-        return prev;
-      }
-
-      return { ...prev, [fieldKey]: convertedValue };
-    });
+  const handleTabChange = (event, newValue) => {
+    setTabValue(newValue);
   };
 
-  const handleChange1 = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-  const [actualValues, setActualValues] = useState({
-    make: " MITSUBISHI ELECTRIC",
-    model: "LGH-F470RVX2-E",
-    supplyFanCapacity: "387 L/s",
-    supplyOutletCapacity: "387 L/s",
-    exhaustFanCapacitycity: "309 L/s",
-    exhaustOutletCapacity: "309 L/s",
-    size: "",
-    volts: "575/3",
-    supply: "0.37HP",
-    exhaust: "0.42HP",
-  });
-
-  const handleChange = (field, value) => {
-    setActualValues((prev) => ({ ...prev, [field]: value }));
-  };
-
-  const fanData = [
-    {
-      field: "Make",
-      specified: "SWEGON",
-      actual: "MITSUBISHI ELECTRIC",
-      key: "make",
-    },
-    {
-      field: "Model",
-      specified: "R15-H SMART",
-      actual: "LGH-F470RVX2-E",
-      key: "model",
-    },
-    {
-      field: "Supply Fan Capacity",
-      specified: "550 L/s",
-      actual: '387 L/s"',
-      key: "supplyFanCapacity",
-    },
-    {
-      field: "Supply Outlet Capacity",
-      specified: "552 L/s",
-      actual: "387 L/s",
-      key: "supplyOutletCapacity",
-    },
-    ,
-    {
-      field: "Exhaust Fan Capacity",
-      specified: "550 L/s",
-      actual: "309 L/s",
-      key: "exhaustFanCapacitycity",
-    },
-    {
-      field: "Exhaust Outlet Capacity",
-      specified: "424 L/s",
-      actual: "309 L/s",
-      key: "exhaustOutletCapacity",
-    },
-    {
-      field: "Motor Size",
-      specified: "-",
-      actual: "-",
-      key: "size",
-    },
-    {
-      field: "Supply",
-      specified: "-",
-      actual: "0.37 HP",
-      key: "supply",
-    },
-    {
-      field: "Exhaust",
-      specified: "-",
-      actual: "0.42 HP",
-      key: "exhaust",
-    },
-    {
-      field: "Volts/Phase",
-      specified: "115/1",
-      actual: "115/1",
-      key: "volts",
-    },
-  ];
-
-  const handleCommentChange = (e) => {
-    setComments(e.target.value);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
   };
 
   const handleSubmit = () => {
@@ -141,693 +43,690 @@ const ActualFan = () => {
     }, 2000);
   };
 
-  const handleCheckboxChange = (formName) => {
-    setSelectedForms(
-      (prev) =>
-        prev.includes(formName)
-          ? prev.filter((item) => item !== formName) // Remove if already selected
-          : [...prev, formName] // Add if not selected
-    );
-  };
-
-  const [fan, setFan] = useState("ERV-1");
-  const [openSnackbar, setOpenSnackbar] = useState(false);
-  const [selectedForms, setSelectedForms] = useState([]);
+  const fanSpecifications = [
+    { field: "Make", specifiedValue: "SWEGOAN", actualValue: "MISTUBISHI ELECTRIC" },
+    { field: "Model", specifiedValue: "R15-H SMART", actualValue: "LGH-F470RVX2-E" },
+    { field: "Supply Fan Capacity", specifiedValue: "550 L/s", actualValue: "387 L/s" },
+    { field: "Supply Outlet Capacity", specifiedValue: "552 L/s", actualValue: "387 L/s" },
+    { field: "Exhaust Fan Capacity", specifiedValue: "550 L/s", actualValue: "309 L/s" },
+    { field: "Exhaust Outlet Capacity", specifiedValue: "424 L/s", actualValue: "309 L/s" },
+    { field: "Motor Size", specifiedValue: "", actualValue: "" },
+    { field: "Supply", specifiedValue: "", actualValue: "0.37HP" },
+    { field: "Exhaust", specifiedValue: "", actualValue: "0.42HP" },
+    { field: "Volts/Phase", specifiedValue: "115 L/s", actualValue: "575/3" },
+  ];
 
   return (
-    <Box>
-      <Box sx={{ pl: 9, pr: 9, mt: 1 }}>
-        <Typography
-          variant="h5"
-          style={{ fontWeight: "bold", marginBottom: "10px" }}
-        >
+    <Box 
+       sx={{ 
+      bgcolor: "#f2f4f5",
+       display: "flex",
+       justifyContent: "center",
+       width: "100%"
+        }}
+    >
+      <Box
+              sx={{
+                bgcolor: "#f2f4f5",
+                minHeight: "100vh",
+                width: "100vw",
+                // py: 4,
+                pl: "70px",
+                pt: "12px",
+                pr: "24px",
+                boxSizing: "border-box",
+                overflow: "hidden",
+                position: "relative",
+              }}
+            >
+            
+        <Typography variant="h5" fontWeight="bold" sx={{ mb: 1 }}>
           Project Name : UBC School of Biomedical Engineering
         </Typography>
-        <Box display="flex" alignItems="center">
-          <Typography
-            variant="h6"
-            style={{ fontWeight: "bold", marginRight: "10px" }}
-          >
-            System :
+
+        {/* <Box display="flex" alignItems="center" > */}
+         <Typography variant="h6" fontWeight="semibold">
+          System : ERV-1
+        </Typography>
+        {/* <Typography variant="body1" ml={2}>
+            {selectedFan}
           </Typography>
-          <Select
-            value={fan}
-            onChange={handleChange}
-            variant="standard"
-            style={{
-              fontSize: "1.2rem", // Smaller font size
-              fontWeight: "bold",
-              borderBottom: "none",
-            }}
-          >
-            <MenuItem value="ERV-1">ERV-1</MenuItem>
-          </Select>
-        </Box>
-        <Tabs
-          value={tabIndex}
-          onChange={(e, newIndex) => setTabIndex(newIndex)}
-          sx={{ mb: 1 }}
+          <KeyboardArrowDownIcon
+            fontSize="small"
+            sx={{ ml: 1, cursor: "pointer" }}
+            onClick={handleClick}
+          />
+          </Box>
+          
+          <Menu
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={() => handleClose()}
         >
-          <Tab label="Actual Fan Data" />
-          <Tab label="Fan Performance" />
+          <MenuItem onClick={() => handleClose("ERV-1")}>ERV-1</MenuItem>
+          <MenuItem onClick={() => handleClose("FC-1A-1")}>P-06-07B</MenuItem>
+          <MenuItem onClick={() => handleClose("P-06-07C")}>P-06-07C</MenuItem>
+        </Menu> */}
+
+        <Tabs 
+        value={tabValue} 
+        onChange={handleTabChange} 
+        sx={{ mb: 2 }}
+        TabIndicatorProps={{ sx: { bgcolor: "#99caff", height: 3 } }}
+        >
+          <Tab label="Actual Fan Data"  sx={{ fontWeight: 500 }} />
+          <Tab label="Fan Performance"  sx={{ fontWeight: 500 }} />
         </Tabs>
-        {tabIndex === 0 && (
+
+        {tabValue === 0 && (
           <>
-            <TableContainer component={Paper} sx={{ mt: 2 }}>
-              <Table>
-                <TableHead sx={{ backgroundColor: "#1976d2" }}>
-                  <TableRow sx={{ height: "30px" }}>
-                    <TableCell
-                      sx={{ color: "white", fontWeight: "bold", px: 1 }}
-                    >
-                      Field
-                    </TableCell>
-                    <TableCell
-                      sx={{ color: "white", fontWeight: "bold", px: 1 }}
-                    >
-                      Specified Value
-                    </TableCell>
-                    <TableCell
-                      sx={{
-                        color: "white",
-                        fontWeight: "bold",
-                        px: 1,
-                        textAlign: "center",
-                      }}
-                    >
-                      Actual Value
-                    </TableCell>
-                  </TableRow>
-                </TableHead>
+            <TableContainer component={Paper}
+             sx={{
+               mb: 4,
+              borderRadius: "10px 10px 0 0", 
+              // overflow: "hidden" 
+              }}
+              >
+               <Table sx={{ tableLayout: "fixed", width: "100%" }}>
+                                  <TableHead>
+                                    <TableRow sx={{ bgcolor: "#99caff" }}>
+                                      <TableCell sx={{ px: 3, py: 1 }}>
+                                        <Typography fontWeight="bold">Fields</Typography>
+                                      </TableCell>
+                                      <TableCell sx={{ py: 1 }}>
+                                        <Typography fontWeight="bold">Specified Value</Typography>
+                                      </TableCell>
+                                      <TableCell sx={{ py: 1 }}>
+                                        <Typography fontWeight="bold">Actual Value</Typography>
+                                      </TableCell>
+                                    </TableRow>
+                                  </TableHead>
                 <TableBody>
-                  {fanData.map((row) => (
-                    <TableRow key={row.field} sx={{ height: "40px" }}>
-                      <TableCell sx={{ py: 0.3, px: 1 }}>{row.field}</TableCell>
-                      <TableCell sx={{ py: 0.3, px: 1 }}>
-                        {row.specified}
-                      </TableCell>
-                      <TableCell sx={{ py: 0.3, px: 1, textAlign: "center" }}>
-                        <Box sx={{ display: "flex", justifyContent: "center" }}>
-                          <TextField
-                            variant="outlined"
-                            size="small"
-                            value={actualValues[row.key]}
-                            onChange={(e) =>
-                              handleChange(row.key, e.target.value)
-                            }
-                            sx={{
-                              width: "auto",
-                              minWidth: "100px",
-                              fontSize: "0.75rem",
-                              "& .MuiInputBase-root": {
-                                height: "30px",
-                                fontSize: "0.75rem",
-                                overflow: "hidden",
-                                textOverflow: "ellipsis",
-                              },
-                              "& input": {
-                                width: "100%",
-                              },
-                            }}
-                          />
-                        </Box>
-                      </TableCell>
+                  {fanSpecifications.map((row, index) => (
+                    <TableRow
+                                             key={index}
+                                             sx={{
+                                               borderBottom: "1px solid #cbcbcb",
+                                               "& td": { py: 1 }, 
+                                             }}
+                                           >
+                                             <TableCell sx={{ px: 3 }}>
+                                               <Typography fontWeight="medium" fontSize="0.9rem">
+                                                 {row.field}
+                                               </Typography>
+                                             </TableCell>
+                                             <TableCell>
+                                               <Typography fontWeight="medium" fontSize="0.9rem">
+                                                 {row.specifiedValue}
+                                               </Typography>
+                                             </TableCell>
+                      <TableCell>
+                                                  <TextField
+                                                    fullWidth
+                                                    variant="outlined"
+                                                    size="small"
+                                                    value={row.actualValue}
+                                                    sx={{
+                                                      bgcolor: "white",
+                                                      "& .MuiOutlinedInput-root": {
+                                                        borderRadius: "5px",
+                                                        "& .MuiOutlinedInput-notchedOutline": {
+                                                          borderColor: "#9d9d9d",
+                                                        },
+                                                        fontSize: "0.9rem", 
+                                                      },
+                                                    }}
+                                                  />
+                                                </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
               </Table>
             </TableContainer>
+             <Typography variant="body1" fontWeight="bold" mb={1}>
+                          Comments :
+                        </Typography>
+            
+                        <TextField
+                          fullWidth
+                          multiline
+                          rows={5}
+                          placeholder="Enter your comments..."
+                          sx={{
+                            mb: 2,
+                            backgroundColor: "white",
+                            borderRadius: "5px",
+                            "& .MuiOutlinedInput-root": {
+                              backgroundColor: "white",
+                              "& fieldset": {
+                                borderColor: "#9d9d9d",
+                              },
+                            },
+                          }}
+                        />
+                        <Typography variant="body1" color="text.secondary" mb={1}>
+                          *Represents[Your meaning 1]
+                        </Typography>
+                        <Typography variant="body1" color="text.secondary" mb={2}>
+                          **Represents[Your meaning 2]
+                        </Typography>
+                        <Stack direction="row" spacing={1} justifyContent="flex-end" mb={2}>
+                          <Button
+                            variant="outlined"
+                            onClick={() => navigate("/project2")}
+                            sx={{
+                              backgroundColor: "#f2f4f5",
+                              borderRadius: "10px",
+                              borderColor: "black",
+                              color: "black",
+                              textTransform: "none",
+                              minWidth: "91px",
+                              height: "42px",
+                            }}
+                          >
+                            Back
+                          </Button>
+                          <Button
+                              variant="contained"
+                              onClick={handleSubmit}
+                              sx={{
+                                backgroundColor: "#99caff",
+                                borderRadius: "10px",
+                                color: "black",
+                                textTransform: "none",
+                                minWidth: "101px",
+                                height: "42px",
+                                "&:hover": {
+                                  backgroundColor: "#7bb8ff",
+                                },
+                              }}
+                            >
+                              Submit
+                            </Button>
+                        </Stack>
+                        <Snackbar
+                            open={openSnackbar}
+                            autoHideDuration={2000}
+                            onClose={() => setOpenSnackbar(false)}
+                            anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                          >
+                            <Alert
+                              onClose={() => setOpenSnackbar(false)}
+                              severity="success"
+                              variant="filled"
+                            >
+                              Data Submitted Successfully!
+                            </Alert>
+                          </Snackbar>
+                      </>
+                    )}
 
-            <Box width="100%">
-              <h3 style={{ alignSelf: "flex-start" }}>Comments :</h3>
-              <TextField
-                fullWidth
-                label="Enter your comments"
-                multiline
-                rows={4}
-                variant="outlined"
-                value={comments}
-                onChange={handleCommentChange}
-                placeholder="Use '*' for some meaning and '**' for another meaning..."
-                style={{ width: "100%" }}
-              />
-              <Typography
-                variant="body2"
-                color="textSecondary"
-                style={{ marginTop: "10px", textAlign: "left" }}
-              >
-                * Represents [Your Meaning 1] <br />
-                ** Represents [Your Meaning 2]
-              </Typography>
-            </Box>
+        {tabValue === 1 && (
+          <Box>
+          <Paper 
+          elevation={4} 
+          sx={{
+             p: 3,
+              mb: 2, 
+              borderRadius: "10px"
+            }}
+          >
+            <Typography variant="h6" fontWeight="bold" sx={{ mb: 1 }}>
+              Fan
+            </Typography>
+            <Grid container spacing={2} >
+                  <Grid item xs={1.2}>
+                    <Typography variant="body1" fontWeight="medium">
+                    Supply Fan<br />R.P.M :
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={2.5}>
+                    <TextField fullWidth size="small" variant="outlined" />
+                  </Grid>
+                  <Grid item xs={1.2}>
+                    <Typography variant="body1" fontWeight="medium">
+                    Exhaust Fan<br />R.P.M :
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={2.5}>
+                    <TextField fullWidth size="small" variant="outlined" />
+                  </Grid>
+                </Grid>
+            <Divider sx={{ my: 3 }} />
 
-            <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
-              <Button
-                variant="outlined"
-                sx={{ mr: 2 }}
-                onClick={() => navigate("/allPump")}
-              >
-                Back
-              </Button>
-              <Button variant="contained" onClick={handleSubmit}>
-                Submit
-              </Button>
-            </Box>
+            <Typography variant="h6" fontWeight="bold" sx={{ mb: 1 }}>Motor</Typography>
+            
+                            <Grid container spacing={2}>
+                              <Grid item xs={1.2}>
+                                <Typography variant="body1" fontWeight="medium">
+                                Supply <br />
+                                Amperage :
+                                </Typography>
+                              </Grid>
+                              <Grid item xs={2.5}>
+                                <TextField
+                                  fullWidth
+                                  defaultValue="4.1"
+                                  size="small"
+                                  placeholder="Specified Value"
+                                  variant="outlined"
+                                />
+                              </Grid>
+                              <Grid item xs={2.5}>
+                                <TextField
+                                  fullWidth
+                                  size="small"
+                                  placeholder="Actual Value"
+                                  variant="outlined"
+                                />
+                              </Grid>
+                            </Grid>
+            
+                            <Grid container spacing={2} sx={{ mt: 1 }}>
+                              <Grid item xs={1.2}>
+                                <Typography variant="body1" fontWeight="medium">
+                                Exhaust<br />
+                                 Amperage :
+                                </Typography>
+                              </Grid>
+                              <Grid item xs={2.5}>
+                                <TextField
+                                  fullWidth
+                                  defaultValue="4.1"
+                                  size="small"
+                                  placeholder="Specified Value"
+                                  variant="outlined"
+                                />
+                              </Grid>
+                              <Grid item xs={2.5}>
+                                <TextField
+                                  fullWidth
+                                  size="small"
+                                  placeholder="Actual Value"
+                                  variant="outlined"
+                                />
+                              </Grid>
+                            </Grid>
 
-            <Snackbar
-              open={openSnackbar}
-              autoHideDuration={2000}
-              onClose={() => setOpenSnackbar(false)}
-              anchorOrigin={{ vertical: "top", horizontal: "center" }}
-            >
-              <Alert
-                onClose={() => setOpenSnackbar(false)}
-                severity="success"
-                variant="filled"
-              >
-                Data Submitted Successfully!
-              </Alert>
-            </Snackbar>
-          </>
-        )}
-      </Box>
+                            <Grid container spacing={2} sx={{ mt: 1 }}>
+                              <Grid item xs={1.2}>
+                                <Typography variant="body1" fontWeight="medium">
+                                Supply<br />
+                                R.P.M :
+                                </Typography>
+                              </Grid>
+                              <Grid item xs={2.5}>
+                                <TextField
+                                  fullWidth
+                                  defaultValue="Not Listed"
+                                  size="small"
+                                  placeholder="Specified Value"
+                                  variant="outlined"
+                                />
+                              </Grid>
+                              <Grid item xs={2.5}>
+                                <TextField
+                                  fullWidth
+                                  size="small"
+                                  placeholder="Actual Value"
+                                  variant="outlined"
+                                />
+                              </Grid>
+                            </Grid>
 
-      {tabIndex === 1 && (
-        <>
-          <Box sx={{ pl: 9, pr: 9, mt: 1 }}>
-            <Box
-              component="form"
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 2,
-                maxWidth: 1100,
-                margin: "auto",
-                padding: 3,
-                boxShadow: 3,
-                borderRadius: 2,
-              }}
-            >
-              <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                Fan
-              </Typography>
+                            <Grid container spacing={2} sx={{ mt: 1 }}>
+                              <Grid item xs={1.2}>
+                                <Typography variant="body1" fontWeight="medium">
+                                Exhaust<br />
+                                R.P.M :
+                                </Typography>
+                              </Grid>
+                              <Grid item xs={2.5}>
+                                <TextField
+                                  fullWidth
+                                  defaultValue="Not Listed"
+                                  size="small"
+                                  placeholder="Specified Value"
+                                  variant="outlined"
+                                />
+                              </Grid>
+                              <Grid item xs={2.5}>
+                                <TextField
+                                  fullWidth
+                                  size="small"
+                                  placeholder="Actual Value"
+                                  variant="outlined"
+                                />
+                              </Grid>
+                            </Grid>
+            
+                            {/* <Grid container spacing={3} sx={{ mt: 1 }}>
+                              <Grid item xs={1.5}>
+                                <Typography variant="body1" fontWeight="medium">
+                                Supply<br />
+                                R.P.M :
+                                </Typography>
+                              </Grid>
+                              <Grid item xs={2.5}>
+                                <TextField fullWidth size="small" variant="outlined" />
+                              </Grid>
+                              <Grid item xs={1.5}>
+                                <Typography variant="body1" fontWeight="medium">
+                                Exhaust<br />
+                                R.P.M :
+                                </Typography>
+                              </Grid>
+                              <Grid item xs={2.5}>
+                                <TextField fullWidth size="small" variant="outlined" />
+                              </Grid>
+                            </Grid> */}
 
-              <Box
-                sx={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(2, 1fr)",
-                  gap: 2,
-                }}
-              >
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Supply Fan R.P.M :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="amperage"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
+            <Divider sx={{ my: 3 }} />
 
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Exhaust Fan R.P.M :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="rpm"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-              </Box>
-              <Divider />
+                        <Typography variant="subtitle1" fontWeight="600" sx={{ mb: 1 }}>
+                         Supply
+                        </Typography>
+                        <Stack direction="row" spacing={3} sx={{ mb: 2 }}>
+                          <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                            <Typography
+                              sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                            >
+                              Suction Static {"\n"}Pressure(SSP):
+                            </Typography>
+                            <TextField
+                              variant="outlined"
+                              size="small"
+                              sx={{ width: "200px", backgroundColor: "white" }}
+                            />
+                          </Box>
+                          <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                            <Typography
+                              sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                            >
+                            Discharge Static {"\n"} Pressure(DSP) :
+                            </Typography>
+                            <TextField
+                              variant="outlined"
+                              size="small"
+                              sx={{ width: "200px", backgroundColor: "white" }}
+                            />
+                          </Box>
+                          <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                            <Typography
+                              sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                            >
+                             Total Static {"\n"} Pressure(TSP):
+                            </Typography>
+                            <TextField
+                              variant="outlined"
+                              size="small"
+                              sx={{ width: "200px", backgroundColor: "white" }}
+                            />
+                          </Box>
+                        </Stack>
+          
+                        <Typography variant="subtitle1" fontWeight="600" sx={{ mb: 1 }}>
+                        Exhaust
+                        </Typography>
+                        <Stack direction="row" spacing={3} sx={{ mb: 2 }}>
+                          <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                            <Typography
+                              sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                            >
+                             Suction Static {"\n"} Pressure(DSP) :
+                            </Typography>
+                            <TextField
+                              variant="outlined"
+                              size="small"
+                              sx={{ width: "200px", backgroundColor: "white" }}
+                            />
+                          </Box>
+                          <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                            <Typography
+                              sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                            >
+                              Discharge Static {"\n"} Pressure(DSP) :
+                            </Typography>
+                            <TextField
+                              variant="outlined"
+                              size="small"
+                              sx={{ width: "200px", backgroundColor: "white" }}
+                            />
+                          </Box>
+                          <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                            <Typography
+                              sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                            >
+                            Total Static {"\n"} Pressure(TSP):
+                            </Typography>
+                            <TextField
+                              variant="outlined"
+                              size="small"
+                              sx={{ width: "200px", backgroundColor: "white" }}
+                            />
+                          </Box>
+                        </Stack>
+            <Divider sx={{ my: 3 }} />
 
-              <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                Motor
-              </Typography>
-              <Box>
-                <Box display="flex" alignItems="center" marginBottom="12px">
-                  <Typography sx={{ minWidth: "150px" }}>
-                    Supply Amperage:
-                  </Typography>
-                  <Box display="flex" alignItems="center" gap={2}>
-                    <TextField
-                      defaultValue="4.1"
-                      label="Specified Value"
-                      fullWidth
-                      variant="outlined"
-                      InputProps={{ readOnly: true }}
-                      sx={{
-                        "& .MuiInputBase-root": {
-                          height: 40,
-                        },
-                        "& .MuiInputBase-input": {
-                          padding: "10px 14px",
-                        },
-                      }}
-                    />
-                    <TextField
-                      label="Actual Value"
-                      fullWidth
-                      variant="outlined"
-                      InputProps={{ readOnly: true }}
-                      sx={{
-                        "& .MuiInputBase-root": {
-                          height: 40,
-                        },
-                        "& .MuiInputBase-input": {
-                          padding: "10px 14px",
-                        },
-                      }}
-                    />
-                  </Box>
-                </Box>
+                          <Typography variant="subtitle1" fontWeight="600" sx={{ mb: 1 }}>
+                          SUPPLY FAN DRIVE INFORMATION
+                          </Typography>
+                          <Stack direction="row" spacing={3} sx={{ mb: 2 }}>
+                            <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                              <Typography
+                                sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                              >
+                                Motor Sheave :
+                              </Typography>
+                              <TextField
+                                variant="outlined"
+                                size="small"
+                                sx={{ width: "200px", backgroundColor: "white" }}
+                              />
+                            </Box>
+                            <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                              <Typography
+                                sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                              >
+                               Position :
+                              </Typography>
+                              <TextField
+                                variant="outlined"
+                                size="small"
+                                sx={{ width: "200px", backgroundColor: "white" }}
+                              />
+                            </Box>
+                            <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                              <Typography
+                                sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                              >
+                               Fan Sheave :
+                              </Typography>
+                              <TextField
+                                variant="outlined"
+                                size="small"
+                                sx={{ width: "200px", backgroundColor: "white" }}
+                              />
+                            </Box></Stack>
+                            <Stack direction="row" spacing={3} sx={{ mb: 2 }}>
+                            <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                              <Typography
+                                sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                              >
+                               Centres :
+                              </Typography>
+                              <TextField
+                                variant="outlined"
+                                size="small"
+                                sx={{ width: "200px", backgroundColor: "white" }}
+                              />
+                            </Box>
+                            <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                              <Typography
+                                sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                              >
+                               Belt Quality /{"\n"} Size :
+                              </Typography>
+                              <TextField
+                                variant="outlined"
+                                size="small"
+                                sx={{ width: "200px", backgroundColor: "white" }}
+                              />
+                            </Box>
+                          </Stack>
+            
+                          <Typography variant="subtitle1" fontWeight="600" sx={{ mb: 1 }}>
+                          EXHAUST FAN DRIVE INFORMATION
+                          </Typography>
+                          <Stack direction="row" spacing={3} sx={{ mb: 2 }}>
+                            <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                              <Typography
+                                sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                              >
+                                Motor Sheave :
+                              </Typography>
+                              <TextField
+                                variant="outlined"
+                                size="small"
+                                sx={{ width: "200px", backgroundColor: "white" }}
+                              />
+                            </Box>
+                            <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                              <Typography
+                                sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                              >
+                                Position :
+                              </Typography>
+                              <TextField
+                                variant="outlined"
+                                size="small"
+                                sx={{ width: "200px", backgroundColor: "white" }}
+                              />
+                            </Box>
+                            <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                              <Typography
+                                sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                              >
+                                Fan Sheave :
+                              </Typography>
+                              <TextField
+                                variant="outlined"
+                                size="small"
+                                sx={{ width: "200px", backgroundColor: "white" }}
+                              />
+                            </Box>
+                            </Stack>
+                            <Stack direction="row" spacing={3} sx={{ mb: 2 }}>
+                            <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                              <Typography
+                                sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                              >
+                                Centres :
+                              </Typography>
+                              <TextField
+                                variant="outlined"
+                                size="small"
+                                sx={{ width: "200px", backgroundColor: "white" }}
+                              />
+                            </Box>
+                            <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                              <Typography
+                                sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                              >
+                                Belt Quality / {"\n"}Size :
+                              </Typography>
+                              <TextField
+                                variant="outlined"
+                                size="small"
+                                sx={{ width: "200px", backgroundColor: "white" }}
+                              />
+                            </Box>
+                          </Stack>
+          </Paper>
 
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "150px", gap: 2 }}>
-                    Exhaust Amperage:
-                  </Typography>
-                  <Box display="flex" alignItems="center" gap={2}>
-                    <TextField
-                      defaultValue="4.1"
-                      label="Specified Value"
-                      fullWidth
-                      variant="outlined"
-                      InputProps={{ readOnly: true }}
-                      sx={{
-                        "& .MuiInputBase-root": {
-                          height: 40,
-                        },
-                        "& .MuiInputBase-input": {
-                          padding: "10px 14px",
-                        },
-                      }}
-                    />
-                    <TextField
-                      label="Actual Value"
-                      fullWidth
-                      variant="outlined"
-                      InputProps={{ readOnly: true }}
-                      sx={{
-                        "& .MuiInputBase-root": {
-                          height: 40,
-                        },
-                        "& .MuiInputBase-input": {
-                          padding: "10px 14px",
-                        },
-                      }}
-                    />
-                  </Box>
-                </Box>
-              </Box>
-              <Box
-                sx={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(2, 1fr)", // 2 columns
-                  gap: 2, // Spacing between items
-                }}
-              >
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Supply R.P.M :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="amperage"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
+       <Typography variant="body1" fontWeight="bold" mb={1}>
+        Comments :
+      </Typography>
+      <TextField
+                          fullWidth
+                          multiline
+                          rows={5}
+                          placeholder="Enter your comments..."
+                          sx={{
+                            mb: 2,
+                            backgroundColor: "white",
+                            borderRadius: "5px",
+                            "& .MuiOutlinedInput-root": {
+                              backgroundColor: "white",
+                              "& fieldset": {
+                                borderColor: "#9d9d9d",
+                              },
+                            },
+                          }}
+                        />
 
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Exhaust R.P.M :
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="rpm"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-              </Box>
-              <Divider />
+        <Typography variant="body1" color="text.secondary" sx={{ mb: 1 }}>
+          *Represents[Your meaning 1]
+        </Typography>
+        <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
+          **Represents[Your meaning 2]
+        </Typography>
 
-              <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                STATIC PRESSURE (Pa)
-              </Typography>
-              <Typography variant="h7" sx={{ fontWeight: 600 }}>
-                Supply
-              </Typography>
-
-              <Box
-                sx={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(3, 1fr)", // 2 columns
-                  gap: 2, // Spacing between items
-                }}
-              >
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Standard Static Pressure(SSP) :{" "}
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="amperage"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Differential Static Pressure(DSP) :{" "}
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="rpm"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Total Static Pressure(TSP) :{" "}
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="rpm"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-              </Box>
-              <Divider />
-              <Typography variant="h7" sx={{ fontWeight: 600 }}>
-                Exhaust
-              </Typography>
-              <Box
-                sx={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(3, 1fr)", // 2 columns
-                  gap: 2, // Spacing between items
-                }}
-              >
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Standard Static Pressure(SSP) :{" "}
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="amperage"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Differential Static Pressure(DSP) :{" "}
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="rpm"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Total Static Pressure(TSP) :{" "}
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="rpm"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-              </Box>
-              <Divider />
-              <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                SUPPLY FAN DRIVE INFORMATION
-              </Typography>
-              <Box
-                sx={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(3, 1fr)", // 2 columns
-                  gap: 2, // Spacing between items
-                }}
-              >
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Motor Sheave :{" "}
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="amperage"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Position :{" "}
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="rpm"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Fan Sheave :{" "}
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="rpm"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>Centres : </Typography>
-                  <Input
-                    fullWidth
-                    name="rpm"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Belt Quantity/ Size :{" "}
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="rpm"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-              </Box>
-              <Divider />
-              <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                Exhaust FAN DRIVE INFORMATION
-              </Typography>
-              <Box
-                sx={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(3, 1fr)", // 2 columns
-                  gap: 2, // Spacing between items
-                }}
-              >
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Motor Sheave :{" "}
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="amperage"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Position :{" "}
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="rpm"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Fan Sheave :{" "}
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="rpm"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>Centres : </Typography>
-                  <Input
-                    fullWidth
-                    name="rpm"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-                <Box display="flex" alignItems="center">
-                  <Typography sx={{ minWidth: "110px" }}>
-                    Belt Quantity/ Size :{" "}
-                  </Typography>
-                  <Input
-                    fullWidth
-                    name="rpm"
-                    sx={{
-                      border: "1px solid #ccc",
-                      padding: "5px",
-                      borderRadius: "4px",
-                    }}
-                  />
-                </Box>
-              </Box>
-
-              <Box width="100%">
-                <h3 style={{ alignSelf: "flex-start" }}>Comments :</h3>
-                <TextField
-                  fullWidth
-                  label="Enter your comments"
-                  multiline
-                  rows={4}
-                  variant="outlined"
-                  value={comments}
-                  onChange={handleCommentChange}
-                  placeholder="Use '*' for some meaning and '**' for another meaning..."
-                  style={{ width: "100%" }}
-                />
-                <Typography
-                  variant="body2"
-                  color="textSecondary"
-                  style={{ marginTop: "10px", textAlign: "left" }}
-                >
-                  * Represents [Your Meaning 1] <br />
-                  ** Represents [Your Meaning 2]
-                </Typography>
-              </Box>
-
-              <Box display="flex" justifyContent="flex-end" sx={{ mt: 2 }}>
-                <Button
-                  variant="outlined"
-                  sx={{ mr: 2 }}
-                  onClick={() => navigate("/allPump")}
-                >
-                  Back
-                </Button>
-                <Button
-                  variant="contained"
-                  onClick={handleSubmit}
-                  sx={{ color: "white" }}
-                >
-                  <a
-                    href={fan_report}
-                    download="fan_report"
-                    style={{ color: "inherit", textDecoration: "none" }}
-                  >
-                    Submit & Generate Report
-                  </a>
-                </Button>
-              </Box>
-
-              <Snackbar
-                open={openSnackbar}
-                autoHideDuration={2000}
-                onClose={() => setOpenSnackbar(false)}
-                anchorOrigin={{ vertical: "top", horizontal: "center" }}
-              >
-                <Alert
-                  onClose={() => setOpenSnackbar(false)}
-                  severity="success"
-                  variant="filled"
-                >
-                  Data Submitted Successfully!
-                </Alert>
-              </Snackbar>
-            </Box>
-          </Box>
-        </>
-      )}
+        <Stack direction="row" spacing={1} justifyContent="flex-end"  mb={2}>
+           <Button
+                            variant="outlined"
+                            onClick={() => navigate("/project2")}
+                            sx={{
+                              borderRadius: "10px",
+                              border: "1px solid black",
+                              color: "black",
+                              px: 3,
+                            }}
+                          >
+                            Back
+                          </Button>
+         <Button
+                           variant="contained"
+                           onClick={handleSubmit}
+                           sx={{
+                             backgroundColor: "#99caff",
+                             borderRadius: "10px",
+                             color: "black",
+                             textTransform: "none",
+                             minWidth: "101px",
+                             height: "42px",
+                             "&:hover": {
+                               backgroundColor: "#7bb8ff",
+                             },
+                           }}
+                         >
+                         Submit & Generate Report
+                          {/* <a
+                                            href={fan_report}
+                                            download="fan_report"
+                                            style={{ color: "inherit", textDecoration: "none" }}
+                                          >
+                                            Submit & Generate Report
+                                          </a> */}
+                         </Button>
+        </Stack>
+        <Snackbar
+                        open={openSnackbar}
+                        autoHideDuration={2000}
+                        onClose={() => setOpenSnackbar(false)}
+                        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                      >
+                        <Alert
+                          onClose={() => setOpenSnackbar(false)}
+                          severity="success"
+                          variant="filled"
+                        >
+                          Data Submitted Successfully!
+                        </Alert>
+                      </Snackbar>
+                      </Box>
+  )}
+    </Box>
     </Box>
   );
 };
