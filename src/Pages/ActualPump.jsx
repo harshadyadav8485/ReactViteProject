@@ -235,7 +235,7 @@ const ActualPump = () => {
             <Typography variant="body1" color="text.secondary" mb={2}>
               **Represents[Your meaning 2]
             </Typography>
-            <Stack direction="row" spacing={1} justifyContent="flex-end">
+            <Stack direction="row" spacing={1} justifyContent="flex-end" mb={2}>
               <Button
                 variant="outlined"
                 onClick={() => navigate("/project2")}
@@ -1093,7 +1093,7 @@ const ActualPump = () => {
               }}
             >
               <Box sx={{ position: "relative" }}>
-                <Typography variant="h6" fontWeight="bold" mb={3}>
+                <Typography variant="h6" fontWeight="bold" mb={1}>
                   Pump
                 </Typography>
 
@@ -1438,12 +1438,7 @@ const ActualPump = () => {
               </Typography>
             </Box>
 
-            <Stack
-              direction="row"
-              spacing={2}
-              justifyContent="flex-end"
-              sx={{ mt: 4 }}
-            >
+             <Stack direction="row" spacing={1} justifyContent="flex-end" mb={2}>
               <Button
                 variant="outlined"
                 onClick={() => navigate("/project2")}
