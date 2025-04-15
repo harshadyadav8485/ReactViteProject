@@ -137,23 +137,22 @@ const Sidebar = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        transition: "width 0.3s ease", // 🔁 smooth resizing
+        transition: "width 0.3s ease",
       }}
     >
       <Box>
-        <Typography
-          variant="h6"
+        <Box
           sx={{
             mt: 3,
-            ml: 4,
+            ml: 6,
             fontFamily: "Poppins-Bold, Helvetica",
-            fontWeight: 700,
-            fontSize: "18px", // 🔹 reduced size for all screens
           }}
         >
-          TAB REPORTING
-        </Typography>
-
+          <img
+            src="src/assets/syborg-techLogo.png"
+            style={{ width: "150px", height: "auto" }}
+          />
+        </Box>
         <List sx={{ mt: 6, px: 1 }}>
           {menuItems.map((item) => (
             <ListItem
@@ -173,7 +172,7 @@ const Sidebar = () => {
               }}
             >
               <ListItemIcon
-                sx={{ minWidth: "36px", ml: "8px", color: "#000000" }} // 🎯 adjusted spacing
+                sx={{ minWidth: "36px", ml: "8px", color: "#000000" }}
               >
                 {item.icon}
               </ListItemIcon>
