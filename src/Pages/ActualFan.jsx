@@ -166,35 +166,6 @@ const [fanSpecifications, setFanSpecifications] = useState([
                       <TableCell>
                         <Typography fontWeight="medium" fontSize="0.9rem">
                           {row.specifiedValue}
-                                                  <TextField
-                                                    fullWidth
-                                                    variant="outlined"
-                                                    size="small"
-                                                    value={row.actualValue}
-                                                    onChange={(e) => {
-                                                      const newData = [...fanSpecifications];
-                                                      newData[index].actualValue = e.target.value;
-                                                      setFanSpecifications(newData);
-                                                    }}
-                                                    sx={{
-                                                      bgcolor: "white",
-                                                      "& .MuiOutlinedInput-root": {
-                                                        borderRadius: "5px",
-                                                        "& .MuiOutlinedInput-notchedOutline": {
-                                                          borderColor: "#9d9d9d",
-                                                        },
-                                                        fontSize: "0.9rem", 
-                                                      },
-                                                    }}
-                                                  />
-                                                </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-             <Typography variant="body1" fontWeight="bold" mb={1}>
-                          Comments :
                         </Typography>
                       </TableCell>
                       <TableCell>
@@ -223,7 +194,7 @@ const [fanSpecifications, setFanSpecifications] = useState([
             <Typography variant="body1" fontWeight="bold" mb={1}>
               Comments :
             </Typography>
-
+ 
             <TextField
               fullWidth
               multiline
@@ -297,7 +268,6 @@ const [fanSpecifications, setFanSpecifications] = useState([
             </Snackbar>
           </>
         )}
-
         {tabValue === 1 && (
           <Box>
             <Paper
@@ -1095,36 +1065,6 @@ const [fanSpecifications, setFanSpecifications] = useState([
                 Back
               </Button>
               <Button
-                variant="contained"
-                onClick={handleSubmit}
-                sx={{
-                  backgroundColor: "#99caff",
-                  borderRadius: "10px",
-                  color: "black",
-                  textTransform: "none",
-                  minWidth: "101px",
-                  height: "42px",
-                  "&:hover": {
-                    backgroundColor: "#7bb8ff",
-                  },
-                }}
-              >
-                Submit & Generate Report
-                {/* <a
-        <Stack direction="row" spacing={1} justifyContent="flex-end"  mb={2}>
-           <Button
-                            variant="outlined"
-                            onClick={() => navigate("/project2")}
-                            sx={{
-                              borderRadius: "10px",
-                              border: "1px solid black",
-                              color: "black",
-                              px: 3,
-                            }}
-                          >
-                            Back
-                          </Button>
-         <Button
                            variant="contained"
                            onClick={handleSubmit}
                            sx={{
@@ -1146,23 +1086,24 @@ const [fanSpecifications, setFanSpecifications] = useState([
                                             style={{ color: "inherit", textDecoration: "none" }}
                                           >
                                             Submit & Generate Report
-                                          </a> */}
-              </Button>
-            </Stack>
-            <Snackbar
-              open={openSnackbar}
-              autoHideDuration={2000}
-              onClose={() => setOpenSnackbar(false)}
-              anchorOrigin={{ vertical: "top", horizontal: "center" }}
-            >
-              <Alert
-                onClose={() => setOpenSnackbar(false)}
-                severity="success"
-                variant="filled"
-              >
-                Data Submitted Successfully!
-              </Alert>
-            </Snackbar>
+                                          </a>
+                         </Button>
+        </Stack>
+        <Snackbar
+                        open={openSnackbar}
+                        autoHideDuration={2000}
+                        onClose={() => setOpenSnackbar(false)}
+                        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                      >
+                        <Alert
+                          onClose={() => setOpenSnackbar(false)}
+                          severity="success"
+                          variant="filled"
+                        >
+                          Data Submitted Successfully!
+                        </Alert>
+                      </Snackbar>
+
           </Box>
         )}
       </Box>
