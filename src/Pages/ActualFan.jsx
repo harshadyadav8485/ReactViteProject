@@ -21,6 +21,7 @@ import React, { useState } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Snackbar, Alert } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import fan_report from "../assets/fan_report.pdf";
 
 const ActualFan = () => {
   const navigate = useNavigate();
@@ -42,8 +43,7 @@ const [openSnackbar, setOpenSnackbar] = useState(false);
       // navigate("/sampleTestData");
     }, 2000);
   };
-
-  const fanSpecifications = [
+const [fanSpecifications, setFanSpecifications] = useState([
     { field: "Make", specifiedValue: "SWEGOAN", actualValue: "MISTUBISHI ELECTRIC" },
     { field: "Model", specifiedValue: "R15-H SMART", actualValue: "LGH-F470RVX2-E" },
     { field: "Supply Fan Capacity", specifiedValue: "550 L/s", actualValue: "387 L/s" },
@@ -54,7 +54,7 @@ const [openSnackbar, setOpenSnackbar] = useState(false);
     { field: "Supply", specifiedValue: "", actualValue: "0.37HP" },
     { field: "Exhaust", specifiedValue: "", actualValue: "0.42HP" },
     { field: "Volts/Phase", specifiedValue: "115 L/s", actualValue: "575/3" },
-  ];
+  ]);
 
   return (
     <Box 
@@ -166,6 +166,11 @@ const [openSnackbar, setOpenSnackbar] = useState(false);
                                                     variant="outlined"
                                                     size="small"
                                                     value={row.actualValue}
+                                                    onChange={(e) => {
+                                                      const newData = [...fanSpecifications];
+                                                      newData[index].actualValue = e.target.value;
+                                                      setFanSpecifications(newData);
+                                                    }}
                                                     sx={{
                                                       bgcolor: "white",
                                                       "& .MuiOutlinedInput-root": {
@@ -700,14 +705,14 @@ const [openSnackbar, setOpenSnackbar] = useState(false);
                              },
                            }}
                          >
-                         Submit & Generate Report
-                          {/* <a
+                      
+                          <a
                                             href={fan_report}
                                             download="fan_report"
                                             style={{ color: "inherit", textDecoration: "none" }}
                                           >
                                             Submit & Generate Report
-                                          </a> */}
+                                          </a>
                          </Button>
         </Stack>
         <Snackbar

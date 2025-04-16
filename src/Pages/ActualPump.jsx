@@ -28,20 +28,7 @@ import pump_report from "../assets/pump_report.pdf";
 import { useNavigate } from "react-router-dom";
 import { Snackbar, Alert } from "@mui/material";
 
-const pumpData = [
-  { field: "Make", specifiedValue: "BELL & GOSSETT", actualValue: "TACO" },
-  {
-    field: "Model",
-    specifiedValue: "e-805C 5x5x11",
-    actualValue: "K56011D-4-PM",
-  },
-  { field: "Impeller Size", specifiedValue: "", actualValue: "2.5" },
-  { field: "Manufacturer", specifiedValue: "", actualValue: "" },
-  { field: "Motor Size", specifiedValue: "20 HP", actualValue: "25 HP" },
-  { field: "Volts/Phase", specifiedValue: "575/3", actualValue: "575/3" },
-  { field: "Amperage", specifiedValue: "23,60", actualValue: "As Below" },
-  { field: "R.P.M", specifiedValue: "", actualValue: "" },
-];
+
 
 const ActualPump = () => {
   const [tabValue, setTabValue] = useState(0);
@@ -52,6 +39,21 @@ const ActualPump = () => {
   const [showBHP, setShowBHP] = useState(false);
   const navigate = useNavigate();
   const [openSnackbar, setOpenSnackbar] = useState(false);
+
+  const [pumpData, setPumpData] = useState([
+    { field: "Make", specifiedValue: "BELL & GOSSETT", actualValue: "TACO" },
+    {
+      field: "Model",
+      specifiedValue: "e-805C 5x5x11",
+      actualValue: "K56011D-4-PM",
+    },
+    { field: "Impeller Size", specifiedValue: "", actualValue: "2.5" },
+    { field: "Manufacturer", specifiedValue: "", actualValue: "" },
+    { field: "Motor Size", specifiedValue: "20 HP", actualValue: "25 HP" },
+    { field: "Volts/Phase", specifiedValue: "575/3", actualValue: "575/3" },
+    { field: "Amperage", specifiedValue: "23,60", actualValue: "As Below" },
+    { field: "R.P.M", specifiedValue: "", actualValue: "" },
+  ]);
 
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
@@ -188,6 +190,11 @@ const ActualPump = () => {
                               variant="outlined"
                               size="small"
                               value={row.actualValue}
+                             onChange={(e) => {
+                    const newData = [...pumpData];
+                    newData[index].actualValue = e.target.value;
+                    setPumpData(newData);
+                  }}
                               sx={{
                                 bgcolor: "white",
                                 "& .MuiOutlinedInput-root": {

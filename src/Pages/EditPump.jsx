@@ -63,7 +63,7 @@ const EditPump = () => {
           mb: 4,
         }}
       >
-        <Typography variant="body1" fontWeight="bold" sx={{ mb: 2 }}>
+        <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
           Pump
         </Typography>
 
@@ -137,7 +137,7 @@ const EditPump = () => {
 
         <Divider sx={{ my: 3, borderRadius: "5px" }} />
 
-        <Typography variant="body1" fontWeight="bold" sx={{ mb: 2 }}>
+        <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
           Motor
         </Typography>
 
@@ -150,7 +150,7 @@ const EditPump = () => {
                   fontWeight: 500,
                 }}
               >
-                Manufacture :
+                Manufacture:
               </Typography>
               <TextField
                 fullWidth
