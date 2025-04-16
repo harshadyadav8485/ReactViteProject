@@ -51,7 +51,7 @@ const Header = () => {
           alignItems: "center",
           justifyContent: "flex-end",
           pr: 3,
-          mb: 2,
+          // mb: 2,
           borderLeft: "none", // no border/curve on the left
           borderTopLeftRadius: 0,
           borderBottomLeftRadius: 0,
