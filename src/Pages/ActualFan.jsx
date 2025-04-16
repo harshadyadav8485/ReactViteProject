@@ -50,6 +50,7 @@ const ActualFan = () => {
       // navigate("/sampleTestData");
     }, 2000);
   };
+
   const [fanSpecifications, setFanSpecifications] = useState([
     {
       field: "Make",
@@ -291,7 +292,6 @@ const ActualFan = () => {
             </Snackbar>
           </>
         )}
-
         {tabValue === 1 && (
           <Box>
             <Paper
@@ -1103,44 +1103,13 @@ const ActualFan = () => {
                   },
                 }}
               >
-                Submit & Generate Report
-                {/* <a
-        <Stack direction="row" spacing={1} justifyContent="flex-end"  mb={2}>
-           <Button
-                            variant="outlined"
-                            onClick={() => navigate("/project2")}
-                            sx={{
-                              borderRadius: "10px",
-                              border: "1px solid black",
-                              color: "black",
-                              px: 3,
-                            }}
-                          >
-                            Back
-                          </Button>
-         <Button
-                           variant="contained"
-                           onClick={handleSubmit}
-                           sx={{
-                             backgroundColor: "#99caff",
-                             borderRadius: "10px",
-                             color: "black",
-                             textTransform: "none",
-                             minWidth: "101px",
-                             height: "42px",
-                             "&:hover": {
-                               backgroundColor: "#7bb8ff",
-                             },
-                           }}
-                         >
-                      
-                          <a
-                                            href={fan_report}
-                                            download="fan_report"
-                                            style={{ color: "inherit", textDecoration: "none" }}
-                                          >
-                                            Submit & Generate Report
-                                          </a> */}
+                <a
+                  href={fan_report}
+                  download="fan_report"
+                  style={{ color: "inherit", textDecoration: "none" }}
+                >
+                  Submit & Generate Report
+                </a>
               </Button>
             </Stack>
             <Snackbar
