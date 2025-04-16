@@ -23,7 +23,7 @@ import React, { useState } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Snackbar, Alert } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import fan_report from "../assets/fan_report.pdf";
+import fansheet from "../assets/fansheet.pdf";
 
 const ActualFan = () => {
   const navigate = useNavigate();
@@ -1104,8 +1104,8 @@ const ActualFan = () => {
                 }}
               >
                 <a
-                  href={fan_report}
-                  download="fan_report"
+                  href={fansheet}
+                  download="fansheet"
                   style={{ color: "inherit", textDecoration: "none" }}
                 >
                   Submit & Generate Report
