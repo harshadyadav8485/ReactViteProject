@@ -52,6 +52,8 @@ function App() {
         {
           path: "editPump", // Still keeping "/home" accessible
           element: <EditPump />,
+          path: "pump",
+          element: <Pump />,
         },
         {
           path: "fan",

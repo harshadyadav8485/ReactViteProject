@@ -138,14 +138,17 @@ const Sidebar = () => {
         flexDirection: "column",
         justifyContent: "space-between",
         transition: "width 0.3s ease",
+        transition: "width 0.3s ease", // 🔁 smooth resizing
       }}
     >
       <Box>
         <Box
           sx={{
             mt: 3,
-            ml: 7,
+            ml: 4,
             fontFamily: "Poppins-Bold, Helvetica",
+            fontWeight: 700,
+            fontSize: "18px", // 🔹 reduced size for all screens
           }}
         >
           <img

@@ -80,9 +80,7 @@ const CreatePumpCreation = () => {
         Pump Creation
       </Typography>
 
-      <Typography variant="subtitle1" fontWeight="bold"
-       sx={{ mb: 1 }}
-       >
+      <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 1 }}>
         Pump Types :
       </Typography>
 
