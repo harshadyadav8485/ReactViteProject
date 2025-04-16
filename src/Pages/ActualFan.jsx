@@ -23,6 +23,7 @@ import React, { useState } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Snackbar, Alert } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import fan_report from "../assets/fan_report.pdf";
 
 const ActualFan = () => {
   const navigate = useNavigate();
@@ -50,42 +51,18 @@ const ActualFan = () => {
     }, 2000);
   };
 
-  const fanSpecifications = [
-    {
-      field: "Make",
-      specifiedValue: "SWEGOAN",
-      actualValue: "MISTUBISHI ELECTRIC",
-    },
-    {
-      field: "Model",
-      specifiedValue: "R15-H SMART",
-      actualValue: "LGH-F470RVX2-E",
-    },
-    {
-      field: "Supply Fan Capacity",
-      specifiedValue: "550 L/s",
-      actualValue: "387 L/s",
-    },
-    {
-      field: "Supply Outlet Capacity",
-      specifiedValue: "552 L/s",
-      actualValue: "387 L/s",
-    },
-    {
-      field: "Exhaust Fan Capacity",
-      specifiedValue: "550 L/s",
-      actualValue: "309 L/s",
-    },
-    {
-      field: "Exhaust Outlet Capacity",
-      specifiedValue: "424 L/s",
-      actualValue: "309 L/s",
-    },
+const [fanSpecifications, setFanSpecifications] = useState([
+    { field: "Make", specifiedValue: "SWEGOAN", actualValue: "MISTUBISHI ELECTRIC" },
+    { field: "Model", specifiedValue: "R15-H SMART", actualValue: "LGH-F470RVX2-E" },
+    { field: "Supply Fan Capacity", specifiedValue: "550 L/s", actualValue: "387 L/s" },
+    { field: "Supply Outlet Capacity", specifiedValue: "552 L/s", actualValue: "387 L/s" },
+    { field: "Exhaust Fan Capacity", specifiedValue: "550 L/s", actualValue: "309 L/s" },
+    { field: "Exhaust Outlet Capacity", specifiedValue: "424 L/s", actualValue: "309 L/s" },
     { field: "Motor Size", specifiedValue: "", actualValue: "" },
     { field: "Supply", specifiedValue: "", actualValue: "0.37HP" },
     { field: "Exhaust", specifiedValue: "", actualValue: "0.42HP" },
     { field: "Volts/Phase", specifiedValue: "115 L/s", actualValue: "575/3" },
-  ];
+  ]);
 
   return (
     <Box
@@ -189,6 +166,35 @@ const ActualFan = () => {
                       <TableCell>
                         <Typography fontWeight="medium" fontSize="0.9rem">
                           {row.specifiedValue}
+                                                  <TextField
+                                                    fullWidth
+                                                    variant="outlined"
+                                                    size="small"
+                                                    value={row.actualValue}
+                                                    onChange={(e) => {
+                                                      const newData = [...fanSpecifications];
+                                                      newData[index].actualValue = e.target.value;
+                                                      setFanSpecifications(newData);
+                                                    }}
+                                                    sx={{
+                                                      bgcolor: "white",
+                                                      "& .MuiOutlinedInput-root": {
+                                                        borderRadius: "5px",
+                                                        "& .MuiOutlinedInput-notchedOutline": {
+                                                          borderColor: "#9d9d9d",
+                                                        },
+                                                        fontSize: "0.9rem", 
+                                                      },
+                                                    }}
+                                                  />
+                                                </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+             <Typography variant="body1" fontWeight="bold" mb={1}>
+                          Comments :
                         </Typography>
                       </TableCell>
                       <TableCell>
@@ -1105,6 +1111,36 @@ const ActualFan = () => {
               >
                 Submit & Generate Report
                 {/* <a
+        <Stack direction="row" spacing={1} justifyContent="flex-end"  mb={2}>
+           <Button
+                            variant="outlined"
+                            onClick={() => navigate("/project2")}
+                            sx={{
+                              borderRadius: "10px",
+                              border: "1px solid black",
+                              color: "black",
+                              px: 3,
+                            }}
+                          >
+                            Back
+                          </Button>
+         <Button
+                           variant="contained"
+                           onClick={handleSubmit}
+                           sx={{
+                             backgroundColor: "#99caff",
+                             borderRadius: "10px",
+                             color: "black",
+                             textTransform: "none",
+                             minWidth: "101px",
+                             height: "42px",
+                             "&:hover": {
+                               backgroundColor: "#7bb8ff",
+                             },
+                           }}
+                         >
+                      
+                          <a
                                             href={fan_report}
                                             download="fan_report"
                                             style={{ color: "inherit", textDecoration: "none" }}
@@ -1130,6 +1166,7 @@ const ActualFan = () => {
           </Box>
         )}
       </Box>
+
     </Box>
   );
 };
