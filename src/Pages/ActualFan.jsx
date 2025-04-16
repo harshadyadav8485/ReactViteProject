@@ -51,13 +51,37 @@ const ActualFan = () => {
     }, 2000);
   };
 
-const [fanSpecifications, setFanSpecifications] = useState([
-    { field: "Make", specifiedValue: "SWEGOAN", actualValue: "MISTUBISHI ELECTRIC" },
-    { field: "Model", specifiedValue: "R15-H SMART", actualValue: "LGH-F470RVX2-E" },
-    { field: "Supply Fan Capacity", specifiedValue: "550 L/s", actualValue: "387 L/s" },
-    { field: "Supply Outlet Capacity", specifiedValue: "552 L/s", actualValue: "387 L/s" },
-    { field: "Exhaust Fan Capacity", specifiedValue: "550 L/s", actualValue: "309 L/s" },
-    { field: "Exhaust Outlet Capacity", specifiedValue: "424 L/s", actualValue: "309 L/s" },
+  const [fanSpecifications, setFanSpecifications] = useState([
+    {
+      field: "Make",
+      specifiedValue: "SWEGOAN",
+      actualValue: "MISTUBISHI ELECTRIC",
+    },
+    {
+      field: "Model",
+      specifiedValue: "R15-H SMART",
+      actualValue: "LGH-F470RVX2-E",
+    },
+    {
+      field: "Supply Fan Capacity",
+      specifiedValue: "550 L/s",
+      actualValue: "387 L/s",
+    },
+    {
+      field: "Supply Outlet Capacity",
+      specifiedValue: "552 L/s",
+      actualValue: "387 L/s",
+    },
+    {
+      field: "Exhaust Fan Capacity",
+      specifiedValue: "550 L/s",
+      actualValue: "309 L/s",
+    },
+    {
+      field: "Exhaust Outlet Capacity",
+      specifiedValue: "424 L/s",
+      actualValue: "309 L/s",
+    },
     { field: "Motor Size", specifiedValue: "", actualValue: "" },
     { field: "Supply", specifiedValue: "", actualValue: "0.37HP" },
     { field: "Exhaust", specifiedValue: "", actualValue: "0.42HP" },
@@ -194,7 +218,7 @@ const [fanSpecifications, setFanSpecifications] = useState([
             <Typography variant="body1" fontWeight="bold" mb={1}>
               Comments :
             </Typography>
- 
+
             <TextField
               fullWidth
               multiline
@@ -1065,49 +1089,46 @@ const [fanSpecifications, setFanSpecifications] = useState([
                 Back
               </Button>
               <Button
-                           variant="contained"
-                           onClick={handleSubmit}
-                           sx={{
-                             backgroundColor: "#99caff",
-                             borderRadius: "10px",
-                             color: "black",
-                             textTransform: "none",
-                             minWidth: "101px",
-                             height: "42px",
-                             "&:hover": {
-                               backgroundColor: "#7bb8ff",
-                             },
-                           }}
-                         >
-                      
-                          <a
-                                            href={fan_report}
-                                            download="fan_report"
-                                            style={{ color: "inherit", textDecoration: "none" }}
-                                          >
-                                            Submit & Generate Report
-                                          </a>
-                         </Button>
-        </Stack>
-        <Snackbar
-                        open={openSnackbar}
-                        autoHideDuration={2000}
-                        onClose={() => setOpenSnackbar(false)}
-                        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-                      >
-                        <Alert
-                          onClose={() => setOpenSnackbar(false)}
-                          severity="success"
-                          variant="filled"
-                        >
-                          Data Submitted Successfully!
-                        </Alert>
-                      </Snackbar>
-
+                variant="contained"
+                onClick={handleSubmit}
+                sx={{
+                  backgroundColor: "#99caff",
+                  borderRadius: "10px",
+                  color: "black",
+                  textTransform: "none",
+                  minWidth: "101px",
+                  height: "42px",
+                  "&:hover": {
+                    backgroundColor: "#7bb8ff",
+                  },
+                }}
+              >
+                <a
+                  href={fan_report}
+                  download="fan_report"
+                  style={{ color: "inherit", textDecoration: "none" }}
+                >
+                  Submit & Generate Report
+                </a>
+              </Button>
+            </Stack>
+            <Snackbar
+              open={openSnackbar}
+              autoHideDuration={2000}
+              onClose={() => setOpenSnackbar(false)}
+              anchorOrigin={{ vertical: "top", horizontal: "center" }}
+            >
+              <Alert
+                onClose={() => setOpenSnackbar(false)}
+                severity="success"
+                variant="filled"
+              >
+                Data Submitted Successfully!
+              </Alert>
+            </Snackbar>
           </Box>
         )}
       </Box>
-
     </Box>
   );
 };
