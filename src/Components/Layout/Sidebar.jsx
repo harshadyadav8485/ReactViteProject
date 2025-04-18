@@ -156,7 +156,7 @@ const Sidebar = () => {
             style={{ width: "150px", height: "auto" }}
           />
         </Box>
-        <List sx={{ mt: 6, px: 1 }}>
+        <List sx={{ mt: 3, px: 1 }}>
           {menuItems.map((item) => (
             <ListItem
               key={item.text}

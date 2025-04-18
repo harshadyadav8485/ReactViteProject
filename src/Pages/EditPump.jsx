@@ -76,7 +76,7 @@ const EditPump = () => {
                   fontWeight: 500,
                 }}
               >
-                Make :
+                Make <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -97,7 +97,7 @@ const EditPump = () => {
                   fontWeight: 500,
                 }}
               >
-                Model :
+                Model <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -120,7 +120,7 @@ const EditPump = () => {
               >
                 Impeller
                 <br />
-                Size :
+                Size <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -143,7 +143,7 @@ const EditPump = () => {
               >
                 Pump
                 <br />
-                Capacity :
+                Capacity <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -166,7 +166,7 @@ const EditPump = () => {
               >
                 System
                 <br />
-                Capacity :
+                Capacity <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -196,7 +196,7 @@ const EditPump = () => {
                   fontWeight: 500,
                 }}
               >
-                Manufacture:
+                Manufacture <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -217,7 +217,7 @@ const EditPump = () => {
                   fontWeight: 500,
                 }}
               >
-                Size :
+                Size <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -240,7 +240,7 @@ const EditPump = () => {
               >
                 Volts/
                 <br />
-                Phase :
+                Phase <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -261,7 +261,7 @@ const EditPump = () => {
                   fontWeight: 500,
                 }}
               >
-                Amperage :
+                Amperage <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -275,14 +275,19 @@ const EditPump = () => {
             </Stack>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Stack direction="row" spacing={2} alignItems="center" sx={{mb:1}}>
+            <Stack
+              direction="row"
+              spacing={2}
+              alignItems="center"
+              sx={{ mb: 1 }}
+            >
               <Typography
                 sx={{
                   width: 100,
                   fontWeight: 500,
                 }}
               >
-                R.P.M :
+                R.P.M <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth

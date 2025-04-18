@@ -78,7 +78,7 @@ const CreateFan = () => {
                   fontWeight: 500,
                 }}
               >
-                Make :
+                Make <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -98,7 +98,7 @@ const CreateFan = () => {
                   fontWeight: 500,
                 }}
               >
-                Model :
+                Model <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -119,7 +119,7 @@ const CreateFan = () => {
                   fontWeight: 500,
                 }}
               >
-                Supply Fan Capacity :
+                Supply Fan Capacity <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -140,7 +140,7 @@ const CreateFan = () => {
                   fontWeight: 500,
                 }}
               >
-               Supply Outlet Capacity :
+                Supply Outlet Capacity <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -160,7 +160,7 @@ const CreateFan = () => {
                   fontWeight: 500,
                 }}
               >
-                Exhaust Fan Capacity :
+                Exhaust Fan Capacity <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -180,7 +180,7 @@ const CreateFan = () => {
                   fontWeight: 500,
                 }}
               >
-                Exhaust Outlet Capacity :
+                Exhaust Outlet Capacity <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -200,7 +200,7 @@ const CreateFan = () => {
                   fontWeight: 500,
                 }}
               >
-                Supply Fan R.P.M :
+                Supply Fan R.P.M <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -220,7 +220,7 @@ const CreateFan = () => {
                   fontWeight: 500,
                 }}
               >
-                Exhaust Fan R.P.M :
+                Exhaust Fan R.P.M <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -240,11 +240,12 @@ const CreateFan = () => {
           Motor
         </Typography>
         <Grid container spacing={1} alignItems="center" sx={{ mb: 2 }}>
-        <Grid item xs={12} md={1}>
-    <Typography variant="body1" fontWeight="bold">Size :</Typography>
-  </Grid>
+          <Grid item xs={12} md={1}>
+            <Typography variant="body1" fontWeight="bold">
+              Size <span style={{ color: "red" }}>*</span>
+            </Typography>
+          </Grid>
 
-        
           <Grid item xs={12} md={4}>
             <Stack direction="row" spacing={1} alignItems="center">
               <Typography
@@ -261,7 +262,6 @@ const CreateFan = () => {
                 value={formData.supply}
                 onChange={handleChange}
                 variant="outlined"
-               
               />
             </Stack>
           </Grid>
@@ -281,7 +281,6 @@ const CreateFan = () => {
                 value={formData.supply}
                 onChange={handleChange}
                 variant="outlined"
-               
               />
             </Stack>
           </Grid>
@@ -294,7 +293,8 @@ const CreateFan = () => {
                   fontWeight: 500,
                 }}
               >
-                Volts/<br /> Phase :
+                Volts/
+                <br /> Phase <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth

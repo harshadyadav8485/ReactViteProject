@@ -117,27 +117,15 @@ const CreatePumpCreation = () => {
           mb: 4,
         }}
       >
-         <Typography variant="h6" component="h1" fontWeight="bold" sx={{ mb: 2 }}>
-                Pump Identification
-              </Typography>
-                <Grid container spacing={4}>
-                <Grid item xs={12} md={6}>
-                    <Box sx={{ display: "flex", alignItems: "center" }}>
-                      <Typography
-                        variant="body1"
-                        fontWeight="500"
-                        sx={{ mr: 2, minWidth: "80px" }}
-                      >
-                        Pump Type :
-                      </Typography>
-                      <TextField
-                        fullWidth
-                        defaultValue="Parallel"
-                        variant="outlined"
-                        size="small"
-                      />
-                    </Box>
-                  </Grid>
+        <Typography
+          variant="h6"
+          component="h1"
+          fontWeight="bold"
+          sx={{ mb: 2 }}
+        >
+          Pump Identification
+        </Typography>
+        <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <Typography
@@ -145,7 +133,24 @@ const CreatePumpCreation = () => {
                 fontWeight="500"
                 sx={{ mr: 2, minWidth: "80px" }}
               >
-                Pump No :
+                Pump <br /> Type <span style={{ color: "red" }}>*</span>
+              </Typography>
+              <TextField
+                fullWidth
+                defaultValue="Parallel"
+                variant="outlined"
+                size="small"
+              />
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Typography
+                variant="body1"
+                fontWeight="500"
+                sx={{ mr: 2, minWidth: "80px" }}
+              >
+                Pump No <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField fullWidth variant="outlined" size="small" />
             </Box>
@@ -157,7 +162,7 @@ const CreatePumpCreation = () => {
                 fontWeight="500"
                 sx={{ mr: 2, minWidth: "80px" }}
               >
-                Location :
+                Location <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField fullWidth variant="outlined" size="small" />
             </Box>
@@ -171,7 +176,7 @@ const CreatePumpCreation = () => {
               >
                 System
                 <br />
-                Served :
+                Served <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField fullWidth variant="outlined" size="small" />
             </Box>
@@ -180,7 +185,7 @@ const CreatePumpCreation = () => {
 
         <Box sx={{ mt: 5 }}>
           <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
-            Pump Running Mates :
+            Pump Running Mates <span style={{ color: "red" }}>*</span>
           </Typography>
 
           <Grid container spacing={4}>
@@ -237,7 +242,7 @@ const CreatePumpCreation = () => {
         </Box>
         {/* <Box sx={{ mt: 5 }}>
           <Typography variant="body1" fontWeight="bold" sx={{ mb: 2 }}>
-            Pump Running Mates :
+            Pump Running Mates <span style={{ color: "red" }}>*</span>
           </Typography>
 
           <Box display="flex" flexWrap="wrap" gap={2}>

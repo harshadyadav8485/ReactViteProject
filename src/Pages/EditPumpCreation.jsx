@@ -70,7 +70,7 @@ const EditPumpCreation = () => {
       {/* <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 1 }}>
         Pump Types :
       </Typography>
-
+ 
       <Select
         // fullWidth
         variant="outlined"
@@ -100,18 +100,23 @@ const EditPumpCreation = () => {
           mb: 4,
         }}
       >
-         <Typography variant="h6" component="h1" fontWeight="bold" sx={{ mb: 2 }}>
-        Pump Identification
-      </Typography>
+        <Typography
+          variant="h6"
+          component="h1"
+          fontWeight="bold"
+          sx={{ mb: 2 }}
+        >
+          Pump Identification
+        </Typography>
         <Grid container spacing={4}>
-        <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6}>
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <Typography
                 variant="body1"
                 fontWeight="500"
                 sx={{ mr: 2, minWidth: "80px" }}
               >
-                Pump Type :
+                Pump <br /> Type <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -128,7 +133,7 @@ const EditPumpCreation = () => {
                 fontWeight="500"
                 sx={{ mr: 2, minWidth: "80px" }}
               >
-                Pump No :
+                Pump No <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -145,7 +150,7 @@ const EditPumpCreation = () => {
                 fontWeight="500"
                 sx={{ mr: 2, minWidth: "80px" }}
               >
-                Location :
+                Location <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -164,7 +169,7 @@ const EditPumpCreation = () => {
               >
                 System
                 <br />
-                Served :
+                Served <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -177,87 +182,85 @@ const EditPumpCreation = () => {
         </Grid>
 
         <Box sx={{ mt: 2 }}>
-  <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
-    Pump Running Mates :
-  </Typography>
- 
-  <Box
-    sx={{
-      display: "flex",
-      flexWrap: "wrap",
-      gap: 2,
-    }}
-  >
-    {pumpRunningMates.map((pump, index) => (
-      <Box
-        key={pump.id}
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          width: { xs: "100%", sm: "calc(50% - 8px)" }, // Two per row
-          // mb: 1,
-        }}
-      >
-        <TextField
-          fullWidth
-          variant="outlined"
-          size="small"
-          value={pump.name}
-          onChange={(e) =>
-            handlePumpMateChange(index, {
-              ...pump,
-              name: e.target.value,
-            })
-          }
-        />
-        <IconButton
-          sx={{
-            ml: 1,
-            border: "1px solid #dc3545",
-            borderRadius: "5px",
-            color: "#df4958",
-            height: "35px",
-            width: "35px",
-          }}
-          onClick={() => handleRemovePumpMate(index)}
-        >
-          <RemoveIcon />
-        </IconButton>
-      </Box>
-    ))}
-     <Box
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        width: { xs: "100%", sm: "calc(50% - 8px)" },
-        mb: 1 ,
-      }}
-    >
-      <Button
-        variant="contained"
-        endIcon={<AddIcon />}
-        onClick={handleAddPumpMate}
-        sx={{
-          bgcolor: "#99caff",
-          color: "black",
-          borderRadius: "5px",
-          textTransform: "uppercase",
-          fontWeight: 500,
-          px: 2,
-          py: 1,
-          width: "50%",
-          "&:hover": {
-            bgcolor: "#7bb8ff",
-          },
-        }}
-      >
-        Add Pump Running Mates
-      </Button>
-    </Box>
+          <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
+            Pump Running Mates <span style={{ color: "red" }}>*</span>
+          </Typography>
 
-  </Box>
-</Box>
-
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 2,
+            }}
+          >
+            {pumpRunningMates.map((pump, index) => (
+              <Box
+                key={pump.id}
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  width: { xs: "100%", sm: "calc(50% - 8px)" }, // Two per row
+                  // mb: 1,
+                }}
+              >
+                <TextField
+                  fullWidth
+                  variant="outlined"
+                  size="small"
+                  value={pump.name}
+                  onChange={(e) =>
+                    handlePumpMateChange(index, {
+                      ...pump,
+                      name: e.target.value,
+                    })
+                  }
+                />
+                <IconButton
+                  sx={{
+                    ml: 1,
+                    border: "1px solid #dc3545",
+                    borderRadius: "5px",
+                    color: "#df4958",
+                    height: "35px",
+                    width: "35px",
+                  }}
+                  onClick={() => handleRemovePumpMate(index)}
+                >
+                  <RemoveIcon />
+                </IconButton>
+              </Box>
+            ))}
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                width: { xs: "100%", sm: "calc(50% - 8px)" },
+                mb: 1,
+              }}
+            >
+              <Button
+                variant="contained"
+                endIcon={<AddIcon />}
+                onClick={handleAddPumpMate}
+                sx={{
+                  bgcolor: "#99caff",
+                  color: "black",
+                  borderRadius: "5px",
+                  textTransform: "uppercase",
+                  fontWeight: 500,
+                  px: 2,
+                  py: 1,
+                  width: "50%",
+                  "&:hover": {
+                    bgcolor: "#7bb8ff",
+                  },
+                }}
+              >
+                Add Pump Running Mates
+              </Button>
+            </Box>
+          </Box>
+        </Box>
       </Paper>
 
       <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 2 }}>

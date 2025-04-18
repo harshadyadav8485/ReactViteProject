@@ -45,7 +45,9 @@ const EditProject = () => {
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
             <Stack direction="row" spacing={2} alignItems="center">
-              <Typography fontWeight="medium">Project Id :</Typography>
+              <Typography fontWeight="medium">
+                Project Id <span style={{ color: "red" }}>*</span>
+              </Typography>
               <TextField
                 fullWidth
                 variant="outlined"
@@ -57,7 +59,9 @@ const EditProject = () => {
 
           <Grid item xs={12} md={6}>
             <Stack direction="row" spacing={2} alignItems="center">
-              <Typography fontWeight="medium">Project Name :</Typography>
+              <Typography fontWeight="medium">
+                Project Name <span style={{ color: "red" }}>*</span>
+              </Typography>
               <TextField
                 fullWidth
                 variant="outlined"
@@ -70,7 +74,7 @@ const EditProject = () => {
           <Grid item xs={12} md={6}>
             <Stack direction="row" spacing={2} alignItems="center">
               <Typography fontWeight="medium" sx={{ whiteSpace: "pre-line" }}>
-                Customer{"\n"} Name :
+                Customer Name <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
