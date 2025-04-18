@@ -80,7 +80,7 @@ const CreatePumpCreation = () => {
         Pump Creation
       </Typography>
 
-      <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 1 }}>
+      {/* <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 1 }}>
         Pump Types :
       </Typography>
 
@@ -107,17 +107,37 @@ const CreatePumpCreation = () => {
         <MenuItem value="standby">Stand By</MenuItem>
         <MenuItem value="standalone">Stand Alone</MenuItem>
         <MenuItem value="leadlag">Lead/Lag</MenuItem>
-      </Select>
+      </Select> */}
 
       <Paper
         elevation={4}
         sx={{
-          p: 4,
+          p: 2,
           borderRadius: "10px",
           mb: 4,
         }}
       >
-        <Grid container spacing={4}>
+         <Typography variant="h6" component="h1" fontWeight="bold" sx={{ mb: 2 }}>
+                Pump Identification
+              </Typography>
+                <Grid container spacing={4}>
+                <Grid item xs={12} md={6}>
+                    <Box sx={{ display: "flex", alignItems: "center" }}>
+                      <Typography
+                        variant="body1"
+                        fontWeight="500"
+                        sx={{ mr: 2, minWidth: "80px" }}
+                      >
+                        Pump Type :
+                      </Typography>
+                      <TextField
+                        fullWidth
+                        defaultValue="Parallel"
+                        variant="outlined"
+                        size="small"
+                      />
+                    </Box>
+                  </Grid>
           <Grid item xs={12} md={6}>
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <Typography
@@ -158,8 +178,8 @@ const CreatePumpCreation = () => {
           </Grid>
         </Grid>
 
-        {/* <Box sx={{ mt: 5 }}>
-          <Typography variant="body1" fontWeight="bold" sx={{ mb: 2 }}>
+        <Box sx={{ mt: 5 }}>
+          <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
             Pump Running Mates :
           </Typography>
 
@@ -197,9 +217,9 @@ const CreatePumpCreation = () => {
 
           <Button
             variant="contained"
-            startIcon={<AddIcon />}
+            endIcon={<AddIcon />}
             sx={{
-              mt: 3,
+              mt: 2,
               bgcolor: "#99caff",
               color: "black",
               borderRadius: "5px",
@@ -214,8 +234,8 @@ const CreatePumpCreation = () => {
           >
             Add Pump Running Mates
           </Button>
-        </Box> */}
-        <Box sx={{ mt: 5 }}>
+        </Box>
+        {/* <Box sx={{ mt: 5 }}>
           <Typography variant="body1" fontWeight="bold" sx={{ mb: 2 }}>
             Pump Running Mates :
           </Typography>
@@ -280,7 +300,7 @@ const CreatePumpCreation = () => {
           >
             Add Pump Running Mates
           </Button>
-        </Box>
+        </Box> */}
       </Paper>
 
       <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 2 }}>

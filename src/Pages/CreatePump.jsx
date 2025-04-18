@@ -51,19 +51,19 @@ const CreatePump = () => {
         overflow: "hidden",
       }}
     >
-      <Typography variant="h5" component="h1" fontWeight="bold" sx={{ mb: 2 }}>
+      <Typography variant="h5" component="h1" fontWeight="bold" sx={{ mb: 1 }}>
         Create Pump
       </Typography>
 
       <Paper
         elevation={4}
         sx={{
-          p: 4,
+          p: 2,
           borderRadius: "10px",
           mb: 4,
         }}
       >
-        <Typography variant="h6" fontWeight="bold" sx={{ mb: 3 }}>
+        <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
           Pump
         </Typography>
 
@@ -130,11 +130,55 @@ const CreatePump = () => {
               />
             </Stack>
           </Grid>
+           <Grid item xs={12} md={6}>
+                      <Stack direction="row" spacing={2} alignItems="center">
+                        <Typography
+                          sx={{
+                            width: 100,
+                            fontWeight: 500,
+                          }}
+                        >
+                          Pump
+                          <br />
+                          Capacity :
+                        </Typography>
+                        <TextField
+                          fullWidth
+                          size="small"
+                          name="pumpCapacity"
+                          value={formData.pumpCapacity}
+                          onChange={handleChange}
+                          variant="outlined"
+                        />
+                      </Stack>
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                      <Stack direction="row" spacing={2} alignItems="center">
+                        <Typography
+                          sx={{
+                            width: 100,
+                            fontWeight: 500,
+                          }}
+                        >
+                          System
+                          <br />
+                          Capacity :
+                        </Typography>
+                        <TextField
+                          fullWidth
+                          size="small"
+                          name="systemCapacity"
+                          value={formData.systemCapacity}
+                          onChange={handleChange}
+                          variant="outlined"
+                        />
+                      </Stack>
+                    </Grid>
         </Grid>
 
         <Divider sx={{ my: 3, borderRadius: "5px" }} />
 
-        <Typography variant="h6" fontWeight="bold" sx={{ mb: 3 }}>
+        <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
           Motor
         </Typography>
 
@@ -222,7 +266,7 @@ const CreatePump = () => {
             </Stack>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Stack direction="row" spacing={2} alignItems="center">
+            <Stack direction="row" spacing={2} alignItems="center" sx={{mb:1}}>
               <Typography
                 sx={{
                   width: 100,

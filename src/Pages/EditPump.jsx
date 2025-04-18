@@ -51,14 +51,14 @@ const EditPump = () => {
         overflow: "hidden",
       }}
     >
-      <Typography variant="h5" component="h1" fontWeight="bold" sx={{ mb: 2 }}>
+      <Typography variant="h5" component="h1" fontWeight="bold" sx={{ mb: 1 }}>
         Edit Pump
       </Typography>
 
       <Paper
         elevation={4}
         sx={{
-          p: 4,
+          p: 2,
           borderRadius: "10px",
           mb: 4,
         }}
@@ -128,6 +128,52 @@ const EditPump = () => {
                 size="small"
                 name="impellerSize"
                 value={formData.impellerSize}
+                onChange={handleChange}
+                variant="outlined"
+              />
+            </Stack>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Stack direction="row" spacing={2} alignItems="center">
+              <Typography
+                sx={{
+                  width: 100,
+                  fontWeight: 500,
+                }}
+              >
+                Pump
+                <br />
+                Capacity :
+              </Typography>
+              <TextField
+                fullWidth
+                defaultValue="34.700"
+                size="small"
+                name="pumpCapacity"
+                value={formData.pumpCapacity}
+                onChange={handleChange}
+                variant="outlined"
+              />
+            </Stack>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Stack direction="row" spacing={2} alignItems="center">
+              <Typography
+                sx={{
+                  width: 100,
+                  fontWeight: 500,
+                }}
+              >
+                System
+                <br />
+                Capacity :
+              </Typography>
+              <TextField
+                fullWidth
+                defaultValue="187.629"
+                size="small"
+                name="systemCapacity"
+                value={formData.systemCapacity}
                 onChange={handleChange}
                 variant="outlined"
               />
@@ -229,7 +275,7 @@ const EditPump = () => {
             </Stack>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Stack direction="row" spacing={2} alignItems="center">
+            <Stack direction="row" spacing={2} alignItems="center" sx={{mb:1}}>
               <Typography
                 sx={{
                   width: 100,
