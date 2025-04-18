@@ -45,14 +45,18 @@ const CreateProject = () => {
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
             <Stack direction="row" spacing={2} alignItems="center">
-              <Typography fontWeight="medium">Project Id :</Typography>
-              <TextField fullWidth variant="outlined" size="small" />
+              <Typography fontWeight="medium">
+                Project Id <span style={{ color: "red" }}>*</span>
+              </Typography>
+              <TextField fullWidth variant="outlined" size="small" required />
             </Stack>
           </Grid>
 
           <Grid item xs={12} md={6}>
             <Stack direction="row" spacing={2} alignItems="center">
-              <Typography fontWeight="medium">Project Name :</Typography>
+              <Typography fontWeight="medium">
+                Project Name <span style={{ color: "red" }}>*</span>
+              </Typography>
               <TextField fullWidth variant="outlined" size="small" />
             </Stack>
           </Grid>
@@ -60,7 +64,7 @@ const CreateProject = () => {
           <Grid item xs={12} md={6}>
             <Stack direction="row" spacing={2} alignItems="center">
               <Typography fontWeight="medium" sx={{ whiteSpace: "pre-line" }}>
-                Customer{"\n"} Name :
+                Customer Name <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField fullWidth variant="outlined" size="small" />
             </Stack>

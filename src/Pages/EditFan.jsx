@@ -52,7 +52,7 @@ const EditFan = () => {
                 fontWeight="500"
                 sx={{ mr: 2, minWidth: "80px" }}
               >
-                System :
+                System <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -69,7 +69,7 @@ const EditFan = () => {
                 fontWeight="500"
                 sx={{ mr: 2, minWidth: "80px" }}
               >
-                Location :
+                Location <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -86,7 +86,7 @@ const EditFan = () => {
                 fontWeight="500"
                 sx={{ mr: 2, minWidth: "80px" }}
               >
-                Area <br></br> Served :
+                Area <br></br> Served <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth

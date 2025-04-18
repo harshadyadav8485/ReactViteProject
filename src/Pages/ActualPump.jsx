@@ -28,8 +28,6 @@ import pump_report from "../assets/pump_report.pdf";
 import { useNavigate } from "react-router-dom";
 import { Snackbar, Alert } from "@mui/material";
 
-
-
 const ActualPump = () => {
   const [tabValue, setTabValue] = useState(0);
   const [comments, setComments] = useState("");
@@ -108,8 +106,10 @@ const ActualPump = () => {
           Project Name : UBC School of Biomedical Engineering
         </Typography>
 
-        <Box display="flex" alignItems="center" 
-        // mb={2}
+        <Box
+          display="flex"
+          alignItems="center"
+          // mb={2}
         >
           <Typography variant="h6" fontWeight="semibold">
             Pump Number :
@@ -147,76 +147,74 @@ const ActualPump = () => {
 
         {tabValue === 0 && (
           <>
-           <TableContainer
-                  component={Paper}
-                  sx={{ mb: 2, borderRadius: "10px 10px 0 0" }}
-                >
-                  <Table sx={{ tableLayout: "fixed", width: "100%" }}>
-                    <TableHead>
-                      <TableRow sx={{ bgcolor: "#99caff" }}>
-                        <TableCell sx={{ px: 3, py: 1 }}>
-                          <Typography fontWeight="bold">Fields</Typography>
-                        </TableCell>
-                        <TableCell sx={{ py: 1 }}>
-                          <Typography fontWeight="bold">Specified Value</Typography>
-                        </TableCell>
-                        <TableCell sx={{ py: 1 }}>
-                          <Typography fontWeight="bold">Actual Value</Typography>
-                        </TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {pumpData.map((row, index) => (
-                        <TableRow
-                          key={index}
-                          sx={{
-                            borderBottom: "1px solid #cbcbcb",
-                            "& td": { py: 1 }, 
+            <TableContainer
+              component={Paper}
+              sx={{ mb: 2, borderRadius: "10px 10px 0 0" }}
+            >
+              <Table sx={{ tableLayout: "fixed", width: "100%" }}>
+                <TableHead>
+                  <TableRow sx={{ bgcolor: "#99caff" }}>
+                    <TableCell sx={{ px: 3, py: 1 }}>
+                      <Typography fontWeight="bold">Fields</Typography>
+                    </TableCell>
+                    <TableCell sx={{ py: 1 }}>
+                      <Typography fontWeight="bold">Specified Value</Typography>
+                    </TableCell>
+                    <TableCell sx={{ py: 1 }}>
+                      <Typography fontWeight="bold">Actual Value</Typography>
+                    </TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {pumpData.map((row, index) => (
+                    <TableRow
+                      key={index}
+                      sx={{
+                        borderBottom: "1px solid #cbcbcb",
+                        "& td": { py: 1 },
+                      }}
+                    >
+                      <TableCell sx={{ px: 3 }}>
+                        <Typography fontWeight="medium" fontSize="0.9rem">
+                          {row.field}
+                        </Typography>
+                      </TableCell>
+                      <TableCell>
+                        <Typography fontWeight="medium" fontSize="0.9rem">
+                          {row.specifiedValue}
+                        </Typography>
+                      </TableCell>
+                      <TableCell>
+                        <TextField
+                          fullWidth
+                          variant="outlined"
+                          size="small"
+                          value={row.actualValue}
+                          onChange={(e) => {
+                            const newData = [...pumpData];
+                            newData[index].actualValue = e.target.value;
+                            setPumpData(newData);
                           }}
-                        >
-                          <TableCell sx={{ px: 3 }}>
-                            <Typography fontWeight="medium" fontSize="0.9rem">
-                              {row.field}
-                            </Typography>
-                          </TableCell>
-                          <TableCell>
-                            <Typography fontWeight="medium" fontSize="0.9rem">
-                              {row.specifiedValue}
-                            </Typography>
-                          </TableCell>
-                          <TableCell>
-                            <TextField
-                              fullWidth
-                              variant="outlined"
-                              size="small"
-                              value={row.actualValue}
-                             onChange={(e) => {
-                    const newData = [...pumpData];
-                    newData[index].actualValue = e.target.value;
-                    setPumpData(newData);
-                  }}
-                              sx={{
-                                bgcolor: "white",
-                                "& .MuiOutlinedInput-root": {
-                                  borderRadius: "5px",
-                                  "& .MuiOutlinedInput-notchedOutline": {
-                                    borderColor: "#9d9d9d",
-                                  },
-                                  fontSize: "0.9rem", 
-                                },
-                              }}
-                            />
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-
-
+                          sx={{
+                            bgcolor: "white",
+                            "& .MuiOutlinedInput-root": {
+                              borderRadius: "5px",
+                              "& .MuiOutlinedInput-notchedOutline": {
+                                borderColor: "#9d9d9d",
+                              },
+                              fontSize: "0.9rem",
+                            },
+                          }}
+                        />
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
 
             <Typography variant="body1" fontWeight="bold" mb={1}>
-              Comments :
+              Comments <span style={{ color: "red" }}>*</span>
             </Typography>
 
             <TextField
@@ -259,37 +257,37 @@ const ActualPump = () => {
                 Back
               </Button>
               <Button
-                  variant="contained"
-                  onClick={handleSubmit}
-                  sx={{
-                    backgroundColor: "#99caff",
-                    borderRadius: "10px",
-                    color: "black",
-                    textTransform: "none",
-                    minWidth: "101px",
-                    height: "42px",
-                    "&:hover": {
-                      backgroundColor: "#7bb8ff",
-                    },
-                  }}
-                >
-                  Submit
-                </Button>
+                variant="contained"
+                onClick={handleSubmit}
+                sx={{
+                  backgroundColor: "#99caff",
+                  borderRadius: "10px",
+                  color: "black",
+                  textTransform: "none",
+                  minWidth: "101px",
+                  height: "42px",
+                  "&:hover": {
+                    backgroundColor: "#7bb8ff",
+                  },
+                }}
+              >
+                Submit
+              </Button>
             </Stack>
             <Snackbar
-                open={openSnackbar}
-                autoHideDuration={2000}
+              open={openSnackbar}
+              autoHideDuration={2000}
+              onClose={() => setOpenSnackbar(false)}
+              anchorOrigin={{ vertical: "top", horizontal: "center" }}
+            >
+              <Alert
                 onClose={() => setOpenSnackbar(false)}
-                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                severity="success"
+                variant="filled"
               >
-                <Alert
-                  onClose={() => setOpenSnackbar(false)}
-                  severity="success"
-                  variant="filled"
-                >
-                  Data Submitted Successfully!
-                </Alert>
-              </Snackbar>
+                Data Submitted Successfully!
+              </Alert>
+            </Snackbar>
           </>
         )}
         {tabValue === 1 && (
@@ -1445,7 +1443,7 @@ const ActualPump = () => {
               </Typography>
             </Box>
 
-             <Stack direction="row" spacing={1} justifyContent="flex-end" mb={2}>
+            <Stack direction="row" spacing={1} justifyContent="flex-end" mb={2}>
               <Button
                 variant="outlined"
                 onClick={() => navigate("/project2")}
@@ -1479,19 +1477,19 @@ const ActualPump = () => {
               </Button>
             </Stack>
             <Snackbar
-                open={openSnackbar}
-                autoHideDuration={2000}
+              open={openSnackbar}
+              autoHideDuration={2000}
+              onClose={() => setOpenSnackbar(false)}
+              anchorOrigin={{ vertical: "top", horizontal: "center" }}
+            >
+              <Alert
                 onClose={() => setOpenSnackbar(false)}
-                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                severity="success"
+                variant="filled"
               >
-                <Alert
-                  onClose={() => setOpenSnackbar(false)}
-                  severity="success"
-                  variant="filled"
-                >
-                  Data Submitted Successfully!
-                </Alert>
-              </Snackbar>
+                Data Submitted Successfully!
+              </Alert>
+            </Snackbar>
           </Box>
         )}
       </Box>

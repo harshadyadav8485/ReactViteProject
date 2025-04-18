@@ -76,7 +76,7 @@ const CreatePump = () => {
                   fontWeight: 500,
                 }}
               >
-                Make :
+                Make <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -96,7 +96,7 @@ const CreatePump = () => {
                   fontWeight: 500,
                 }}
               >
-                Model :
+                Model <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -118,7 +118,7 @@ const CreatePump = () => {
               >
                 Impeller
                 <br />
-                Size :
+                Size <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -130,50 +130,50 @@ const CreatePump = () => {
               />
             </Stack>
           </Grid>
-           <Grid item xs={12} md={6}>
-                      <Stack direction="row" spacing={2} alignItems="center">
-                        <Typography
-                          sx={{
-                            width: 100,
-                            fontWeight: 500,
-                          }}
-                        >
-                          Pump
-                          <br />
-                          Capacity :
-                        </Typography>
-                        <TextField
-                          fullWidth
-                          size="small"
-                          name="pumpCapacity"
-                          value={formData.pumpCapacity}
-                          onChange={handleChange}
-                          variant="outlined"
-                        />
-                      </Stack>
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                      <Stack direction="row" spacing={2} alignItems="center">
-                        <Typography
-                          sx={{
-                            width: 100,
-                            fontWeight: 500,
-                          }}
-                        >
-                          System
-                          <br />
-                          Capacity :
-                        </Typography>
-                        <TextField
-                          fullWidth
-                          size="small"
-                          name="systemCapacity"
-                          value={formData.systemCapacity}
-                          onChange={handleChange}
-                          variant="outlined"
-                        />
-                      </Stack>
-                    </Grid>
+          <Grid item xs={12} md={6}>
+            <Stack direction="row" spacing={2} alignItems="center">
+              <Typography
+                sx={{
+                  width: 100,
+                  fontWeight: 500,
+                }}
+              >
+                Pump
+                <br />
+                Capacity <span style={{ color: "red" }}>*</span>
+              </Typography>
+              <TextField
+                fullWidth
+                size="small"
+                name="pumpCapacity"
+                value={formData.pumpCapacity}
+                onChange={handleChange}
+                variant="outlined"
+              />
+            </Stack>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Stack direction="row" spacing={2} alignItems="center">
+              <Typography
+                sx={{
+                  width: 100,
+                  fontWeight: 500,
+                }}
+              >
+                System
+                <br />
+                Capacity <span style={{ color: "red" }}>*</span>
+              </Typography>
+              <TextField
+                fullWidth
+                size="small"
+                name="systemCapacity"
+                value={formData.systemCapacity}
+                onChange={handleChange}
+                variant="outlined"
+              />
+            </Stack>
+          </Grid>
         </Grid>
 
         <Divider sx={{ my: 3, borderRadius: "5px" }} />
@@ -191,7 +191,7 @@ const CreatePump = () => {
                   fontWeight: 500,
                 }}
               >
-                Manufacturer:
+                Manufacturer <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -211,7 +211,7 @@ const CreatePump = () => {
                   fontWeight: 500,
                 }}
               >
-                Size :
+                Size <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -233,7 +233,7 @@ const CreatePump = () => {
               >
                 Volts/
                 <br />
-                Phase :
+                Phase <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -253,7 +253,7 @@ const CreatePump = () => {
                   fontWeight: 500,
                 }}
               >
-                Amperage :
+                Amperage <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -266,14 +266,19 @@ const CreatePump = () => {
             </Stack>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Stack direction="row" spacing={2} alignItems="center" sx={{mb:1}}>
+            <Stack
+              direction="row"
+              spacing={2}
+              alignItems="center"
+              sx={{ mb: 1 }}
+            >
               <Typography
                 sx={{
                   width: 100,
                   fontWeight: 500,
                 }}
               >
-                R.P.M :
+                R.P.M <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth

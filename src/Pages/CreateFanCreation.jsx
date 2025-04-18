@@ -21,109 +21,103 @@ const CreateFanCreation = () => {
   const navigate = useNavigate();
   return (
     <Box
-            sx={{
-              bgcolor: "#f2f4f5",
-              minHeight: "100vh",
-              py: 4,
-              pl: "70px",
-              pt: "12px",
-              pr: "24px",
-              boxSizing: "border-box",
-              overflow: "hidden",
-            }}
-          >
-     
-     <Typography
-          variant="h5" component="h1" fontWeight="bold" sx={{ mb: 2 }}
-        >
-          Fan Creation
-        </Typography>
+      sx={{
+        bgcolor: "#f2f4f5",
+        minHeight: "100vh",
+        py: 4,
+        pl: "70px",
+        pt: "12px",
+        pr: "24px",
+        boxSizing: "border-box",
+        overflow: "hidden",
+      }}
+    >
+      <Typography variant="h5" component="h1" fontWeight="bold" sx={{ mb: 2 }}>
+        Fan Creation
+      </Typography>
 
-        <Paper
-          elevation={4}
+      <Paper
+        elevation={4}
+        sx={{
+          p: 4,
+          borderRadius: "10px",
+          mb: 4,
+        }}
+      >
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={6}>
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Typography
+                variant="body1"
+                fontWeight="500"
+                sx={{ mr: 2, minWidth: "80px" }}
+              >
+                System <span style={{ color: "red" }}>*</span>
+              </Typography>
+              <TextField fullWidth variant="outlined" size="small" />
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Typography
+                variant="body1"
+                fontWeight="500"
+                sx={{ mr: 2, minWidth: "80px" }}
+              >
+                Location <span style={{ color: "red" }}>*</span>
+              </Typography>
+              <TextField fullWidth variant="outlined" size="small" />
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+              <Typography
+                variant="body1"
+                fontWeight="500"
+                sx={{ mr: 2, minWidth: "80px" }}
+              >
+                Area <br></br> Served <span style={{ color: "red" }}>*</span>
+              </Typography>
+              <TextField fullWidth variant="outlined" size="small" />
+            </Box>
+          </Grid>
+        </Grid>
+      </Paper>
+
+      <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 2 }}>
+        <Button
+          variant="outlined"
+          onClick={() => navigate("/project2")}
           sx={{
-            p: 4,
             borderRadius: "10px",
-            mb: 4,
+            border: "1px solid black",
+            color: "black",
+            bgcolor: "#f2f4f5",
+            px: 3,
+            "&:hover": {
+              bgcolor: "#e5e7e8",
+              border: "1px solid black",
+            },
           }}
         >
-          <Grid container spacing={4}>
-            <Grid item xs={12} md={6}>
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                <Typography
-                  variant="body1"
-                  fontWeight="500"
-                  sx={{ mr: 2, minWidth: "80px" }}
-                >
-                  System :
-                </Typography>
-                <TextField fullWidth variant="outlined" size="small" />
-              </Box>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                <Typography
-                  variant="body1"
-                  fontWeight="500"
-                  sx={{ mr: 2, minWidth: "80px" }}
-                >
-                  Location :
-                </Typography>
-                <TextField fullWidth variant="outlined" size="small" />
-              </Box>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                <Typography
-                  variant="body1"
-                  fontWeight="500"
-                  sx={{ mr: 2, minWidth: "80px" }}
-                >
-                  Area <br></br> Served :
-                </Typography>
-                <TextField fullWidth variant="outlined" size="small" />
-              </Box>
-            </Grid>
-          </Grid>
-
-
-        </Paper>
-
-        <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 2 }}>
+          Back
+        </Button>
         <Button
-            variant="outlined"
-            onClick={() => navigate("/project2")} 
-            sx={{
-              borderRadius: "10px",
-              border: "1px solid black",
-              color: "black",
-              bgcolor: "#f2f4f5",
-              px: 3,
-              "&:hover": {
-                bgcolor: "#e5e7e8",
-                border: "1px solid black",
-              },
-            }}
-          >
-            Back
-          </Button>
-          <Button
-            variant="contained"
-            onClick={() => navigate("/createFan1")}
-            sx={{
-              borderRadius: "10px",
-              bgcolor: "#99caff",
-              color: "black",
-              px: 3,
-              "&:hover": {
-                bgcolor: "#7bb8ff",
-              },
-            }}
-          >
-            Next
-          </Button>
-        </Box>
-      
+          variant="contained"
+          onClick={() => navigate("/createFan1")}
+          sx={{
+            borderRadius: "10px",
+            bgcolor: "#99caff",
+            color: "black",
+            px: 3,
+            "&:hover": {
+              bgcolor: "#7bb8ff",
+            },
+          }}
+        >
+          Next
+        </Button>
+      </Box>
     </Box>
   );
 };
