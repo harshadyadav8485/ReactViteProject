@@ -45,12 +45,12 @@ const ActualPump = () => {
       specifiedValue: "e-805C 5x5x11",
       actualValue: "K56011D-4-PM",
     },
-    { field: "Impeller Size", specifiedValue: "", actualValue: "2.5" },
-    { field: "Manufacturer", specifiedValue: "", actualValue: "" },
+    { field: "Impeller Size", specifiedValue: "", actualValue: "9.5" },
+    { field: "Manufacturer", specifiedValue: "-", actualValue: "WEG" },
     { field: "Motor Size", specifiedValue: "20 HP", actualValue: "25 HP" },
     { field: "Volts/Phase", specifiedValue: "575/3", actualValue: "575/3" },
-    { field: "Amperage", specifiedValue: "23,60", actualValue: "As Below" },
-    { field: "R.P.M", specifiedValue: "", actualValue: "" },
+    { field: "Amperage", specifiedValue: "23.60", actualValue: "As Below" },
+    { field: "R.P.M", specifiedValue: "", actualValue: "-" },
   ]);
 
   const handleTabChange = (event, newValue) => {
@@ -155,7 +155,7 @@ const ActualPump = () => {
                 <TableHead>
                   <TableRow sx={{ bgcolor: "#99caff" }}>
                     <TableCell sx={{ px: 3, py: 1 }}>
-                      <Typography fontWeight="bold">Fields</Typography>
+                      <Typography fontWeight="bold">Parameters</Typography>
                     </TableCell>
                     <TableCell sx={{ py: 1 }}>
                       <Typography fontWeight="bold">Specified Value</Typography>
@@ -234,24 +234,27 @@ const ActualPump = () => {
                 },
               }}
             />
-            <Typography variant="body1" color="text.secondary" mb={1}>
+            {/* <Typography variant="body1" color="text.secondary" mb={1}>
               *Represents[Your meaning 1]
             </Typography>
             <Typography variant="body1" color="text.secondary" mb={2}>
               **Represents[Your meaning 2]
-            </Typography>
+            </Typography> */}
             <Stack direction="row" spacing={1} justifyContent="flex-end" mb={2}>
               <Button
                 variant="outlined"
                 onClick={() => navigate("/project2")}
                 sx={{
-                  backgroundColor: "#f2f4f5",
                   borderRadius: "10px",
-                  borderColor: "black",
+                  bgcolor: "#f2f4f5",
+                  px: 3,
                   color: "black",
-                  textTransform: "none",
-                  minWidth: "91px",
-                  height: "42px",
+                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+                  border: "none", // 👈 override outlined variant's default border
+                  "&:hover": {
+                    bgcolor: "#e5e7e8",
+                    border: "none", // 👈 make sure hover state also has no border
+                  },
                 }}
               >
                 Back
@@ -260,15 +263,14 @@ const ActualPump = () => {
                 variant="contained"
                 onClick={handleSubmit}
                 sx={{
-                  backgroundColor: "#99caff",
                   borderRadius: "10px",
+                  bgcolor: "#99CAFF",
                   color: "black",
-                  textTransform: "none",
-                  minWidth: "101px",
-                  height: "42px",
-                  "&:hover": {
-                    backgroundColor: "#7bb8ff",
-                  },
+                  px: 3,
+                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
+          "&:hover": {
+            bgcolor: "#7bb8ff",
+          },
                 }}
               >
                 Submit
@@ -294,10 +296,10 @@ const ActualPump = () => {
           <Box>
             <Paper elevation={4} sx={{ p: 3, borderRadius: "10px", mb: 2 }}>
               <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
-                SINGLE OPERATION FULL FLOW
+                SINGLE OPERATION FULL FLOW 
               </Typography>
 
-              <Typography variant="subtitle1" fontWeight="600" sx={{ mb: 1 }}>
+              <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
                 PUMP OPERATING HEAD (KPA)
               </Typography>
               <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
@@ -305,10 +307,11 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Suction{"\n"}Pressure (SP) :
+                    Suction{"\n"}Pressure (SP) <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "60"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
@@ -317,10 +320,11 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Discharge{"\n"}Pressure (DP) :
+                    Discharge{"\n"}Pressure (DP) <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "218"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
@@ -329,17 +333,18 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Total{"\n"}Pressure (TP) :
+                    Total{"\n"}Pressure (TP) <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "158"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
                 </Box>
               </Stack>
 
-              <Typography variant="subtitle1" fontWeight="600" sx={{ mb: 1 }}>
+              <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
                 PUMP SHUT OFF HEAD(KPA)
               </Typography>
               <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
@@ -347,10 +352,11 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Suction{"\n"}Pressure (SP) :
+                    Suction{"\n"}Pressure (SP) <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "**"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
@@ -359,10 +365,11 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Discharge{"\n"}Pressure (DP) :
+                    Discharge{"\n"}Pressure (DP) <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "**"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
@@ -371,10 +378,11 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Total{"\n"}Pressure (TP) :
+                    Total{"\n"}Pressure (TP) <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "-"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
@@ -384,20 +392,22 @@ const ActualPump = () => {
               <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography sx={{ mr: 1, minWidth: "100px" }}>
-                    Pump Speed :
+                    Pump Speed <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "60Hz"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography sx={{ mr: 1, minWidth: "100px" }}>
-                    Motor Amps :
+                    Motor Amps <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "19"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
@@ -406,10 +416,11 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Specified{"\n"}Head (KPA) :
+                    Specified{"\n"}Head (KPA) <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "254"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
@@ -418,11 +429,12 @@ const ActualPump = () => {
 
               {/* Comments */}
               <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
-                Comments :
+                Comments <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
                 multiline
+                defaultValue= "** No CBV installed for measuring the flow accurately"
                 rows={5}
                 placeholder="Enter your comments..."
                 sx={{
@@ -438,21 +450,27 @@ const ActualPump = () => {
                 }}
               />
 
-              <Typography color="text.secondary" sx={{ mb: 0.5 }}>
+              {/* <Typography color="text.secondary" sx={{ mb: 0.5 }}>
                 *Represents[Your meaning 1]
               </Typography>
               <Typography color="text.secondary" sx={{ mb: 3 }}>
                 **Represents[Your meaning 2]
-              </Typography>
+              </Typography> */}
               <Box display="flex" justifyContent="flex-end" gap={2}>
                 <Button
                   variant="outlined"
                   onClick={() => navigate("/project2")}
                   sx={{
                     borderRadius: "10px",
-                    border: "1px solid black",
-                    color: "black",
+                    bgcolor: "#f2f4f5",
                     px: 3,
+                    color: "black",
+                    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+                    border: "none", // 👈 override outlined variant's default border
+                    "&:hover": {
+                      bgcolor: "#e5e7e8",
+                      border: "none", // 👈 make sure hover state also has no border
+                    },
                   }}
                 >
                   Back
@@ -461,15 +479,14 @@ const ActualPump = () => {
                   variant="contained"
                   onClick={handleSubmit}
                   sx={{
-                    backgroundColor: "#99caff",
                     borderRadius: "10px",
+                    bgcolor: "#99CAFF",
                     color: "black",
-                    textTransform: "none",
-                    minWidth: "101px",
-                    height: "42px",
-                    "&:hover": {
-                      backgroundColor: "#7bb8ff",
-                    },
+                    px: 3,
+                    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
+            "&:hover": {
+              bgcolor: "#7bb8ff",
+            },
                   }}
                 >
                   Submit
@@ -495,7 +512,7 @@ const ActualPump = () => {
                 SINGLE OPERATION BALANCED FLOW
               </Typography>
 
-              <Typography variant="subtitle1" fontWeight="600" sx={{ mb: 1 }}>
+              <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
                 PUMP OPERATING HEAD (KPA)
               </Typography>
               <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
@@ -503,10 +520,11 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Suction{"\n"}Pressure (SP) :
+                    Suction{"\n"}Pressure (SP)  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "72"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
@@ -515,10 +533,11 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Discharge{"\n"}Pressure (DP) :
+                    Discharge{"\n"}Pressure (DP)  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "167"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
@@ -527,17 +546,18 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Total{"\n"}Pressure (TP) :
+                    Total{"\n"}Pressure (TP)  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "95"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
                 </Box>
               </Stack>
 
-              <Typography variant="subtitle1" fontWeight="600" sx={{ mb: 1 }}>
+              <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
                 PUMP SHUT OFF HEAD(KPA)
               </Typography>
               <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
@@ -545,10 +565,11 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Suction{"\n"}Pressure (SP) :
+                    Suction{"\n"}Pressure (SP)  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "**"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
@@ -557,10 +578,11 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Discharge{"\n"}Pressure (DP) :
+                    Discharge{"\n"}Pressure (DP)  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "**"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
@@ -569,10 +591,11 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Total{"\n"}Pressure (TP) :
+                    Total{"\n"}Pressure (TP)  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "-"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
@@ -582,20 +605,22 @@ const ActualPump = () => {
               <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography sx={{ mr: 1, minWidth: "100px" }}>
-                    Pump Speed :
+                    Pump Speed  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "90Hz"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography sx={{ mr: 1, minWidth: "100px" }}>
-                    Motor Amps :
+                    Motor Amps  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "20.70"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
@@ -604,10 +629,11 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Specified{"\n"}Head (KPA) :
+                    Specified{"\n"}Head (KPA)  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "254"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
@@ -621,6 +647,7 @@ const ActualPump = () => {
               <TextField
                 fullWidth
                 multiline
+                defaultValue= "** No CBV installed for measuring the flow accurately"
                 rows={5}
                 placeholder="Enter your comments..."
                 sx={{
@@ -636,21 +663,27 @@ const ActualPump = () => {
                 }}
               />
 
-              <Typography color="text.secondary" sx={{ mb: 0.5 }}>
+              {/* <Typography color="text.secondary" sx={{ mb: 0.5 }}>
                 *Represents[Your meaning 1]
               </Typography>
               <Typography color="text.secondary" sx={{ mb: 3 }}>
                 **Represents[Your meaning 2]
-              </Typography>
+              </Typography> */}
               <Box display="flex" justifyContent="flex-end" gap={2}>
                 <Button
                   variant="outlined"
                   onClick={() => navigate("/project2")}
                   sx={{
                     borderRadius: "10px",
-                    border: "1px solid black",
-                    color: "black",
+                    bgcolor: "#f2f4f5",
                     px: 3,
+                    color: "black",
+                    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+                    border: "none", // 👈 override outlined variant's default border
+                    "&:hover": {
+                      bgcolor: "#e5e7e8",
+                      border: "none", // 👈 make sure hover state also has no border
+                    },
                   }}
                 >
                   Back
@@ -659,15 +692,14 @@ const ActualPump = () => {
                   variant="contained"
                   onClick={handleSubmit}
                   sx={{
-                    backgroundColor: "#99caff",
                     borderRadius: "10px",
+                    bgcolor: "#99CAFF",
                     color: "black",
-                    textTransform: "none",
-                    minWidth: "101px",
-                    height: "42px",
-                    "&:hover": {
-                      backgroundColor: "#7bb8ff",
-                    },
+                    px: 3,
+                    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
+            "&:hover": {
+              bgcolor: "#7bb8ff",
+            },
                   }}
                 >
                   Submit
@@ -693,7 +725,7 @@ const ActualPump = () => {
                 PARALLEL OPERATION FULL FLOW
               </Typography>
 
-              <Typography variant="subtitle1" fontWeight="600" sx={{ mb: 1 }}>
+              <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
                 PUMP OPERATING HEAD (KPA)
               </Typography>
               <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
@@ -701,10 +733,11 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Suction{"\n"}Pressure (SP) :
+                    Suction{"\n"}Pressure (SP)  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "48"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
@@ -713,10 +746,11 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Discharge{"\n"}Pressure (DP) :
+                    Discharge{"\n"}Pressure (DP)  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "239"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
@@ -725,17 +759,18 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Total{"\n"}Pressure (TP) :
+                    Total{"\n"}Pressure (TP)  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "191"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
                 </Box>
               </Stack>
 
-              <Typography variant="subtitle1" fontWeight="600" sx={{ mb: 1 }}>
+              <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
                 PUMP SHUT OFF HEAD(KPA)
               </Typography>
               <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
@@ -743,10 +778,11 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Suction{"\n"}Pressure (SP) :
+                    Suction{"\n"}Pressure (SP)  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "**"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
@@ -755,10 +791,11 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Discharge{"\n"}Pressure (DP) :
+                    Discharge{"\n"}Pressure (DP)  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "**"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
@@ -767,10 +804,11 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Total{"\n"}Pressure (TP) :
+                    Total{"\n"}Pressure (TP)  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "-"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
@@ -780,20 +818,22 @@ const ActualPump = () => {
               <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography sx={{ mr: 1, minWidth: "100px" }}>
-                    Pump Speed :
+                    Pump Speed  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "60Hz"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography sx={{ mr: 1, minWidth: "100px" }}>
-                    Motor Amps :
+                    Motor Amps  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "19"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
@@ -802,10 +842,11 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Specified{"\n"}Head (KPA) :
+                    Specified{"\n"}Head (KPA)  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
+                    defaultValue= "254"
                     size="small"
                     sx={{ width: "200px", backgroundColor: "white" }}
                   />
@@ -819,6 +860,7 @@ const ActualPump = () => {
               <TextField
                 fullWidth
                 multiline
+                defaultValue= "** No CBV installed for measuring the flow accurately"
                 rows={5}
                 placeholder="Enter your comments..."
                 sx={{
@@ -834,21 +876,27 @@ const ActualPump = () => {
                 }}
               />
 
-              <Typography color="text.secondary" sx={{ mb: 0.5 }}>
+              {/* <Typography color="text.secondary" sx={{ mb: 0.5 }}>
                 *Represents[Your meaning 1]
               </Typography>
               <Typography color="text.secondary" sx={{ mb: 3 }}>
                 **Represents[Your meaning 2]
-              </Typography>
+              </Typography> */}
               <Box display="flex" justifyContent="flex-end" gap={2}>
                 <Button
                   variant="outlined"
                   onClick={() => navigate("/project2")}
                   sx={{
                     borderRadius: "10px",
-                    border: "1px solid black",
-                    color: "black",
+                    bgcolor: "#f2f4f5",
                     px: 3,
+                    color: "black",
+                    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+                    border: "none", // 👈 override outlined variant's default border
+                    "&:hover": {
+                      bgcolor: "#e5e7e8",
+                      border: "none", // 👈 make sure hover state also has no border
+                    },
                   }}
                 >
                   Back
@@ -857,15 +905,14 @@ const ActualPump = () => {
                   variant="contained"
                   onClick={handleSubmit}
                   sx={{
-                    backgroundColor: "#99caff",
                     borderRadius: "10px",
+                    bgcolor: "#99CAFF",
                     color: "black",
-                    textTransform: "none",
-                    minWidth: "101px",
-                    height: "42px",
-                    "&:hover": {
-                      backgroundColor: "#7bb8ff",
-                    },
+                    px: 3,
+                    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
+            "&:hover": {
+              bgcolor: "#7bb8ff",
+            },
                   }}
                 >
                   Submit
@@ -891,7 +938,7 @@ const ActualPump = () => {
                 SINGLE OPERATION BALANCED FLOW
               </Typography>
 
-              <Typography variant="subtitle1" fontWeight="600" sx={{ mb: 1 }}>
+              <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
                 PUMP OPERATING HEAD (KPA)
               </Typography>
               <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
@@ -899,7 +946,7 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Suction{"\n"}Pressure (SP) :
+                    Suction{"\n"}Pressure (SP)  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
@@ -911,7 +958,7 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Discharge{"\n"}Pressure (DP) :
+                    Discharge{"\n"}Pressure (DP)  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
@@ -923,7 +970,7 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Total{"\n"}Pressure (TP) :
+                    Total{"\n"}Pressure (TP)  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
@@ -933,7 +980,7 @@ const ActualPump = () => {
                 </Box>
               </Stack>
 
-              <Typography variant="subtitle1" fontWeight="600" sx={{ mb: 1 }}>
+              <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
                 PUMP SHUT OFF HEAD(KPA)
               </Typography>
               <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
@@ -941,7 +988,7 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Suction{"\n"}Pressure (SP) :
+                    Suction{"\n"}Pressure (SP)  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
@@ -953,7 +1000,7 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Discharge{"\n"}Pressure (DP) :
+                    Discharge{"\n"}Pressure (DP)  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
@@ -965,7 +1012,7 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Total{"\n"}Pressure (TP) :
+                    Total{"\n"}Pressure (TP)  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
@@ -978,7 +1025,7 @@ const ActualPump = () => {
               <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography sx={{ mr: 1, minWidth: "100px" }}>
-                    Pump Speed :
+                    Pump Speed  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
@@ -988,7 +1035,7 @@ const ActualPump = () => {
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography sx={{ mr: 1, minWidth: "100px" }}>
-                    Motor Amps :
+                    Motor Amps  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
@@ -1000,7 +1047,7 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Specified{"\n"}Head (KPA) :
+                    Specified{"\n"}Head (KPA)  <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
@@ -1017,6 +1064,7 @@ const ActualPump = () => {
               <TextField
                 fullWidth
                 multiline
+                // defaultValue= "** No CBV installed for measuring the flow accurately"
                 rows={5}
                 placeholder="Enter your comments..."
                 sx={{
@@ -1032,21 +1080,27 @@ const ActualPump = () => {
                 }}
               />
 
-              <Typography color="text.secondary" sx={{ mb: 0.5 }}>
+              {/* <Typography color="text.secondary" sx={{ mb: 0.5 }}>
                 *Represents[Your meaning 1]
               </Typography>
               <Typography color="text.secondary" sx={{ mb: 3 }}>
                 **Represents[Your meaning 2]
-              </Typography>
+              </Typography> */}
               <Box display="flex" justifyContent="flex-end" gap={2}>
                 <Button
                   variant="outlined"
                   onClick={() => navigate("/project2")}
                   sx={{
                     borderRadius: "10px",
-                    border: "1px solid black",
-                    color: "black",
+                    bgcolor: "#f2f4f5",
                     px: 3,
+                    color: "black",
+                    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+                    border: "none", // 👈 override outlined variant's default border
+                    "&:hover": {
+                      bgcolor: "#e5e7e8",
+                      border: "none", // 👈 make sure hover state also has no border
+                    },
                   }}
                 >
                   Back
@@ -1055,15 +1109,14 @@ const ActualPump = () => {
                   variant="contained"
                   onClick={handleSubmit}
                   sx={{
-                    backgroundColor: "#99caff",
                     borderRadius: "10px",
+                    bgcolor: "#99CAFF",
                     color: "black",
-                    textTransform: "none",
-                    minWidth: "101px",
-                    height: "42px",
-                    "&:hover": {
-                      backgroundColor: "#7bb8ff",
-                    },
+                    px: 3,
+                    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
+            "&:hover": {
+              bgcolor: "#7bb8ff",
+            },
                   }}
                 >
                   Submit
@@ -1103,47 +1156,51 @@ const ActualPump = () => {
                 </Typography>
 
                 <Grid container spacing={2}>
-                  <Grid item xs={1.5}>
-                    <Typography variant="body1" fontWeight="medium">
-                      Pump Capacity :
-                    </Typography>
+                    <Grid item xs={1.5}>
+                      <Typography variant="body1" fontWeight="medium">
+                        Pump Capacity <span style={{ color: "red" }}>*</span>
+                      </Typography>
+                    </Grid>
+
+                    <Grid item xs={2.5}>
+                      <TextField
+                        fullWidth
+                        defaultValue="34.700"
+                        size="small"
+                        label="Specified Value"
+                        variant="outlined"
+                      />
+                    </Grid>
+
+                    <Grid item xs={2.5}>
+                      <TextField
+                        fullWidth
+                        size="small"
+                        label="Actual Value"
+                        variant="outlined"
+                      />
+                    </Grid>
+
+                    <Grid item xs={2.5}>
+                      <Button
+                        variant="contained"
+                        sx={{
+                          bgcolor: "#a4cffe",
+                          color: "black",
+                          textTransform: "none",
+                          width: "50%",
+                        }}
+                      >
+                        Convert
+                      </Button>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={2.5}>
-                    <TextField
-                      fullWidth
-                      defaultValue="34.700"
-                      size="small"
-                      placeholder="Specified Value"
-                      variant="outlined"
-                    />
-                  </Grid>
-                  <Grid item xs={2.5}>
-                    <TextField
-                      fullWidth
-                      size="small"
-                      placeholder="Actual Value"
-                      variant="outlined"
-                    />
-                  </Grid>
-                  <Grid item xs={2.5}>
-                    <Button
-                      variant="contained"
-                      sx={{
-                        bgcolor: "#a4cffe",
-                        color: "black",
-                        textTransform: "none",
-                        width: "50%",
-                      }}
-                    >
-                      Convert
-                    </Button>
-                  </Grid>
-                </Grid>
+
 
                 <Grid container spacing={2} sx={{ mt: 1 }}>
                   <Grid item xs={1.5}>
                     <Typography variant="body1" fontWeight="medium">
-                      System Capacity :
+                      System Capacity  <span style={{ color: "red" }}>*</span>
                     </Typography>
                   </Grid>
                   <Grid item xs={2.5}>
@@ -1151,7 +1208,7 @@ const ActualPump = () => {
                       fullWidth
                       defaultValue="187.629"
                       size="small"
-                      placeholder="Specified Value"
+                      label="Specified Value"
                       variant="outlined"
                     />
                   </Grid>
@@ -1159,7 +1216,7 @@ const ActualPump = () => {
                     <TextField
                       fullWidth
                       size="small"
-                      placeholder="Actual Value"
+                      label="Actual Value"
                       variant="outlined"
                     />
                   </Grid>
@@ -1182,7 +1239,7 @@ const ActualPump = () => {
                   <Grid item xs={1.5}>
                     <Typography variant="body1" fontWeight="medium">
                       Pump Balancing <br />
-                      Valve Position :
+                      Valve Position  <span style={{ color: "red" }}>*</span>
                     </Typography>
                   </Grid>
                   <Grid item xs={2.5}>
@@ -1192,7 +1249,7 @@ const ActualPump = () => {
                     <Typography variant="body1" fontWeight="medium">
                       System Differential
                       <br />
-                      Pressure Setpoint :
+                      Pressure Setpoint  <span style={{ color: "red" }}>*</span>
                     </Typography>
                   </Grid>
                   <Grid item xs={2.5}>
@@ -1215,7 +1272,7 @@ const ActualPump = () => {
                 <Grid container spacing={2}>
                   <Grid item xs={1.5}>
                     <Typography variant="body1" fontWeight="medium">
-                      Full Flow :
+                      Full Flow  <span style={{ color: "red" }}>*</span>
                     </Typography>
                   </Grid>
                   <Grid item xs={2.5}>
@@ -1223,7 +1280,7 @@ const ActualPump = () => {
                   </Grid>
                   <Grid item xs={1.5}>
                     <Typography variant="body1" fontWeight="medium">
-                      Balanced Position :
+                      Balanced Position  <span style={{ color: "red" }}>*</span>
                     </Typography>
                   </Grid>
                   <Grid item xs={2.5}>
@@ -1238,7 +1295,7 @@ const ActualPump = () => {
                 <Grid container spacing={2}>
                   <Grid item xs={1.5}>
                     <Typography variant="body1" fontWeight="medium">
-                      Full Flow :
+                      Full Flow  <span style={{ color: "red" }}>*</span>
                     </Typography>
                   </Grid>
                   <Grid item xs={2.5}>
@@ -1246,7 +1303,7 @@ const ActualPump = () => {
                   </Grid>
                   <Grid item xs={1.5}>
                     <Typography variant="body1" fontWeight="medium">
-                      Balanced Position :
+                      Balanced Position  <span style={{ color: "red" }}>*</span>
                     </Typography>
                   </Grid>
                   <Grid item xs={2.5}>
@@ -1288,7 +1345,7 @@ const ActualPump = () => {
                       <Grid container spacing={2}>
                         <Grid item xs={3}>
                           <Typography variant="body2" fontWeight="medium">
-                            Type :
+                            Type  <span style={{ color: "red" }}>*</span>
                           </Typography>
                         </Grid>
                         <Grid item xs={9}>
@@ -1297,7 +1354,7 @@ const ActualPump = () => {
 
                         <Grid item xs={3}>
                           <Typography variant="body2" fontWeight="medium">
-                            Size :
+                            Size  <span style={{ color: "red" }}>*</span>
                           </Typography>
                         </Grid>
                         <Grid item xs={9}>
@@ -1307,7 +1364,7 @@ const ActualPump = () => {
                         <Grid item xs={3}>
                           <Typography variant="body2" fontWeight="medium">
                             Signal <br />
-                            (FT) :
+                            (FT)  <span style={{ color: "red" }}>*</span>
                           </Typography>
                         </Grid>
                         <Grid item xs={9}>
@@ -1317,7 +1374,7 @@ const ActualPump = () => {
                         <Grid item xs={3}>
                           <Typography variant="body2" fontWeight="medium">
                             Measured <br />
-                            (GPM) :
+                            (GPM)  <span style={{ color: "red" }}>*</span>
                           </Typography>
                         </Grid>
                         <Grid item xs={9}>
@@ -1326,7 +1383,7 @@ const ActualPump = () => {
 
                         <Grid item xs={3}>
                           <Typography variant="body2" fontWeight="medium">
-                            Position :
+                            Position  <span style={{ color: "red" }}>*</span>
                           </Typography>
                         </Grid>
                         <Grid item xs={9}>
@@ -1343,7 +1400,7 @@ const ActualPump = () => {
                       <Grid container spacing={2}>
                         <Grid item xs={3}>
                           <Typography variant="body2" fontWeight="medium">
-                            Efficiency :
+                            Efficiency  <span style={{ color: "red" }}>*</span>
                           </Typography>
                         </Grid>
                         <Grid item xs={9}>
@@ -1354,7 +1411,7 @@ const ActualPump = () => {
                           <Typography variant="body2" fontWeight="medium">
                             Measured
                             <br />
-                            Amperage :
+                            Amperage  <span style={{ color: "red" }}>*</span>
                           </Typography>
                         </Grid>
                         <Grid item xs={9}>
@@ -1365,7 +1422,7 @@ const ActualPump = () => {
                           <Typography variant="body2" fontWeight="medium">
                             Measured
                             <br />
-                            Voltage :
+                            Voltage  <span style={{ color: "red" }}>*</span>
                           </Typography>
                         </Grid>
                         <Grid item xs={9}>
@@ -1375,7 +1432,7 @@ const ActualPump = () => {
                         <Grid item xs={3}>
                           <Typography variant="body2" fontWeight="medium">
                             Power <br />
-                            Factor :
+                            Factor  <span style={{ color: "red" }}>*</span>
                           </Typography>
                         </Grid>
                         <Grid item xs={9}>
@@ -1386,12 +1443,12 @@ const ActualPump = () => {
                           <Grid container spacing={2} alignItems="center">
                             <Grid item xs={3}>
                               <Typography variant="body2" fontWeight="bold">
-                                EFM
+                                EFM  <span style={{ color: "red" }}>*</span>
                               </Typography>
                             </Grid>
                             <Grid item xs="auto">
                               <Typography variant="body2" fontWeight="medium">
-                                BHP :
+                                BHP 
                               </Typography>
                             </Grid>
                             <Grid item xs={3}>
@@ -1399,7 +1456,7 @@ const ActualPump = () => {
                             </Grid>
                             <Grid item xs="auto">
                               <Typography variant="body2" fontWeight="medium">
-                                BKW :
+                                BKW  
                               </Typography>
                             </Grid>
                             <Grid item xs={3}>
@@ -1415,7 +1472,7 @@ const ActualPump = () => {
             </Paper>
             <Box sx={{ mb: 2 }}>
               <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
-                Comments :
+                Comments  <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -1435,12 +1492,12 @@ const ActualPump = () => {
                 }}
               />
 
-              <Typography variant="body1" color="text.secondary" mb={1}>
+              {/* <Typography variant="body1" color="text.secondary" mb={1}>
                 *Represents[Your meaning 1]
               </Typography>
               <Typography variant="body1" color="text.secondary">
                 **Represents[Your meaning 2]
-              </Typography>
+              </Typography> */}
             </Box>
 
             <Stack direction="row" spacing={1} justifyContent="flex-end" mb={2}>
@@ -1448,11 +1505,16 @@ const ActualPump = () => {
                 variant="outlined"
                 onClick={() => navigate("/project2")}
                 sx={{
-                  bgcolor: "#f2f4f5",
-                  borderColor: "black",
-                  color: "black",
                   borderRadius: "10px",
+                  bgcolor: "#f2f4f5",
                   px: 3,
+                  color: "black",
+                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+                  border: "none", // 👈 override outlined variant's default border
+                  "&:hover": {
+                    bgcolor: "#e5e7e8",
+                    border: "none", // 👈 make sure hover state also has no border
+                  },
                 }}
               >
                 Back
@@ -1461,10 +1523,14 @@ const ActualPump = () => {
                 variant="contained"
                 onClick={handleSubmit}
                 sx={{
-                  bgcolor: "#99caff",
-                  color: "black",
                   borderRadius: "10px",
+                  bgcolor: "#99CAFF",
+                  color: "black",
                   px: 3,
+                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
+          "&:hover": {
+            bgcolor: "#7bb8ff",
+          },
                 }}
               >
                 <a

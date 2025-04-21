@@ -43,44 +43,88 @@ const CreateProject = () => {
         }}
       >
         <Grid container spacing={4}>
-          <Grid item xs={12} md={6}>
-            <Stack direction="row" spacing={2} alignItems="center">
-              <Typography fontWeight="medium">
-                Project Id <span style={{ color: "red" }}>*</span>
-              </Typography>
-              <TextField fullWidth variant="outlined" size="small" required />
-            </Stack>
-          </Grid>
+  <Grid item xs={12} md={6}>
+    <Grid container alignItems="center" spacing={2}>
+      <Grid item xs={3}>
+        <Typography fontWeight="medium">
+          Project Id <span style={{ color: "red" }}>*</span>
+        </Typography>
+      </Grid>
+      <Grid item xs={8}>
+        <TextField fullWidth variant="outlined" size="small" required />
+      </Grid>
+    </Grid>
+  </Grid>
 
-          <Grid item xs={12} md={6}>
-            <Stack direction="row" spacing={2} alignItems="center">
-              <Typography fontWeight="medium">
-                Project Name <span style={{ color: "red" }}>*</span>
-              </Typography>
-              <TextField fullWidth variant="outlined" size="small" />
-            </Stack>
-          </Grid>
+  <Grid item xs={12} md={6}>
+    <Grid container alignItems="center" spacing={2}>
+      <Grid item xs={3}>
+        <Typography fontWeight="medium">
+          Date <span style={{ color: "red" }}>*</span>
+        </Typography>
+      </Grid>
+      <Grid item xs={8}>
+        <TextField fullWidth variant="outlined" size="small" />
+      </Grid>
+    </Grid>
+  </Grid>
+  
+  <Grid item xs={12} md={6}>
+    <Grid container alignItems="center" spacing={2}>
+      <Grid item xs={3}>
+        <Typography fontWeight="medium">
+          Project Name <span style={{ color: "red" }}>*</span>
+        </Typography>
+      </Grid>
+      <Grid item xs={8}>
+        <TextField fullWidth variant="outlined" size="small" />
+      </Grid>
+    </Grid>
+  </Grid>
 
-          <Grid item xs={12} md={6}>
-            <Stack direction="row" spacing={2} alignItems="center">
-              <Typography fontWeight="medium" sx={{ whiteSpace: "pre-line" }}>
-                Customer Name <span style={{ color: "red" }}>*</span>
-              </Typography>
-              <TextField fullWidth variant="outlined" size="small" />
-            </Stack>
-          </Grid>
-        </Grid>
+  <Grid item xs={12} md={6}>
+    <Grid container alignItems="center" spacing={2}>
+      <Grid item xs={3}>
+        <Typography fontWeight="medium">
+          Customer Name <span style={{ color: "red" }}>*</span>
+        </Typography>
+      </Grid>
+      <Grid item xs={8}>
+        <TextField fullWidth variant="outlined" size="small" />
+      </Grid>
+    </Grid>
+  </Grid>
+
+  <Grid item xs={12} md={6}>
+    <Grid container alignItems="center" spacing={2}>
+      <Grid item xs={3}>
+        <Typography fontWeight="medium">
+          Tested By <span style={{ color: "red" }}>*</span>
+        </Typography>
+      </Grid>
+      <Grid item xs={8}>
+        <TextField fullWidth variant="outlined" size="small" />
+      </Grid>
+    </Grid>
+  </Grid>
+</Grid>
+
       </Paper>
 
       <Stack direction="row" spacing={1} justifyContent="flex-end">
-        <Button
+      <Button
           variant="outlined"
           sx={{
             borderRadius: "10px",
             bgcolor: "#f2f4f5",
             px: 3,
             color: "black",
-            border: "1px solid black",
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+            border: "none", // 👈 override outlined variant's default border
+            "&:hover": {
+              bgcolor: "#e5e7e8",
+              border: "none", // 👈 make sure hover state also has no border
+            },
           }}
           onClick={() => {
             navigate("/project1");
@@ -88,6 +132,7 @@ const CreateProject = () => {
         >
           Back
         </Button>
+
         <Button
           variant="contained"
           sx={{
@@ -95,6 +140,10 @@ const CreateProject = () => {
             bgcolor: "#99CAFF",
             color: "black",
             px: 3,
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
+    "&:hover": {
+      bgcolor: "#7bb8ff",
+    },
           }}
           onClick={() => {
             navigate("/project1");
