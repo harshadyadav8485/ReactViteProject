@@ -63,7 +63,7 @@ const CreatePump = () => {
           mb: 4,
         }}
       >
-        <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
+        <Typography variant="body1" fontWeight="bold" sx={{ mb: 2 }}>
           Pump
         </Typography>
 
@@ -80,11 +80,22 @@ const CreatePump = () => {
               </Typography>
               <TextField
                 fullWidth
+                placeholder="Enter Mak"
                 size="small"
                 name="make"
                 value={formData.make}
                 onChange={handleChange}
                 variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
               />
             </Stack>
           </Grid>
@@ -100,11 +111,22 @@ const CreatePump = () => {
               </Typography>
               <TextField
                 fullWidth
+                placeholder="Enter Model"
                 size="small"
                 name="model"
                 value={formData.model}
                 onChange={handleChange}
                 variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
               />
             </Stack>
           </Grid>
@@ -122,11 +144,22 @@ const CreatePump = () => {
               </Typography>
               <TextField
                 fullWidth
+                placeholder="Enter Impeller Size"
                 size="small"
                 name="impellerSize"
                 value={formData.impellerSize}
                 onChange={handleChange}
                 variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
               />
             </Stack>
           </Grid>
@@ -144,11 +177,22 @@ const CreatePump = () => {
               </Typography>
               <TextField
                 fullWidth
+                placeholder="Enter Pump Capacity"
                 size="small"
                 name="pumpCapacity"
                 value={formData.pumpCapacity}
                 onChange={handleChange}
                 variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
               />
             </Stack>
           </Grid>
@@ -166,11 +210,22 @@ const CreatePump = () => {
               </Typography>
               <TextField
                 fullWidth
+                placeholder="Enter System Capacity"
                 size="small"
                 name="systemCapacity"
                 value={formData.systemCapacity}
                 onChange={handleChange}
                 variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
               />
             </Stack>
           </Grid>
@@ -178,7 +233,7 @@ const CreatePump = () => {
 
         <Divider sx={{ my: 3, borderRadius: "5px" }} />
 
-        <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
+        <Typography variant="body1" fontWeight="bold" sx={{ mb: 2 }}>
           Motor
         </Typography>
 
@@ -195,11 +250,22 @@ const CreatePump = () => {
               </Typography>
               <TextField
                 fullWidth
+                placeholder="Enter Manufacturer"
                 size="small"
                 name="size"
                 value={formData.size}
                 onChange={handleChange}
                 variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
               />
             </Stack>
           </Grid>
@@ -215,11 +281,22 @@ const CreatePump = () => {
               </Typography>
               <TextField
                 fullWidth
+                placeholder="Enter Size"
                 size="small"
                 name="size"
                 value={formData.size}
                 onChange={handleChange}
                 variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
               />
             </Stack>
           </Grid>
@@ -237,11 +314,22 @@ const CreatePump = () => {
               </Typography>
               <TextField
                 fullWidth
+                placeholder="Enter Volts/Phase"
                 size="small"
                 name="voltsPhase"
                 value={formData.voltsPhase}
                 onChange={handleChange}
                 variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
               />
             </Stack>
           </Grid>
@@ -257,11 +345,22 @@ const CreatePump = () => {
               </Typography>
               <TextField
                 fullWidth
+                placeholder="Enter Amperage"
                 size="small"
                 name="amperage"
                 value={formData.amperage}
                 onChange={handleChange}
                 variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
               />
             </Stack>
           </Grid>
@@ -282,11 +381,22 @@ const CreatePump = () => {
               </Typography>
               <TextField
                 fullWidth
+                placeholder="Enter R.P.M"
                 size="small"
                 name="rpm"
                 value={formData.rpm}
                 onChange={handleChange}
                 variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
               />
             </Stack>
           </Grid>
@@ -299,13 +409,14 @@ const CreatePump = () => {
           onClick={() => navigate("/createPumpCreation")}
           sx={{
             borderRadius: "10px",
-            border: "1px solid black",
-            color: "black",
             bgcolor: "#f2f4f5",
             px: 3,
+            color: "black",
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+            border: "none", // 👈 override outlined variant's default border
             "&:hover": {
               bgcolor: "#e5e7e8",
-              border: "1px solid black",
+              border: "none", // 👈 make sure hover state also has no border
             },
           }}
         >
@@ -316,10 +427,10 @@ const CreatePump = () => {
           onClick={handleSubmit}
           sx={{
             borderRadius: "10px",
-            px: 3,
-            bgcolor: "#99caff",
+            bgcolor: "#99CAFF",
             color: "black",
-            fontWeight: 500,
+            px: 3,
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
             "&:hover": {
               bgcolor: "#7bb8ff",
             },

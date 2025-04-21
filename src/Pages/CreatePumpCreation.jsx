@@ -18,11 +18,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Projects2 from "./Projects2";
 
-const pumpRunningMates = [
-  { id: 1, name: "Pump Running 1" },
-  { id: 2, name: "Pump Running 2" },
-];
-
 {
   /* <Select
   value={pumpType}
@@ -35,8 +30,8 @@ const CreatePumpCreation = () => {
   const navigate = useNavigate();
   const [pumpType, setPumpType] = useState("");
   const [pumpRunningMates, setPumpRunningMates] = useState([
-    { id: 1, name: "Pump running 1" },
-    { id: 2, name: "Pump running 2" },
+    { id: 1, name: "" },
+    { id: 2, name: "" },
   ]);
 
   // Handle dropdown change
@@ -50,9 +45,13 @@ const CreatePumpCreation = () => {
   };
 
   // Handle removing a pump running mate field
+  // const handleRemovePumpMate = (index) => {
+  //   const updatedPumpMates = [...pumpRunningMates];
+  //   updatedPumpMates.splice(index, 1);
+  //   setPumpRunningMates(updatedPumpMates);
+  // };
   const handleRemovePumpMate = (index) => {
-    const updatedPumpMates = [...pumpRunningMates];
-    updatedPumpMates.splice(index, 1);
+    const updatedPumpMates = pumpRunningMates.filter((_, i) => i !== index);
     setPumpRunningMates(updatedPumpMates);
   };
 
@@ -85,7 +84,6 @@ const CreatePumpCreation = () => {
       </Typography>
 
       <Select
-        // fullWidth
         variant="outlined"
         displayEmpty
         value={pumpType}
@@ -117,12 +115,7 @@ const CreatePumpCreation = () => {
           mb: 4,
         }}
       >
-        <Typography
-          variant="h6"
-          component="h1"
-          fontWeight="bold"
-          sx={{ mb: 2 }}
-        >
+        <Typography variant="body1" fontWeight="bold" sx={{ mb: 2 }}>
           Pump Identification
         </Typography>
         <Grid container spacing={4}>
@@ -135,14 +128,63 @@ const CreatePumpCreation = () => {
               >
                 Pump <br /> Type <span style={{ color: "red" }}>*</span>
               </Typography>
-              <TextField
-                fullWidth
-                defaultValue="Parallel"
+              {/* <Select
                 variant="outlined"
-                size="small"
-              />
+                displayEmpty
+                value={pumpType}
+                onChange={(e) => setPumpType(e.target.value)}
+                IconComponent={KeyboardArrowDownIcon}
+                sx={{
+                  bgcolor: "#fff",
+                  height: "40px",
+                  width: "100%",
+                }}
+              >
+                <MenuItem value="">
+                  <p style={{ color: "black" }}>Parallel</p>
+                </MenuItem>
+                <MenuItem value="standby">Stand By</MenuItem>
+                <MenuItem value="standalone">Stand Alone</MenuItem>
+                <MenuItem value="leadlag">Lead/Lag</MenuItem>
+              </Select> */}
+              <Select
+                variant="outlined"
+                displayEmpty
+                value={pumpType}
+                onChange={(e) => setPumpType(e.target.value)}
+                IconComponent={KeyboardArrowDownIcon}
+                sx={{
+                  bgcolor: "#fff",
+                  height: "40px",
+                  width: "100%",
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#000", // black border
+                  },
+                  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#000", // keep black when focused
+                  },
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#000", // black on hover too
+                  },
+                }}
+                MenuProps={{
+                  PaperProps: {
+                    sx: {
+                      bgcolor: "#fff", // optional: to match your select background
+                    },
+                  },
+                }}
+              >
+                <MenuItem value="">
+                  <p style={{ color: "black" }}>Parallel</p>
+                </MenuItem>
+                <MenuItem value="standby">Stand By</MenuItem>
+                <MenuItem value="standalone">Stand Alone</MenuItem>
+                <MenuItem value="leadlag">Lead/Lag</MenuItem>
+              </Select>
             </Box>
           </Grid>
+
           <Grid item xs={12} md={6}>
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <Typography
@@ -150,11 +192,27 @@ const CreatePumpCreation = () => {
                 fontWeight="500"
                 sx={{ mr: 2, minWidth: "80px" }}
               >
-                Pump No <span style={{ color: "red" }}>*</span>
+                Pump No. <span style={{ color: "red" }}>*</span>
               </Typography>
-              <TextField fullWidth variant="outlined" size="small" />
+              <TextField
+                fullWidth
+                placeholder="Enter Pump No."
+                variant="outlined"
+                size="small"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
+              />
             </Box>
           </Grid>
+
           <Grid item xs={12} md={6}>
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <Typography
@@ -164,7 +222,22 @@ const CreatePumpCreation = () => {
               >
                 Location <span style={{ color: "red" }}>*</span>
               </Typography>
-              <TextField fullWidth variant="outlined" size="small" />
+              <TextField
+                fullWidth
+                placeholder="Enter Location"
+                variant="outlined"
+                size="small"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
+              />{" "}
             </Box>
           </Grid>
           <Grid item xs={12} md={6}>
@@ -178,7 +251,22 @@ const CreatePumpCreation = () => {
                 <br />
                 Served <span style={{ color: "red" }}>*</span>
               </Typography>
-              <TextField fullWidth variant="outlined" size="small" />
+              <TextField
+                fullWidth
+                placeholder="Enter System Served"
+                variant="outlined"
+                size="small"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
+              />
             </Box>
           </Grid>
         </Grid>
@@ -188,7 +276,7 @@ const CreatePumpCreation = () => {
             Pump Running Mates <span style={{ color: "red" }}>*</span>
           </Typography>
 
-          <Grid container spacing={4}>
+          {/* <Grid container spacing={4}>
             {pumpRunningMates.map((pump) => (
               <Grid item xs={12} md={6} key={pump.id}>
                 <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -197,6 +285,9 @@ const CreatePumpCreation = () => {
                     variant="outlined"
                     size="small"
                     value={pump.name}
+                    onChange={(e) =>
+                      handlePumpMateChange(index, e.target.value)
+                    }
                     sx={{
                       "& .MuiOutlinedInput-root": {
                         color: "#868686",
@@ -212,6 +303,48 @@ const CreatePumpCreation = () => {
                       height: "35px",
                       width: "35px",
                     }}
+                    onClick={() => handleRemovePumpMate(index)}
+                  >
+                    <RemoveIcon />
+                  </IconButton>
+                </Box>
+              </Grid>
+            ))}
+          </Grid> */}
+          <Grid container spacing={4}>
+            {pumpRunningMates.map((pump, index) => (
+              <Grid item xs={12} md={6} key={pump.id}>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <TextField
+                    fullWidth
+                    variant="outlined"
+                    placeholder="Pump Running Mate Number"
+                    size="small"
+                    value={pump.name}
+                    onChange={(e) =>
+                      handlePumpMateChange(index, e.target.value)
+                    } // Pass the correct index here
+                    sx={{
+                      "& .MuiOutlinedInput-root": {
+                        "& fieldset": {
+                          borderColor: "#333", // Dark border color
+                        },
+                        "&.Mui-focused fieldset": {
+                          borderColor: "#000", // Even darker border color when focused
+                        },
+                      },
+                    }}
+                  />
+                  <IconButton
+                    sx={{
+                      ml: 1,
+                      border: "1px solid #dc3545",
+                      borderRadius: "5px",
+                      color: "#df4958",
+                      height: "35px",
+                      width: "35px",
+                    }}
+                    onClick={() => handleRemovePumpMate(index)}
                   >
                     <RemoveIcon />
                   </IconButton>
@@ -223,6 +356,7 @@ const CreatePumpCreation = () => {
           <Button
             variant="contained"
             endIcon={<AddIcon />}
+            onClick={handleAddPumpMate}
             sx={{
               mt: 2,
               bgcolor: "#99caff",
@@ -314,13 +448,14 @@ const CreatePumpCreation = () => {
           onClick={() => navigate("/project2")}
           sx={{
             borderRadius: "10px",
-            border: "1px solid black",
-            color: "black",
             bgcolor: "#f2f4f5",
             px: 3,
+            color: "black",
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+            border: "none", // 👈 override outlined variant's default border
             "&:hover": {
               bgcolor: "#e5e7e8",
-              border: "1px solid black",
+              border: "none", // 👈 make sure hover state also has no border
             },
           }}
         >
@@ -331,9 +466,10 @@ const CreatePumpCreation = () => {
           onClick={() => navigate("/createPump")}
           sx={{
             borderRadius: "10px",
-            bgcolor: "#99caff",
+            bgcolor: "#99CAFF",
             color: "black",
             px: 3,
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
             "&:hover": {
               bgcolor: "#7bb8ff",
             },

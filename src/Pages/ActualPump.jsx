@@ -1215,7 +1215,7 @@ const ActualPump = () => {
                 <Grid container spacing={2}>
                   <Grid item xs={1.5}>
                     <Typography variant="body1" fontWeight="medium">
-                      System Capacity :
+                      Full Flow :
                     </Typography>
                   </Grid>
                   <Grid item xs={2.5}>
@@ -1223,7 +1223,7 @@ const ActualPump = () => {
                   </Grid>
                   <Grid item xs={1.5}>
                     <Typography variant="body1" fontWeight="medium">
-                      Balanced position :
+                      Balanced Position :
                     </Typography>
                   </Grid>
                   <Grid item xs={2.5}>
@@ -1238,7 +1238,7 @@ const ActualPump = () => {
                 <Grid container spacing={2}>
                   <Grid item xs={1.5}>
                     <Typography variant="body1" fontWeight="medium">
-                      System Capacity :
+                      Full Flow :
                     </Typography>
                   </Grid>
                   <Grid item xs={2.5}>
@@ -1246,7 +1246,7 @@ const ActualPump = () => {
                   </Grid>
                   <Grid item xs={1.5}>
                     <Typography variant="body1" fontWeight="medium">
-                      Balanced position :
+                      Balanced Position :
                     </Typography>
                   </Grid>
                   <Grid item xs={2.5}>
