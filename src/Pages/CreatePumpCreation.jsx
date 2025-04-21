@@ -452,10 +452,10 @@ const CreatePumpCreation = () => {
             px: 3,
             color: "black",
             boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
-            border: "none", // 👈 override outlined variant's default border
+            border: "none",
             "&:hover": {
               bgcolor: "#e5e7e8",
-              border: "none", // 👈 make sure hover state also has no border
+              border: "none",
             },
           }}
         >

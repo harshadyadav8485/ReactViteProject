@@ -63,7 +63,7 @@ const EditPump = () => {
           mb: 4,
         }}
       >
-        <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
+        <Typography variant="body1" fontWeight="bold" sx={{ mb: 2 }}>
           Pump
         </Typography>
 
@@ -86,6 +86,16 @@ const EditPump = () => {
                 value={formData.make}
                 onChange={handleChange}
                 variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
               />
             </Stack>
           </Grid>
@@ -107,6 +117,16 @@ const EditPump = () => {
                 value={formData.model}
                 onChange={handleChange}
                 variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
               />
             </Stack>
           </Grid>
@@ -130,6 +150,16 @@ const EditPump = () => {
                 value={formData.impellerSize}
                 onChange={handleChange}
                 variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
               />
             </Stack>
           </Grid>
@@ -153,6 +183,16 @@ const EditPump = () => {
                 value={formData.pumpCapacity}
                 onChange={handleChange}
                 variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
               />
             </Stack>
           </Grid>
@@ -176,6 +216,16 @@ const EditPump = () => {
                 value={formData.systemCapacity}
                 onChange={handleChange}
                 variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
               />
             </Stack>
           </Grid>
@@ -183,7 +233,7 @@ const EditPump = () => {
 
         <Divider sx={{ my: 3, borderRadius: "5px" }} />
 
-        <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
+        <Typography variant="body1" fontWeight="bold" sx={{ mb: 2 }}>
           Motor
         </Typography>
 
@@ -206,6 +256,16 @@ const EditPump = () => {
                 value={formData.size}
                 onChange={handleChange}
                 variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
               />
             </Stack>
           </Grid>
@@ -227,6 +287,16 @@ const EditPump = () => {
                 value={formData.size}
                 onChange={handleChange}
                 variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
               />
             </Stack>
           </Grid>
@@ -250,6 +320,16 @@ const EditPump = () => {
                 value={formData.voltsPhase}
                 onChange={handleChange}
                 variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
               />
             </Stack>
           </Grid>
@@ -271,6 +351,16 @@ const EditPump = () => {
                 value={formData.amperage}
                 onChange={handleChange}
                 variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
               />
             </Stack>
           </Grid>
@@ -297,6 +387,16 @@ const EditPump = () => {
                 value={formData.rpm}
                 onChange={handleChange}
                 variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
               />
             </Stack>
           </Grid>
@@ -309,13 +409,14 @@ const EditPump = () => {
           onClick={() => navigate("/editPumpCreation")}
           sx={{
             borderRadius: "10px",
-            border: "1px solid black",
-            color: "black",
             bgcolor: "#f2f4f5",
             px: 3,
+            color: "black",
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+            border: "none", // 👈 override outlined variant's default border
             "&:hover": {
               bgcolor: "#e5e7e8",
-              border: "1px solid black",
+              border: "none", // 👈 make sure hover state also has no border
             },
           }}
         >
@@ -326,12 +427,10 @@ const EditPump = () => {
           onClick={handleSubmit}
           sx={{
             borderRadius: "10px",
-            px: 3,
-            py: 1,
-            bgcolor: "#99caff",
+            bgcolor: "#99CAFF",
             color: "black",
-            fontFamily: "Poppins",
-            fontWeight: 500,
+            px: 3,
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
             "&:hover": {
               bgcolor: "#7bb8ff",
             },
