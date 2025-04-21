@@ -102,7 +102,7 @@ const Header = () => {
               fontSize: "18px",
             }}
           >
-            TAB REPORTING
+            REPORTING
           </Typography>
 
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
