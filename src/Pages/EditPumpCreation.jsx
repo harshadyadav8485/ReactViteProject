@@ -100,12 +100,7 @@ const EditPumpCreation = () => {
           mb: 4,
         }}
       >
-        <Typography
-          variant="h6"
-          component="h1"
-          fontWeight="bold"
-          sx={{ mb: 2 }}
-        >
+        <Typography variant="body1" fontWeight="bold" sx={{ mb: 2 }}>
           Pump Identification
         </Typography>
         <Grid container spacing={4}>
@@ -123,6 +118,16 @@ const EditPumpCreation = () => {
                 defaultValue="Parallel"
                 variant="outlined"
                 size="small"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
               />
             </Box>
           </Grid>
@@ -140,6 +145,16 @@ const EditPumpCreation = () => {
                 defaultValue="P-06-07A"
                 variant="outlined"
                 size="small"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
               />
             </Box>
           </Grid>
@@ -157,6 +172,16 @@ const EditPumpCreation = () => {
                 defaultValue="Mechanical Penthouse"
                 variant="outlined"
                 size="small"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
               />
             </Box>
           </Grid>
@@ -176,12 +201,22 @@ const EditPumpCreation = () => {
                 defaultValue="Secondary Chilled Water Pump"
                 variant="outlined"
                 size="small"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
               />
             </Box>
           </Grid>
         </Grid>
 
-        <Box sx={{ mt: 2 }}>
+        {/* <Box sx={{ mt: 2 }}>
           <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
             Pump Running Mates <span style={{ color: "red" }}>*</span>
           </Typography>
@@ -214,6 +249,16 @@ const EditPumpCreation = () => {
                       name: e.target.value,
                     })
                   }
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": {
+                        borderColor: "#333", // Dark border color
+                      },
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#000", // Even darker border color when focused
+                      },
+                    },
+                  }}
                 />
                 <IconButton
                   sx={{
@@ -260,6 +305,90 @@ const EditPumpCreation = () => {
               </Button>
             </Box>
           </Box>
+        </Box> */}
+        <Box sx={{ mt: 2 }}>
+          <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
+            Pump Running Mates <span style={{ color: "red" }}>*</span>
+          </Typography>
+
+          {/* Wrapper for the list of dynamic fields */}
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 2,
+            }}
+          >
+            {pumpRunningMates.map((pump, index) => (
+              <Box
+                key={pump.id}
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  width: { xs: "100%", sm: "calc(50% - 8px)" },
+                }}
+              >
+                <TextField
+                  fullWidth
+                  variant="outlined"
+                  size="small"
+                  value={pump.name}
+                  onChange={(e) =>
+                    handlePumpMateChange(index, {
+                      ...pump,
+                      name: e.target.value,
+                    })
+                  }
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": {
+                        borderColor: "#333",
+                      },
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#000",
+                      },
+                    },
+                  }}
+                />
+                <IconButton
+                  sx={{
+                    ml: 1,
+                    border: "1px solid #dc3545",
+                    borderRadius: "5px",
+                    color: "#df4958",
+                    height: "35px",
+                    width: "35px",
+                  }}
+                  onClick={() => handleRemovePumpMate(index)}
+                >
+                  <RemoveIcon />
+                </IconButton>
+              </Box>
+            ))}
+          </Box>
+
+          {/* Separated button for consistent position */}
+          <Box sx={{ mt: 2 }}>
+            <Button
+              variant="contained"
+              endIcon={<AddIcon />}
+              onClick={handleAddPumpMate}
+              sx={{
+                bgcolor: "#99caff",
+                color: "black",
+                borderRadius: "5px",
+                textTransform: "uppercase",
+                fontWeight: 500,
+                px: 2,
+                py: 1,
+                "&:hover": {
+                  bgcolor: "#7bb8ff",
+                },
+              }}
+            >
+              Add Pump Running Mates
+            </Button>
+          </Box>
         </Box>
       </Paper>
 
@@ -269,13 +398,14 @@ const EditPumpCreation = () => {
           onClick={() => navigate("/project2")}
           sx={{
             borderRadius: "10px",
-            border: "1px solid black",
-            color: "black",
             bgcolor: "#f2f4f5",
             px: 3,
+            color: "black",
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+            border: "none", // 👈 override outlined variant's default border
             "&:hover": {
               bgcolor: "#e5e7e8",
-              border: "1px solid black",
+              border: "none", // 👈 make sure hover state also has no border
             },
           }}
         >
@@ -286,9 +416,10 @@ const EditPumpCreation = () => {
           onClick={() => navigate("/editPump")}
           sx={{
             borderRadius: "10px",
-            bgcolor: "#99caff",
+            bgcolor: "#99CAFF",
             color: "black",
             px: 3,
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
             "&:hover": {
               bgcolor: "#7bb8ff",
             },
