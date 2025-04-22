@@ -100,7 +100,68 @@ const EditPumpCreation = () => {
           mb: 4,
         }}
       >
-        <Typography variant="body1" fontWeight="bold" sx={{ mb: 2 }}>
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={6}>
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Typography
+                variant="body1"
+                fontWeight="500"
+                sx={{ mr: 2, minWidth: "80px" }}
+              >
+                Planned <br /> Inspection Date{" "}
+                <span style={{ color: "red" }}>*</span>
+              </Typography>
+              <TextField
+                fullWidth
+                defaultValue="22/04/2025"
+                placeholder="Enter Planned Inspection Date"
+                variant="outlined"
+                size="small"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000",
+                    },
+                  },
+                }}
+              />
+            </Box>
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Typography
+                variant="body1"
+                fontWeight="500"
+                sx={{ mr: 2, minWidth: "80px" }}
+              >
+                Actual <br /> Inspection Date{" "}
+                <span style={{ color: "red" }}>*</span>
+              </Typography>
+              <TextField
+                fullWidth
+                defaultValue="24/04/2025"
+                placeholder="Enter Actual Inspection Date"
+                variant="outlined"
+                size="small"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000",
+                    },
+                  },
+                }}
+              />{" "}
+            </Box>
+          </Grid>
+        </Grid>
+        <Typography variant="body1" fontWeight="bold" sx={{ mb: 1, mt: 2 }}>
           Pump Identification
         </Typography>
         <Grid container spacing={4}>

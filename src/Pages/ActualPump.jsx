@@ -2176,7 +2176,7 @@ const ActualPump = () => {
                   </Grid>
                 )}
               </Grid>
-              <Box sx={{ mb: 2, mt: 2 }}>
+              <Box sx={{ mb: 1, mt: 2 }}>
                 <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
                   Comments <span style={{ color: "red" }}>*</span>
                 </Typography>
@@ -2209,7 +2209,7 @@ const ActualPump = () => {
                 direction="row"
                 spacing={1}
                 justifyContent="flex-end"
-                mb={2}
+                mb={1}
               >
                 <Button
                   variant="outlined"
@@ -2252,6 +2252,24 @@ const ActualPump = () => {
                     Submit
                   </a> */}
                 </Button>
+                <Button
+                  variant="contained"
+                  onClick={() => {
+                    window.open(pump_report, "_blank");
+                  }}
+                  sx={{
+                    borderRadius: "10px",
+                    bgcolor: "#99CAFF",
+                    color: "black",
+                    px: 3,
+                    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+                    "&:hover": {
+                      bgcolor: "#7bb8ff",
+                    },
+                  }}
+                >
+                  Generate & View Report
+                </Button>
               </Stack>
               <Snackbar
                 open={openSnackbar}
@@ -2268,41 +2286,6 @@ const ActualPump = () => {
                 </Alert>
               </Snackbar>
             </Paper>
-
-            <Stack direction="row" spacing={1} justifyContent="flex-end" mb={2}>
-              <Button
-                variant="contained"
-                onClick={() => {
-                  window.open(pump_report, "_blank");
-                }}
-                sx={{
-                  borderRadius: "10px",
-                  bgcolor: "#99CAFF",
-                  color: "black",
-                  px: 3,
-                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
-                  "&:hover": {
-                    bgcolor: "#7bb8ff",
-                  },
-                }}
-              >
-                View Report
-              </Button>
-            </Stack>
-            <Snackbar
-              open={openSnackbar}
-              autoHideDuration={2000}
-              onClose={() => setOpenSnackbar(false)}
-              anchorOrigin={{ vertical: "top", horizontal: "center" }}
-            >
-              <Alert
-                onClose={() => setOpenSnackbar(false)}
-                severity="success"
-                variant="filled"
-              >
-                Data Submitted Successfully!
-              </Alert>
-            </Snackbar>
           </Box>
         )}
       </Box>

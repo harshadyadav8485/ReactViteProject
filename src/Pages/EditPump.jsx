@@ -24,6 +24,7 @@ const EditPump = () => {
     voltsPhase: "575/3",
     amperage: "23.60",
     rpm: "",
+    assignTo: "JJ",
   });
 
   const handleChange = (e) => {
@@ -63,7 +64,7 @@ const EditPump = () => {
           mb: 4,
         }}
       >
-        <Typography variant="body1" fontWeight="bold" sx={{ mb: 2 }}>
+        <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
           Pump
         </Typography>
 
@@ -233,7 +234,7 @@ const EditPump = () => {
 
         <Divider sx={{ my: 3, borderRadius: "5px" }} />
 
-        <Typography variant="body1" fontWeight="bold" sx={{ mb: 2 }}>
+        <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
           Motor
         </Typography>
 
@@ -385,6 +386,37 @@ const EditPump = () => {
                 size="small"
                 name="rpm"
                 value={formData.rpm}
+                onChange={handleChange}
+                variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333", // Dark border color
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
+              />
+            </Stack>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Stack direction="row" spacing={2} alignItems="center">
+              <Typography
+                sx={{
+                  width: 100,
+                  fontWeight: 500,
+                }}
+              >
+                Assign To <span style={{ color: "red" }}>*</span>
+              </Typography>
+              <TextField
+                fullWidth
+                defaultValue="JJ"
+                size="small"
+                name="amperage"
+                value={formData.assignTo}
                 onChange={handleChange}
                 variant="outlined"
                 sx={{
