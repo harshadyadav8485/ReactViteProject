@@ -2176,77 +2176,117 @@ const ActualPump = () => {
                   </Grid>
                 )}
               </Grid>
-            </Paper>
-            <Box sx={{ mb: 2 }}>
-              <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
-                Comments <span style={{ color: "red" }}>*</span>
-              </Typography>
-              <TextField
-                fullWidth
-                multiline
-                rows={5}
-                placeholder="Enter your comments..."
-                sx={{
-                  mb: 2,
-                  "& .MuiOutlinedInput-root": {
-                    "& fieldset": {
-                      borderColor: "#333", // Dark border color
+              <Box sx={{ mb: 2, mt: 2 }}>
+                <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
+                  Comments <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  fullWidth
+                  multiline
+                  rows={5}
+                  placeholder="Enter your comments..."
+                  sx={{
+                    mb: 2,
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": {
+                        borderColor: "#333", // Dark border color
+                      },
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#000", // Even darker border color when focused
+                      },
                     },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#000", // Even darker border color when focused
-                    },
-                  },
-                }}
-              />
+                  }}
+                />
 
-              {/* <Typography variant="body1" color="text.secondary" mb={1}>
+                {/* <Typography variant="body1" color="text.secondary" mb={1}>
                 *Represents[Your meaning 1]
               </Typography>
               <Typography variant="body1" color="text.secondary">
                 **Represents[Your meaning 2]
               </Typography> */}
-            </Box>
+              </Box>
+              <Stack
+                direction="row"
+                spacing={1}
+                justifyContent="flex-end"
+                mb={2}
+              >
+                <Button
+                  variant="outlined"
+                  onClick={() => navigate("/project2")}
+                  sx={{
+                    borderRadius: "10px",
+                    bgcolor: "#f2f4f5",
+                    px: 3,
+                    color: "black",
+                    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+                    border: "none", // 👈 override outlined variant's default border
+                    "&:hover": {
+                      bgcolor: "#e5e7e8",
+                      border: "none", // 👈 make sure hover state also has no border
+                    },
+                  }}
+                >
+                  Back
+                </Button>
+                <Button
+                  variant="contained"
+                  onClick={handleSubmit}
+                  sx={{
+                    borderRadius: "10px",
+                    bgcolor: "#99CAFF",
+                    color: "black",
+                    px: 3,
+                    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
+                    "&:hover": {
+                      bgcolor: "#7bb8ff",
+                    },
+                  }}
+                >
+                  Submit
+                  {/* <a
+                    href={pump_report}
+                    download="pump_report"
+                    style={{ color: "inherit", textDecoration: "none" }}
+                  >
+                    Submit
+                  </a> */}
+                </Button>
+              </Stack>
+              <Snackbar
+                open={openSnackbar}
+                autoHideDuration={2000}
+                onClose={() => setOpenSnackbar(false)}
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+              >
+                <Alert
+                  onClose={() => setOpenSnackbar(false)}
+                  severity="success"
+                  variant="filled"
+                >
+                  Data Submitted Successfully!
+                </Alert>
+              </Snackbar>
+            </Paper>
 
             <Stack direction="row" spacing={1} justifyContent="flex-end" mb={2}>
               <Button
-                variant="outlined"
-                onClick={() => navigate("/project2")}
-                sx={{
-                  borderRadius: "10px",
-                  bgcolor: "#f2f4f5",
-                  px: 3,
-                  color: "black",
-                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
-                  border: "none", // 👈 override outlined variant's default border
-                  "&:hover": {
-                    bgcolor: "#e5e7e8",
-                    border: "none", // 👈 make sure hover state also has no border
-                  },
-                }}
-              >
-                Back
-              </Button>
-              <Button
                 variant="contained"
-                onClick={handleSubmit}
+                onClick={() => {
+                  window.open(pump_report, "_blank");
+                }}
                 sx={{
                   borderRadius: "10px",
                   bgcolor: "#99CAFF",
                   color: "black",
                   px: 3,
-                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
+                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
                   "&:hover": {
                     bgcolor: "#7bb8ff",
                   },
                 }}
               >
-                <a
-                  href={pump_report}
-                  download="pump_report"
-                  style={{ color: "inherit", textDecoration: "none" }}
-                >
-                  Submit & Generate Report
-                </a>
+                View Report
               </Button>
             </Stack>
             <Snackbar
