@@ -105,7 +105,7 @@ const Reports = () => {
           justifyContent="space-between"
         >
           <TextField
-            placeholder="Search by Project Id, Project Name & Customer Name..."
+            placeholder="Search by Project Id, Project Name & Equipment Name..."
             variant="outlined"
             sx={{
               width: "50%",
@@ -165,47 +165,36 @@ const Reports = () => {
                     <Typography fontWeight="bold">{project.id}</Typography>
                   </TableCell>
                   <TableCell>
-                    {/* <Tooltip title={project.tooltip} arrow> */}
                       <Typography
                         fontWeight="medium"
-                        // sx={{
-                        //   whiteSpace: "pre-line",
-                        //   cursor: "pointer",
-                        //   textDecoration: "none",
-                        //   color: "#000000",
-                        // }}
-                        // onClick={() => navigate("/project2")}
                       >
                         {project.name}
                       </Typography>
-                    {/* </Tooltip> */}
                   </TableCell>
-
+                    <TableCell>
+                        <Select
+                          value={project.equipment}
+                          size="small"
+                          onChange={(e) => {
+                            // handle change if needed
+                            console.log(`New equipment for ${project.id}:`, e.target.value);
+                          }}
+                          displayEmpty
+                          variant="outlined"
+                          sx={{ width: "150px", bgcolor: "#fff" }}
+                        >
+                          <MenuItem value="Pump">Pump</MenuItem>
+                          <MenuItem value="Fan">Fan</MenuItem>
+                          {/* <MenuItem value="Compressor">Compressor</MenuItem> */}
+                        </Select>
+                      </TableCell>
                   <TableCell>
-                    <Typography
-                      fontWeight="medium"
-                      style={{ whiteSpace: "pre-line" }}
-                    >
-                      {project.equipment}
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-  <Stack direction="row" spacing={1}>
-    <Tooltip title="View Report">
-      <IconButton
-        variant="contained"
+                    <Stack direction="row" spacing={1}>
+                      <Tooltip title="View Report">
+                        <IconButton
+                          variant="contained"
                          onClick={() => {
                            window.open(pump_report, "_blank");
-                         }}
-                         sx={{
-                           borderRadius: "10px",
-                           bgcolor: "#99CAFF",
-                           color: "black",
-                           px: 3,
-                           boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
-                           "&:hover": {
-                             bgcolor: "#7bb8ff",
-                           },
                          }}
                        >
         <VisibilityIcon />
@@ -217,7 +206,7 @@ const Reports = () => {
         size="small"
         color="secondary"
         onClick={() => {
-          // implement download logic here
+          
         }}
       >
         <FileDownloadIcon />
@@ -348,7 +337,14 @@ const Reports = () => {
       <Button
         variant="outlined"
         color="secondary"
-        sx={{ textTransform: "none", borderColor: "#90caf9", color: "#000" }}
+        sx={{ textTransform: "none", borderColor: "#000", color: "#000",
+          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+          border: "none", // 👈 override outlined variant's default border
+          "&:hover": {
+            bgcolor: "#e5e7e8",
+            border: "none", // 👈 make sure hover state also has no border
+          },
+         }}
         >
          <a
                     href={pump_report}
