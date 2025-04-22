@@ -156,6 +156,14 @@ const Projects = () => {
               "& .MuiOutlinedInput-root": {
                 borderRadius: "10px",
               },
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": {
+                  borderColor: "#333", // Dark border color
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: "#000", // Even darker border color when focused
+                },
+              },
             }}
           />
 
@@ -260,9 +268,9 @@ const Projects = () => {
                       >
                         <BorderColorIcon />
                       </IconButton>
-                      <IconButton size="small" color="error">
+                      {/* <IconButton size="small" color="error">
                         <Delete />
-                      </IconButton>
+                      </IconButton> */}
                     </Stack>
                   </TableCell>
                 </TableRow>

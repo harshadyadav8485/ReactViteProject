@@ -167,6 +167,14 @@ const Projects1 = () => {
               "& .MuiOutlinedInput-root": {
                 borderRadius: "10px",
               },
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": {
+                  borderColor: "#333", // Dark border color
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: "#000", // Even darker border color when focused
+                },
+              },
             }}
           />
 
@@ -241,7 +249,7 @@ const Projects1 = () => {
                         sx={{
                           whiteSpace: "pre-line",
                           cursor: "pointer",
-                          textDecoration: "none", // Remove underline
+                          textDecoration: "none",
                           color: "#000000",
                         }}
                         onClick={() => navigate("/project2")}
@@ -271,9 +279,9 @@ const Projects1 = () => {
                       >
                         <BorderColorIcon />
                       </IconButton>
-                      <IconButton size="small" color="error">
+                      {/* <IconButton size="small" color="error">
                         <Delete />
-                      </IconButton>
+                      </IconButton> */}
                     </Stack>
                   </TableCell>
                 </TableRow>

@@ -28,7 +28,7 @@ import Projects2 from "./Projects2";
 
 const CreatePumpCreation = () => {
   const navigate = useNavigate();
-  const [pumpType, setPumpType] = useState("");
+  const [pumpType, setPumpType] = useState("Parallel");
   const [pumpRunningMates, setPumpRunningMates] = useState([
     { id: 1, name: "" },
     { id: 2, name: "" },
@@ -128,25 +128,7 @@ const CreatePumpCreation = () => {
               >
                 Pump <br /> Type <span style={{ color: "red" }}>*</span>
               </Typography>
-              {/* <Select
-                variant="outlined"
-                displayEmpty
-                value={pumpType}
-                onChange={(e) => setPumpType(e.target.value)}
-                IconComponent={KeyboardArrowDownIcon}
-                sx={{
-                  bgcolor: "#fff",
-                  height: "40px",
-                  width: "100%",
-                }}
-              >
-                <MenuItem value="">
-                  <p style={{ color: "black" }}>Parallel</p>
-                </MenuItem>
-                <MenuItem value="standby">Stand By</MenuItem>
-                <MenuItem value="standalone">Stand Alone</MenuItem>
-                <MenuItem value="leadlag">Lead/Lag</MenuItem>
-              </Select> */}
+
               <Select
                 variant="outlined"
                 displayEmpty
@@ -158,29 +140,28 @@ const CreatePumpCreation = () => {
                   height: "40px",
                   width: "100%",
                   "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#000", // black border
+                    borderColor: "#000",
                   },
                   "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#000", // keep black when focused
+                    borderColor: "#000",
                   },
                   "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#000", // black on hover too
+                    borderColor: "#000",
                   },
                 }}
                 MenuProps={{
                   PaperProps: {
                     sx: {
-                      bgcolor: "#fff", // optional: to match your select background
+                      bgcolor: "#fff",
                     },
                   },
                 }}
               >
-                <MenuItem value="">
-                  <p style={{ color: "black" }}>Parallel</p>
-                </MenuItem>
+                <MenuItem value="Parallel">Parallel</MenuItem>
+
                 <MenuItem value="standby">Stand By</MenuItem>
                 <MenuItem value="standalone">Stand Alone</MenuItem>
-                <MenuItem value="leadlag">Lead/Lag</MenuItem>
+                <MenuItem value="lead/lag">Lead/Lag</MenuItem>
               </Select>
             </Box>
           </Grid>
@@ -202,10 +183,10 @@ const CreatePumpCreation = () => {
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     "& fieldset": {
-                      borderColor: "#333", // Dark border color
+                      borderColor: "#333",
                     },
                     "&.Mui-focused fieldset": {
-                      borderColor: "#000", // Even darker border color when focused
+                      borderColor: "#000",
                     },
                   },
                 }}
@@ -230,10 +211,10 @@ const CreatePumpCreation = () => {
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     "& fieldset": {
-                      borderColor: "#333", // Dark border color
+                      borderColor: "#333",
                     },
                     "&.Mui-focused fieldset": {
-                      borderColor: "#000", // Even darker border color when focused
+                      borderColor: "#000",
                     },
                   },
                 }}
@@ -259,10 +240,10 @@ const CreatePumpCreation = () => {
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     "& fieldset": {
-                      borderColor: "#333", // Dark border color
+                      borderColor: "#333",
                     },
                     "&.Mui-focused fieldset": {
-                      borderColor: "#000", // Even darker border color when focused
+                      borderColor: "#000",
                     },
                   },
                 }}
@@ -276,41 +257,6 @@ const CreatePumpCreation = () => {
             Pump Running Mates <span style={{ color: "red" }}>*</span>
           </Typography>
 
-          {/* <Grid container spacing={4}>
-            {pumpRunningMates.map((pump) => (
-              <Grid item xs={12} md={6} key={pump.id}>
-                <Box sx={{ display: "flex", alignItems: "center" }}>
-                  <TextField
-                    fullWidth
-                    variant="outlined"
-                    size="small"
-                    value={pump.name}
-                    onChange={(e) =>
-                      handlePumpMateChange(index, e.target.value)
-                    }
-                    sx={{
-                      "& .MuiOutlinedInput-root": {
-                        color: "#868686",
-                      },
-                    }}
-                  />
-                  <IconButton
-                    sx={{
-                      ml: 1,
-                      border: "1px solid #dc3545",
-                      borderRadius: "5px",
-                      color: "#df4958",
-                      height: "35px",
-                      width: "35px",
-                    }}
-                    onClick={() => handleRemovePumpMate(index)}
-                  >
-                    <RemoveIcon />
-                  </IconButton>
-                </Box>
-              </Grid>
-            ))}
-          </Grid> */}
           <Grid container spacing={4}>
             {pumpRunningMates.map((pump, index) => (
               <Grid item xs={12} md={6} key={pump.id}>
@@ -323,14 +269,14 @@ const CreatePumpCreation = () => {
                     value={pump.name}
                     onChange={(e) =>
                       handlePumpMateChange(index, e.target.value)
-                    } // Pass the correct index here
+                    }
                     sx={{
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
-                          borderColor: "#333", // Dark border color
+                          borderColor: "#333",
                         },
                         "&.Mui-focused fieldset": {
-                          borderColor: "#000", // Even darker border color when focused
+                          borderColor: "#000",
                         },
                       },
                     }}

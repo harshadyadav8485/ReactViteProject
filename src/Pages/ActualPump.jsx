@@ -203,8 +203,8 @@ const ActualPump = () => {
                               "&.Mui-focused fieldset": {
                                 borderColor: "#000", // Even darker border color when focused
                               },
-                            } 
-                              }}
+                            },
+                          }}
                         />
                       </TableCell>
                     </TableRow>
@@ -231,8 +231,8 @@ const ActualPump = () => {
                   "&.Mui-focused fieldset": {
                     borderColor: "#000", // Even darker border color when focused
                   },
-                } 
-                  }}
+                },
+              }}
             />
             {/* <Typography variant="body1" color="text.secondary" mb={1}>
               *Represents[Your meaning 1]
@@ -268,9 +268,9 @@ const ActualPump = () => {
                   color: "black",
                   px: 3,
                   boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
-          "&:hover": {
-            bgcolor: "#7bb8ff",
-          },
+                  "&:hover": {
+                    bgcolor: "#7bb8ff",
+                  },
                 }}
               >
                 Submit
@@ -296,7 +296,7 @@ const ActualPump = () => {
           <Box>
             <Paper elevation={4} sx={{ p: 3, borderRadius: "10px", mb: 2 }}>
               <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
-                SINGLE OPERATION FULL FLOW 
+                SINGLE OPERATION FULL FLOW
               </Typography>
 
               <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
@@ -307,13 +307,16 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Suction{"\n"}Pressure (SP) <span style={{ color: "red" }}>*</span>
+                    Suction{"\n"}Pressure (SP){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "60"
+                    defaultValue="60"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white",
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -321,21 +324,24 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      }
-                     }}
+                      },
+                    }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Discharge{"\n"}Pressure (DP) <span style={{ color: "red" }}>*</span>
+                    Discharge{"\n"}Pressure (DP){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "218"
+                    defaultValue="218"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white",
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -343,20 +349,24 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      } }}
+                      },
+                    }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Total{"\n"}Pressure (TP) <span style={{ color: "red" }}>*</span>
+                    Total{"\n"}Pressure (TP){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "158"
+                    defaultValue="158"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white",
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -364,7 +374,8 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      } }}
+                      },
+                    }}
                   />
                 </Box>
               </Stack>
@@ -377,13 +388,16 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Suction{"\n"}Pressure (SP) <span style={{ color: "red" }}>*</span>
+                    Suction{"\n"}Pressure (SP){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "**"
+                    defaultValue="**"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white" ,
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -391,20 +405,24 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      }}}
+                      },
+                    }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Discharge{"\n"}Pressure (DP) <span style={{ color: "red" }}>*</span>
+                    Discharge{"\n"}Pressure (DP){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "**"
+                    defaultValue="**"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white",
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -412,20 +430,24 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      } }}
+                      },
+                    }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Total{"\n"}Pressure (TP) <span style={{ color: "red" }}>*</span>
+                    Total{"\n"}Pressure (TP){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "-"
+                    defaultValue="-"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white",
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -433,7 +455,8 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      } }}
+                      },
+                    }}
                   />
                 </Box>
               </Stack>
@@ -445,9 +468,11 @@ const ActualPump = () => {
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "60Hz"
+                    defaultValue="60Hz"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white",
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -455,7 +480,8 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      } }}
+                      },
+                    }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
@@ -464,9 +490,11 @@ const ActualPump = () => {
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "19"
+                    defaultValue="19"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white",
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -474,20 +502,24 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      } }}
+                      },
+                    }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Specified{"\n"}Head (KPA) <span style={{ color: "red" }}>*</span>
+                    Specified{"\n"}Head (KPA){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "254"
+                    defaultValue="254"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white",
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -495,7 +527,8 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      } }}
+                      },
+                    }}
                   />
                 </Box>
               </Stack>
@@ -507,7 +540,7 @@ const ActualPump = () => {
               <TextField
                 fullWidth
                 multiline
-                defaultValue= "** No CBV installed for measuring the flow accurately"
+                defaultValue="** No CBV installed for measuring the flow accurately"
                 rows={5}
                 placeholder="Enter your comments..."
                 sx={{
@@ -519,8 +552,8 @@ const ActualPump = () => {
                     "&.Mui-focused fieldset": {
                       borderColor: "#000", // Even darker border color when focused
                     },
-                  } 
-                    }}
+                  },
+                }}
               />
 
               {/* <Typography color="text.secondary" sx={{ mb: 0.5 }}>
@@ -557,9 +590,9 @@ const ActualPump = () => {
                     color: "black",
                     px: 3,
                     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
-            "&:hover": {
-              bgcolor: "#7bb8ff",
-            },
+                    "&:hover": {
+                      bgcolor: "#7bb8ff",
+                    },
                   }}
                 >
                   Submit
@@ -593,13 +626,16 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Suction{"\n"}Pressure (SP)  <span style={{ color: "red" }}>*</span>
+                    Suction{"\n"}Pressure (SP){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "72"
+                    defaultValue="72"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white" ,
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -607,20 +643,24 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      }}}
+                      },
+                    }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Discharge{"\n"}Pressure (DP)  <span style={{ color: "red" }}>*</span>
+                    Discharge{"\n"}Pressure (DP){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "167"
+                    defaultValue="167"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white" ,
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -628,20 +668,24 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      }}}
+                      },
+                    }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Total{"\n"}Pressure (TP)  <span style={{ color: "red" }}>*</span>
+                    Total{"\n"}Pressure (TP){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "95"
+                    defaultValue="95"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white" ,
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -649,7 +693,8 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      }}}
+                      },
+                    }}
                   />
                 </Box>
               </Stack>
@@ -662,13 +707,16 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Suction{"\n"}Pressure (SP)  <span style={{ color: "red" }}>*</span>
+                    Suction{"\n"}Pressure (SP){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "**"
+                    defaultValue="**"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white" ,
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -676,20 +724,24 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      }}}
+                      },
+                    }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Discharge{"\n"}Pressure (DP)  <span style={{ color: "red" }}>*</span>
+                    Discharge{"\n"}Pressure (DP){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "**"
+                    defaultValue="**"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white" ,
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -697,20 +749,24 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      }}}
+                      },
+                    }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Total{"\n"}Pressure (TP)  <span style={{ color: "red" }}>*</span>
+                    Total{"\n"}Pressure (TP){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "-"
+                    defaultValue="-"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white",
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -718,7 +774,8 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      } }}
+                      },
+                    }}
                   />
                 </Box>
               </Stack>
@@ -726,13 +783,15 @@ const ActualPump = () => {
               <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography sx={{ mr: 1, minWidth: "100px" }}>
-                    Pump Speed  <span style={{ color: "red" }}>*</span>
+                    Pump Speed <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "90Hz"
+                    defaultValue="90Hz"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white" ,
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -740,18 +799,21 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      }}}
+                      },
+                    }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography sx={{ mr: 1, minWidth: "100px" }}>
-                    Motor Amps  <span style={{ color: "red" }}>*</span>
+                    Motor Amps <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "20.70"
+                    defaultValue="20.70"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white" ,
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -759,20 +821,24 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      }}}
+                      },
+                    }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Specified{"\n"}Head (KPA)  <span style={{ color: "red" }}>*</span>
+                    Specified{"\n"}Head (KPA){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "254"
+                    defaultValue="254"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white" ,
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -780,7 +846,8 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      }}}
+                      },
+                    }}
                   />
                 </Box>
               </Stack>
@@ -792,7 +859,7 @@ const ActualPump = () => {
               <TextField
                 fullWidth
                 multiline
-                defaultValue= "** No CBV installed for measuring the flow accurately"
+                defaultValue="** No CBV installed for measuring the flow accurately"
                 rows={5}
                 placeholder="Enter your comments..."
                 sx={{
@@ -804,8 +871,8 @@ const ActualPump = () => {
                     "&.Mui-focused fieldset": {
                       borderColor: "#000", // Even darker border color when focused
                     },
-                  } 
-                    }}
+                  },
+                }}
               />
 
               {/* <Typography color="text.secondary" sx={{ mb: 0.5 }}>
@@ -842,9 +909,9 @@ const ActualPump = () => {
                     color: "black",
                     px: 3,
                     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
-            "&:hover": {
-              bgcolor: "#7bb8ff",
-            },
+                    "&:hover": {
+                      bgcolor: "#7bb8ff",
+                    },
                   }}
                 >
                   Submit
@@ -878,13 +945,16 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Suction{"\n"}Pressure (SP)  <span style={{ color: "red" }}>*</span>
+                    Suction{"\n"}Pressure (SP){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "48"
+                    defaultValue="48"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white",
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -892,20 +962,24 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      } }}
+                      },
+                    }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Discharge{"\n"}Pressure (DP)  <span style={{ color: "red" }}>*</span>
+                    Discharge{"\n"}Pressure (DP){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "239"
+                    defaultValue="239"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white",
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -913,20 +987,24 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      }  }}
+                      },
+                    }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Total{"\n"}Pressure (TP)  <span style={{ color: "red" }}>*</span>
+                    Total{"\n"}Pressure (TP){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "191"
+                    defaultValue="191"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white",
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -934,7 +1012,8 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      }  }}
+                      },
+                    }}
                   />
                 </Box>
               </Stack>
@@ -947,13 +1026,16 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Suction{"\n"}Pressure (SP)  <span style={{ color: "red" }}>*</span>
+                    Suction{"\n"}Pressure (SP){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "**"
+                    defaultValue="**"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white" ,
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -961,20 +1043,24 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      } }}
+                      },
+                    }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Discharge{"\n"}Pressure (DP)  <span style={{ color: "red" }}>*</span>
+                    Discharge{"\n"}Pressure (DP){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "**"
+                    defaultValue="**"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white",
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -982,20 +1068,24 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      }  }}
+                      },
+                    }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Total{"\n"}Pressure (TP)  <span style={{ color: "red" }}>*</span>
+                    Total{"\n"}Pressure (TP){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "-"
+                    defaultValue="-"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white",
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -1003,7 +1093,8 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      }  }}
+                      },
+                    }}
                   />
                 </Box>
               </Stack>
@@ -1011,13 +1102,15 @@ const ActualPump = () => {
               <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography sx={{ mr: 1, minWidth: "100px" }}>
-                    Pump Speed  <span style={{ color: "red" }}>*</span>
+                    Pump Speed <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "60Hz"
+                    defaultValue="60Hz"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white",
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -1025,18 +1118,21 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      }  }}
+                      },
+                    }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography sx={{ mr: 1, minWidth: "100px" }}>
-                    Motor Amps  <span style={{ color: "red" }}>*</span>
+                    Motor Amps <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "19"
+                    defaultValue="19"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white",
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -1044,20 +1140,24 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      }  }}
+                      },
+                    }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Specified{"\n"}Head (KPA)  <span style={{ color: "red" }}>*</span>
+                    Specified{"\n"}Head (KPA){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
-                    defaultValue= "254"
+                    defaultValue="254"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white" ,
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -1065,7 +1165,8 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      } }}
+                      },
+                    }}
                   />
                 </Box>
               </Stack>
@@ -1077,7 +1178,7 @@ const ActualPump = () => {
               <TextField
                 fullWidth
                 multiline
-                defaultValue= "** No CBV installed for measuring the flow accurately"
+                defaultValue="** No CBV installed for measuring the flow accurately"
                 rows={5}
                 placeholder="Enter your comments..."
                 sx={{
@@ -1089,8 +1190,8 @@ const ActualPump = () => {
                     "&.Mui-focused fieldset": {
                       borderColor: "#000", // Even darker border color when focused
                     },
-                  } 
-                    }}
+                  },
+                }}
               />
 
               {/* <Typography color="text.secondary" sx={{ mb: 0.5 }}>
@@ -1127,9 +1228,9 @@ const ActualPump = () => {
                     color: "black",
                     px: 3,
                     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
-            "&:hover": {
-              bgcolor: "#7bb8ff",
-            },
+                    "&:hover": {
+                      bgcolor: "#7bb8ff",
+                    },
                   }}
                 >
                   Submit
@@ -1163,12 +1264,15 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Suction{"\n"}Pressure (SP)  <span style={{ color: "red" }}>*</span>
+                    Suction{"\n"}Pressure (SP){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white",
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -1176,19 +1280,23 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      }  }}
+                      },
+                    }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Discharge{"\n"}Pressure (DP)  <span style={{ color: "red" }}>*</span>
+                    Discharge{"\n"}Pressure (DP){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white" ,
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -1196,19 +1304,23 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      } }}
+                      },
+                    }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Total{"\n"}Pressure (TP)  <span style={{ color: "red" }}>*</span>
+                    Total{"\n"}Pressure (TP){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white" ,
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -1216,7 +1328,8 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      } }}
+                      },
+                    }}
                   />
                 </Box>
               </Stack>
@@ -1229,12 +1342,15 @@ const ActualPump = () => {
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Suction{"\n"}Pressure (SP)  <span style={{ color: "red" }}>*</span>
+                    Suction{"\n"}Pressure (SP){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white" ,
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -1242,19 +1358,23 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      } }}
+                      },
+                    }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Discharge{"\n"}Pressure (DP)  <span style={{ color: "red" }}>*</span>
+                    Discharge{"\n"}Pressure (DP){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white",
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -1262,19 +1382,23 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      }  }}
+                      },
+                    }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Total{"\n"}Pressure (TP)  <span style={{ color: "red" }}>*</span>
+                    Total{"\n"}Pressure (TP){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white" ,
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -1282,7 +1406,8 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      } }}
+                      },
+                    }}
                   />
                 </Box>
               </Stack>
@@ -1290,12 +1415,14 @@ const ActualPump = () => {
               <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography sx={{ mr: 1, minWidth: "100px" }}>
-                    Pump Speed  <span style={{ color: "red" }}>*</span>
+                    Pump Speed <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white" ,
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -1303,17 +1430,20 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      } }}
+                      },
+                    }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography sx={{ mr: 1, minWidth: "100px" }}>
-                    Motor Amps  <span style={{ color: "red" }}>*</span>
+                    Motor Amps <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white" ,
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -1321,19 +1451,23 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      } }}
+                      },
+                    }}
                   />
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "flex-start" }}>
                   <Typography
                     sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
                   >
-                    Specified{"\n"}Head (KPA)  <span style={{ color: "red" }}>*</span>
+                    Specified{"\n"}Head (KPA){" "}
+                    <span style={{ color: "red" }}>*</span>
                   </Typography>
                   <TextField
                     variant="outlined"
                     size="small"
-                    sx={{ width: "200px", backgroundColor: "white",
+                    sx={{
+                      width: "200px",
+                      backgroundColor: "white",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
                           borderColor: "#333", // Dark border color
@@ -1341,7 +1475,8 @@ const ActualPump = () => {
                         "&.Mui-focused fieldset": {
                           borderColor: "#000", // Even darker border color when focused
                         },
-                      }  }}
+                      },
+                    }}
                   />
                 </Box>
               </Stack>
@@ -1365,8 +1500,8 @@ const ActualPump = () => {
                     "&.Mui-focused fieldset": {
                       borderColor: "#000", // Even darker border color when focused
                     },
-                  } 
-                    }}
+                  },
+                }}
               />
 
               {/* <Typography color="text.secondary" sx={{ mb: 0.5 }}>
@@ -1403,9 +1538,9 @@ const ActualPump = () => {
                     color: "black",
                     px: 3,
                     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
-            "&:hover": {
-              bgcolor: "#7bb8ff",
-            },
+                    "&:hover": {
+                      bgcolor: "#7bb8ff",
+                    },
                   }}
                 >
                   Submit
@@ -1445,71 +1580,70 @@ const ActualPump = () => {
                 </Typography>
 
                 <Grid container spacing={2}>
-                    <Grid item xs={1.5}>
-                      <Typography variant="body1" fontWeight="medium">
-                        Pump Capacity <span style={{ color: "red" }}>*</span>
-                      </Typography>
-                    </Grid>
-
-                    <Grid item xs={2.5}>
-                      <TextField
-                        fullWidth
-                        defaultValue="34.700"
-                        size="small"
-                        label="Specified Value"
-                        variant="outlined"
-                        sx={{
-                      "& .MuiOutlinedInput-root": {
-                        "& fieldset": {
-                          borderColor: "#333", // Dark border color
-                        },
-                        "&.Mui-focused fieldset": {
-                          borderColor: "#000", // Even darker border color when focused
-                        },
-                      } 
-                        }}
-                      />
-                    </Grid>
-
-                    <Grid item xs={2.5}>
-                      <TextField
-                        fullWidth
-                        size="small"
-                        label="Actual Value"
-                        variant="outlined"
-                        sx={{
-                          "& .MuiOutlinedInput-root": {
-                            "& fieldset": {
-                              borderColor: "#333", // Dark border color
-                            },
-                            "&.Mui-focused fieldset": {
-                              borderColor: "#000", // Even darker border color when focused
-                            },
-                          } 
-                            }}
-                      />
-                    </Grid>
-
-                    <Grid item xs={2.5}>
-                      <Button
-                        variant="contained"
-                        sx={{
-                          bgcolor: "#a4cffe",
-                          color: "black",
-                          textTransform: "none",
-                          width: "50%",
-                        }}
-                      >
-                        Convert
-                      </Button>
-                    </Grid>
+                  <Grid item xs={1.5}>
+                    <Typography variant="body1" fontWeight="medium">
+                      Pump Capacity <span style={{ color: "red" }}>*</span>
+                    </Typography>
                   </Grid>
 
+                  <Grid item xs={2.5}>
+                    <TextField
+                      fullWidth
+                      defaultValue="34.700"
+                      size="small"
+                      label="Specified Value"
+                      variant="outlined"
+                      sx={{
+                        "& .MuiOutlinedInput-root": {
+                          "& fieldset": {
+                            borderColor: "#333", // Dark border color
+                          },
+                          "&.Mui-focused fieldset": {
+                            borderColor: "#000", // Even darker border color when focused
+                          },
+                        },
+                      }}
+                    />
+                  </Grid>
+
+                  <Grid item xs={2.5}>
+                    <TextField
+                      fullWidth
+                      size="small"
+                      label="Actual Value"
+                      variant="outlined"
+                      sx={{
+                        "& .MuiOutlinedInput-root": {
+                          "& fieldset": {
+                            borderColor: "#333", // Dark border color
+                          },
+                          "&.Mui-focused fieldset": {
+                            borderColor: "#000", // Even darker border color when focused
+                          },
+                        },
+                      }}
+                    />
+                  </Grid>
+
+                  <Grid item xs={2.5}>
+                    <Button
+                      variant="contained"
+                      sx={{
+                        bgcolor: "#a4cffe",
+                        color: "black",
+                        textTransform: "none",
+                        width: "50%",
+                      }}
+                    >
+                      Convert
+                    </Button>
+                  </Grid>
+                </Grid>
 
                 <Grid container spacing={2} sx={{ mt: 1 }}>
                   <Grid item xs={1.5}>
                     <Typography variant="body1" fontWeight="medium">
-                      System Capacity  <span style={{ color: "red" }}>*</span>
+                      System Capacity <span style={{ color: "red" }}>*</span>
                     </Typography>
                   </Grid>
                   <Grid item xs={2.5}>
@@ -1527,8 +1661,8 @@ const ActualPump = () => {
                           "&.Mui-focused fieldset": {
                             borderColor: "#000", // Even darker border color when focused
                           },
-                        } 
-                          }}
+                        },
+                      }}
                     />
                   </Grid>
                   <Grid item xs={2.5}>
@@ -1545,8 +1679,8 @@ const ActualPump = () => {
                           "&.Mui-focused fieldset": {
                             borderColor: "#000", // Even darker border color when focused
                           },
-                        } 
-                          }}
+                        },
+                      }}
                     />
                   </Grid>
                   <Grid item xs={2.5}>
@@ -1568,43 +1702,51 @@ const ActualPump = () => {
                   <Grid item xs={1.5}>
                     <Typography variant="body1" fontWeight="medium">
                       Pump Balancing <br />
-                      Valve Position  <span style={{ color: "red" }}>*</span>
+                      Valve Position <span style={{ color: "red" }}>*</span>
                     </Typography>
                   </Grid>
                   <Grid item xs={3}>
-                    <TextField fullWidth size="small" variant="outlined" 
-                    placeholder="Enter Pump Balancing Valve Position"
-                    sx={{
-                      "& .MuiOutlinedInput-root": {
-                        "& fieldset": {
-                          borderColor: "#333", // Dark border color
+                    <TextField
+                      fullWidth
+                      size="small"
+                      variant="outlined"
+                      placeholder="Enter Pump Balancing Valve Position"
+                      sx={{
+                        "& .MuiOutlinedInput-root": {
+                          "& fieldset": {
+                            borderColor: "#333", // Dark border color
+                          },
+                          "&.Mui-focused fieldset": {
+                            borderColor: "#000", // Even darker border color when focused
+                          },
                         },
-                        "&.Mui-focused fieldset": {
-                          borderColor: "#000", // Even darker border color when focused
-                        },
-                      } 
-                        }}/>
+                      }}
+                    />
                   </Grid>
                   <Grid item xs={1.5}>
                     <Typography variant="body1" fontWeight="medium">
                       System Differential
                       <br />
-                      Pressure Setpoint  <span style={{ color: "red" }}>*</span>
+                      Pressure Setpoint <span style={{ color: "red" }}>*</span>
                     </Typography>
                   </Grid>
                   <Grid item xs={3.2}>
-                    <TextField fullWidth size="small" variant="outlined" 
-                    placeholder="Enter System Differential Pressure Point"
-                    sx={{
-                      "& .MuiOutlinedInput-root": {
-                        "& fieldset": {
-                          borderColor: "#333", // Dark border color
+                    <TextField
+                      fullWidth
+                      size="small"
+                      variant="outlined"
+                      placeholder="Enter System Differential Pressure Point"
+                      sx={{
+                        "& .MuiOutlinedInput-root": {
+                          "& fieldset": {
+                            borderColor: "#333", // Dark border color
+                          },
+                          "&.Mui-focused fieldset": {
+                            borderColor: "#000", // Even darker border color when focused
+                          },
                         },
-                        "&.Mui-focused fieldset": {
-                          borderColor: "#000", // Even darker border color when focused
-                        },
-                      } 
-                        }}/>
+                      }}
+                    />
                   </Grid>
                 </Grid>
               </Box>
@@ -1623,41 +1765,49 @@ const ActualPump = () => {
                 <Grid container spacing={2}>
                   <Grid item xs={1.5}>
                     <Typography variant="body1" fontWeight="medium">
-                      Full Flow  <span style={{ color: "red" }}>*</span>
+                      Full Flow <span style={{ color: "red" }}>*</span>
                     </Typography>
                   </Grid>
                   <Grid item xs={2.5}>
-                    <TextField fullWidth size="small" variant="outlined" 
-                    placeholder="Enter Full Flow"
-                    sx={{
-                      "& .MuiOutlinedInput-root": {
-                        "& fieldset": {
-                          borderColor: "#333", // Dark border color
+                    <TextField
+                      fullWidth
+                      size="small"
+                      variant="outlined"
+                      placeholder="Enter Full Flow"
+                      sx={{
+                        "& .MuiOutlinedInput-root": {
+                          "& fieldset": {
+                            borderColor: "#333", // Dark border color
+                          },
+                          "&.Mui-focused fieldset": {
+                            borderColor: "#000", // Even darker border color when focused
+                          },
                         },
-                        "&.Mui-focused fieldset": {
-                          borderColor: "#000", // Even darker border color when focused
-                        },
-                      } 
-                        }}/>
+                      }}
+                    />
                   </Grid>
                   <Grid item xs={1.5}>
                     <Typography variant="body1" fontWeight="medium">
-                      Balanced Position  <span style={{ color: "red" }}>*</span>
+                      Balanced Position <span style={{ color: "red" }}>*</span>
                     </Typography>
                   </Grid>
                   <Grid item xs={2.5}>
-                    <TextField fullWidth size="small" variant="outlined" 
-                    placeholder="Enter Balanced Position"
-                    sx={{
-                      "& .MuiOutlinedInput-root": {
-                        "& fieldset": {
-                          borderColor: "#333", // Dark border color
+                    <TextField
+                      fullWidth
+                      size="small"
+                      variant="outlined"
+                      placeholder="Enter Balanced Position"
+                      sx={{
+                        "& .MuiOutlinedInput-root": {
+                          "& fieldset": {
+                            borderColor: "#333", // Dark border color
+                          },
+                          "&.Mui-focused fieldset": {
+                            borderColor: "#000", // Even darker border color when focused
+                          },
                         },
-                        "&.Mui-focused fieldset": {
-                          borderColor: "#000", // Even darker border color when focused
-                        },
-                      } 
-                        }}/>
+                      }}
+                    />
                   </Grid>
                 </Grid>
 
@@ -1668,41 +1818,49 @@ const ActualPump = () => {
                 <Grid container spacing={2}>
                   <Grid item xs={1.5}>
                     <Typography variant="body1" fontWeight="medium">
-                      Full Flow  <span style={{ color: "red" }}>*</span>
+                      Full Flow <span style={{ color: "red" }}>*</span>
                     </Typography>
                   </Grid>
                   <Grid item xs={2.5}>
-                    <TextField fullWidth size="small" variant="outlined"
-                    placeholder="Enter Full Flow" 
-                    sx={{
-                      "& .MuiOutlinedInput-root": {
-                        "& fieldset": {
-                          borderColor: "#333", // Dark border color
+                    <TextField
+                      fullWidth
+                      size="small"
+                      variant="outlined"
+                      placeholder="Enter Full Flow"
+                      sx={{
+                        "& .MuiOutlinedInput-root": {
+                          "& fieldset": {
+                            borderColor: "#333", // Dark border color
+                          },
+                          "&.Mui-focused fieldset": {
+                            borderColor: "#000", // Even darker border color when focused
+                          },
                         },
-                        "&.Mui-focused fieldset": {
-                          borderColor: "#000", // Even darker border color when focused
-                        },
-                      } 
-                        }}/>
+                      }}
+                    />
                   </Grid>
                   <Grid item xs={1.5}>
                     <Typography variant="body1" fontWeight="medium">
-                      Balanced Position  <span style={{ color: "red" }}>*</span>
+                      Balanced Position <span style={{ color: "red" }}>*</span>
                     </Typography>
                   </Grid>
                   <Grid item xs={2.5}>
-                    <TextField fullWidth size="small" variant="outlined" 
-                    placeholder="Enter Balanced Position"
-                    sx={{
-                      "& .MuiOutlinedInput-root": {
-                        "& fieldset": {
-                          borderColor: "#333", // Dark border color
+                    <TextField
+                      fullWidth
+                      size="small"
+                      variant="outlined"
+                      placeholder="Enter Balanced Position"
+                      sx={{
+                        "& .MuiOutlinedInput-root": {
+                          "& fieldset": {
+                            borderColor: "#333", // Dark border color
+                          },
+                          "&.Mui-focused fieldset": {
+                            borderColor: "#000", // Even darker border color when focused
+                          },
                         },
-                        "&.Mui-focused fieldset": {
-                          borderColor: "#000", // Even darker border color when focused
-                        },
-                      } 
-                        }}/>
+                      }}
+                    />
                   </Grid>
                 </Grid>
               </Box>
@@ -1740,104 +1898,119 @@ const ActualPump = () => {
                       <Grid container spacing={2}>
                         <Grid item xs={3}>
                           <Typography variant="body2" fontWeight="medium">
-                            Type  <span style={{ color: "red" }}>*</span>
+                            Type <span style={{ color: "red" }}>*</span>
                           </Typography>
                         </Grid>
                         <Grid item xs={9}>
-                          <TextField fullWidth size="small"
-                          placeholder="Enter Type" 
-                          sx={{
-                            "& .MuiOutlinedInput-root": {
-                              "& fieldset": {
-                                borderColor: "#333", // Dark border color
+                          <TextField
+                            fullWidth
+                            size="small"
+                            placeholder="Enter Type"
+                            sx={{
+                              "& .MuiOutlinedInput-root": {
+                                "& fieldset": {
+                                  borderColor: "#333", // Dark border color
+                                },
+                                "&.Mui-focused fieldset": {
+                                  borderColor: "#000", // Even darker border color when focused
+                                },
                               },
-                              "&.Mui-focused fieldset": {
-                                borderColor: "#000", // Even darker border color when focused
-                              },
-                            } 
-                              }}/>
+                            }}
+                          />
                         </Grid>
 
                         <Grid item xs={3}>
                           <Typography variant="body2" fontWeight="medium">
-                            Size  <span style={{ color: "red" }}>*</span>
+                            Size <span style={{ color: "red" }}>*</span>
                           </Typography>
                         </Grid>
                         <Grid item xs={9}>
-                          <TextField fullWidth size="small" 
-                          placeholder="Enter Size"
-                          sx={{
-                            "& .MuiOutlinedInput-root": {
-                              "& fieldset": {
-                                borderColor: "#333", // Dark border color
+                          <TextField
+                            fullWidth
+                            size="small"
+                            placeholder="Enter Size"
+                            sx={{
+                              "& .MuiOutlinedInput-root": {
+                                "& fieldset": {
+                                  borderColor: "#333", // Dark border color
+                                },
+                                "&.Mui-focused fieldset": {
+                                  borderColor: "#000", // Even darker border color when focused
+                                },
                               },
-                              "&.Mui-focused fieldset": {
-                                borderColor: "#000", // Even darker border color when focused
-                              },
-                            } 
-                              }}/>
+                            }}
+                          />
                         </Grid>
 
                         <Grid item xs={3}>
                           <Typography variant="body2" fontWeight="medium">
                             Signal <br />
-                            (FT)  <span style={{ color: "red" }}>*</span>
+                            (FT) <span style={{ color: "red" }}>*</span>
                           </Typography>
                         </Grid>
                         <Grid item xs={9}>
-                          <TextField fullWidth size="small"
-                          placeholder="Enter Signal(FT)" 
-                          sx={{
-                            "& .MuiOutlinedInput-root": {
-                              "& fieldset": {
-                                borderColor: "#333", // Dark border color
+                          <TextField
+                            fullWidth
+                            size="small"
+                            placeholder="Enter Signal(FT)"
+                            sx={{
+                              "& .MuiOutlinedInput-root": {
+                                "& fieldset": {
+                                  borderColor: "#333", // Dark border color
+                                },
+                                "&.Mui-focused fieldset": {
+                                  borderColor: "#000", // Even darker border color when focused
+                                },
                               },
-                              "&.Mui-focused fieldset": {
-                                borderColor: "#000", // Even darker border color when focused
-                              },
-                            } 
-                              }}/>
+                            }}
+                          />
                         </Grid>
 
                         <Grid item xs={3}>
                           <Typography variant="body2" fontWeight="medium">
                             Measured <br />
-                            (GPM)  <span style={{ color: "red" }}>*</span>
+                            (GPM) <span style={{ color: "red" }}>*</span>
                           </Typography>
                         </Grid>
                         <Grid item xs={9}>
-                          <TextField fullWidth size="small"
-                          placeholder="Enter Measured(GPM)"
-                          sx={{
-                            "& .MuiOutlinedInput-root": {
-                              "& fieldset": {
-                                borderColor: "#333", // Dark border color
+                          <TextField
+                            fullWidth
+                            size="small"
+                            placeholder="Enter Measured(GPM)"
+                            sx={{
+                              "& .MuiOutlinedInput-root": {
+                                "& fieldset": {
+                                  borderColor: "#333", // Dark border color
+                                },
+                                "&.Mui-focused fieldset": {
+                                  borderColor: "#000", // Even darker border color when focused
+                                },
                               },
-                              "&.Mui-focused fieldset": {
-                                borderColor: "#000", // Even darker border color when focused
-                              },
-                            } 
-                              }} />
+                            }}
+                          />
                         </Grid>
 
                         <Grid item xs={3}>
                           <Typography variant="body2" fontWeight="medium">
-                            Position  <span style={{ color: "red" }}>*</span>
+                            Position <span style={{ color: "red" }}>*</span>
                           </Typography>
                         </Grid>
                         <Grid item xs={9}>
-                          <TextField fullWidth size="small" 
-                          placeholder="Enter Position"
-                          sx={{
-                            "& .MuiOutlinedInput-root": {
-                              "& fieldset": {
-                                borderColor: "#333", // Dark border color
+                          <TextField
+                            fullWidth
+                            size="small"
+                            placeholder="Enter Position"
+                            sx={{
+                              "& .MuiOutlinedInput-root": {
+                                "& fieldset": {
+                                  borderColor: "#333", // Dark border color
+                                },
+                                "&.Mui-focused fieldset": {
+                                  borderColor: "#000", // Even darker border color when focused
+                                },
                               },
-                              "&.Mui-focused fieldset": {
-                                borderColor: "#000", // Even darker border color when focused
-                              },
-                            } 
-                              }}/>
+                            }}
+                          />
                         </Grid>
                       </Grid>
                     </Paper>
@@ -1850,133 +2023,151 @@ const ActualPump = () => {
                       <Grid container spacing={2}>
                         <Grid item xs={3}>
                           <Typography variant="body2" fontWeight="medium">
-                            Efficiency  <span style={{ color: "red" }}>*</span>
+                            Efficiency <span style={{ color: "red" }}>*</span>
                           </Typography>
                         </Grid>
                         <Grid item xs={9}>
-                          <TextField fullWidth size="small"
-                          placeholder="Enter Efficiency"
-                          sx={{
-                            "& .MuiOutlinedInput-root": {
-                              "& fieldset": {
-                                borderColor: "#333", // Dark border color
+                          <TextField
+                            fullWidth
+                            size="small"
+                            placeholder="Enter Efficiency"
+                            sx={{
+                              "& .MuiOutlinedInput-root": {
+                                "& fieldset": {
+                                  borderColor: "#333", // Dark border color
+                                },
+                                "&.Mui-focused fieldset": {
+                                  borderColor: "#000", // Even darker border color when focused
+                                },
                               },
-                              "&.Mui-focused fieldset": {
-                                borderColor: "#000", // Even darker border color when focused
-                              },
-                            } 
-                              }} />
+                            }}
+                          />
                         </Grid>
 
                         <Grid item xs={3}>
                           <Typography variant="body2" fontWeight="medium">
                             Measured
                             <br />
-                            Amperage  <span style={{ color: "red" }}>*</span>
+                            Amperage <span style={{ color: "red" }}>*</span>
                           </Typography>
                         </Grid>
                         <Grid item xs={9}>
-                          <TextField fullWidth size="small"
-                          placeholder="Enter Measured Amperage"
-                          sx={{
-                            "& .MuiOutlinedInput-root": {
-                              "& fieldset": {
-                                borderColor: "#333", // Dark border color
+                          <TextField
+                            fullWidth
+                            size="small"
+                            placeholder="Enter Measured Amperage"
+                            sx={{
+                              "& .MuiOutlinedInput-root": {
+                                "& fieldset": {
+                                  borderColor: "#333", // Dark border color
+                                },
+                                "&.Mui-focused fieldset": {
+                                  borderColor: "#000", // Even darker border color when focused
+                                },
                               },
-                              "&.Mui-focused fieldset": {
-                                borderColor: "#000", // Even darker border color when focused
-                              },
-                            } 
-                              }} />
+                            }}
+                          />
                         </Grid>
 
                         <Grid item xs={3}>
                           <Typography variant="body2" fontWeight="medium">
                             Measured
                             <br />
-                            Voltage  <span style={{ color: "red" }}>*</span>
+                            Voltage <span style={{ color: "red" }}>*</span>
                           </Typography>
                         </Grid>
                         <Grid item xs={9}>
-                          <TextField fullWidth size="small"
-                          placeholder="Enter Measured Voltage" 
-                          sx={{
-                            "& .MuiOutlinedInput-root": {
-                              "& fieldset": {
-                                borderColor: "#333", // Dark border color
+                          <TextField
+                            fullWidth
+                            size="small"
+                            placeholder="Enter Measured Voltage"
+                            sx={{
+                              "& .MuiOutlinedInput-root": {
+                                "& fieldset": {
+                                  borderColor: "#333", // Dark border color
+                                },
+                                "&.Mui-focused fieldset": {
+                                  borderColor: "#000", // Even darker border color when focused
+                                },
                               },
-                              "&.Mui-focused fieldset": {
-                                borderColor: "#000", // Even darker border color when focused
-                              },
-                            } 
-                              }}/>
+                            }}
+                          />
                         </Grid>
 
                         <Grid item xs={3}>
                           <Typography variant="body2" fontWeight="medium">
                             Power <br />
-                            Factor  <span style={{ color: "red" }}>*</span>
+                            Factor <span style={{ color: "red" }}>*</span>
                           </Typography>
                         </Grid>
                         <Grid item xs={9}>
-                          <TextField fullWidth size="small"
-                          placeholder="Enter Power Factor" 
-                          sx={{
-                            "& .MuiOutlinedInput-root": {
-                              "& fieldset": {
-                                borderColor: "#333", // Dark border color
+                          <TextField
+                            fullWidth
+                            size="small"
+                            placeholder="Enter Power Factor"
+                            sx={{
+                              "& .MuiOutlinedInput-root": {
+                                "& fieldset": {
+                                  borderColor: "#333", // Dark border color
+                                },
+                                "&.Mui-focused fieldset": {
+                                  borderColor: "#000", // Even darker border color when focused
+                                },
                               },
-                              "&.Mui-focused fieldset": {
-                                borderColor: "#000", // Even darker border color when focused
-                              },
-                            } 
-                              }}/>
+                            }}
+                          />
                         </Grid>
 
                         <Grid item xs={12}>
                           <Grid container spacing={2} alignItems="center">
                             <Grid item xs={3}>
                               <Typography variant="body2" fontWeight="bold">
-                                EFM  <span style={{ color: "red" }}>*</span>
+                                EFM <span style={{ color: "red" }}>*</span>
                               </Typography>
                             </Grid>
                             <Grid item xs="auto">
                               <Typography variant="body2" fontWeight="medium">
-                                BHP 
+                                BHP
                               </Typography>
                             </Grid>
                             <Grid item xs={3}>
-                              <TextField fullWidth size="small" 
-                              placeholder="Enter BHP"
-                              sx={{
-                                "& .MuiOutlinedInput-root": {
-                                  "& fieldset": {
-                                    borderColor: "#333", // Dark border color
+                              <TextField
+                                fullWidth
+                                size="small"
+                                placeholder="Enter BHP"
+                                sx={{
+                                  "& .MuiOutlinedInput-root": {
+                                    "& fieldset": {
+                                      borderColor: "#333", // Dark border color
+                                    },
+                                    "&.Mui-focused fieldset": {
+                                      borderColor: "#000", // Even darker border color when focused
+                                    },
                                   },
-                                  "&.Mui-focused fieldset": {
-                                    borderColor: "#000", // Even darker border color when focused
-                                  },
-                                } 
-                                  }}/>
+                                }}
+                              />
                             </Grid>
                             <Grid item xs="auto">
                               <Typography variant="body2" fontWeight="medium">
-                                BKW  
+                                BKW
                               </Typography>
                             </Grid>
                             <Grid item xs={3}>
-                              <TextField fullWidth size="small" 
-                              placeholder="Enter BKW"
-                              sx={{
-                                "& .MuiOutlinedInput-root": {
-                                  "& fieldset": {
-                                    borderColor: "#333", // Dark border color
+                              <TextField
+                                fullWidth
+                                size="small"
+                                placeholder="Enter BKW"
+                                sx={{
+                                  "& .MuiOutlinedInput-root": {
+                                    "& fieldset": {
+                                      borderColor: "#333", // Dark border color
+                                    },
+                                    "&.Mui-focused fieldset": {
+                                      borderColor: "#000", // Even darker border color when focused
+                                    },
                                   },
-                                  "&.Mui-focused fieldset": {
-                                    borderColor: "#000", // Even darker border color when focused
-                                  },
-                                } 
-                                  }}/>
+                                }}
+                              />
                             </Grid>
                           </Grid>
                         </Grid>
@@ -1988,7 +2179,7 @@ const ActualPump = () => {
             </Paper>
             <Box sx={{ mb: 2 }}>
               <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
-                Comments  <span style={{ color: "red" }}>*</span>
+                Comments <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
@@ -2004,8 +2195,8 @@ const ActualPump = () => {
                     "&.Mui-focused fieldset": {
                       borderColor: "#000", // Even darker border color when focused
                     },
-                  } 
-                    }}
+                  },
+                }}
               />
 
               {/* <Typography variant="body1" color="text.secondary" mb={1}>
@@ -2044,9 +2235,9 @@ const ActualPump = () => {
                   color: "black",
                   px: 3,
                   boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
-          "&:hover": {
-            bgcolor: "#7bb8ff",
-          },
+                  "&:hover": {
+                    bgcolor: "#7bb8ff",
+                  },
                 }}
               >
                 <a

@@ -113,7 +113,7 @@ const EditPumpCreation = () => {
               >
                 Pump <br /> Type <span style={{ color: "red" }}>*</span>
               </Typography>
-              <TextField
+              {/* <TextField
                 fullWidth
                 defaultValue="Parallel"
                 variant="outlined"
@@ -128,7 +128,42 @@ const EditPumpCreation = () => {
                     },
                   },
                 }}
-              />
+              /> */}
+
+              <Select
+                // fullWidth
+                variant="outlined"
+                displayEmpty
+                value={pumpType}
+                onChange={handlePumpTypeChange}
+                IconComponent={KeyboardArrowDownIcon}
+                sx={{
+                  bgcolor: "#fff",
+                  height: "40px",
+                  width: "100%",
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#000", // black border
+                  },
+                  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#000", // keep black when focused
+                  },
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "#000", // black on hover too
+                  },
+                }}
+                MenuProps={{
+                  PaperProps: {
+                    sx: {
+                      bgcolor: "#fff", // optional: to match your select background
+                    },
+                  },
+                }}
+              >
+                <MenuItem value="Parallel">Parallel</MenuItem>
+                <MenuItem value="Stand By">Stand By</MenuItem>
+                <MenuItem value="Stand Alone">Stand Alone</MenuItem>
+                <MenuItem value="Stand Alone">Lead/Lag</MenuItem>
+              </Select>
             </Box>
           </Grid>
           <Grid item xs={12} md={6}>
