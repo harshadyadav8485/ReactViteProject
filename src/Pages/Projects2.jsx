@@ -217,12 +217,12 @@ const Projects2 = () => {
         overflow: "hidden",
       }}
     >
-      <Typography variant="h5" component="h1" fontWeight="bold" sx={{ mb: 2}}>
+      <Typography variant="h5" component="h1" fontWeight="bold" sx={{ mb: 2 }}>
         Project Name : UBC School of Biomedical Engineering
       </Typography>
 
       {/* Status Cards */}
-      <Grid container spacing={3} sx={{ mb: 2}}>
+      <Grid container spacing={3} sx={{ mb: 2 }}>
         {statusCards.map((card, index) => (
           <Grid item xs={12} md={4} key={index}>
             <Paper
@@ -285,7 +285,7 @@ const Projects2 = () => {
       <Autocomplete
         freeSolo
         options={[]}
-        sx={{ width: "50%", mb: 2 }} // set width here
+        sx={{ width: "50%", mb: 2 }}
         renderInput={(params) => (
           <TextField
             {...params}
@@ -298,6 +298,14 @@ const Projects2 = () => {
               "& .MuiOutlinedInput-root": {
                 borderRadius: "10px",
                 borderColor: "#939393",
+              },
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": {
+                  borderColor: "#333",
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: "#000",
+                },
               },
             }}
           />

@@ -78,6 +78,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import { useNavigate, useLocation } from "react-router-dom";
+import ReportIcon from "@mui/icons-material/Report";
 
 import {
   Box,
@@ -100,11 +101,11 @@ const menuItems = [
     icon: <AssignmentIcon />,
     path: "/project1",
   },
-  // {
-  //   text: "Pump Performance",
-  //   icon: <AssignmentIcon />,
-  //   path: "/pumpPerformance",
-  // },
+  {
+    text: "Reports",
+    icon: <ReportIcon />,
+    path: "/reports",
+  },
   // {
   //   text: "Projects",
   //   icon: <AssignmentIcon />,
