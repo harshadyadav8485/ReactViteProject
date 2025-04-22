@@ -229,7 +229,10 @@ const Projects1 = () => {
                   </Stack>
                 </TableCell>
                 <TableCell>
+                <Stack direction="row" alignItems="center" spacing={1} sx={{ml:3}}>
                   <Typography fontWeight="bold">Status</Typography>
+                  <ArrowDropDown />
+                  </Stack>
                 </TableCell>
                 <TableCell>
                   <Typography fontWeight="bold">Action</Typography>
