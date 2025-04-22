@@ -63,7 +63,7 @@ const CreatePump = () => {
           mb: 4,
         }}
       >
-        <Typography variant="body1" fontWeight="bold" sx={{ mb: 2 }}>
+        <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
           Pump
         </Typography>
 
@@ -153,10 +153,10 @@ const CreatePump = () => {
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     "& fieldset": {
-                      borderColor: "#333", // Dark border color
+                      borderColor: "#333",
                     },
                     "&.Mui-focused fieldset": {
-                      borderColor: "#000", // Even darker border color when focused
+                      borderColor: "#000",
                     },
                   },
                 }}
@@ -233,7 +233,7 @@ const CreatePump = () => {
 
         <Divider sx={{ my: 3, borderRadius: "5px" }} />
 
-        <Typography variant="body1" fontWeight="bold" sx={{ mb: 2 }}>
+        <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
           Motor
         </Typography>
 
@@ -394,6 +394,42 @@ const CreatePump = () => {
                     },
                     "&.Mui-focused fieldset": {
                       borderColor: "#000", // Even darker border color when focused
+                    },
+                  },
+                }}
+              />
+            </Stack>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Stack
+              direction="row"
+              spacing={2}
+              alignItems="center"
+              sx={{ mb: 1 }}
+            >
+              <Typography
+                sx={{
+                  width: 100,
+                  fontWeight: 500,
+                }}
+              >
+                Assign To <span style={{ color: "red" }}>*</span>
+              </Typography>
+              <TextField
+                fullWidth
+                placeholder="Enter Engineer Name"
+                size="small"
+                name="rpm"
+                value={formData.rpm}
+                onChange={handleChange}
+                variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#333",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#000",
                     },
                   },
                 }}
