@@ -69,7 +69,7 @@ const CreatePump = () => {
 
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
-            <Stack direction="row" spacing={2} alignItems="center">
+            <Stack direction="row" spacing={3} alignItems="center">
               <Typography
                 sx={{
                   width: 100,
@@ -131,7 +131,7 @@ const CreatePump = () => {
             </Stack>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Stack direction="row" spacing={2} alignItems="center">
+            <Stack direction="row" spacing={3} alignItems="center">
               <Typography
                 sx={{
                   width: 100,
@@ -197,7 +197,7 @@ const CreatePump = () => {
             </Stack>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Stack direction="row" spacing={2} alignItems="center">
+            <Stack direction="row" spacing={3} alignItems="center">
               <Typography
                 sx={{
                   width: 100,
@@ -240,14 +240,19 @@ const CreatePump = () => {
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
             <Stack direction="row" spacing={2} alignItems="center">
-              <Typography
-                sx={{
-                  width: 100,
-                  fontWeight: 500,
-                }}
-              >
-                Manufacturer <span style={{ color: "red" }}>*</span>
-              </Typography>
+            <Typography
+              sx={{
+                width: 100,
+                fontWeight: 500,
+                whiteSpace: "nowrap", 
+                display: "flex",     
+                alignItems: "center", 
+                gap: "2px",           
+              }}
+            >
+              Manufacturer <span style={{ color: "red" }}>*</span>
+            </Typography>
+
               <TextField
                 fullWidth
                 placeholder="Enter Manufacturer"
@@ -272,10 +277,14 @@ const CreatePump = () => {
           <Grid item xs={12} md={6}>
             <Stack direction="row" spacing={2} alignItems="center">
               <Typography
-                sx={{
-                  width: 100,
-                  fontWeight: 500,
-                }}
+               sx={{
+                width: 100,
+                fontWeight: 500,
+                whiteSpace: "nowrap", 
+                display: "flex",     
+                alignItems: "center", 
+                gap: "2px",           
+              }}
               >
                 Size <span style={{ color: "red" }}>*</span>
               </Typography>
@@ -301,12 +310,16 @@ const CreatePump = () => {
             </Stack>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Stack direction="row" spacing={2} alignItems="center">
+            <Stack direction="row" spacing={3} alignItems="center">
               <Typography
-                sx={{
-                  width: 100,
-                  fontWeight: 500,
-                }}
+               sx={{
+                width: 100,
+                fontWeight: 500,
+                whiteSpace: "nowrap", 
+                display: "flex",     
+                alignItems: "center", 
+                gap: "2px",           
+              }}
               >
                 Volts/
                 <br />
@@ -336,10 +349,14 @@ const CreatePump = () => {
           <Grid item xs={12} md={6}>
             <Stack direction="row" spacing={2} alignItems="center">
               <Typography
-                sx={{
-                  width: 100,
-                  fontWeight: 500,
-                }}
+               sx={{
+                width: 100,
+                fontWeight: 500,
+                whiteSpace: "nowrap", 
+                display: "flex",     
+                alignItems: "center", 
+                gap: "2px",           
+              }}
               >
                 Amperage <span style={{ color: "red" }}>*</span>
               </Typography>
@@ -367,7 +384,7 @@ const CreatePump = () => {
           <Grid item xs={12} md={6}>
             <Stack
               direction="row"
-              spacing={2}
+              spacing={3}
               alignItems="center"
               sx={{ mb: 1 }}
             >
@@ -375,6 +392,10 @@ const CreatePump = () => {
                 sx={{
                   width: 100,
                   fontWeight: 500,
+                  whiteSpace: "nowrap", 
+                  display: "flex",     
+                  alignItems: "center", 
+                  gap: "2px",           
                 }}
               >
                 R.P.M <span style={{ color: "red" }}>*</span>
@@ -400,7 +421,7 @@ const CreatePump = () => {
               />
             </Stack>
           </Grid>
-          <Grid item xs={12} md={6}>
+          {/* <Grid item xs={12} md={6}>
             <Stack
               direction="row"
               spacing={2}
@@ -435,7 +456,7 @@ const CreatePump = () => {
                 }}
               />
             </Stack>
-          </Grid>
+          </Grid> */}
         </Grid>
       </Paper>
 

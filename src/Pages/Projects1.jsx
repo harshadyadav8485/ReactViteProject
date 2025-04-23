@@ -48,7 +48,7 @@ const projectData = [
   {
     id: "P002",
 
-    name: "BOILED FEED PUMP",
+    name: "BOILER FEED PUMP",
 
     customer: "Smith Sheet Metal\nWorks Ltd",
 
@@ -69,7 +69,7 @@ const projectData = [
   {
     id: "P004",
 
-    name: "BOILED FEED PUMP1",
+    name: "BOILER FEED PUMP1",
 
     customer: "Smith Sheet Metal\nWorks Ltd",
 
