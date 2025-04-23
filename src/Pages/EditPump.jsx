@@ -43,7 +43,7 @@ const EditPump = () => {
     <Box
       sx={{
         bgcolor: "#f2f4f5",
-        minHeight: "100vh",
+        minHeight: "88vh",
         py: 4,
         pl: "70px",
         pt: "12px",
@@ -82,7 +82,7 @@ const EditPump = () => {
               <TextField
                 fullWidth
                 defaultValue="BELL & GOSSETT"
-                size="small"
+                // size="small"
                 name="make"
                 value={formData.make}
                 onChange={handleChange}
@@ -114,7 +114,7 @@ const EditPump = () => {
               <TextField
                 fullWidth
                 defaultValue="e-80SC 5x5x11"
-                size="small"
+                // size="small"
                 name="model"
                 value={formData.model}
                 onChange={handleChange}
@@ -148,7 +148,7 @@ const EditPump = () => {
               <TextField
                 fullWidth
                 defaultValue=""
-                size="small"
+                // size="small"
                 name="impellerSize"
                 value={formData.impellerSize}
                 onChange={handleChange}
@@ -182,7 +182,7 @@ const EditPump = () => {
               <TextField
                 fullWidth
                 defaultValue="34.700"
-                size="small"
+                // size="small"
                 name="pumpCapacity"
                 value={formData.pumpCapacity}
                 onChange={handleChange}
@@ -216,7 +216,7 @@ const EditPump = () => {
               <TextField
                 fullWidth
                 defaultValue="187.629"
-                size="small"
+                // size="small"
                 name="systemCapacity"
                 value={formData.systemCapacity}
                 onChange={handleChange}
@@ -257,7 +257,7 @@ const EditPump = () => {
               <TextField
                 fullWidth
                 defaultValue=""
-                size="small"
+                // size="small"
                 name="size"
                 value={formData.size}
                 onChange={handleChange}
@@ -289,7 +289,7 @@ const EditPump = () => {
               <TextField
                 fullWidth
                 defaultValue="20 "
-                size="small"
+                // size="small"
                 name="size"
                 value={formData.size}
                 onChange={handleChange}
@@ -323,7 +323,7 @@ const EditPump = () => {
               <TextField
                 fullWidth
                 defaultValue="575/3"
-                size="small"
+                // size="small"
                 name="voltsPhase"
                 value={formData.voltsPhase}
                 onChange={handleChange}
@@ -355,7 +355,7 @@ const EditPump = () => {
               <TextField
                 fullWidth
                 defaultValue="23.60"
-                size="small"
+                // size="small"
                 name="amperage"
                 value={formData.amperage}
                 onChange={handleChange}
@@ -392,7 +392,7 @@ const EditPump = () => {
               <TextField
                 fullWidth
                 defaultValue=""
-                size="small"
+                // size="small"
                 name="rpm"
                 value={formData.rpm}
                 onChange={handleChange}

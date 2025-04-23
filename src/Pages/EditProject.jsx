@@ -22,7 +22,7 @@ const EditProject = () => {
     <Box
       sx={{
         bgcolor: "#f2f4f5",
-        minHeight: "100vh",
+        minHeight: "88vh",
         py: 4,
         pl: "70px",
         pt: "12px",
@@ -54,7 +54,7 @@ const EditProject = () => {
                 <TextField
                   fullWidth
                   variant="outlined"
-                  size="small"
+                  // size="small"
                   defaultValue="P001"
                   sx={{
                     "& .MuiOutlinedInput-root": {
@@ -83,7 +83,7 @@ const EditProject = () => {
                 <TextField
                   fullWidth
                   variant="outlined"
-                  size="small"
+                  // size="small"
                   defaultValue="Feb 2024"
                   sx={{
                     "& .MuiOutlinedInput-root": {
@@ -112,7 +112,7 @@ const EditProject = () => {
                 <TextField
                   fullWidth
                   variant="outlined"
-                  size="small"
+                  // size="small"
                   defaultValue="UBC School Of Biomedical Engineering"
                   sx={{
                     "& .MuiOutlinedInput-root": {
@@ -141,7 +141,7 @@ const EditProject = () => {
                 <TextField
                   fullWidth
                   variant="outlined"
-                  size="small"
+                  // size="small"
                   defaultValue="Smith Sheet Metal Works Ltd"
                   sx={{
                     "& .MuiOutlinedInput-root": {
@@ -170,7 +170,7 @@ const EditProject = () => {
                 <TextField
                   fullWidth
                   variant="outlined"
-                  size="small"
+                  // size="small"
                   defaultValue="JJ/TK"
                   sx={{
                     "& .MuiOutlinedInput-root": {
