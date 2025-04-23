@@ -22,11 +22,12 @@ import {
   FormControlLabel,
   Checkbox,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import pump_report from "../assets/pump_report.pdf";
 import { useNavigate } from "react-router-dom";
 import { Snackbar, Alert } from "@mui/material";
+import { useOutletContext } from "react-router-dom";
 
 const ActualPump = () => {
   const [tabValue, setTabValue] = useState(0);
@@ -52,6 +53,19 @@ const ActualPump = () => {
     { field: "Amperage", specifiedValue: "23.60", actualValue: "As Below" },
     { field: "R.P.M", specifiedValue: "", actualValue: "-" },
   ]);
+
+  const scrollableRef = useRef(null);
+  const { setParentScroll } = useOutletContext();
+
+  useEffect(() => {
+    const el = scrollableRef.current;
+    if (el) {
+      requestAnimationFrame(() => {
+        const isOverflowing = el.scrollHeight > el.clientHeight;
+        setParentScroll(!isOverflowing);
+      });
+    }
+  }, [setParentScroll]);
 
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
@@ -84,12 +98,13 @@ const ActualPump = () => {
 
   return (
     <Box
+      ref={scrollableRef}
       sx={{
         bgcolor: "#f2f4f5",
         display: "flex",
         justifyContent: "center",
         width: "100%",
-        height: "100vh",
+        height: "100%",
         overflow: "auto",
       }}
     >
@@ -99,10 +114,10 @@ const ActualPump = () => {
           // minHeight: "100vh",
           width: "100vw",
           pl: "70px",
-          pt: "12px",
+          mt: "12px",
           pr: "24px",
           boxSizing: "border-box",
-          // overflow: "auto",
+          overflow: "auto",
           position: "relative",
         }}
       >
@@ -112,11 +127,11 @@ const ActualPump = () => {
             width: "100%",
             height: "150px",
             position: "sticky",
-            top: 12,
+            top: 0,
             right: 0,
             paddingTop: 0,
             paddingBottom: 0,
-            zIndex: 1099,
+            zIndex: 1,
           }}
         >
           <Typography
