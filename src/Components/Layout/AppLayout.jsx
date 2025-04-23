@@ -11,7 +11,7 @@ function AppLayout() {
   };
 
   return (
-    <div className="h-screen flex flex-col">
+    <div className="flex flex-col">
       <Header toggleSidebar={toggleSidebar} />
       <div className="flex" style={{ marginTop: "64px" }}>
         {" "}
@@ -23,7 +23,7 @@ function AppLayout() {
             marginLeft: "220px", // ✅ FIX: Prevent content from overlapping sidebar
             paddingTop: "10px",
             overflowY: "auto",
-            height: "calc(100vh - 64px)", // ✅ FIX: Ensure content fits within the screen
+            // height: "calc(100vh - 64px)", // ✅ FIX: Ensure content fits within the screen
           }}
         >
           <Outlet />
