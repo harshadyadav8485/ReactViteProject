@@ -76,7 +76,7 @@ const CreateFanCreation = () => {
                 fontWeight="500"
                 sx={{ mr: 2, minWidth: "80px" }}
               >
-                Area <br></br> Served <span style={{ color: "red" }}>*</span>
+                Area <br /> Served <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField fullWidth variant="outlined" size="small" />
             </Box>

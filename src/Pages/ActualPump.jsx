@@ -45,7 +45,7 @@ const ActualPump = () => {
       specifiedValue: "e-805C 5x5x11",
       actualValue: "K56011D-4-PM",
     },
-    { field: "Impeller Size", specifiedValue: "", actualValue: "9.5" },
+    { field: "Impeller Size", specifiedValue: "", actualValue: "9.5''" },
     { field: "Manufacturer", specifiedValue: "-", actualValue: "WEG" },
     { field: "Motor Size", specifiedValue: "20 HP", actualValue: "25 HP" },
     { field: "Volts/Phase", specifiedValue: "575/3", actualValue: "575/3" },
@@ -67,11 +67,19 @@ const ActualPump = () => {
     setAnchorEl(null);
   };
 
+  const handleFirstSubmit = () => {
+    setOpenSnackbar(true);
+
+    setTabValue(1);
+  };
+  const handleSecondSubmit = () => {
+    setOpenSnackbar(true);
+
+    setTabValue(2);
+  };
+
   const handleSubmit = () => {
     setOpenSnackbar(true);
-    setTimeout(() => {
-      // navigate("/sampleTestData");
-    }, 2000);
   };
 
   return (
@@ -93,7 +101,7 @@ const ActualPump = () => {
           pt: "12px",
           pr: "24px",
           boxSizing: "border-box",
-          overflow: "hidden",
+          overflow: "auto",
           position: "relative",
         }}
       >
@@ -261,7 +269,7 @@ const ActualPump = () => {
               </Button>
               <Button
                 variant="contained"
-                onClick={handleSubmit}
+                onClick={handleFirstSubmit}
                 sx={{
                   borderRadius: "10px",
                   bgcolor: "#99CAFF",
@@ -1531,7 +1539,7 @@ const ActualPump = () => {
                 </Button>
                 <Button
                   variant="contained"
-                  onClick={handleSubmit}
+                  onClick={handleSecondSubmit}
                   sx={{
                     borderRadius: "10px",
                     bgcolor: "#99CAFF",
