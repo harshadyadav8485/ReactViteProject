@@ -296,15 +296,12 @@ const Projects2 = () => {
               bgcolor: "#fff",
               height: "50px",
               "& .MuiOutlinedInput-root": {
-                borderRadius: "10px",
-                borderColor: "#939393",
-              },
-              "& .MuiOutlinedInput-root": {
+                boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                 "& fieldset": {
-                  borderColor: "#333",
+                  border: "none",
                 },
-                "&.Mui-focused fieldset": {
-                  borderColor: "#000",
+                "&.Mui-focused": {
+                  boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                 },
               },
             }}
