@@ -116,7 +116,7 @@ const EditPumpCreation = () => {
                 defaultValue="22/04/2025"
                 placeholder="Enter Planned Inspection Date"
                 variant="outlined"
-                // size="small"
+                size="small"
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
@@ -147,7 +147,7 @@ const EditPumpCreation = () => {
                 defaultValue="24/04/2025"
                 placeholder="Enter Actual Inspection Date"
                 variant="outlined"
-                // size="small"
+                size="small"
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
@@ -202,7 +202,7 @@ const EditPumpCreation = () => {
                 IconComponent={KeyboardArrowDownIcon}
                 sx={{
                   bgcolor: "#fff",
-                  height: "50px",
+                  height: "40px",
                   width: "100%",
                   boxShadow: "0px 3px 6px rgba(0, 0, 0, 0.25)", // bottom shadow
                   "& .MuiOutlinedInput-notchedOutline": {
@@ -243,7 +243,7 @@ const EditPumpCreation = () => {
                 fullWidth
                 defaultValue="P-06-07A"
                 variant="outlined"
-                // size="small"
+                size="small"
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
@@ -271,7 +271,7 @@ const EditPumpCreation = () => {
                 fullWidth
                 defaultValue="Mechanical Penthouse"
                 variant="outlined"
-                // size="small"
+                size="small"
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
@@ -301,7 +301,7 @@ const EditPumpCreation = () => {
                 fullWidth
                 defaultValue="Secondary Chilled Water Pump"
                 variant="outlined"
-                // size="small"
+                size="small"
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
@@ -433,7 +433,7 @@ const EditPumpCreation = () => {
                 <TextField
                   fullWidth
                   variant="outlined"
-                  // size="small"
+                  size="small"
                   value={pump.name}
                   onChange={(e) =>
                     handlePumpMateChange(index, {

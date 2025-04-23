@@ -53,7 +53,7 @@ const projectData = [
 
     name: "BOILED FEED PUMP",
 
-   equipment:"Fan",
+    equipment: "Fan",
 
     tooltip: "Click to view project details",
   },
@@ -64,8 +64,10 @@ const Reports = () => {
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-   const [projectName, setProjectName] = useState("USB SCHOOL OF BIOMEDICAL ENGINEERING");
-   const [equipmentName,setEquipmentName] = useState("Pump");
+  const [projectName, setProjectName] = useState(
+    "USB SCHOOL OF BIOMEDICAL ENGINEERING"
+  );
+  const [equipmentName, setEquipmentName] = useState("Pump");
 
   return (
     <Box
@@ -79,7 +81,7 @@ const Reports = () => {
       <Box
         sx={{
           bgcolor: "#f2f4f5",
-          minHeight: "100vh",
+          minHeight: "88vh",
           width: "100vw",
           py: 4,
           pl: "70px",
@@ -118,10 +120,10 @@ const Reports = () => {
               },
               "& .MuiOutlinedInput-root": {
                 "& fieldset": {
-                  borderColor: "#333", 
+                  borderColor: "#333",
                 },
                 "&.Mui-focused fieldset": {
-                  borderColor: "#000", 
+                  borderColor: "#000",
                 },
               },
             }}
@@ -165,57 +167,54 @@ const Reports = () => {
                     <Typography fontWeight="bold">{project.id}</Typography>
                   </TableCell>
                   <TableCell>
-                      <Typography
-                        fontWeight="medium"
-                      >
-                        {project.name}
-                      </Typography>
+                    <Typography fontWeight="medium">{project.name}</Typography>
                   </TableCell>
-                    <TableCell>
-                        <Select
-                          value={project.equipment}
-                          size="small"
-                          onChange={(e) => {
-                            // handle change if needed
-                            console.log(`New equipment for ${project.id}:`, e.target.value);
-                          }}
-                          displayEmpty
-                          variant="outlined"
-                          sx={{ width: "150px", bgcolor: "#fff" }}
-                        >
-                          <MenuItem value="Pump">Pump</MenuItem>
-                          <MenuItem value="Fan">Fan</MenuItem>
-                          {/* <MenuItem value="Compressor">Compressor</MenuItem> */}
-                        </Select>
-                      </TableCell>
+                  <TableCell>
+                    <Select
+                      value={project.equipment}
+                      size="small"
+                      onChange={(e) => {
+                        // handle change if needed
+                        console.log(
+                          `New equipment for ${project.id}:`,
+                          e.target.value
+                        );
+                      }}
+                      displayEmpty
+                      variant="outlined"
+                      sx={{ width: "150px", bgcolor: "#fff" }}
+                    >
+                      <MenuItem value="Pump">Pump</MenuItem>
+                      <MenuItem value="Fan">Fan</MenuItem>
+                      {/* <MenuItem value="Compressor">Compressor</MenuItem> */}
+                    </Select>
+                  </TableCell>
                   <TableCell>
                     <Stack direction="row" spacing={1}>
                       <Tooltip title="View Report">
                         <IconButton
                           variant="contained"
-                         onClick={() => {
-                           window.open(pump_report, "_blank");
-                         }}
-                       >
-        <VisibilityIcon />
-      </IconButton>
-    </Tooltip>
+                          onClick={() => {
+                            window.open(pump_report, "_blank");
+                          }}
+                        >
+                          <VisibilityIcon />
+                        </IconButton>
+                      </Tooltip>
 
-    <Tooltip title="Download Report">
-        <a
-          href={pump_report}
-          download="pump_report"
-          style={{ color: "inherit", textDecoration: "none" }}
-        >
-          <IconButton size="small" color="secondary">
-            <FileDownloadIcon />
-          </IconButton>
-        </a>
-    </Tooltip>
-
-  </Stack>
-</TableCell>
-
+                      <Tooltip title="Download Report">
+                        <a
+                          href={pump_report}
+                          download="pump_report"
+                          style={{ color: "inherit", textDecoration: "none" }}
+                        >
+                          <IconButton size="small" color="secondary">
+                            <FileDownloadIcon />
+                          </IconButton>
+                        </a>
+                      </Tooltip>
+                    </Stack>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -227,6 +226,3 @@ const Reports = () => {
 };
 
 export default Reports;
-
-
-
