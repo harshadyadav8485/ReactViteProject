@@ -22,7 +22,7 @@ const CreateProject = () => {
     <Box
       sx={{
         bgcolor: "#f2f4f5",
-        minHeight: "100vh",
+        minHeight: "88vh",
         py: 4,
         pl: "70px",
         pt: "12px",
@@ -55,7 +55,7 @@ const CreateProject = () => {
                   fullWidth
                   placeholder="Enter Project Id"
                   variant="outlined"
-                  size="small"
+                  // size="small"
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
@@ -84,7 +84,7 @@ const CreateProject = () => {
                   fullWidth
                   placeholder="Enter Date"
                   variant="outlined"
-                  size="small"
+                  // size="small"
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
@@ -96,7 +96,6 @@ const CreateProject = () => {
                       },
                     },
                   }}
-                  
                 />
               </Grid>
             </Grid>
@@ -114,7 +113,7 @@ const CreateProject = () => {
                   fullWidth
                   placeholder="Enter Project Name"
                   variant="outlined"
-                  size="small"
+                  // size="small"
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
@@ -143,7 +142,7 @@ const CreateProject = () => {
                   fullWidth
                   placeholder="Enter Customer Name"
                   variant="outlined"
-                  size="small"
+                  // size="small"
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
@@ -168,11 +167,11 @@ const CreateProject = () => {
                 </Typography>
               </Grid>
               <Grid item xs={8}>
-              <TextField
+                <TextField
                   fullWidth
                   placeholder="Enter Tested By"
                   variant="outlined"
-                  size="small"
+                  // size="small"
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25

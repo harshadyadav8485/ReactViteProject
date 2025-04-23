@@ -66,7 +66,7 @@ const CreatePumpCreation = () => {
     <Box
       sx={{
         bgcolor: "#f2f4f5",
-        minHeight: "100vh",
+        minHeight: "88vh",
         py: 4,
         pl: "70px",
         pt: "12px",
@@ -130,7 +130,7 @@ const CreatePumpCreation = () => {
                 fullWidth
                 placeholder="Enter Planned Inspection Date"
                 variant="outlined"
-                size="small"
+                // size="small"
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
@@ -160,7 +160,7 @@ const CreatePumpCreation = () => {
                 fullWidth
                 placeholder="Enter Actual Inspection Date"
                 variant="outlined"
-                size="small"
+                // size="small"
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
@@ -198,7 +198,7 @@ const CreatePumpCreation = () => {
                 IconComponent={KeyboardArrowDownIcon}
                 sx={{
                   bgcolor: "#fff",
-                  height: "40px",
+                  height: "50px",
                   width: "100%",
                   boxShadow: "0px 3px 6px rgba(0, 0, 0, 0.25)", // bottom shadow
                   "& .MuiOutlinedInput-notchedOutline": {
@@ -211,7 +211,6 @@ const CreatePumpCreation = () => {
                     border: "none", // no border on hover
                   },
                 }}
-                
                 MenuProps={{
                   PaperProps: {
                     sx: {
@@ -242,7 +241,7 @@ const CreatePumpCreation = () => {
                 fullWidth
                 placeholder="Enter Pump No."
                 variant="outlined"
-                size="small"
+                // size="small"
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
@@ -271,7 +270,7 @@ const CreatePumpCreation = () => {
                 fullWidth
                 placeholder="Enter Location"
                 variant="outlined"
-                size="small"
+                // size="small"
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
@@ -301,7 +300,7 @@ const CreatePumpCreation = () => {
                 fullWidth
                 placeholder="Enter System Served"
                 variant="outlined"
-                size="small"
+                // size="small"
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
@@ -331,7 +330,7 @@ const CreatePumpCreation = () => {
                     fullWidth
                     variant="outlined"
                     placeholder="Pump Running Mate Number"
-                    size="small"
+                    // size="small"
                     value={pump.name}
                     onChange={(e) =>
                       handlePumpMateChange(index, e.target.value)

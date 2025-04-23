@@ -42,7 +42,8 @@ const CreatePump = () => {
     <Box
       sx={{
         bgcolor: "#f2f4f5",
-        minHeight: "100vh",
+        minHeight: "88vh",
+        // minHeight: "auto",
         py: 4,
         pl: "70px",
         pt: "12px",
@@ -81,7 +82,7 @@ const CreatePump = () => {
               <TextField
                 fullWidth
                 placeholder="Enter Mak"
-                size="small"
+                // size="small"
                 name="make"
                 value={formData.make}
                 onChange={handleChange}
@@ -113,7 +114,7 @@ const CreatePump = () => {
               <TextField
                 fullWidth
                 placeholder="Enter Model"
-                size="small"
+                // size="small"
                 name="model"
                 value={formData.model}
                 onChange={handleChange}
@@ -147,7 +148,7 @@ const CreatePump = () => {
               <TextField
                 fullWidth
                 placeholder="Enter Impeller Size"
-                size="small"
+                // size="small"
                 name="impellerSize"
                 value={formData.impellerSize}
                 onChange={handleChange}
@@ -181,7 +182,7 @@ const CreatePump = () => {
               <TextField
                 fullWidth
                 placeholder="Enter Pump Capacity"
-                size="small"
+                // size="small"
                 name="pumpCapacity"
                 value={formData.pumpCapacity}
                 onChange={handleChange}
@@ -215,7 +216,7 @@ const CreatePump = () => {
               <TextField
                 fullWidth
                 placeholder="Enter System Capacity"
-                size="small"
+                // size="small"
                 name="systemCapacity"
                 value={formData.systemCapacity}
                 onChange={handleChange}
@@ -245,23 +246,23 @@ const CreatePump = () => {
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
             <Stack direction="row" spacing={2} alignItems="center">
-            <Typography
-              sx={{
-                width: 100,
-                fontWeight: 500,
-                whiteSpace: "nowrap", 
-                display: "flex",     
-                alignItems: "center", 
-                gap: "2px",           
-              }}
-            >
-              Manufacturer <span style={{ color: "red" }}>*</span>
-            </Typography>
+              <Typography
+                sx={{
+                  width: 100,
+                  fontWeight: 500,
+                  whiteSpace: "nowrap",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "2px",
+                }}
+              >
+                Manufacturer <span style={{ color: "red" }}>*</span>
+              </Typography>
 
               <TextField
                 fullWidth
                 placeholder="Enter Manufacturer"
-                size="small"
+                // size="small"
                 name="size"
                 value={formData.size}
                 onChange={handleChange}
@@ -283,21 +284,21 @@ const CreatePump = () => {
           <Grid item xs={12} md={6}>
             <Stack direction="row" spacing={2} alignItems="center">
               <Typography
-               sx={{
-                width: 100,
-                fontWeight: 500,
-                whiteSpace: "nowrap", 
-                display: "flex",     
-                alignItems: "center", 
-                gap: "2px",           
-              }}
+                sx={{
+                  width: 100,
+                  fontWeight: 500,
+                  whiteSpace: "nowrap",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "2px",
+                }}
               >
                 Size <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
                 placeholder="Enter Size"
-                size="small"
+                // size="small"
                 name="size"
                 value={formData.size}
                 onChange={handleChange}
@@ -319,14 +320,14 @@ const CreatePump = () => {
           <Grid item xs={12} md={6}>
             <Stack direction="row" spacing={3} alignItems="center">
               <Typography
-               sx={{
-                width: 100,
-                fontWeight: 500,
-                whiteSpace: "nowrap", 
-                display: "flex",     
-                alignItems: "center", 
-                gap: "2px",           
-              }}
+                sx={{
+                  width: 100,
+                  fontWeight: 500,
+                  whiteSpace: "nowrap",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "2px",
+                }}
               >
                 Volts/
                 <br />
@@ -335,7 +336,7 @@ const CreatePump = () => {
               <TextField
                 fullWidth
                 placeholder="Enter Volts/Phase"
-                size="small"
+                // size="small"
                 name="voltsPhase"
                 value={formData.voltsPhase}
                 onChange={handleChange}
@@ -357,21 +358,21 @@ const CreatePump = () => {
           <Grid item xs={12} md={6}>
             <Stack direction="row" spacing={2} alignItems="center">
               <Typography
-               sx={{
-                width: 100,
-                fontWeight: 500,
-                whiteSpace: "nowrap", 
-                display: "flex",     
-                alignItems: "center", 
-                gap: "2px",           
-              }}
+                sx={{
+                  width: 100,
+                  fontWeight: 500,
+                  whiteSpace: "nowrap",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "2px",
+                }}
               >
                 Amperage <span style={{ color: "red" }}>*</span>
               </Typography>
               <TextField
                 fullWidth
                 placeholder="Enter Amperage"
-                size="small"
+                // size="small"
                 name="amperage"
                 value={formData.amperage}
                 onChange={handleChange}
@@ -401,10 +402,10 @@ const CreatePump = () => {
                 sx={{
                   width: 100,
                   fontWeight: 500,
-                  whiteSpace: "nowrap", 
-                  display: "flex",     
-                  alignItems: "center", 
-                  gap: "2px",           
+                  whiteSpace: "nowrap",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "2px",
                 }}
               >
                 R.P.M <span style={{ color: "red" }}>*</span>
@@ -412,7 +413,7 @@ const CreatePump = () => {
               <TextField
                 fullWidth
                 placeholder="Enter R.P.M"
-                size="small"
+                // size="small"
                 name="rpm"
                 value={formData.rpm}
                 onChange={handleChange}
