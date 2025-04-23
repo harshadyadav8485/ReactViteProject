@@ -253,13 +253,14 @@ const ActualPump = () => {
                 sx={{
                   mb: 2,
                   "& .MuiOutlinedInput-root": {
-                    "& fieldset": {
-                      borderColor: "#333", // Dark border color
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#000", // Even darker border color when focused
-                    },
-                  },
+                                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                                      "& fieldset": {
+                                        border: "none",
+                                      },
+                                      "&.Mui-focused": {
+                                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                                      },
+                                    },
                 }}
               />
               {/* <Typography variant="body1" color="text.secondary" mb={1}>
@@ -351,13 +352,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -376,13 +378,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -401,13 +404,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -431,14 +435,15 @@ const ActualPump = () => {
                       sx={{
                         width: "200px",
                         backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                       "& .MuiOutlinedInput-root": {
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -457,13 +462,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -481,14 +487,15 @@ const ActualPump = () => {
                       sx={{
                         width: "200px",
                         backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                       "& .MuiOutlinedInput-root": {
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -506,14 +513,15 @@ const ActualPump = () => {
                       sx={{
                         width: "200px",
                         backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                       "& .MuiOutlinedInput-root": {
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -529,13 +537,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -553,14 +562,15 @@ const ActualPump = () => {
                       sx={{
                         width: "200px",
                         backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                       "& .MuiOutlinedInput-root": {
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -579,13 +589,14 @@ const ActualPump = () => {
                   sx={{
                     mb: 2,
                     "& .MuiOutlinedInput-root": {
-                      "& fieldset": {
-                        borderColor: "#333", // Dark border color
-                      },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#000", // Even darker border color when focused
-                      },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
                     },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                   }}
                 />
 
@@ -670,13 +681,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -695,13 +707,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -720,13 +733,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -751,13 +765,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -776,13 +791,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -800,14 +816,15 @@ const ActualPump = () => {
                       sx={{
                         width: "200px",
                         backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                       "& .MuiOutlinedInput-root": {
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -826,13 +843,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -848,13 +866,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -873,13 +892,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -897,14 +917,15 @@ const ActualPump = () => {
                   placeholder="Enter your comments..."
                   sx={{
                     mb: 2,
-                    "& .MuiOutlinedInput-root": {
-                      "& fieldset": {
-                        borderColor: "#333", // Dark border color
-                      },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#000", // Even darker border color when focused
-                      },
+                   "& .MuiOutlinedInput-root": {
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
                     },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                   }}
                 />
 
@@ -989,13 +1010,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -1014,13 +1036,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -1039,13 +1062,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -1070,13 +1094,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -1094,14 +1119,15 @@ const ActualPump = () => {
                       sx={{
                         width: "200px",
                         backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                       "& .MuiOutlinedInput-root": {
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -1118,15 +1144,15 @@ const ActualPump = () => {
                       size="small"
                       sx={{
                         width: "200px",
-                        backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -1145,13 +1171,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -1167,13 +1194,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -1192,13 +1220,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -1217,13 +1246,14 @@ const ActualPump = () => {
                   sx={{
                     mb: 2,
                     "& .MuiOutlinedInput-root": {
-                      "& fieldset": {
-                        borderColor: "#333", // Dark border color
-                      },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#000", // Even darker border color when focused
-                      },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
                     },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                   }}
                 />
 
@@ -1307,13 +1337,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -1331,13 +1362,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -1355,13 +1387,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -1384,14 +1417,15 @@ const ActualPump = () => {
                       sx={{
                         width: "200px",
                         backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                       "& .MuiOutlinedInput-root": {
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -1409,13 +1443,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -1433,13 +1468,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -1456,14 +1492,15 @@ const ActualPump = () => {
                       sx={{
                         width: "200px",
                         backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                       "& .MuiOutlinedInput-root": {
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -1478,13 +1515,14 @@ const ActualPump = () => {
                         width: "200px",
                         backgroundColor: "white",
                         "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -1501,14 +1539,15 @@ const ActualPump = () => {
                       sx={{
                         width: "200px",
                         backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            borderColor: "#333", // Dark border color
-                          },
-                          "&.Mui-focused fieldset": {
-                            borderColor: "#000", // Even darker border color when focused
-                          },
-                        },
+                       "& .MuiOutlinedInput-root": {
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                       }}
                     />
                   </Box>
@@ -1526,14 +1565,15 @@ const ActualPump = () => {
                   placeholder="Enter your comments..."
                   sx={{
                     mb: 2,
-                    "& .MuiOutlinedInput-root": {
-                      "& fieldset": {
-                        borderColor: "#333", // Dark border color
-                      },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#000", // Even darker border color when focused
-                      },
+                   "& .MuiOutlinedInput-root": {
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                    "& fieldset": {
+                      border: "none",
                     },
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                    },
+                  },
                   }}
                 />
 
@@ -1628,11 +1668,12 @@ const ActualPump = () => {
                         variant="outlined"
                         sx={{
                           "& .MuiOutlinedInput-root": {
+                            boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                             "& fieldset": {
-                              borderColor: "#333", // Dark border color
+                              border: "none",
                             },
-                            "&.Mui-focused fieldset": {
-                              borderColor: "#000", // Even darker border color when focused
+                            "&.Mui-focused": {
+                              boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                             },
                           },
                         }}
@@ -1647,11 +1688,12 @@ const ActualPump = () => {
                         variant="outlined"
                         sx={{
                           "& .MuiOutlinedInput-root": {
+                            boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                             "& fieldset": {
-                              borderColor: "#333", // Dark border color
+                              border: "none",
                             },
-                            "&.Mui-focused fieldset": {
-                              borderColor: "#000", // Even darker border color when focused
+                            "&.Mui-focused": {
+                              boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                             },
                           },
                         }}
@@ -1688,11 +1730,12 @@ const ActualPump = () => {
                         variant="outlined"
                         sx={{
                           "& .MuiOutlinedInput-root": {
+                            boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                             "& fieldset": {
-                              borderColor: "#333", // Dark border color
+                              border: "none",
                             },
-                            "&.Mui-focused fieldset": {
-                              borderColor: "#000", // Even darker border color when focused
+                            "&.Mui-focused": {
+                              boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                             },
                           },
                         }}
@@ -1706,11 +1749,12 @@ const ActualPump = () => {
                         variant="outlined"
                         sx={{
                           "& .MuiOutlinedInput-root": {
+                            boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                             "& fieldset": {
-                              borderColor: "#333", // Dark border color
+                              border: "none",
                             },
-                            "&.Mui-focused fieldset": {
-                              borderColor: "#000", // Even darker border color when focused
+                            "&.Mui-focused": {
+                              boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                             },
                           },
                         }}
@@ -1746,11 +1790,12 @@ const ActualPump = () => {
                         placeholder="Enter Pump Balancing Valve Position"
                         sx={{
                           "& .MuiOutlinedInput-root": {
+                            boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                             "& fieldset": {
-                              borderColor: "#333", // Dark border color
+                              border: "none",
                             },
-                            "&.Mui-focused fieldset": {
-                              borderColor: "#000", // Even darker border color when focused
+                            "&.Mui-focused": {
+                              boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                             },
                           },
                         }}
@@ -1772,11 +1817,12 @@ const ActualPump = () => {
                         placeholder="Enter System Differential Pressure Point"
                         sx={{
                           "& .MuiOutlinedInput-root": {
+                            boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                             "& fieldset": {
-                              borderColor: "#333", // Dark border color
+                              border: "none",
                             },
-                            "&.Mui-focused fieldset": {
-                              borderColor: "#000", // Even darker border color when focused
+                            "&.Mui-focused": {
+                              boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                             },
                           },
                         }}
@@ -1810,11 +1856,12 @@ const ActualPump = () => {
                         placeholder="Enter Full Flow"
                         sx={{
                           "& .MuiOutlinedInput-root": {
+                            boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                             "& fieldset": {
-                              borderColor: "#333", // Dark border color
+                              border: "none",
                             },
-                            "&.Mui-focused fieldset": {
-                              borderColor: "#000", // Even darker border color when focused
+                            "&.Mui-focused": {
+                              boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                             },
                           },
                         }}
@@ -1834,11 +1881,12 @@ const ActualPump = () => {
                         placeholder="Enter Balanced Position"
                         sx={{
                           "& .MuiOutlinedInput-root": {
+                            boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                             "& fieldset": {
-                              borderColor: "#333", // Dark border color
+                              border: "none",
                             },
-                            "&.Mui-focused fieldset": {
-                              borderColor: "#000", // Even darker border color when focused
+                            "&.Mui-focused": {
+                              boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                             },
                           },
                         }}
@@ -1869,11 +1917,12 @@ const ActualPump = () => {
                         placeholder="Enter Full Flow"
                         sx={{
                           "& .MuiOutlinedInput-root": {
+                            boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                             "& fieldset": {
-                              borderColor: "#333", // Dark border color
+                              border: "none",
                             },
-                            "&.Mui-focused fieldset": {
-                              borderColor: "#000", // Even darker border color when focused
+                            "&.Mui-focused": {
+                              boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                             },
                           },
                         }}
@@ -1893,11 +1942,12 @@ const ActualPump = () => {
                         placeholder="Enter Balanced Position"
                         sx={{
                           "& .MuiOutlinedInput-root": {
+                            boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                             "& fieldset": {
-                              borderColor: "#333", // Dark border color
+                              border: "none",
                             },
-                            "&.Mui-focused fieldset": {
-                              borderColor: "#000", // Even darker border color when focused
+                            "&.Mui-focused": {
+                              boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                             },
                           },
                         }}
@@ -1949,11 +1999,12 @@ const ActualPump = () => {
                               placeholder="Enter Type"
                               sx={{
                                 "& .MuiOutlinedInput-root": {
+                                  boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                                   "& fieldset": {
-                                    borderColor: "#333", // Dark border color
+                                    border: "none",
                                   },
-                                  "&.Mui-focused fieldset": {
-                                    borderColor: "#000", // Even darker border color when focused
+                                  "&.Mui-focused": {
+                                    boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                                   },
                                 },
                               }}
@@ -1972,11 +2023,12 @@ const ActualPump = () => {
                               placeholder="Enter Size"
                               sx={{
                                 "& .MuiOutlinedInput-root": {
+                                  boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                                   "& fieldset": {
-                                    borderColor: "#333", // Dark border color
+                                    border: "none",
                                   },
-                                  "&.Mui-focused fieldset": {
-                                    borderColor: "#000", // Even darker border color when focused
+                                  "&.Mui-focused": {
+                                    boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                                   },
                                 },
                               }}
@@ -1996,11 +2048,12 @@ const ActualPump = () => {
                               placeholder="Enter Signal(FT)"
                               sx={{
                                 "& .MuiOutlinedInput-root": {
+                                  boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                                   "& fieldset": {
-                                    borderColor: "#333", // Dark border color
+                                    border: "none",
                                   },
-                                  "&.Mui-focused fieldset": {
-                                    borderColor: "#000", // Even darker border color when focused
+                                  "&.Mui-focused": {
+                                    boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                                   },
                                 },
                               }}
@@ -2020,11 +2073,12 @@ const ActualPump = () => {
                               placeholder="Enter Measured(GPM)"
                               sx={{
                                 "& .MuiOutlinedInput-root": {
+                                  boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                                   "& fieldset": {
-                                    borderColor: "#333", // Dark border color
+                                    border: "none",
                                   },
-                                  "&.Mui-focused fieldset": {
-                                    borderColor: "#000", // Even darker border color when focused
+                                  "&.Mui-focused": {
+                                    boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                                   },
                                 },
                               }}
@@ -2043,11 +2097,12 @@ const ActualPump = () => {
                               placeholder="Enter Position"
                               sx={{
                                 "& .MuiOutlinedInput-root": {
+                                  boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                                   "& fieldset": {
-                                    borderColor: "#333", // Dark border color
+                                    border: "none",
                                   },
-                                  "&.Mui-focused fieldset": {
-                                    borderColor: "#000", // Even darker border color when focused
+                                  "&.Mui-focused": {
+                                    boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                                   },
                                 },
                               }}
@@ -2074,11 +2129,12 @@ const ActualPump = () => {
                               placeholder="Enter Efficiency"
                               sx={{
                                 "& .MuiOutlinedInput-root": {
+                                  boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                                   "& fieldset": {
-                                    borderColor: "#333", // Dark border color
+                                    border: "none",
                                   },
-                                  "&.Mui-focused fieldset": {
-                                    borderColor: "#000", // Even darker border color when focused
+                                  "&.Mui-focused": {
+                                    boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                                   },
                                 },
                               }}
@@ -2099,11 +2155,12 @@ const ActualPump = () => {
                               placeholder="Enter Measured Amperage"
                               sx={{
                                 "& .MuiOutlinedInput-root": {
+                                  boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                                   "& fieldset": {
-                                    borderColor: "#333", // Dark border color
+                                    border: "none",
                                   },
-                                  "&.Mui-focused fieldset": {
-                                    borderColor: "#000", // Even darker border color when focused
+                                  "&.Mui-focused": {
+                                    boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                                   },
                                 },
                               }}
@@ -2124,11 +2181,12 @@ const ActualPump = () => {
                               placeholder="Enter Measured Voltage"
                               sx={{
                                 "& .MuiOutlinedInput-root": {
+                                  boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                                   "& fieldset": {
-                                    borderColor: "#333", // Dark border color
+                                    border: "none",
                                   },
-                                  "&.Mui-focused fieldset": {
-                                    borderColor: "#000", // Even darker border color when focused
+                                  "&.Mui-focused": {
+                                    boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                                   },
                                 },
                               }}
@@ -2148,11 +2206,12 @@ const ActualPump = () => {
                               placeholder="Enter Power Factor"
                               sx={{
                                 "& .MuiOutlinedInput-root": {
+                                  boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                                   "& fieldset": {
-                                    borderColor: "#333", // Dark border color
+                                    border: "none",
                                   },
-                                  "&.Mui-focused fieldset": {
-                                    borderColor: "#000", // Even darker border color when focused
+                                  "&.Mui-focused": {
+                                    boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                                   },
                                 },
                               }}
@@ -2175,14 +2234,14 @@ const ActualPump = () => {
                                 <TextField
                                   fullWidth
                                   size="small"
-                                  placeholder="Enter BHP"
                                   sx={{
                                     "& .MuiOutlinedInput-root": {
+                                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                                       "& fieldset": {
-                                        borderColor: "#333", // Dark border color
+                                        border: "none",
                                       },
-                                      "&.Mui-focused fieldset": {
-                                        borderColor: "#000", // Even darker border color when focused
+                                      "&.Mui-focused": {
+                                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                                       },
                                     },
                                   }}
@@ -2197,14 +2256,14 @@ const ActualPump = () => {
                                 <TextField
                                   fullWidth
                                   size="small"
-                                  placeholder="Enter BKW"
                                   sx={{
                                     "& .MuiOutlinedInput-root": {
+                                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                                       "& fieldset": {
-                                        borderColor: "#333", // Dark border color
+                                        border: "none",
                                       },
-                                      "&.Mui-focused fieldset": {
-                                        borderColor: "#000", // Even darker border color when focused
+                                      "&.Mui-focused": {
+                                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                                       },
                                     },
                                   }}
@@ -2229,13 +2288,14 @@ const ActualPump = () => {
                     sx={{
                       mb: 2,
                       "& .MuiOutlinedInput-root": {
-                        "& fieldset": {
-                          borderColor: "#333", // Dark border color
-                        },
-                        "&.Mui-focused fieldset": {
-                          borderColor: "#000", // Even darker border color when focused
-                        },
-                      },
+                                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                                      "& fieldset": {
+                                        border: "none",
+                                      },
+                                      "&.Mui-focused": {
+                                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                                      },
+                                    },
                     }}
                   />
 
