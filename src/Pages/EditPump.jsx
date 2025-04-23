@@ -89,11 +89,12 @@ const EditPump = () => {
                 variant="outlined"
                 sx={{
                   "& .MuiOutlinedInput-root": {
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                     "& fieldset": {
-                      borderColor: "#333", // Dark border color
+                      border: "none",
                     },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#000", // Even darker border color when focused
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                     },
                   },
                 }}
@@ -120,11 +121,12 @@ const EditPump = () => {
                 variant="outlined"
                 sx={{
                   "& .MuiOutlinedInput-root": {
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                     "& fieldset": {
-                      borderColor: "#333", // Dark border color
+                      border: "none",
                     },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#000", // Even darker border color when focused
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                     },
                   },
                 }}
@@ -153,11 +155,12 @@ const EditPump = () => {
                 variant="outlined"
                 sx={{
                   "& .MuiOutlinedInput-root": {
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                     "& fieldset": {
-                      borderColor: "#333", // Dark border color
+                      border: "none",
                     },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#000", // Even darker border color when focused
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                     },
                   },
                 }}
@@ -186,11 +189,12 @@ const EditPump = () => {
                 variant="outlined"
                 sx={{
                   "& .MuiOutlinedInput-root": {
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                     "& fieldset": {
-                      borderColor: "#333", // Dark border color
+                      border: "none",
                     },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#000", // Even darker border color when focused
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                     },
                   },
                 }}
@@ -219,11 +223,12 @@ const EditPump = () => {
                 variant="outlined"
                 sx={{
                   "& .MuiOutlinedInput-root": {
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                     "& fieldset": {
-                      borderColor: "#333", // Dark border color
+                      border: "none",
                     },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#000", // Even darker border color when focused
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                     },
                   },
                 }}
@@ -259,11 +264,12 @@ const EditPump = () => {
                 variant="outlined"
                 sx={{
                   "& .MuiOutlinedInput-root": {
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                     "& fieldset": {
-                      borderColor: "#333", // Dark border color
+                      border: "none",
                     },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#000", // Even darker border color when focused
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                     },
                   },
                 }}
@@ -290,11 +296,12 @@ const EditPump = () => {
                 variant="outlined"
                 sx={{
                   "& .MuiOutlinedInput-root": {
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                     "& fieldset": {
-                      borderColor: "#333", // Dark border color
+                      border: "none",
                     },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#000", // Even darker border color when focused
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                     },
                   },
                 }}
@@ -323,11 +330,12 @@ const EditPump = () => {
                 variant="outlined"
                 sx={{
                   "& .MuiOutlinedInput-root": {
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                     "& fieldset": {
-                      borderColor: "#333", // Dark border color
+                      border: "none",
                     },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#000", // Even darker border color when focused
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                     },
                   },
                 }}
@@ -354,11 +362,12 @@ const EditPump = () => {
                 variant="outlined"
                 sx={{
                   "& .MuiOutlinedInput-root": {
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                     "& fieldset": {
-                      borderColor: "#333", // Dark border color
+                      border: "none",
                     },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#000", // Even darker border color when focused
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                     },
                   },
                 }}
@@ -390,42 +399,12 @@ const EditPump = () => {
                 variant="outlined"
                 sx={{
                   "& .MuiOutlinedInput-root": {
+                    boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                     "& fieldset": {
-                      borderColor: "#333", // Dark border color
+                      border: "none",
                     },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#000", // Even darker border color when focused
-                    },
-                  },
-                }}
-              />
-            </Stack>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Stack direction="row" spacing={2} alignItems="center">
-              <Typography
-                sx={{
-                  width: 100,
-                  fontWeight: 500,
-                }}
-              >
-                Assign To <span style={{ color: "red" }}>*</span>
-              </Typography>
-              <TextField
-                fullWidth
-                defaultValue="JJ"
-                size="small"
-                name="amperage"
-                value={formData.assignTo}
-                onChange={handleChange}
-                variant="outlined"
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    "& fieldset": {
-                      borderColor: "#333", // Dark border color
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#000", // Even darker border color when focused
+                    "&.Mui-focused": {
+                      boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                     },
                   },
                 }}

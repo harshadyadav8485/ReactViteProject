@@ -202,16 +202,17 @@ const Reports = () => {
     </Tooltip>
 
     <Tooltip title="Download Report">
-      <IconButton
-        size="small"
-        color="secondary"
-        onClick={() => {
-          
-        }}
-      >
-        <FileDownloadIcon />
-      </IconButton>
+        <a
+          href={pump_report}
+          download="pump_report"
+          style={{ color: "inherit", textDecoration: "none" }}
+        >
+          <IconButton size="small" color="secondary">
+            <FileDownloadIcon />
+          </IconButton>
+        </a>
     </Tooltip>
+
   </Stack>
 </TableCell>
 
@@ -220,146 +221,6 @@ const Reports = () => {
             </TableBody>
           </Table>
         </TableContainer>
-
-        <Paper
-        elevation={4}
-        sx={{
-          p: 2,
-          borderRadius: "10px",
-          mb: 4,
-        }}
-      >
-      <Grid container spacing={16} alignItems="center">
-  {/* Project Name */}
-  <Grid item xs={12} md={4}>
-    <Box sx={{ display: "flex", alignItems: "center" }}>
-      <Typography
-        variant="body1"
-        fontWeight="500"
-        sx={{ mr: 2, minWidth: "100px" }}
-      >
-        Project <br /> Name <span style={{ color: "red" }}>*</span>
-      </Typography>
-
-      <Select
-        variant="outlined"
-        displayEmpty
-        value={projectName}
-        onChange={(e) => setProjectName(e.target.value)}
-        IconComponent={KeyboardArrowDownIcon}
-        sx={{
-          bgcolor: "#fff",
-          height: "40px",
-          width: "100%",
-          "& .MuiOutlinedInput-notchedOutline": {
-            borderColor: "#000",
-          },
-        }}
-        MenuProps={{
-          PaperProps: {
-            sx: {
-              bgcolor: "#fff",
-            },
-          },
-        }}
-      >
-        <MenuItem value="USB SCHOOL OF BIOMEDICAL ENGINEERING">USB SCHOOL OF BIOMEDICAL ENGINEERING</MenuItem>
-        <MenuItem value="BOILED FEED PUMP">BOILED FEED PUMP</MenuItem>
-        <MenuItem value="CHILLED WATER SYSTEM">CHILLED WATER SYSTEM</MenuItem>
-        <MenuItem value="BOILED FEED PUMP1">BOILED FEED PUMP1</MenuItem>
-      </Select>
-    </Box>
-  </Grid>
-
-  {/* Equipment Name */}
-  <Grid item xs={12} md={4}>
-    <Box sx={{ display: "flex", alignItems: "center" }}>
-      <Typography
-        variant="body1"
-        fontWeight="500"
-        sx={{ mr: 2, minWidth: "120px" }}
-      >
-        Equipment Name <span style={{ color: "red" }}>*</span>
-      </Typography>
-      <Select
-        variant="outlined"
-        displayEmpty
-        value={equipmentName}
-        onChange={(e) => setEquipmentName(e.target.value)}
-        IconComponent={KeyboardArrowDownIcon}
-        sx={{
-          bgcolor: "#fff",
-          height: "40px",
-          width: "100%",
-          "& .MuiOutlinedInput-notchedOutline": {
-            borderColor: "#000",
-          },
-        }}
-        MenuProps={{
-          PaperProps: {
-            sx: {
-              bgcolor: "#fff",
-            },
-          },
-        }}
-      >
-        <MenuItem value="Pump">Pump</MenuItem>
-        <MenuItem value="Fan">Fan</MenuItem>
-      </Select>
-    </Box>
-  </Grid>
-
-  {/* Action Column */}
-  <Grid item xs={12} md={4}>
-    <Stack direction="row" spacing={2} alignItems="center">
-      {/* View Report */}
-      <Button
-                        variant="contained"
-                        onClick={() => {
-                          window.open(pump_report, "_blank");
-                        }}
-                        sx={{
-                          borderRadius: "10px",
-                          bgcolor: "#99CAFF",
-                          color: "black",
-                          px: 3,
-                          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
-                          "&:hover": {
-                            bgcolor: "#7bb8ff",
-                          },
-                        }}
-                      >
-                        View Report
-                      </Button>
-
-
-      {/* Download Report */}
-      <Button
-        variant="outlined"
-        color="secondary"
-        sx={{ textTransform: "none", borderColor: "#000", color: "#000",
-          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
-          border: "none", // 👈 override outlined variant's default border
-          "&:hover": {
-            bgcolor: "#e5e7e8",
-            border: "none", // 👈 make sure hover state also has no border
-          },
-         }}
-        >
-         <a
-                    href={pump_report}
-                    download="pump_report"
-                    style={{ color: "inherit", textDecoration: "none" }}
-                  >
-                     Download
-                  </a> 
-      </Button>
-    </Stack>
-  </Grid>
-</Grid>
-
-
-      </Paper>
       </Box>
     </Box>
   );

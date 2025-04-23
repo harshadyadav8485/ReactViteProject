@@ -58,11 +58,12 @@ const EditProject = () => {
                   defaultValue="P001"
                   sx={{
                     "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                       "& fieldset": {
-                        borderColor: "#333", // Dark border color
+                        border: "none",
                       },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#000", // Even darker border color when focused
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                       },
                     },
                   }}
@@ -86,11 +87,12 @@ const EditProject = () => {
                   defaultValue="Feb 2024"
                   sx={{
                     "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                       "& fieldset": {
-                        borderColor: "#333", // Dark border color
+                        border: "none",
                       },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#000", // Even darker border color when focused
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                       },
                     },
                   }}
@@ -114,11 +116,12 @@ const EditProject = () => {
                   defaultValue="UBC School Of Biomedical Engineering"
                   sx={{
                     "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                       "& fieldset": {
-                        borderColor: "#333", // Dark border color
+                        border: "none",
                       },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#000", // Even darker border color when focused
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                       },
                     },
                   }}
@@ -142,11 +145,12 @@ const EditProject = () => {
                   defaultValue="Smith Sheet Metal Works Ltd"
                   sx={{
                     "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                       "& fieldset": {
-                        borderColor: "#333", // Dark border color
+                        border: "none",
                       },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#000", // Even darker border color when focused
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                       },
                     },
                   }}
@@ -170,11 +174,12 @@ const EditProject = () => {
                   defaultValue="JJ/TK"
                   sx={{
                     "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                       "& fieldset": {
-                        borderColor: "#333", // Dark border color
+                        border: "none",
                       },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#000", // Even darker border color when focused
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                       },
                     },
                   }}
