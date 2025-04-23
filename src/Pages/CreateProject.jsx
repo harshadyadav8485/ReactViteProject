@@ -55,7 +55,7 @@ const CreateProject = () => {
                   fullWidth
                   placeholder="Enter Project Id"
                   variant="outlined"
-                  // size="small"
+                  size="small"
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
@@ -84,7 +84,7 @@ const CreateProject = () => {
                   fullWidth
                   placeholder="Enter Date"
                   variant="outlined"
-                  // size="small"
+                  size="small"
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
@@ -113,7 +113,7 @@ const CreateProject = () => {
                   fullWidth
                   placeholder="Enter Project Name"
                   variant="outlined"
-                  // size="small"
+                  size="small"
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
@@ -142,7 +142,7 @@ const CreateProject = () => {
                   fullWidth
                   placeholder="Enter Customer Name"
                   variant="outlined"
-                  // size="small"
+                  size="small"
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
@@ -171,7 +171,7 @@ const CreateProject = () => {
                   fullWidth
                   placeholder="Enter Tested By"
                   variant="outlined"
-                  // size="small"
+                  size="small"
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25

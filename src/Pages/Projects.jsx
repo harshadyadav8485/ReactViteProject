@@ -118,7 +118,7 @@ const Projects = () => {
       <Box
         sx={{
           bgcolor: "#f2f4f5",
-          minHeight: "80vh",
+          minHeight: "88vh",
           width: "100vw",
           // py: 4,
           pl: "70px",
