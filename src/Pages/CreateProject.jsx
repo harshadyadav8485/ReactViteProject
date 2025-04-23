@@ -58,11 +58,12 @@ const CreateProject = () => {
                   size="small"
                   sx={{
                     "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                       "& fieldset": {
-                        borderColor: "#333", // Dark border color
+                        border: "none",
                       },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#000", // Even darker border color when focused
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                       },
                     },
                   }}
@@ -86,14 +87,16 @@ const CreateProject = () => {
                   size="small"
                   sx={{
                     "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                       "& fieldset": {
-                        borderColor: "#333", // Dark border color
+                        border: "none",
                       },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#000", // Even darker border color when focused
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                       },
                     },
                   }}
+                  
                 />
               </Grid>
             </Grid>
@@ -114,11 +117,12 @@ const CreateProject = () => {
                   size="small"
                   sx={{
                     "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                       "& fieldset": {
-                        borderColor: "#333", // Dark border color
+                        border: "none",
                       },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#000", // Even darker border color when focused
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                       },
                     },
                   }}
@@ -142,11 +146,12 @@ const CreateProject = () => {
                   size="small"
                   sx={{
                     "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                       "& fieldset": {
-                        borderColor: "#333", // Dark border color
+                        border: "none",
                       },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#000", // Even darker border color when focused
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                       },
                     },
                   }}
@@ -163,18 +168,19 @@ const CreateProject = () => {
                 </Typography>
               </Grid>
               <Grid item xs={8}>
-                <TextField
+              <TextField
                   fullWidth
                   placeholder="Enter Tested By"
                   variant="outlined"
                   size="small"
                   sx={{
                     "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                       "& fieldset": {
-                        borderColor: "#333", // Dark border color
+                        border: "none",
                       },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#000", // Even darker border color when focused
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                       },
                     },
                   }}
