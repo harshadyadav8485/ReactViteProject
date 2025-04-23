@@ -128,7 +128,7 @@ const Projects1 = () => {
       <Box
         sx={{
           bgcolor: "#f2f4f5",
-          minHeight: "100vh",
+          // minHeight: "100vh",
           width: "100vw",
           py: 4,
           pl: "70px",
@@ -229,9 +229,14 @@ const Projects1 = () => {
                   </Stack>
                 </TableCell>
                 <TableCell>
-                <Stack direction="row" alignItems="center" spacing={1} sx={{ml:3}}>
-                  <Typography fontWeight="bold">Status</Typography>
-                  <ArrowDropDown />
+                  <Stack
+                    direction="row"
+                    alignItems="center"
+                    spacing={1}
+                    sx={{ ml: 3 }}
+                  >
+                    <Typography fontWeight="bold">Status</Typography>
+                    <ArrowDropDown />
                   </Stack>
                 </TableCell>
                 <TableCell>
