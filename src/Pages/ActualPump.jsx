@@ -21,12 +21,17 @@ import {
   Grid,
   FormControlLabel,
   Checkbox,
+  Radio,
+  RadioGroup,
 } from "@mui/material";
-import React, { useState } from "react";
+import InputAdornment from "@mui/material/InputAdornment";
+
+import React, { useState, useRef, useEffect } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import pump_report from "../assets/pump_report.pdf";
 import { useNavigate } from "react-router-dom";
 import { Snackbar, Alert } from "@mui/material";
+import { useOutletContext } from "react-router-dom";
 
 const ActualPump = () => {
   const [tabValue, setTabValue] = useState(0);
@@ -52,6 +57,19 @@ const ActualPump = () => {
     { field: "Amperage", specifiedValue: "23.60", actualValue: "As Below" },
     { field: "R.P.M", specifiedValue: "", actualValue: "-" },
   ]);
+
+  const scrollableRef = useRef(null);
+  const { setParentScroll } = useOutletContext();
+
+  useEffect(() => {
+    const el = scrollableRef.current;
+    if (el) {
+      requestAnimationFrame(() => {
+        const isOverflowing = el.scrollHeight > el.clientHeight;
+        setParentScroll(!isOverflowing);
+      });
+    }
+  }, [setParentScroll]);
 
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
@@ -82,14 +100,1323 @@ const ActualPump = () => {
     setOpenSnackbar(true);
   };
 
+  const [selectedForm, setSelectedForm] = useState("form1"); // Default selected form
+
+  const handleRadioChange = (event) => {
+    setSelectedForm(event.target.value); // Update the selected form based on radio button
+  };
+
+  const renderForm = () => {
+    switch (selectedForm) {
+      case "form1":
+        return (
+          <Paper elevation={4} sx={{ p: 3, borderRadius: "10px", mb: 2 }}>
+            <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
+              SINGLE OPERATION FULL FLOW
+            </Typography>
+
+            <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
+              PUMP OPERATING HEAD (KPA)
+            </Typography>
+            <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Suction{"\n"}Pressure (SP){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="60"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Discharge{"\n"}Pressure (DP){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="218"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Total{"\n"}Pressure (TP){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="158"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+            </Stack>
+
+            <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
+              PUMP SHUT OFF HEAD(KPA)
+            </Typography>
+            <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Suction{"\n"}Pressure (SP){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="**"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Discharge{"\n"}Pressure (DP){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="**"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Total{"\n"}Pressure (TP){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="-"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+            </Stack>
+
+            <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography sx={{ mr: 1, minWidth: "100px" }}>
+                  Pump Speed <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="60Hz"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography sx={{ mr: 1, minWidth: "100px" }}>
+                  Motor Amps <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="19"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Specified{"\n"}Head (KPA){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="254"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+            </Stack>
+
+            {/* Comments */}
+            <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
+              Comments <span style={{ color: "red" }}>*</span>
+            </Typography>
+            <TextField
+              fullWidth
+              multiline
+              defaultValue="** No CBV installed for measuring the flow accurately"
+              rows={3}
+              placeholder="Enter your comments..."
+              sx={{
+                mb: 2,
+                "& .MuiOutlinedInput-root": {
+                  boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                  "& fieldset": {
+                    border: "none",
+                  },
+                  "&.Mui-focused": {
+                    boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                  },
+                },
+              }}
+            />
+
+            <Box display="flex" justifyContent="flex-end" gap={2}>
+              <Button
+                variant="outlined"
+                onClick={() => navigate("/project2")}
+                sx={{
+                  borderRadius: "10px",
+                  bgcolor: "#f2f4f5",
+                  px: 3,
+                  color: "black",
+                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+                  border: "none", // 👈 override outlined variant's default border
+                  "&:hover": {
+                    bgcolor: "#e5e7e8",
+                    border: "none", // 👈 make sure hover state also has no border
+                  },
+                }}
+              >
+                Back
+              </Button>
+              <Button
+                variant="contained"
+                onClick={handleSubmit}
+                sx={{
+                  borderRadius: "10px",
+                  bgcolor: "#99CAFF",
+                  color: "black",
+                  px: 3,
+                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
+                  "&:hover": {
+                    bgcolor: "#7bb8ff",
+                  },
+                }}
+              >
+                Submit
+              </Button>
+            </Box>
+            <Snackbar
+              open={openSnackbar}
+              autoHideDuration={2000}
+              onClose={() => setOpenSnackbar(false)}
+              anchorOrigin={{ vertical: "top", horizontal: "center" }}
+            >
+              <Alert
+                onClose={() => setOpenSnackbar(false)}
+                severity="success"
+                variant="filled"
+              >
+                Data Submitted Successfully!
+              </Alert>
+            </Snackbar>
+          </Paper>
+        );
+      case "form2":
+        return (
+          <Paper elevation={4} sx={{ p: 3, borderRadius: "10px", mb: 2 }}>
+            <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
+              SINGLE OPERATION BALANCED FLOW
+            </Typography>
+
+            <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
+              PUMP OPERATING HEAD (KPA)
+            </Typography>
+            <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Suction{"\n"}Pressure (SP){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="72"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Discharge{"\n"}Pressure (DP){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="167"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Total{"\n"}Pressure (TP){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="95"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+            </Stack>
+
+            <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
+              PUMP SHUT OFF HEAD(KPA)
+            </Typography>
+            <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Suction{"\n"}Pressure (SP){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="**"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Discharge{"\n"}Pressure (DP){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="**"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Total{"\n"}Pressure (TP){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="-"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+            </Stack>
+
+            <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography sx={{ mr: 1, minWidth: "100px" }}>
+                  Pump Speed <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="90Hz"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography sx={{ mr: 1, minWidth: "100px" }}>
+                  Motor Amps <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="20.70"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Specified{"\n"}Head (KPA){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="254"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+            </Stack>
+
+            {/* Comments */}
+            <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
+              Comments :
+            </Typography>
+            <TextField
+              fullWidth
+              multiline
+              defaultValue="** No CBV installed for measuring the flow accurately"
+              rows={3}
+              placeholder="Enter your comments..."
+              sx={{
+                mb: 2,
+                "& .MuiOutlinedInput-root": {
+                  boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                  "& fieldset": {
+                    border: "none",
+                  },
+                  "&.Mui-focused": {
+                    boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                  },
+                },
+              }}
+            />
+
+            <Box display="flex" justifyContent="flex-end" gap={2}>
+              <Button
+                variant="outlined"
+                onClick={() => navigate("/project2")}
+                sx={{
+                  borderRadius: "10px",
+                  bgcolor: "#f2f4f5",
+                  px: 3,
+                  color: "black",
+                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+                  border: "none", // 👈 override outlined variant's default border
+                  "&:hover": {
+                    bgcolor: "#e5e7e8",
+                    border: "none", // 👈 make sure hover state also has no border
+                  },
+                }}
+              >
+                Back
+              </Button>
+              <Button
+                variant="contained"
+                onClick={handleSubmit}
+                sx={{
+                  borderRadius: "10px",
+                  bgcolor: "#99CAFF",
+                  color: "black",
+                  px: 3,
+                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
+                  "&:hover": {
+                    bgcolor: "#7bb8ff",
+                  },
+                }}
+              >
+                Submit
+              </Button>
+            </Box>
+            <Snackbar
+              open={openSnackbar}
+              autoHideDuration={2000}
+              onClose={() => setOpenSnackbar(false)}
+              anchorOrigin={{ vertical: "top", horizontal: "center" }}
+            >
+              <Alert
+                onClose={() => setOpenSnackbar(false)}
+                severity="success"
+                variant="filled"
+              >
+                Data Submitted Successfully!
+              </Alert>
+            </Snackbar>
+          </Paper>
+        );
+      case "form3":
+        return (
+          <Paper elevation={4} sx={{ p: 3, borderRadius: "10px", mb: 2 }}>
+            <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
+              PARALLEL OPERATION FULL FLOW
+            </Typography>
+
+            <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
+              PUMP OPERATING HEAD (KPA)
+            </Typography>
+            <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Suction{"\n"}Pressure (SP){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="48"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Discharge{"\n"}Pressure (DP){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="239"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Total{"\n"}Pressure (TP){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="191"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+            </Stack>
+
+            <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
+              PUMP SHUT OFF HEAD(KPA)
+            </Typography>
+            <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Suction{"\n"}Pressure (SP){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="**"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Discharge{"\n"}Pressure (DP){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="**"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Total{"\n"}Pressure (TP){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="-"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+            </Stack>
+
+            <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography sx={{ mr: 1, minWidth: "100px" }}>
+                  Pump Speed <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="60Hz"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography sx={{ mr: 1, minWidth: "100px" }}>
+                  Motor Amps <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="19"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Specified{"\n"}Head (KPA){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue="254"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+            </Stack>
+
+            {/* Comments */}
+            <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
+              Comments :
+            </Typography>
+            <TextField
+              fullWidth
+              multiline
+              defaultValue="** No CBV installed for measuring the flow accurately"
+              rows={3}
+              placeholder="Enter your comments..."
+              sx={{
+                mb: 2,
+                "& .MuiOutlinedInput-root": {
+                  boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                  "& fieldset": {
+                    border: "none",
+                  },
+                  "&.Mui-focused": {
+                    boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                  },
+                },
+              }}
+            />
+
+            <Box display="flex" justifyContent="flex-end" gap={2}>
+              <Button
+                variant="outlined"
+                onClick={() => navigate("/project2")}
+                sx={{
+                  borderRadius: "10px",
+                  bgcolor: "#f2f4f5",
+                  px: 3,
+                  color: "black",
+                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+                  border: "none", // 👈 override outlined variant's default border
+                  "&:hover": {
+                    bgcolor: "#e5e7e8",
+                    border: "none", // 👈 make sure hover state also has no border
+                  },
+                }}
+              >
+                Back
+              </Button>
+              <Button
+                variant="contained"
+                onClick={handleSubmit}
+                sx={{
+                  borderRadius: "10px",
+                  bgcolor: "#99CAFF",
+                  color: "black",
+                  px: 3,
+                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
+                  "&:hover": {
+                    bgcolor: "#7bb8ff",
+                  },
+                }}
+              >
+                Submit
+              </Button>
+            </Box>
+            <Snackbar
+              open={openSnackbar}
+              autoHideDuration={2000}
+              onClose={() => setOpenSnackbar(false)}
+              anchorOrigin={{ vertical: "top", horizontal: "center" }}
+            >
+              <Alert
+                onClose={() => setOpenSnackbar(false)}
+                severity="success"
+                variant="filled"
+              >
+                Data Submitted Successfully!
+              </Alert>
+            </Snackbar>
+          </Paper>
+        );
+      case "form4":
+        return (
+          <Paper elevation={4} sx={{ p: 3, borderRadius: "10px", mb: 2 }}>
+            <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
+              SINGLE OPERATION BALANCED FLOW
+            </Typography>
+
+            <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
+              PUMP OPERATING HEAD (KPA)
+            </Typography>
+            <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Suction{"\n"}Pressure (SP){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  defaultValue=""
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Discharge{"\n"}Pressure (DP){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Total{"\n"}Pressure (TP){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+            </Stack>
+
+            <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
+              PUMP SHUT OFF HEAD(KPA)
+            </Typography>
+            <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Suction{"\n"}Pressure (SP){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Discharge{"\n"}Pressure (DP){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Total{"\n"}Pressure (TP){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+            </Stack>
+
+            <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography sx={{ mr: 1, minWidth: "100px" }}>
+                  Pump Speed <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography sx={{ mr: 1, minWidth: "100px" }}>
+                  Motor Amps <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                <Typography
+                  sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
+                >
+                  Specified{"\n"}Head (KPA){" "}
+                  <span style={{ color: "red" }}>*</span>
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  size="small"
+                  sx={{
+                    width: "200px",
+                    backgroundColor: "white",
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Box>
+            </Stack>
+
+            {/* Comments */}
+            <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
+              Comments :
+            </Typography>
+            <TextField
+              fullWidth
+              multiline
+              // defaultValue= "** No CBV installed for measuring the flow accurately"
+              rows={3}
+              placeholder="Enter your comments..."
+              sx={{
+                mb: 2,
+                "& .MuiOutlinedInput-root": {
+                  boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                  "& fieldset": {
+                    border: "none",
+                  },
+                  "&.Mui-focused": {
+                    boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                  },
+                },
+              }}
+            />
+
+            <Box display="flex" justifyContent="flex-end" gap={2}>
+              <Button
+                variant="outlined"
+                onClick={() => navigate("/project2")}
+                sx={{
+                  borderRadius: "10px",
+                  bgcolor: "#f2f4f5",
+                  px: 3,
+                  color: "black",
+                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+                  border: "none", // 👈 override outlined variant's default border
+                  "&:hover": {
+                    bgcolor: "#e5e7e8",
+                    border: "none", // 👈 make sure hover state also has no border
+                  },
+                }}
+              >
+                Back
+              </Button>
+              <Button
+                variant="contained"
+                onClick={handleSecondSubmit}
+                sx={{
+                  borderRadius: "10px",
+                  bgcolor: "#99CAFF",
+                  color: "black",
+                  px: 3,
+                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
+                  "&:hover": {
+                    bgcolor: "#7bb8ff",
+                  },
+                }}
+              >
+                Submit
+              </Button>
+            </Box>
+            <Snackbar
+              open={openSnackbar}
+              autoHideDuration={2000}
+              onClose={() => setOpenSnackbar(false)}
+              anchorOrigin={{ vertical: "top", horizontal: "center" }}
+            >
+              <Alert
+                onClose={() => setOpenSnackbar(false)}
+                severity="success"
+                variant="filled"
+              >
+                Data Submitted Successfully!
+              </Alert>
+            </Snackbar>
+          </Paper>
+        );
+      // default:
+      //   return null;
+    }
+  };
+
   return (
     <Box
+      ref={scrollableRef}
       sx={{
         bgcolor: "#f2f4f5",
         display: "flex",
         justifyContent: "center",
         width: "100%",
-        height: "100vh",
+        height: "100%",
         overflow: "auto",
       }}
     >
@@ -99,10 +1426,10 @@ const ActualPump = () => {
           // minHeight: "100vh",
           width: "100vw",
           pl: "70px",
-          pt: "12px",
+          mt: "12px",
           pr: "24px",
           boxSizing: "border-box",
-          // overflow: "auto",
+          overflow: "auto",
           position: "relative",
         }}
       >
@@ -112,11 +1439,11 @@ const ActualPump = () => {
             width: "100%",
             height: "150px",
             position: "sticky",
-            top: 12,
+            top: 0,
             right: 0,
             paddingTop: 0,
             paddingBottom: 0,
-            zIndex: 1099,
+            zIndex: 1,
           }}
         >
           <Typography
@@ -225,11 +1552,12 @@ const ActualPump = () => {
                             }}
                             sx={{
                               "& .MuiOutlinedInput-root": {
+                                boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
                                 "& fieldset": {
-                                  borderColor: "#333", // Dark border color
+                                  border: "none",
                                 },
-                                "&.Mui-focused fieldset": {
-                                  borderColor: "#000", // Even darker border color when focused
+                                "&.Mui-focused": {
+                                  boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
                                 },
                               },
                             }}
@@ -248,7 +1576,7 @@ const ActualPump = () => {
               <TextField
                 fullWidth
                 multiline
-                rows={5}
+                rows={3}
                 placeholder="Enter your comments..."
                 sx={{
                   mb: 2,
@@ -328,1312 +1656,36 @@ const ActualPump = () => {
           )}
           {tabValue === 1 && (
             <Box>
-              <Paper elevation={4} sx={{ p: 3, borderRadius: "10px", mb: 2 }}>
-                <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
-                  SINGLE OPERATION FULL FLOW
-                </Typography>
-
-                <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
-                  PUMP OPERATING HEAD (KPA)
-                </Typography>
-                <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Suction{"\n"}Pressure (SP){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="60"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Discharge{"\n"}Pressure (DP){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="218"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Total{"\n"}Pressure (TP){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="158"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                </Stack>
-
-                <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
-                  PUMP SHUT OFF HEAD(KPA)
-                </Typography>
-                <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Suction{"\n"}Pressure (SP){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="**"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Discharge{"\n"}Pressure (DP){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="**"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Total{"\n"}Pressure (TP){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="-"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                </Stack>
-
-                <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography sx={{ mr: 1, minWidth: "100px" }}>
-                      Pump Speed <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="60Hz"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography sx={{ mr: 1, minWidth: "100px" }}>
-                      Motor Amps <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="19"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Specified{"\n"}Head (KPA){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="254"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                </Stack>
-
-                {/* Comments */}
-                <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
-                  Comments <span style={{ color: "red" }}>*</span>
-                </Typography>
-                <TextField
-                  fullWidth
-                  multiline
-                  defaultValue="** No CBV installed for measuring the flow accurately"
-                  rows={5}
-                  placeholder="Enter your comments..."
-                  sx={{
-                    mb: 2,
-                    "& .MuiOutlinedInput-root": {
-                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                      "& fieldset": {
-                        border: "none",
-                      },
-                      "&.Mui-focused": {
-                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                      },
-                    },
-                  }}
+              <RadioGroup
+                row
+                value={selectedForm}
+                onChange={handleRadioChange}
+                // sx={{ mb: 3 }}
+              >
+                <FormControlLabel
+                  value="form1"
+                  control={<Radio />}
+                  label="Single Operation Full Flow"
                 />
-
-                {/* <Typography color="text.secondary" sx={{ mb: 0.5 }}>
-                *Represents[Your meaning 1]
-              </Typography>
-              <Typography color="text.secondary" sx={{ mb: 3 }}>
-                **Represents[Your meaning 2]
-              </Typography> */}
-                <Box display="flex" justifyContent="flex-end" gap={2}>
-                  <Button
-                    variant="outlined"
-                    onClick={() => navigate("/project2")}
-                    sx={{
-                      borderRadius: "10px",
-                      bgcolor: "#f2f4f5",
-                      px: 3,
-                      color: "black",
-                      boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
-                      border: "none", // 👈 override outlined variant's default border
-                      "&:hover": {
-                        bgcolor: "#e5e7e8",
-                        border: "none", // 👈 make sure hover state also has no border
-                      },
-                    }}
-                  >
-                    Back
-                  </Button>
-                  <Button
-                    variant="contained"
-                    onClick={handleSubmit}
-                    sx={{
-                      borderRadius: "10px",
-                      bgcolor: "#99CAFF",
-                      color: "black",
-                      px: 3,
-                      boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
-                      "&:hover": {
-                        bgcolor: "#7bb8ff",
-                      },
-                    }}
-                  >
-                    Submit
-                  </Button>
-                </Box>
-                <Snackbar
-                  open={openSnackbar}
-                  autoHideDuration={2000}
-                  onClose={() => setOpenSnackbar(false)}
-                  anchorOrigin={{ vertical: "top", horizontal: "center" }}
-                >
-                  <Alert
-                    onClose={() => setOpenSnackbar(false)}
-                    severity="success"
-                    variant="filled"
-                  >
-                    Data Submitted Successfully!
-                  </Alert>
-                </Snackbar>
-              </Paper>
-              <Paper elevation={4} sx={{ p: 3, borderRadius: "10px", mb: 2 }}>
-                <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
-                  SINGLE OPERATION BALANCED FLOW
-                </Typography>
-
-                <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
-                  PUMP OPERATING HEAD (KPA)
-                </Typography>
-                <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Suction{"\n"}Pressure (SP){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="72"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Discharge{"\n"}Pressure (DP){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="167"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Total{"\n"}Pressure (TP){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="95"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                </Stack>
-
-                <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
-                  PUMP SHUT OFF HEAD(KPA)
-                </Typography>
-                <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Suction{"\n"}Pressure (SP){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="**"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Discharge{"\n"}Pressure (DP){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="**"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Total{"\n"}Pressure (TP){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="-"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                </Stack>
-
-                <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography sx={{ mr: 1, minWidth: "100px" }}>
-                      Pump Speed <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="90Hz"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography sx={{ mr: 1, minWidth: "100px" }}>
-                      Motor Amps <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="20.70"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Specified{"\n"}Head (KPA){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="254"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                </Stack>
-
-                {/* Comments */}
-                <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
-                  Comments :
-                </Typography>
-                <TextField
-                  fullWidth
-                  multiline
-                  defaultValue="** No CBV installed for measuring the flow accurately"
-                  rows={5}
-                  placeholder="Enter your comments..."
-                  sx={{
-                    mb: 2,
-                    "& .MuiOutlinedInput-root": {
-                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                      "& fieldset": {
-                        border: "none",
-                      },
-                      "&.Mui-focused": {
-                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                      },
-                    },
-                  }}
+                <FormControlLabel
+                  value="form2"
+                  control={<Radio />}
+                  label="Single Operation Balanced Flow"
                 />
-
-                {/* <Typography color="text.secondary" sx={{ mb: 0.5 }}>
-                *Represents[Your meaning 1]
-              </Typography>
-              <Typography color="text.secondary" sx={{ mb: 3 }}>
-                **Represents[Your meaning 2]
-              </Typography> */}
-                <Box display="flex" justifyContent="flex-end" gap={2}>
-                  <Button
-                    variant="outlined"
-                    onClick={() => navigate("/project2")}
-                    sx={{
-                      borderRadius: "10px",
-                      bgcolor: "#f2f4f5",
-                      px: 3,
-                      color: "black",
-                      boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
-                      border: "none", // 👈 override outlined variant's default border
-                      "&:hover": {
-                        bgcolor: "#e5e7e8",
-                        border: "none", // 👈 make sure hover state also has no border
-                      },
-                    }}
-                  >
-                    Back
-                  </Button>
-                  <Button
-                    variant="contained"
-                    onClick={handleSubmit}
-                    sx={{
-                      borderRadius: "10px",
-                      bgcolor: "#99CAFF",
-                      color: "black",
-                      px: 3,
-                      boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
-                      "&:hover": {
-                        bgcolor: "#7bb8ff",
-                      },
-                    }}
-                  >
-                    Submit
-                  </Button>
-                </Box>
-                <Snackbar
-                  open={openSnackbar}
-                  autoHideDuration={2000}
-                  onClose={() => setOpenSnackbar(false)}
-                  anchorOrigin={{ vertical: "top", horizontal: "center" }}
-                >
-                  <Alert
-                    onClose={() => setOpenSnackbar(false)}
-                    severity="success"
-                    variant="filled"
-                  >
-                    Data Submitted Successfully!
-                  </Alert>
-                </Snackbar>
-              </Paper>
-              <Paper elevation={4} sx={{ p: 3, borderRadius: "10px", mb: 2 }}>
-                <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
-                  PARALLEL OPERATION FULL FLOW
-                </Typography>
-
-                <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
-                  PUMP OPERATING HEAD (KPA)
-                </Typography>
-                <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Suction{"\n"}Pressure (SP){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="48"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Discharge{"\n"}Pressure (DP){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="239"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Total{"\n"}Pressure (TP){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="191"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                </Stack>
-
-                <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
-                  PUMP SHUT OFF HEAD(KPA)
-                </Typography>
-                <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Suction{"\n"}Pressure (SP){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="**"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Discharge{"\n"}Pressure (DP){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="**"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Total{"\n"}Pressure (TP){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="-"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                </Stack>
-
-                <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography sx={{ mr: 1, minWidth: "100px" }}>
-                      Pump Speed <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="60Hz"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography sx={{ mr: 1, minWidth: "100px" }}>
-                      Motor Amps <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="19"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Specified{"\n"}Head (KPA){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      defaultValue="254"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                </Stack>
-
-                {/* Comments */}
-                <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
-                  Comments :
-                </Typography>
-                <TextField
-                  fullWidth
-                  multiline
-                  defaultValue="** No CBV installed for measuring the flow accurately"
-                  rows={5}
-                  placeholder="Enter your comments..."
-                  sx={{
-                    mb: 2,
-                    "& .MuiOutlinedInput-root": {
-                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                      "& fieldset": {
-                        border: "none",
-                      },
-                      "&.Mui-focused": {
-                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                      },
-                    },
-                  }}
+                <FormControlLabel
+                  value="form3"
+                  control={<Radio />}
+                  label="Parallel Operation Full Flow"
                 />
-
-                {/* <Typography color="text.secondary" sx={{ mb: 0.5 }}>
-                *Represents[Your meaning 1]
-              </Typography>
-              <Typography color="text.secondary" sx={{ mb: 3 }}>
-                **Represents[Your meaning 2]
-              </Typography> */}
-                <Box display="flex" justifyContent="flex-end" gap={2}>
-                  <Button
-                    variant="outlined"
-                    onClick={() => navigate("/project2")}
-                    sx={{
-                      borderRadius: "10px",
-                      bgcolor: "#f2f4f5",
-                      px: 3,
-                      color: "black",
-                      boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
-                      border: "none", // 👈 override outlined variant's default border
-                      "&:hover": {
-                        bgcolor: "#e5e7e8",
-                        border: "none", // 👈 make sure hover state also has no border
-                      },
-                    }}
-                  >
-                    Back
-                  </Button>
-                  <Button
-                    variant="contained"
-                    onClick={handleSubmit}
-                    sx={{
-                      borderRadius: "10px",
-                      bgcolor: "#99CAFF",
-                      color: "black",
-                      px: 3,
-                      boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
-                      "&:hover": {
-                        bgcolor: "#7bb8ff",
-                      },
-                    }}
-                  >
-                    Submit
-                  </Button>
-                </Box>
-                <Snackbar
-                  open={openSnackbar}
-                  autoHideDuration={2000}
-                  onClose={() => setOpenSnackbar(false)}
-                  anchorOrigin={{ vertical: "top", horizontal: "center" }}
-                >
-                  <Alert
-                    onClose={() => setOpenSnackbar(false)}
-                    severity="success"
-                    variant="filled"
-                  >
-                    Data Submitted Successfully!
-                  </Alert>
-                </Snackbar>
-              </Paper>
-              <Paper elevation={4} sx={{ p: 3, borderRadius: "10px", mb: 2 }}>
-                <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
-                  SINGLE OPERATION BALANCED FLOW
-                </Typography>
-
-                <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
-                  PUMP OPERATING HEAD (KPA)
-                </Typography>
-                <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Suction{"\n"}Pressure (SP){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Discharge{"\n"}Pressure (DP){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Total{"\n"}Pressure (TP){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                </Stack>
-
-                <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
-                  PUMP SHUT OFF HEAD(KPA)
-                </Typography>
-                <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Suction{"\n"}Pressure (SP){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Discharge{"\n"}Pressure (DP){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Total{"\n"}Pressure (TP){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                </Stack>
-
-                <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography sx={{ mr: 1, minWidth: "100px" }}>
-                      Pump Speed <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography sx={{ mr: 1, minWidth: "100px" }}>
-                      Motor Amps <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-                    <Typography
-                      sx={{ mr: 1, whiteSpace: "pre-line", minWidth: "100px" }}
-                    >
-                      Specified{"\n"}Head (KPA){" "}
-                      <span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      size="small"
-                      sx={{
-                        width: "200px",
-                        backgroundColor: "white",
-                        "& .MuiOutlinedInput-root": {
-                          boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused": {
-                            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                          },
-                        },
-                      }}
-                    />
-                  </Box>
-                </Stack>
-
-                {/* Comments */}
-                <Typography variant="body1" fontWeight="bold" sx={{ mb: 1 }}>
-                  Comments :
-                </Typography>
-                <TextField
-                  fullWidth
-                  multiline
-                  // defaultValue= "** No CBV installed for measuring the flow accurately"
-                  rows={5}
-                  placeholder="Enter your comments..."
-                  sx={{
-                    mb: 2,
-                    "& .MuiOutlinedInput-root": {
-                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
-                      "& fieldset": {
-                        border: "none",
-                      },
-                      "&.Mui-focused": {
-                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
-                      },
-                    },
-                  }}
+                <FormControlLabel
+                  value="form4"
+                  control={<Radio />}
+                  label="Parallel Operation Balanced Flow"
                 />
+              </RadioGroup>
 
-                {/* <Typography color="text.secondary" sx={{ mb: 0.5 }}>
-                *Represents[Your meaning 1]
-              </Typography>
-              <Typography color="text.secondary" sx={{ mb: 3 }}>
-                **Represents[Your meaning 2]
-              </Typography> */}
-                <Box display="flex" justifyContent="flex-end" gap={2}>
-                  <Button
-                    variant="outlined"
-                    onClick={() => navigate("/project2")}
-                    sx={{
-                      borderRadius: "10px",
-                      bgcolor: "#f2f4f5",
-                      px: 3,
-                      color: "black",
-                      boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
-                      border: "none", // 👈 override outlined variant's default border
-                      "&:hover": {
-                        bgcolor: "#e5e7e8",
-                        border: "none", // 👈 make sure hover state also has no border
-                      },
-                    }}
-                  >
-                    Back
-                  </Button>
-                  <Button
-                    variant="contained"
-                    onClick={handleSecondSubmit}
-                    sx={{
-                      borderRadius: "10px",
-                      bgcolor: "#99CAFF",
-                      color: "black",
-                      px: 3,
-                      boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
-                      "&:hover": {
-                        bgcolor: "#7bb8ff",
-                      },
-                    }}
-                  >
-                    Submit
-                  </Button>
-                </Box>
-                <Snackbar
-                  open={openSnackbar}
-                  autoHideDuration={2000}
-                  onClose={() => setOpenSnackbar(false)}
-                  anchorOrigin={{ vertical: "top", horizontal: "center" }}
-                >
-                  <Alert
-                    onClose={() => setOpenSnackbar(false)}
-                    severity="success"
-                    variant="filled"
-                  >
-                    Data Submitted Successfully!
-                  </Alert>
-                </Snackbar>
-              </Paper>
+              {/* Render the corresponding form based on the selected radio button */}
+              {renderForm()}
             </Box>
           )}
 
@@ -1664,7 +1716,7 @@ const ActualPump = () => {
                         fullWidth
                         defaultValue="34.700"
                         size="small"
-                        label="Specified Value"
+                        // label="Specified Value"
                         variant="outlined"
                         sx={{
                           "& .MuiOutlinedInput-root": {
@@ -1684,7 +1736,8 @@ const ActualPump = () => {
                       <TextField
                         fullWidth
                         size="small"
-                        label="Actual Value"
+                        // label="Actual Value"
+                        placeholder="Actual Value"
                         variant="outlined"
                         sx={{
                           "& .MuiOutlinedInput-root": {
@@ -1726,7 +1779,7 @@ const ActualPump = () => {
                         fullWidth
                         defaultValue="187.629"
                         size="small"
-                        label="Specified Value"
+                        // label="Specified Value"
                         variant="outlined"
                         sx={{
                           "& .MuiOutlinedInput-root": {
@@ -1745,7 +1798,8 @@ const ActualPump = () => {
                       <TextField
                         fullWidth
                         size="small"
-                        label="Actual Value"
+                        // label="Actual Value"
+                        placeholder="Actual Value"
                         variant="outlined"
                         sx={{
                           "& .MuiOutlinedInput-root": {
@@ -2296,7 +2350,7 @@ const ActualPump = () => {
                   <TextField
                     fullWidth
                     multiline
-                    rows={5}
+                    rows={3}
                     placeholder="Enter your comments..."
                     sx={{
                       mb: 2,
