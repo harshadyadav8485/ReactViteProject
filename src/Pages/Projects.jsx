@@ -118,11 +118,11 @@ const Projects = () => {
       <Box
         sx={{
           bgcolor: "#f2f4f5",
-          minHeight: "100vh",
+          minHeight: "88vh",
           width: "100vw",
-          py: 4,
+          // py: 4,
           pl: "70px",
-          pt: "30px",
+          pt: "12px",
           pr: "24px",
           boxSizing: "border-box",
           overflow: "hidden",
@@ -149,12 +149,18 @@ const Projects = () => {
             // fullWidth
             sx={{
               width: "50%",
-              bgcolor: "#f2f4f5",
-
+              bgcolor: "#fff",
+              height: "50px",
               borderRadius: "10px",
 
               "& .MuiOutlinedInput-root": {
-                borderRadius: "10px",
+                boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                "& fieldset": {
+                  border: "none",
+                },
+                "&.Mui-focused": {
+                  boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                },
               },
             }}
           />
@@ -260,9 +266,9 @@ const Projects = () => {
                       >
                         <BorderColorIcon />
                       </IconButton>
-                      <IconButton size="small" color="error">
+                      {/* <IconButton size="small" color="error">
                         <Delete />
-                      </IconButton>
+                      </IconButton> */}
                     </Stack>
                   </TableCell>
                 </TableRow>

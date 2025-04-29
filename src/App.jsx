@@ -33,6 +33,8 @@ import Project1 from "./Pages/Projects1";
 import Projects2 from "./Pages/Projects2";
 import { Navigate } from "react-router-dom";
 import EditPumpCreation from "./Pages/EditPumpCreation";
+import PumpPerformance from "./Pages/PumpPerformance";
+import Reports from "./Pages/Reports";
 
 function App() {
   const router = createBrowserRouter([
@@ -155,6 +157,14 @@ function App() {
         {
           path: "project2",
           element: <Projects2 />,
+        },
+        {
+          path: "pumpPerformance",
+          element: <PumpPerformance />,
+        },
+        {
+          path: "reports",
+          element: <Reports />,
         },
       ],
     },

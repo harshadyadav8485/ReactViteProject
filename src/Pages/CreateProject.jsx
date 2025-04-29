@@ -22,10 +22,10 @@ const CreateProject = () => {
     <Box
       sx={{
         bgcolor: "#f2f4f5",
-        minHeight: "100vh",
+        minHeight: "88vh",
         py: 4,
         pl: "70px",
-        pt: "30px",
+        pt: "12px",
         pr: "24px",
         boxSizing: "border-box",
         overflow: "hidden",
@@ -44,26 +44,148 @@ const CreateProject = () => {
       >
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
-            <Stack direction="row" spacing={2} alignItems="center">
-              <Typography fontWeight="medium">Project Id :</Typography>
-              <TextField fullWidth variant="outlined" size="small" />
-            </Stack>
+            <Grid container alignItems="center" spacing={2}>
+              <Grid item xs={3}>
+                <Typography fontWeight="medium">
+                  Project Id <span style={{ color: "red" }}>*</span>
+                </Typography>
+              </Grid>
+              <Grid item xs={8}>
+                <TextField
+                  fullWidth
+                  placeholder="Enter Project Id"
+                  variant="outlined"
+                  size="small"
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Grid>
+            </Grid>
           </Grid>
 
           <Grid item xs={12} md={6}>
-            <Stack direction="row" spacing={2} alignItems="center">
-              <Typography fontWeight="medium">Project Name :</Typography>
-              <TextField fullWidth variant="outlined" size="small" />
-            </Stack>
+            <Grid container alignItems="center" spacing={2}>
+              <Grid item xs={3}>
+                <Typography fontWeight="medium">
+                  Date <span style={{ color: "red" }}>*</span>
+                </Typography>
+              </Grid>
+              <Grid item xs={8}>
+                <TextField
+                  fullWidth
+                  placeholder="Enter Date"
+                  variant="outlined"
+                  size="small"
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Grid>
+            </Grid>
           </Grid>
 
           <Grid item xs={12} md={6}>
-            <Stack direction="row" spacing={2} alignItems="center">
-              <Typography fontWeight="medium" sx={{ whiteSpace: "pre-line" }}>
-                Customer{"\n"} Name :
-              </Typography>
-              <TextField fullWidth variant="outlined" size="small" />
-            </Stack>
+            <Grid container alignItems="center" spacing={2}>
+              <Grid item xs={3}>
+                <Typography fontWeight="medium">
+                  Project Name <span style={{ color: "red" }}>*</span>
+                </Typography>
+              </Grid>
+              <Grid item xs={8}>
+                <TextField
+                  fullWidth
+                  placeholder="Enter Project Name"
+                  variant="outlined"
+                  size="small"
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <Grid container alignItems="center" spacing={2}>
+              <Grid item xs={3}>
+                <Typography fontWeight="medium">
+                  Customer Name <span style={{ color: "red" }}>*</span>
+                </Typography>
+              </Grid>
+              <Grid item xs={8}>
+                <TextField
+                  fullWidth
+                  placeholder="Enter Customer Name"
+                  variant="outlined"
+                  size="small"
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <Grid container alignItems="center" spacing={2}>
+              <Grid item xs={3}>
+                <Typography fontWeight="medium">
+                  Tested By <span style={{ color: "red" }}>*</span>
+                </Typography>
+              </Grid>
+              <Grid item xs={8}>
+                <TextField
+                  fullWidth
+                  placeholder="Enter Tested By"
+                  variant="outlined"
+                  size="small"
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                      "& fieldset": {
+                        border: "none",
+                      },
+                      "&.Mui-focused": {
+                        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                      },
+                    },
+                  }}
+                />
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </Paper>
@@ -76,7 +198,12 @@ const CreateProject = () => {
             bgcolor: "#f2f4f5",
             px: 3,
             color: "black",
-            border: "1px solid black",
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+            border: "none", // 👈 override outlined variant's default border
+            "&:hover": {
+              bgcolor: "#e5e7e8",
+              border: "none", // 👈 make sure hover state also has no border
+            },
           }}
           onClick={() => {
             navigate("/project1");
@@ -84,6 +211,7 @@ const CreateProject = () => {
         >
           Back
         </Button>
+
         <Button
           variant="contained"
           sx={{
@@ -91,6 +219,10 @@ const CreateProject = () => {
             bgcolor: "#99CAFF",
             color: "black",
             px: 3,
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Shadow added here
+            "&:hover": {
+              bgcolor: "#7bb8ff",
+            },
           }}
           onClick={() => {
             navigate("/project1");

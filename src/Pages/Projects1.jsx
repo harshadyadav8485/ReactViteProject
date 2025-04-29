@@ -48,7 +48,7 @@ const projectData = [
   {
     id: "P002",
 
-    name: "BOILED FEED PUMP",
+    name: "BOILER FEED PUMP",
 
     customer: "Smith Sheet Metal\nWorks Ltd",
 
@@ -69,7 +69,7 @@ const projectData = [
   {
     id: "P004",
 
-    name: "BOILED FEED PUMP1",
+    name: "BOILER FEED PUMP1",
 
     customer: "Smith Sheet Metal\nWorks Ltd",
 
@@ -128,11 +128,11 @@ const Projects1 = () => {
       <Box
         sx={{
           bgcolor: "#f2f4f5",
-          minHeight: "100vh",
+          minHeight: "88vh",
           width: "100vw",
           py: 4,
           pl: "70px",
-          pt: "30px",
+          pt: "12px",
           pr: "24px",
           boxSizing: "border-box",
           overflow: "hidden",
@@ -159,12 +159,19 @@ const Projects1 = () => {
             // fullWidth
             sx={{
               width: "50%",
-              bgcolor: "#f2f4f5",
-
+              // bgcolor: "#f2f4f5",
+              bgcolor: "#fff",
+              height: "50px",
               borderRadius: "10px",
 
               "& .MuiOutlinedInput-root": {
-                borderRadius: "10px",
+                boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.25)", // increased opacity from 0.15 → 0.25
+                "& fieldset": {
+                  border: "none",
+                },
+                "&.Mui-focused": {
+                  boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.35)", // darker + larger shadow on focus
+                },
               },
             }}
           />
@@ -220,7 +227,15 @@ const Projects1 = () => {
                   </Stack>
                 </TableCell>
                 <TableCell>
-                  <Typography fontWeight="bold">Status</Typography>
+                  <Stack
+                    direction="row"
+                    alignItems="center"
+                    spacing={1}
+                    sx={{ ml: 3 }}
+                  >
+                    <Typography fontWeight="bold">Status</Typography>
+                    <ArrowDropDown />
+                  </Stack>
                 </TableCell>
                 <TableCell>
                   <Typography fontWeight="bold">Action</Typography>
@@ -240,7 +255,7 @@ const Projects1 = () => {
                         sx={{
                           whiteSpace: "pre-line",
                           cursor: "pointer",
-                          textDecoration: "none", // Remove underline
+                          textDecoration: "none",
                           color: "#000000",
                         }}
                         onClick={() => navigate("/project2")}
@@ -270,9 +285,9 @@ const Projects1 = () => {
                       >
                         <BorderColorIcon />
                       </IconButton>
-                      <IconButton size="small" color="error">
+                      {/* <IconButton size="small" color="error">
                         <Delete />
-                      </IconButton>
+                      </IconButton> */}
                     </Stack>
                   </TableCell>
                 </TableRow>

@@ -35,10 +35,10 @@ const Dashboard = () => {
     <Box
       sx={{
         bgcolor: "#f2f4f5",
-        minHeight: "100vh",
+        minHeight: "88vh",
         py: 4,
         pl: "70px",
-        pt: "30px",
+        pt: "12px",
         pr: "24px",
         boxSizing: "border-box",
         overflow: "hidden",

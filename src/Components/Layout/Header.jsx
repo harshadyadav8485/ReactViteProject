@@ -42,7 +42,6 @@ const Header = () => {
         bgcolor: "#fff",
       }}
     >
-      {/* Top Bar inside main content (like user info bar) */}
       <Paper
         elevation={4}
         sx={{
@@ -52,13 +51,21 @@ const Header = () => {
           alignItems: "center",
           justifyContent: "flex-end",
           pr: 3,
-          mb: 2,
+          // mb: 2,
           borderLeft: "none", // no border/curve on the left
           borderTopLeftRadius: 0,
           borderBottomLeftRadius: 0,
         }}
       >
-        <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+        {/* <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 2,
+          }}
+        >
+          <Typography>TAB REPORTING</Typography>
+
           <Avatar
             sx={{
               width: 35,
@@ -75,6 +82,47 @@ const Header = () => {
           >
             Admin
           </Typography>
+        </Box> */}
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            width: "100%",
+            padding: "0 16px",
+          }}
+        >
+          <Typography
+            variant="h6"
+            sx={{
+              fontWeight: 600,
+              paddingLeft: "100px",
+              fontFamily: "Poppins-Bold, Helvetica",
+              fontWeight: 700,
+              fontSize: "18px",
+            }}
+          >
+            REPORTING
+          </Typography>
+
+          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+            <Avatar
+              sx={{
+                width: 35,
+                height: 35,
+                bgcolor: "#d9d9d9",
+              }}
+            />
+            <Typography
+              sx={{
+                fontFamily: "Poppins, Helvetica",
+                fontWeight: 700,
+                fontSize: 16,
+              }}
+            >
+              Admin
+            </Typography>
+          </Box>
         </Box>
       </Paper>
     </Box>
